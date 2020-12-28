@@ -90,7 +90,7 @@ The **goals** of this project are:
 
 #### **Colours** ####
 
-![Colour palette](/wireframes/color-palette/color-palette.jpg)
+![Colour palette](/wireframes/colour-palette/colour-palette.jpg)
 
 [Back to content](#contents)
 
