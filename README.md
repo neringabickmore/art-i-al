@@ -24,11 +24,22 @@ Why I am doing this project
     - [Design Choices](#design-choices)
       - [**Fonts**](#fonts)
       - [**Colours**](#colours)
-    - [Wireframes](#wireframes)
-      - [**Site Map**](#site-map)
-      - [**Site Layout**](#site-layout)
-      - [**User Account Creation**](#user-account-creation)
-      - [**Database design**](#database-design)
+  - [Wireframes](#wireframes)
+    - [**Site Map**](#site-map)
+    - [**Site Layout**](#site-layout)
+    - [**User Account Creation**](#user-account-creation)
+  - [Information Architecture](#information-architecture)
+    - [Database Choice](#database-choice)
+    - [Database Modelling](#database-modelling)
+      - [**Profile App**](#profile-app)
+        - [Profile](#profile)
+      - [**Product App**](#product-app)
+        - [Product](#product)
+        - [Category](#category)
+        - [Tag](#tag)
+      - [Checkout App](#checkout-app)
+        - [Order](#order)
+        - [Order Line](#order-line)
   - [Technologies](#technologies)
     - [Languages](#languages)
     - [Libraries & Tools](#libraries--tools)
@@ -94,23 +105,111 @@ The **goals** of this project are:
 
 [Back to content](#contents)
 
-### Wireframes ###
+## Wireframes ##
 
-#### **Site Map** ####
+### **Site Map** ###
 
 Firstly, I have created a site [map](/wireframes/flowcharts/sitemap.png) to identify clear features the site will have when viewed by the visitor, registered user, and admin.
 
-#### **Site Layout** ####
+### **Site Layout** ###
 
 I designed my site moc-ups using [balsamiq wireframes](https://balsamiq.com/). I was focusing on defining the basic layout structure of the app and identifying how displays would change on different screen sizes such as [mobile and larger screens](/wireframes/site-wireframes/about.visitor.png).
 
 You can view all wireframes created for this project [here](/wireframes/site-wireframes).
 
-#### **User Account Creation** ####
+### **User Account Creation** ###
 
 To make user account creation logic easier to understand and simplify the management of it, I have created [workflow-chart](/wireframes/flowcharts/account-creation.jpg).
 
-#### **Database design** ####
+[Back to content](#contents)
+
+---
+
+## Information Architecture ##
+
+### Database Choice ###
+
+### Database Modelling ###
+
+#### **Profile App** ####
+
+##### Profile #####
+
+| **Title** | **Database Key** | **Field Type** | **Validation** |
+--- | --- | --- | ---
+ Username | username | OneToOneField 'User' |  on_delete=models.CASCADE
+ Full Name | profile_full_name | CharField | max_length=70, null=True, blank=True
+ Phone number | profile_phone_number | CharField | max_length=20, null=True, blank=True
+ Address Line1 | profile_address_line1 | CharField | max_length=60, null=True, blank=True
+ Address Line2 | profile_address_line2 | CharField | max_length=60, null=True, blank=True
+ Town/City | profile_town_or_city | CharField | max_length=50, null=True, blank=True
+ County | profile_county | CharField | max_length=50, null=True, blank=True
+ Postcode | profile_postcode | CharField | max_length=20, null=True, blank=True
+ Country | profile_country | CountryField | blank_label='Country', null=True, blank=True
+
+#### **Product App** ####
+
+##### Product #####
+
+| **Title** | **Database Key** | **Field Type** | **Validation** |
+--- | --- | --- | ---
+ Category | category | ForeignKey 'Category' | null=True, blank=True, on_delete=models.SET_NULL
+ Title | title | CharField | max_length=254
+ Description | description | TextField | max_length=800
+ Dimensions | dimensions | CharField | max_length=70, null=True, blank=True
+ Price | price | DecimalField |max_digits=6, decimal_places=2, validators=[MinValueValidator(0.01)]
+ Image | image| ImageField | null=True, blank=True
+ Image Url | image_url | URLField | max_length=1024, null=True, blank=True
+ Sku | sku | CharField | max_length=254, null=True, blank=True
+ Tag| tag | CharField | max_length=50, null=True, blank=True
+
+##### Category #####
+
+| **Title** | **Database Key** | **Field Type** | **Validation** |
+--- | --- | --- | ---
+Programmatic Name | name | CharField | max_length=50
+Friendly Name | friendly_name | CharField | max_length=50, null=True, blank=True
+
+##### Tag #####
+
+| **Title** | **Database Key** | **Field Type** | **Validation** |
+--- | --- | --- | ---
+Programmatic Name | name | CharField | max_length=50
+Friendly Name | friendly_name | CharField | max_length=50, null=True, blank=True
+
+#### Checkout App ####
+
+##### Order #####
+
+| **Title** | **Database Key** | **Field Type** | **Validation** |
+--- | --- | --- | ---
+Order Number | order_number | CharField | max_length=32, null=False, editable=False
+Profile | profile | ForeignKey 'Profile' | on_delete=models.SET_NULL, null=True, blank=True, related_name='orders'
+Full Name | full_name | CharField | max_length=70, null=False, blank=False
+Email | email | EmailField | max_length=254, null=False, blank=False
+Phone number | phone_number | CharField | max_length=20, null=False, blank=False
+Address Line1 | address_line1 | CharField | max_length=60, null=False, blank=False
+Address Line2 | address_line2 | CharField | max_length=60, null=False, blank=False
+Town/City | town_or_city | CharField | max_length=50, null=False, blank=False
+County | county | CharField | max_length=50, null=True, blank=True
+Postcode | postcode | CharField | max_length=20, null=True, blank=True
+Country | country | CountryField | blank_label='Country*', null=False, blank=False
+Purchase Date | purchase_date | DateTimeField | auto_now_add=True
+Delivery Cost | delivery_cost | DecimalField | max_digits=6, decimal_places=2, null=False, default=0
+Order Total | order_total | DecimalField | max_digits=10, decimal_places=2, null=False, default=0
+Grand Total | grand_total | DecimalField | max_digits=10, decimal_places=2, null=False, default=0
+Original Cart | original_cart | TextField | null=False, blank=False, default=''
+Stripe Pid | stripe_pid | CharField | max_length=254, null=False, blank=False, default=''
+Comment | comment | TextField | max_length=254, null=True, blank=True
+
+##### Order Line #####
+
+| **Title** | **Database Key** | **Field Type** | **Validation** |
+--- | --- | --- | ---
+Order | order | ForeignKey 'Order' | null=False, blank=False, on_delete=models.CASCADE, related_name='lineitems'
+Product | product | ForeignKey 'Product' | null=False, blank=False, on_delete=models.PROTECT
+Item Total | item_total | DecimalField | max_digits=6, decimal_places=2, null=False, blank=False, editable=False
+Datetime | datetime | CharField | null=True, blank=True, max_length=20
 
 [Back to content](#contents)
 
