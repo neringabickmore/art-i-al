@@ -27,7 +27,6 @@ Why I am doing this project
   - [Wireframes](#wireframes)
     - [**Site Map**](#site-map)
     - [**Site Layout**](#site-layout)
-    - [**User Account Creation**](#user-account-creation)
   - [Information Architecture](#information-architecture)
     - [Database Choice](#database-choice)
     - [Database Modelling](#database-modelling)
@@ -62,7 +61,6 @@ Why I am doing this project
 
 ### Project Goals ###
 
-The **goals** of this project are:
 
 ### Site Owner Goals ###
 
@@ -113,13 +111,9 @@ Firstly, I have created a site [map](/wireframes/site-map/sitemap.png) to identi
 
 ### **Site Layout** ###
 
-I designed my site moc-ups using [balsamiq wireframes](https://balsamiq.com/). I was focusing on defining the basic layout structure of the app and identifying how displays would change on different screen sizes such as [mobile and larger screens](/wireframes/site-wireframes/about.visitor.png).
+I designed my site moc-ups using [balsamiq wireframes](https://balsamiq.com/). I was focusing on defining the basic layout structure of the app and identifying how displays would change on different screen sizes such as [mobile](/wireframes/site-wireframes/gallery-buy.mobile.png), [tablet](/wireframes/site-wireframes/gallery-buy.tablet.png), and [desktop](/wireframes/site-wireframes/gallery-buy.desktop.png)
 
-You can view all wireframes created for this project [here](/wireframes/site-wireframes).
-
-### **User Account Creation** ###
-
-To make user account creation logic easier to understand and simplify the management of it, I have created [workflow-chart](/wireframes/flowcharts/account-creation.jpg).
+You can view all wireframes created for this project in [site wireframes](/wireframes/site-wireframes) folder.
 
 [Back to content](#contents)
 
