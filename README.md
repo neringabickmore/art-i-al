@@ -17,6 +17,7 @@ Why I am doing this project
   - [UX](#ux)
     - [Project Goals](#project-goals)
     - [Site Owner Goals](#site-owner-goals)
+    - [Site Visitor/User Goals](#site-visitoruser-goals)
     - [User Stories](#user-stories)
     - [User Requirements and Expectations](#user-requirements-and-expectations)
       - [**Requirements**](#requirements)
@@ -61,8 +62,20 @@ Why I am doing this project
 
 ### Project Goals ###
 
+This project is my final project for the Code Institute's Full stack development programme. The main goal of this project is to create an e-commerce site using Django framework, which is hosted with AWS as well as implementing a fully functional payment system with Stripe.
+
+At the beginning of 2020, my sister started experimenting with paint on canvases that has now gained popularity amongst family, friends, colleagues as well as enquiries from her followers on Instagram. I have therefore decided to commit in creating a website for my sister as a professional platform to sell her artwork. After my graduation, this site will be used as fully functional e-commerce platform.
 
 ### Site Owner Goals ###
+
+- Provide the users with a professional e-commerce online shop to allow secure purchases
+- Make profit selling artwork
+- Promote the artwork and the brand of the artist
+
+### Site Visitor/User Goals ###
+
+- View new artwork produced by the artist
+- Ability to buy artwork online
 
 ### User Stories ###
 
