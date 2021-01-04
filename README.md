@@ -19,10 +19,6 @@ Why I am doing this project
     - [Site Owner Goals](#site-owner-goals)
     - [Site Visitor/User Goals](#site-visitoruser-goals)
     - [User Stories](#user-stories)
-      - [**As a user (*applies to all site users*) I am able to:**](#as-a-user-applies-to-all-site-users-i-am-able-to)
-      - [**As a new site user I am able to:**](#as-a-new-site-user-i-am-able-to)
-      - [**As a returning user I am able to:**](#as-a-returning-user-i-am-able-to)
-      - [**As a superuser (site owner) I am able to:**](#as-a-superuser-site-owner-i-am-able-to)
     - [User Requirements and Expectations](#user-requirements-and-expectations)
       - [**Requirements**](#requirements)
       - [**Expectations**](#expectations)
@@ -83,7 +79,7 @@ At the beginning of 2020, my sister started experimenting with paint on canvases
 
 ### User Stories ###
 
-#### **As a user (*applies to all site users*) I am able to:** ####
+**As a user (*applies to all site users*) I am able to:**
 
 1. Access the site on my mobile, tablet and desktop which is adapted to provide the best experience.
 
@@ -107,11 +103,11 @@ At the beginning of 2020, my sister started experimenting with paint on canvases
 
 11. Receive an email confirmation once I complete the payment.
 
-#### **As a new site user I am able to:** ####
+**As a new site user I am able to:**
 
 1. Create an account.
 
-#### **As a returning user I am able to:** ####
+**As a returning user I am able to:**
 
 1. Login to my existing account and make a quicker purchase.
 
@@ -123,7 +119,7 @@ At the beginning of 2020, my sister started experimenting with paint on canvases
 
 5. Change or reset my password securely.
 
-#### **As a superuser (site owner) I am able to:** ####
+**As a superuser (site owner) I am able to:**
 
 1. Securely add, edit and delete the information for the specific artwork listed on the website.
 
