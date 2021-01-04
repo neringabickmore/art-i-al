@@ -109,7 +109,7 @@ The **goals** of this project are:
 
 ### **Site Map** ###
 
-Firstly, I have created a site [map](/wireframes/flowcharts/sitemap.png) to identify clear features the site will have when viewed by the visitor, registered user, and admin.
+Firstly, I have created a site [map](/wireframes/site-map/sitemap.png) to identify clear features the site will have when viewed by the visitor, registered user, and admin.
 
 ### **Site Layout** ###
 
