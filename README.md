@@ -19,6 +19,10 @@ Why I am doing this project
     - [Site Owner Goals](#site-owner-goals)
     - [Site Visitor/User Goals](#site-visitoruser-goals)
     - [User Stories](#user-stories)
+      - [**As a user (*applies to all site users*) I am able to:**](#as-a-user-applies-to-all-site-users-i-am-able-to)
+      - [**As a new site user I am able to:**](#as-a-new-site-user-i-am-able-to)
+      - [**As a returning user I am able to:**](#as-a-returning-user-i-am-able-to)
+      - [**As a superuser (site owner) I am able to:**](#as-a-superuser-site-owner-i-am-able-to)
     - [User Requirements and Expectations](#user-requirements-and-expectations)
       - [**Requirements**](#requirements)
       - [**Expectations**](#expectations)
@@ -78,6 +82,56 @@ At the beginning of 2020, my sister started experimenting with paint on canvases
 - Ability to buy artwork online
 
 ### User Stories ###
+
+#### **As a user (*applies to all site users*) I am able to:** ####
+
+1. Access the site on my mobile, tablet and desktop which is adapted to provide the best experience.
+
+2. Easily navigate through the website without too much thought and find what I am looking for quickly.
+
+3. Identify instantly what the site is all about and what it has to offer.
+
+4. Contact the site owner using a simple form.
+
+5. Find key information about the artwork I am interested in (such as images, title, dimensions, etc)
+
+6. Filter the artwork in the gallery page to identify new, available, and sold artwork.
+
+7. Add the artwork in my shopping bag.
+
+8. Change the content of my shopping bag before continuing to completion (add more or remove the artwork).
+
+9. See full breakdown of the total cost, including the shipping charge before proceeding to payment.
+
+10. Purchase the artwork using my card in a secure environment.
+
+11. Receive an email confirmation once I complete the payment.
+
+#### **As a new site user I am able to:** ####
+
+1. Create an account.
+
+#### **As a returning user I am able to:** ####
+
+1. Login to my existing account and make a quicker purchase.
+
+2. View, save, and update my personal information.
+
+3. View past orders.
+
+4. Make purchases quicker by having stored information such as address.
+
+5. Change or reset my password securely.
+
+#### **As a superuser (site owner) I am able to:** ####
+
+1. Securely add, edit and delete the information for the specific artwork listed on the website.
+
+2. Change the tags on the products to specify new, available, an sold artwork.
+
+3. Receive enquiries from the site users after they fill in the contact form straight to my email inbox.
+
+4. Get an email with the customer orders when the purchases are made.
 
 [Back to content](#contents)
 
