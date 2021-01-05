@@ -2,9 +2,9 @@
 
 ![ART.I.AL](/static/images/logo.jpg)
 
-[ART.I.AL](https://art-ial-app.herokuapp.com/) - site description
+[ART.I.AL](https://art-ial-app.herokuapp.com/) is an e-commerce website with artwork gallery where you can not only view but also purchase available artwork.
 
-Why I am doing this project
+At the beginning of 2020, my sister started experimenting with paint on canvases that has now gained popularity amongst family, friends, colleagues as well as enquiries from her followers on Instagram. I have therefore decided to commit in creating a website for my sister as a professional platform to sell her artwork. After my graduation, this site will be used as fully functional e-commerce platform.
 
 ![Site display on different screens](/wireframes/testing-images/responsive-design.jpg)
 
@@ -37,7 +37,7 @@ Why I am doing this project
         - [Product](#product)
         - [Category](#category)
         - [Tag](#tag)
-      - [Checkout App](#checkout-app)
+      - [**Checkout App**](#checkout-app)
         - [Order](#order)
         - [Order Line](#order-line)
   - [Technologies](#technologies)
@@ -63,8 +63,6 @@ Why I am doing this project
 ### Project Goals ###
 
 This project is my final project for the Code Institute's Full stack development programme. The main goal of this project is to create an e-commerce site using Django framework, which is hosted with AWS as well as implementing a fully functional payment system with Stripe.
-
-At the beginning of 2020, my sister started experimenting with paint on canvases that has now gained popularity amongst family, friends, colleagues as well as enquiries from her followers on Instagram. I have therefore decided to commit in creating a website for my sister as a professional platform to sell her artwork. After my graduation, this site will be used as fully functional e-commerce platform.
 
 ### Site Owner Goals ###
 
@@ -174,7 +172,7 @@ Firstly, I have created a site [map](/wireframes/site-map/sitemap.png) to identi
 
 ### **Site Layout** ###
 
-I designed my site moc-ups using [balsamiq wireframes](https://balsamiq.com/). I was focusing on defining the basic layout structure of the app and identifying how displays would change on different screen sizes such as [mobile](/wireframes/site-wireframes/gallery-buy.mobile.png), [tablet](/wireframes/site-wireframes/gallery-buy.tablet.png), and [desktop](/wireframes/site-wireframes/gallery-buy.desktop.png)
+I designed my site moc-ups using [balsamiq wireframes](https://balsamiq.com/). I was focusing on defining the basic layout structure of the app and identifying how displays would change on different screen sizes such as [mobile](/wireframes/site-wireframes/gallery-buy.mobile.png), [tablet](/wireframes/site-wireframes/gallery-buy.tablet.png), and [desktop](/wireframes/site-wireframes/gallery-buy.desktop.png).
 
 You can view all wireframes created for this project in [site wireframes](/wireframes/site-wireframes) folder.
 
@@ -234,7 +232,7 @@ Friendly Name | friendly_name | CharField | max_length=50, null=True, blank=True
 Programmatic Name | name | CharField | max_length=50
 Friendly Name | friendly_name | CharField | max_length=50, null=True, blank=True
 
-#### Checkout App ####
+#### **Checkout App** ####
 
 ##### Order #####
 
