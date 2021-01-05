@@ -45,6 +45,12 @@ At the beginning of 2020, my sister started experimenting with paint on canvases
     - [Libraries & Tools](#libraries--tools)
   - [Features](#features)
     - [Implemented Features](#implemented-features)
+      - [**User Account**](#user-account)
+      - [**Super User**](#super-user)
+      - [**Gallery page**](#gallery-page)
+      - [**Shop page**](#shop-page)
+      - [**Shopping bag**](#shopping-bag)
+      - [**Payments**](#payments)
     - [Future Features](#future-features)
   - [Changes applied since planning](#changes-applied-since-planning)
   - [Testing](#testing)
@@ -302,39 +308,53 @@ Datetime | datetime | CharField | null=True, blank=True, max_length=20
 
 ## Features ##
 
-Art-ial website is designed using five applications: `home`, `products`, `profiles`, `bag`, `checkout`.
+Art-ial website is designed using five applications: `home`, `products`, `profiles`, `bag`, and `checkout`.
 
 ### Implemented Features ###
 
-- **Responsive design**
+- The site has **responsive design** when viewed on mobile, tablet, and desktop.
+- **Easy navigation** to external sites, such as social media accounts.
+- The user is given feedback when they interact with the website (i.e. when items are added/deleted from cart, or payment is processed, or they send an enquiry using the form on `home` page).
+- **Purchased** artwork is immediately allocated ***sold*** tag, removed from `shop` page and is only visible in the `gallery` page.
 
-The app has a different layout options, focused on *mobile-first* design in mind as more users are expected to use mobile rather than larger devices, such as a tablet or a laptop/desktop.
+#### **User Account** ####
 
-- **Register** account form
+- The users are able to **create** an account where they can store personal information such as their address and **edit** their details.
+- **Password re-set**.
 
-- **Sign in/out** functionality
+#### **Super User** ####
 
-- **Easy navigation** to external sites
+- Existing content about the **artwork** can be edited or deleted by the super user in the front end.
+- **The superuser** is able to **add new** artwork to gallery and shop sections of the site.
 
-The user is redirected to a website when clicks on *purchase* a book button.
+#### **Gallery page** ####
 
-- **Defence mechanism**
+- **Search function** in the gallery page to narrow down and search for *all artwork*, *new*, *sold* or *available to purchase* artwork.
+- The artwork has allocated tags that are clearly visible to allow the user to identify if it's available for purchase or it's newly added or still available for purchase.
+- **Room view** image is available for the users to view to enhance experience.
 
-- **Site admin** edit
+#### **Shop page** ####
 
-Site admin feature allows deletion of inappropriate reviews, change of book review form items, as well as deletion of the registered user accounts.
+- All of the artwork listed on this page is available for purchase.
+- **Room view** image is available for the users to enhance shopping experience.
+
+#### **Shopping bag** ####
+
+- Items added to the shopping bag appear in the shopping cart.
+- Artwork can be removed from the shopping bag.
+- The user can choose to proceed to payment.
+
+#### **Payments** ####
+
+- Existing users who have previously made a purchase and are logged in, have their delivery address pre-populated when they proceed to payment.
+- Checkout page shows the summary of the order.
+- Payment can be made by card using Stripe.
 
 ### Future Features ###
 
-- **Language Selector**
-  
-The user is able to choose English or Lithuanian language to view the site.
-
-- **Password re-set**
-
-- **Search function**
-
-The user is able to search books by entering any text that may appear on the book review (i.e. author, title, length, genre etc).
+- The **Superuser** can update content in ***about*** section, ***video banner*** content, ***contact info***.
+- The **Superuser** is able switch quick links ***on*** and ***off***, and add others.
+- The **Superuser** is able to add additional ***social media*** icons in the footer.
 
 [Back to content](#contents)
 
@@ -353,7 +373,6 @@ Testing information can be found in a separate [Testing.md](Testing.md) file.
 ---
 
 ## Deployment ##
-
 
 
 ### Deploying ART.I.AL to Heroku ###
