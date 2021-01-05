@@ -174,7 +174,7 @@ This project is my final project for the Code Institute's Full stack development
 
 ### **Site Map** ###
 
-Firstly, I have created a site [map](/wireframes/site-map/sitemap.png) to identify clear features the site will have when viewed by the visitor, registered user, and admin.
+Firstly, I have created a site [map](/wireframes/site-map/sitemap.png) to enable me to clearly plan the site design before I started working on the wireframes. It has also helped me to visualize what apps I will need to create to make this project fit for purpose.
 
 ### **Site Layout** ###
 
