@@ -43,6 +43,9 @@ At the beginning of 2020, my sister started experimenting with paint on canvases
       - [**Checkout App**](#checkout-app)
         - [Order](#order)
         - [Order Line](#order-line)
+      - [**Home App**](#home-app)
+        - [About Section](#about-section)
+        - [Social Media Icons](#social-media-icons)
   - [Technologies](#technologies)
     - [Languages](#languages)
     - [Libraries & Tools](#libraries--tools)
@@ -299,6 +302,23 @@ Order | order | ForeignKey 'Order' | null=False, blank=False, on_delete=models.C
 Product | product | ForeignKey 'Product' | null=False, blank=False, on_delete=models.PROTECT
 Item Total | item_total | DecimalField | max_digits=6, decimal_places=2, null=False, blank=False, editable=False
 Datetime | datetime | CharField | null=True, blank=True, max_length=20
+
+#### **Home App** ####
+
+##### About Section #####
+
+| **Title** | **Database Key** | **Field Type** | **Validation** |
+Title | title | CharField | max_length=254
+Description | description | TextField | max_length=800
+Image | img| ImageField | null=True, blank=True
+Image Url | img_url | URLField | max_length=1024, null=True, blank=True
+
+##### Social Media Icons #####
+
+| **Title** | **Database Key** | **Field Type** | **Validation** |
+Title | title | CharField | max_length=254
+Icon | icon | CharField | max_length_50
+Icon url | icon_url | URLField | max_length=1024, default= '', null=True, blank=True
 
 [Back to content](#contents)
 
