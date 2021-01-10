@@ -139,6 +139,14 @@ This project is my final project for the Code Institute's Full stack development
 
 4. Get an email with the customer orders when the purchases are made.
 
+5. Manipulate social media icons in the footer of the site (turn social media icons *on/off* and edit URL's).
+
+6. Edit content in the `About` section of the `Home` page.
+
+7. Manipulate what images are displayed in the carousels (New Artwork and Gallery Preview).
+
+8. View history of all orders with minimal order information.
+
 [Back to content](#contents)
 
 ### User Requirements and Expectations ###
