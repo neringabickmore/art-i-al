@@ -360,24 +360,29 @@ Icon url | icon_url | URLField | max_length=1024, default= '', null=True, blank=
 
 ## Features ##
 
-Art-ial website is designed using five applications: `home`, `products`, `profiles`, `bag`, and `checkout`.
+Art-ial website is designed using five applications: `Home`, `Products`, `Profiles`, `Bag`, and `Checkout`.
 
 ### Implemented Features ###
 
 - The site has **responsive design** when viewed on mobile, tablet, and desktop.
 - **Easy navigation** to external sites, such as social media accounts.
-- The user is given feedback when they interact with the website (i.e. when items are added/deleted from cart, or payment is processed, or they send an enquiry using the form on `home` page).
-- **Purchased** artwork is immediately allocated ***sold*** tag, removed from `shop` page and is only visible in the `gallery` page.
+- The user is given feedback when they interact with the website (i.e. when items are added/deleted from cart, or payment is processed, or they send an enquiry using the form on `Home` page).
+- **Purchased** artwork is immediately allocated ***sold*** tag, removed from `Shop` page and is only visible in the `Gallery` page.
 
 #### **User Account** ####
 
 - The users are able to **create** an account where they can store personal information such as their address and **edit** their details.
 - **Password re-set**.
+- **User** can completely delete their account.
 
 #### **Super User** ####
 
-- Existing content about the **artwork** can be edited or deleted by the super user in the front end.
-- **The superuser** is able to **add new** artwork to gallery and shop sections of the site.
+- Existing content about the **artwork** can be edited, updated, archived or completely deleted by the **Super User** in the front end.
+- The **Super User** is able to **add new** artwork to `Gallery` and `Shop` sections of the site.
+- The **Super User** is able to change the content displayed in `About` section of the site.
+- The **Super User** is able to change the pictures displays in New Artwork and Gallery preview carousels located in `Home` page.
+- The **Super User** is able to add/remove/edit additional ***social media*** icons displayed in the footer.
+- The **Super User** is able to see history of all orders.
 
 #### **Gallery page** ####
 
@@ -404,9 +409,8 @@ Art-ial website is designed using five applications: `home`, `products`, `profil
 
 ### Future Features ###
 
-- The **Superuser** can update content in ***about*** section, ***video banner*** content, ***contact info***.
-- The **Superuser** is able switch quick links ***on*** and ***off***, and add others.
-- The **Superuser** is able to add additional ***social media*** icons in the footer.
+- The **Super User** can update ***video banner*** content and ***contact info***.
+- The **Super User** is able switch quick links ***on*** and ***off***, and add others.
 
 [Back to content](#contents)
 
