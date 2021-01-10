@@ -252,12 +252,14 @@ Friendly Name | friendly_name | CharField | max_length=50, null=True, blank=True
 ##### Images Folder #####
 
 | **Title** | **Database Key** | **Field Type** | **Validation** |
+--- | --- | --- | ---
 Title | title | CharField | max_length=254
 Artwork Images | imgs | ForeignKey 'Artwork Images'| null=True, blank=True, on_delete=models.SET_NULL
 
 ##### Artwork Images #####
 
 | **Title** | **Database Key** | **Field Type** | **Validation** |
+--- | --- | --- | ---
 Title | title | CharField | max_length=254
 Image | img | ImageField | null=True, blank=True
 Image Url | image_url | URLField | max_length=1024, null=True, blank=True
@@ -308,6 +310,7 @@ Datetime | datetime | CharField | null=True, blank=True, max_length=20
 ##### About Section #####
 
 | **Title** | **Database Key** | **Field Type** | **Validation** |
+--- | --- | --- | ---
 Title | title | CharField | max_length=254
 Description | description | TextField | max_length=800
 Image | img| ImageField | null=True, blank=True
@@ -316,6 +319,7 @@ Image Url | img_url | URLField | max_length=1024, null=True, blank=True
 ##### Social Media Icons #####
 
 | **Title** | **Database Key** | **Field Type** | **Validation** |
+--- | --- | --- | ---
 Title | title | CharField | max_length=254
 Icon | icon | CharField | max_length_50
 Icon url | icon_url | URLField | max_length=1024, default= '', null=True, blank=True
