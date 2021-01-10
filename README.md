@@ -35,7 +35,10 @@ At the beginning of 2020, my sister started experimenting with paint on canvases
         - [Profile](#profile)
       - [**Product App**](#product-app)
         - [Product](#product)
-        - [Category](#category)
+        - [Product Category](#product-category)
+        - [Collection Name](#collection-name)
+        - [Images Folder](#images-folder)
+        - [Artwork Images](#artwork-images)
         - [Tag](#tag)
       - [**Checkout App**](#checkout-app)
         - [Order](#order)
@@ -207,6 +210,8 @@ You can view all wireframes created for this project in [site wireframes](/wiref
  County | profile_county | CharField | max_length=50, null=True, blank=True
  Postcode | profile_postcode | CharField | max_length=20, null=True, blank=True
  Country | profile_country | CountryField | blank_label='Country', null=True, blank=True
+ Is Staff | is_staff | BooleanField | default=False
+ Is Superuser | is_superuser | BooleanField | default=False
 
 #### **Product App** ####
 
@@ -214,22 +219,45 @@ You can view all wireframes created for this project in [site wireframes](/wiref
 
 | **Title** | **Database Key** | **Field Type** | **Validation** |
 --- | --- | --- | ---
- Category | category | ForeignKey 'Category' | null=True, blank=True, on_delete=models.SET_NULL
+ Product Category | product_category | ForeignKey 'Product Category' | null=True, blank=True, on_delete=models.SET_NULL
  Title | title | CharField | max_length=254
+ Collection Name |collection_name | ForeignKey 'Collection Name'| null=True, blank=True, on_delete=models.SET_NULL
  Description | description | TextField | max_length=800
+ Author | author | CharField | max_length=254
  Dimensions | dimensions | CharField | max_length=70, null=True, blank=True
  Price | price | DecimalField |max_digits=6, decimal_places=2, validators=[MinValueValidator(0.01)]
- Image | image| ImageField | null=True, blank=True
- Image Url | image_url | URLField | max_length=1024, null=True, blank=True
+ Images Folder| images_folder| ForeignKey 'Images Folder'| null=True, blank=True, on_delete=models.SET_NULL
  Sku | sku | CharField | max_length=254, null=True, blank=True
- Tag| tag | CharField | max_length=50, null=True, blank=True
+ Tag| tag | ForeignKey 'Tag'| null=True, blank=True, on_delete=models.SET_NULL
+ Featured as New | ft_new | BooleanField | default=False
+ Featured as Preview | ft_preview| BooleanField | default=False
 
-##### Category #####
+##### Product Category #####
 
 | **Title** | **Database Key** | **Field Type** | **Validation** |
 --- | --- | --- | ---
 Programmatic Name | name | CharField | max_length=50
 Friendly Name | friendly_name | CharField | max_length=50, null=True, blank=True
+
+##### Collection Name #####
+
+| **Title** | **Database Key** | **Field Type** | **Validation** |
+--- | --- | --- | ---
+Programmatic Name | name | CharField | max_length=50
+Friendly Name | friendly_name | CharField | max_length=50, null=True, blank=True
+
+##### Images Folder #####
+
+| **Title** | **Database Key** | **Field Type** | **Validation** |
+Title | title | CharField | max_length=254
+Artwork Images | imgs | ForeignKey 'Artwork Images'| null=True, blank=True, on_delete=models.SET_NULL
+
+##### Artwork Images #####
+
+| **Title** | **Database Key** | **Field Type** | **Validation** |
+Title | title | CharField | max_length=254
+Image | img | ImageField | null=True, blank=True
+Image Url | image_url | URLField | max_length=1024, null=True, blank=True
 
 ##### Tag #####
 
