@@ -221,8 +221,6 @@ You can view all wireframes created for this project in [site wireframes](/wiref
  County | profile_county | CharField | max_length=50, null=True, blank=True
  Postcode | profile_postcode | CharField | max_length=20, null=True, blank=True
  Country | profile_country | CountryField | blank_label='Country', null=True, blank=True
- Is Staff | is_staff | BooleanField | default=False
- Is Superuser | is_superuser | BooleanField | default=False
 
 #### **Product App** ####
 
