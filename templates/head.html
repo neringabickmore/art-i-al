@@ -7,14 +7,20 @@
 <meta name="Description" content="Art gallery and shop"/>
 {% endblock %}
 
+{% block extra_meta %}
+{% endblock %}
+
 {% block corecss %}
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-beta1/css/bootstrap.min.css" type="text/css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css" type="text/css">
-<!-- <link rel="stylesheet" href="{{ url_for( 'static', filename='css/style.css' ) }}" type="text/css"> -->
+<link rel="stylesheet" href="{% static, 'css/base.css' %}" type="text/css">
 
 <!-- <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for( 'static', filename='images/favicon/apple-touch-icon.png' ) }}"/> -->
 <!-- <link rel="icon" sizes="32x32" href="{{ url_for( 'static', filename='images/favicons/favicon-32x32.png' ) }}"/> -->
 <!-- <link rel="icon" sizes="16x16" href="{{ url_for( 'static', filename='images/favicons/favicon-16x16.png' ) }}"/> -->
+{% endblock %}
+
+{% block extra_css %}
 {% endblock %}
 
 <title>Art.i.al</title>
