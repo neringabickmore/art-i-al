@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Exo&family=Krona+One&display=swap');
+
+:root{
+    /* fonts */
+    --header-font: 'Krona One', sans-serif;
+    --main-font: 'Exo', sans-serif;
+
+    /* color palette */
+    --black-chocolate: #1D1E18;
+    --white: #ffffff;
+    --dark-lava: #453E35;
+    --hunter-green: #315E43;
+    --almond: #EDE0D4;
+    --tuscany: #D0A4A0;
+
+}
+
+html {
+    height: 100%;
+    font-size: 62.5%;
+    scroll-behavior: smooth;
+}
+
+body{
+    height: calc(100vh - 164px);
+}
+
+h1,
+h2,
+h3,
+h4{
+    font-family: var(--header-font);
+}
+p{
+    font-family: var(--main-font)
+}
+
+/* footer */
+.footer{
+    background-color: var(--black-chocolate);
+    color: var(--white);
+    padding: 3rem 2rem;
+}
+.footer h4{
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--white); 
+}
+
+.footer li{
+    list-style-type: none;
+}
+
+.footer ul i{
+    color: var(--white);
+    width: 32px;
+    height: 32px;
+    padding: 1.2rem 0;
+    font-size: 2.5rem;
+}
+.footer-nav .nav-link{
+    color: var(--white);
+    font-size: 1.4rem;
+}
+.footer-contact-info p{
+    font-size: 1.4rem;
+}
+
+.footer ul i:hover,
+.footer-nav .nav-link:hover{
+    color: var(--hunter-green)
+}
