@@ -31,6 +31,7 @@ h3,
 h4{
     font-family: var(--header-font);
 }
+
 p{
     font-family: var(--main-font)
 }
@@ -43,7 +44,13 @@ p{
 }
 .footer h4{
     padding-bottom: 0.5rem;
-    border-bottom: 1px solid var(--white); 
+    padding-top: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2vw;
+}
+
+.footer .hr-style{
+    width: 30%;
 }
 
 .footer li{
@@ -67,5 +74,13 @@ p{
 
 .footer ul i:hover,
 .footer-nav .nav-link:hover{
-    color: var(--hunter-green)
+    color: var(--hunter-green);
+}
+
+/* thematic break*/
+.hr-style{
+    border: 1px solid var(--white);
+    opacity: 1;
+    margin: 0.5rem auto 1rem auto;
+    align-content: center;
 }
