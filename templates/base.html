@@ -15,8 +15,7 @@
 
     <body>
 
-        <header class="container-fluid fixed-top">
-        </header>
+        {% include 'includes/header.html' %}
 
         {% block page_header %}
         {% endblock %}
@@ -24,13 +23,12 @@
         {% block content %}
         {% endblock %}
 
-        <footer class="container-fluid">
-        </footer>
+        {% include 'includes/footer.html' %}
+        
 
         {% block postloadjs %}
         {% endblock %}
 
-        {% include 'includes/footer.html' %}
 
     </body>
 
