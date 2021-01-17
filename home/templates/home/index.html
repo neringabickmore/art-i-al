@@ -1,8 +1,16 @@
-{% extends "base.html" %}
-
+{% extends 'base.html' %}
 {% load static %}
 
 {% block content %}
-<h1 class="display-4 text-success">Are we up and running?</h1>
+
+<div class="container vh-100">
+
+    {% include 'home/includes/video-banner.html' %}
+    {% include 'home/includes/new-art.html' %}
+    {% include 'home/includes/gallery.html' %}
+    {% include 'home/includes/about.html' %}
+    {% include 'home/includes/contact-us.html' %}
+
+</div>
 
 {% endblock %}
