@@ -7,29 +7,11 @@
             </a>
         </div>
         <!-- mobile nav -->
-        <div class="col-12">
-            <nav class="d-lg-none d-block navbar pt-0">
-                <div class="container justify-content-end">
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mobile-nav"
-                        aria-controls="mobile-nav" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-bars"><i class="fas fa-bars fa-lg"></i></span>
-                    </button>
-
-                </div>
-            </nav>
-            {% include 'includes/mobile-nav.html' %}
-        </div>
+        {% include 'includes/mobile-nav.html' %}
     </div>
     <hr class="d-lg-block d-none hr-style">
     <!-- main navigation -->
-    <div class="col-12 d-lg-block d-none">
-        <nav class="navbar navbar-expand w-100 ">
-            <button class="navbar-toggler align-self-center" type="button" data-toggle="collapse"
-                data-target="#main-nav" aria-controls="main-nav" aria-expanded="false" aria-label="Toggle navigation">
-            </button>
-            {% include 'includes/main-nav.html' %}
-        </nav>
-    </div>
+        {% include 'includes/main-nav.html' %}
     <hr class="hr-style">
     </div>
 
