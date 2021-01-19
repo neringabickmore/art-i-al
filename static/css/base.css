@@ -13,6 +13,10 @@
     --almond: #EDE0D4;
     --tuscany: #D0A4A0;
 
+    /* box shadows */
+    --dark-large-box-shadow: 6px 6px 12px var(--dark-lava);
+    --dark-small-box-shadow: 1px 1px 5px var(--dark-lava)
+
 }
 
 html {
@@ -23,6 +27,10 @@ html {
 
 body {
     height: calc(100vh - 164px);
+    min-height: 100vh;
+    overflow-x: hidden;
+    background-color: var(--white);
+    color: var(--black-chocolate);
 }
 
 h1,
@@ -129,4 +137,18 @@ p {
     opacity: 1;
     margin: 0.5rem auto 1rem auto;
     align-content: center;
+}
+
+.btn {
+    /* background-color: var(--hunter-green); */
+    /* color: var(--white); */
+    font-family: var(--main-font);
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    border-radius: 0
+}
+.btn:hover {
+    /* background-color: var(--tuscany); */
+    /* color: var(--white); */
+    box-shadow: var(--dark-small-box-shadow);
 }
