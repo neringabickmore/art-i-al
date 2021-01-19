@@ -1,21 +1,28 @@
-{% load static %}
-
-
 <!DOCTYPE html>
 <html lang="en">
 
     <head>
+        {% include 'includes/head/meta.html' %}
 
-        {% include 'includes/head.html' %}
-        
-        <!-- Scripts-->
-        {% include 'includes/scripts.html' %}
+        {% block extra_meta %}
+        {% endblock %}
 
+        {% include 'includes/head/stylesheets.html' %}
+
+        {% block extra_css %}
+        {% endblock %}
+
+        {% include 'includes/head/scripts.html' %}
+
+        {% block extra_js %}
+        {% endblock %}
+
+        <title>Art.i.al</title>
     </head>
 
     <body>
 
-        {% include 'includes/header.html' %}
+        {% include 'includes/layout/header.html' %}
 
         {% block page_header %}
         {% endblock %}
@@ -23,8 +30,7 @@
         {% block content %}
         {% endblock %}
 
-        {% include 'includes/footer.html' %}
-        
+        {% include 'includes/layout/footer.html' %}
 
         {% block postloadjs %}
         {% endblock %}
