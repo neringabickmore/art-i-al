@@ -1,3 +1,4 @@
+/* contact-us section */
 #contact-form {
     background-color: var(--almond);
     padding: 4rem;
@@ -8,9 +9,11 @@
 #contact-form small,
 #contact-form div {
     font-family: var(--main-font);
+    font-size: calc(1.4rem + .2vw);
     color: var(--black-chocolate);  
     border-color: var(--dark-lava);
     border-radius: 0;
+    
 }
 
 #contact-form .btn {
