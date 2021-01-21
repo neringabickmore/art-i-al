@@ -35,3 +35,22 @@
     font-size: 1.3rem;
 }
 
+/* New Art section styling */
+.carousel-inner {
+    height: 50vh;
+}
+
+.carousel-item img{
+    width: 100%;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+    color: var(--black-chocolate);
+    opacity: 1;
+}
+
+.fa-chevron-left,
+.fa-chevron-right {
+    font-size: calc(2.5rem + .5vw);
+}
