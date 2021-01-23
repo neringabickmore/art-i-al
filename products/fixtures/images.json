@@ -4,7 +4,7 @@
         "model": "products.image",
         "fields": {
             "name": "image 1",
-            "img": "media/test1.jpg",
+            "img": "test1.jpg",
             "image_url": ""
         }
     },
@@ -13,7 +13,7 @@
         "model": "products.image",
         "fields": {
             "name": "image 2",
-            "img": "media/test2.jpg",
+            "img": "test2.jpg",
             "image_url": ""
         }
     },
@@ -22,7 +22,7 @@
         "model": "products.image",
         "fields": {
             "name": "image 3",
-            "img": "media/test3.jpg",
+            "img": "test3.jpg",
             "image_url": ""
         }
     }
