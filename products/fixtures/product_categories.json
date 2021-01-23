@@ -1,0 +1,18 @@
+[
+  {
+    "pk": 1,
+    "model": "products.category",
+    "fields": {
+      "name": "paintings",
+      "friendly_name": "Paintings"
+    }
+  },
+  {
+    "pk": 2,
+    "model": "products.category",
+    "fields": {
+      "name": "photography",
+      "friendly_name": "Photography"
+    }
+  }
+]

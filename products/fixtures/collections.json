@@ -1,0 +1,18 @@
+[
+    {
+        "pk": 1,
+        "model": "products.collection",
+        "fields": {
+            "name": "collection1",
+            "friendly_name": "Collection 1"
+        }
+    },
+    {
+        "pk": 2,
+        "model": "products.collection",
+        "fields": {
+            "name": "collection2",
+            "friendly_name": "Collection 2"
+        }
+    }
+]
