@@ -5,7 +5,7 @@ from django.core.validators import MinValueValidator, MaxValueValidator
 class Collection(models.Model):
 
     class Meta:
-        verbose_name_plural = "Collections"
+        verbose_name_plural = "Collection Names"
 
     name = models.CharField(max_length=50)
     friendly_name = models.CharField(max_length=50, null=True, blank=True) 
@@ -20,7 +20,7 @@ class Collection(models.Model):
 class Category(models.Model):
 
     class Meta:
-        verbose_name_plural = "Categories"
+        verbose_name_plural = "Product Categories"
 
     name = models.CharField(max_length=50)
     friendly_name = models.CharField(max_length=50, null=True, blank=True) 
@@ -68,7 +68,7 @@ class Tag(models.Model):
 class Image(models.Model):
 
     class Meta:
-        verbose_name_plural = "Images"
+        verbose_name_plural = "Artwork Images"
 
     name = models.CharField(max_length=254)
     img = models.ImageField(null=True, blank=True) 
@@ -81,7 +81,7 @@ class Image(models.Model):
 class ImagesFolder(models.Model):
 
     class Meta:
-        verbose_name_plural = "ImagesFolders"
+        verbose_name_plural = "Images Folders"
 
     name = models.CharField(max_length=254)
     imgs = models.ManyToManyField('Image')
