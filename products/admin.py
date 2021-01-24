@@ -3,8 +3,8 @@ from .models import Product, Category, Collection, Image, ImagesFolder, Tag
 
 class ProductAdmin(admin.ModelAdmin):
     list_display = (
-        'category',
         'name',
+        'category',
         'collection_name',
         'description',
         'author',
@@ -17,7 +17,7 @@ class ProductAdmin(admin.ModelAdmin):
         'ft_preview',
     )
 
-    ordering = ['name']
+    ordering = ['collection_name']
 
 class CategoryAdmin(admin.ModelAdmin):
     list_display = (
@@ -44,15 +44,15 @@ class ImageAdmin(admin.ModelAdmin):
     list_display = (
         'name',
         'img',
-        'image_url',
+        'url',
     )
 
     ordering = ('name',)
 
 
 class ImagesFolderAdmin(admin.ModelAdmin):
-    filter_horizontal = ('imgs',)
     display = 'name'
+    filter_horizontal = ('imgs',)
 
 
 admin.site.register(Product, ProductAdmin)

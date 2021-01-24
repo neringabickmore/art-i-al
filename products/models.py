@@ -46,6 +46,8 @@ class Product(models.Model):
     ft_new = models.BooleanField(default=False, null=True, blank=True)
     ft_preview = models.BooleanField(default=False, null=True, blank=True)
 
+    sort = ('collections')
+
     def __str__(self):
         return self.name
 
@@ -72,7 +74,7 @@ class Image(models.Model):
 
     name = models.CharField(max_length=254)
     img = models.ImageField(null=True, blank=True) 
-    image_url = models.URLField(max_length=1024, null=True, blank=True)
+    url = models.URLField(max_length=1024, null=True, blank=True)
 
     def __str__(self):
         return self.name
