@@ -85,8 +85,8 @@ p {
 .nav-link-header:hover,
 .dropdown-menu-header li a:focus,
 .dropdown-menu-header li a:hover {
-    color: var(--white);
-    background-color: var(--hunter-green);
+    color: var(--hunter-green);
+    /* background-color: var(--hunter-green); */
 }
 
 /* footer */
