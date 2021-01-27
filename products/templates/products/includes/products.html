@@ -4,14 +4,14 @@
                 <div class="col col-md-7 col-lg-12 align-self-center">
                     <!-- checks for images in the folder to display one -->
                     {% if product.images_folder.imgs %}
-                    <a href="">
+                    <a href="{% url 'product_detail' product.id %}">
                         {% for img in product.images_folder.imgs.all %}
                         <img class="card-img-top img-fluid" src="{{ img.url }}" alt="{{ img.name }}">
                         {% endfor %}
                     </a>
                     {% else %}
                     <!-- if no image available it displays default image -->
-                    <a href="">
+                    <a href="{% url 'product_detail' product.id %}">
                         <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}noimage.png" alt="no image">
                     </a>
                     {% endif %}
@@ -23,14 +23,14 @@
                                 <!-- checks for product name and assigns -->
                                 <h2 class="artwork-title">{{ product.name }}</h2>
                                 <!-- checks for tag and assigns -->
-                                <h4 class="artwork-tag" id="{{product.tag.friendly_name.lower}}">
+                                <h4 class="artwork-tag tag-{{product.tag.friendly_name.lower}}">
                                     {{product.tag.friendly_name}}</h4>
                             </div>
                         </div>
                         <div class="row align-items-end h-50">
                             <div class="col p-0">
-                                <button type="button" class="btn px-3">More <i
-                                        class="fas fa-info-circle"></i></i></button>
+                                <a class="btn px-3" href="{% url 'product_detail' product.id %}" title="more info"
+                                    aria-label="add to favorites">More<i class="fas fa-info-circle"></i></a>
                             </div>
                         </div>
                     </div>
