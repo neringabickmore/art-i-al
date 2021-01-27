@@ -11,7 +11,7 @@ def gallery(request):
         'products': products,
     }
     
-    return render(request, 'gallery.html', context)
+    return render(request, 'products/gallery.html', context)
 
 
 def shop(request):
@@ -23,4 +23,4 @@ def shop(request):
         'products': products,
     }
     
-    return render(request, 'shop.html', context)
+    return render(request, 'products/shop.html', context)
