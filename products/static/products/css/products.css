@@ -1,3 +1,7 @@
+#product-detail-container {
+    min-height: 75vh;
+}
+
 #product-card,
 #product-detail-card {
     width: 100%;

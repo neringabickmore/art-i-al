@@ -7,14 +7,14 @@
 
 {% block content %}
 
-<div class="container h-100 mb-5">
-    <div class="card h-100" id="product-detail-card">
+<div class="container mb-5" id="product-detail-container">
+    <div class="card" id="product-detail-card">
         <div class="row h-100 no-gutters">
             <div class="col-12 px-4">
                 <!-- checks for the product name in the database to include in the title-->
                 <h3 class="my-4 ml-2 text-uppercase">{{ product.name }} details</h3>
             </div>
-            <div class="col-12 col-md-7 vh-50 vh-sm-100 my-4 align-self-center">
+            <div class="col-12 col-md-7 my-4 align-self-center">
                 <!-- checks for images in the product images folder-->
                 {% for img in product.images_folder.imgs.all %}
                 <!-- if one of the images is set to be as main, it's then displayed-->
@@ -31,7 +31,7 @@
                 {% endfor %}
             </div>
             <div class="col-12 col-md-5">
-                <div class="container h-100 ">
+                <div class="container">
                     <div class="row align-items-start h-75">
                         <div class="col p-0 mt-sm-5" id="product-detail-content">
                             <!-- checks for assigned tag -->
@@ -57,7 +57,7 @@
                             {% include 'products/includes/room-view-modal.html' %}
                         </div>
                     </div>
-                    <div class="row align-items-end h-25">
+                    <div class="row align-items-end">
                         <div class="col p-0">
                             <!-- checks if item is not sold; if not then allows to add the product to the shopping bag -->
                             {% if not product.tag.name == 'sold' %}
