@@ -13,8 +13,6 @@ class ProductAdmin(admin.ModelAdmin):
         'images_folder',
         'sku',
         'tag',
-        'ft_new',
-        'ft_preview',
     )
 
     ordering = ['collection_name']
@@ -45,6 +43,10 @@ class ImageAdmin(admin.ModelAdmin):
         'name',
         'img',
         'url',
+        'main_img',
+        'room_view',
+        'show_in_gallery',
+        'show_in_new',
     )
 
     ordering = ('name',)

@@ -43,8 +43,6 @@ class Product(models.Model):
     images_folder = models.ForeignKey('ImagesFolder', null=True, blank=True, on_delete=models.SET_NULL)
     sku = models.CharField(max_length=254, null=True, blank=True)
     tag = models.ForeignKey('Tag', null=True, blank=True, on_delete=models.SET_NULL)
-    ft_new = models.BooleanField(default=False, null=True, blank=True)
-    ft_preview = models.BooleanField(default=False, null=True, blank=True)
 
     sort = ('collections')
 
@@ -75,6 +73,10 @@ class Image(models.Model):
     name = models.CharField(max_length=254)
     img = models.ImageField(null=True, blank=True) 
     url = models.URLField(max_length=1024, null=True, blank=True)
+    main_img = models.BooleanField(default=False, null=True, blank=True)
+    room_view = models.BooleanField(default=False, null=True, blank=True)
+    show_in_gallery = models.BooleanField(default=False, null=True, blank=True)
+    show_in_new = models.BooleanField(default=False, null=True, blank=True)
 
     def __str__(self):
         return self.name
