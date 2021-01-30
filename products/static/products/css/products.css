@@ -52,6 +52,7 @@
     text-transform: uppercase;
 }
 
+/* tag styling */
 .tag-new, 
 .tag-available, 
 .tag-sold {
@@ -77,8 +78,33 @@
     max-width: 38%;
 }
 
+/* font awesome styling */
 .fa-info-circle,
 .fa-shopping-bag,
 .fa-eye {
     padding: .8rem;
+}
+
+/* room view modal styling */
+#roomViewModal {
+    padding-right: 0;
+}
+.modal-content {
+    background-color: var(--white);
+    padding: 3rem;
+}
+
+.modal-content img {
+    width: 80%;
+    height: auto;
+    opacity: 1!important;
+    justify-self: center;
+}
+
+.modal-footer {
+    border: none;
+}
+
+.modal-footer .btn {
+    margin: .5rem!important;
 }
