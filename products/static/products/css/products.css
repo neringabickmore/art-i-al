@@ -31,10 +31,19 @@
     background-color: var(--hunter-green);
 }
 
+#room-view {
+    color: var(--dark-lava);
+    text-decoration: underline;
+}
+
+#room-view:hover {
+    text-decoration: none;
+}
+
 .artwork-title {
     padding: 1rem 0;
     color: var(--dark-lava);
-    text-transform: capitalize;
+    text-transform: uppercase;
 }
 
 
@@ -73,12 +82,3 @@
 .fa-eye {
     padding: .8rem;
 }
-
-/* #room-view {
-    background-color: var(--tuscany)!important;
-    border: solid 1px var(--dark-lava);
-}
-
-#room-view:hover {
-    background-color: var(--hunter-green)!important;
-} */
