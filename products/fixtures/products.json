@@ -1,0 +1,38 @@
+[
+    {
+        "pk": 1,
+        "model": "products.product",
+        "fields": {
+            "category": 1,
+            "name": "test product",
+            "collection_name": 1,
+            "description": "test description",
+            "author": "test author",
+            "dimensions": "10 x 13",
+            "price": 199.98,
+            "images_folder": 1,
+            "sku": "ART123456",
+            "tag": 1,
+            "ft_new": "False",
+            "ft_preview": "False"
+        }
+    },
+    {
+        "pk": 2,
+        "model": "products.product",
+        "fields": {
+            "category": 1,
+            "name": "test product2",
+            "collection_name": 2,
+            "description": "test description2",
+            "author": "test author2",
+            "dimensions": "10 x 13",
+            "price": 199.98,
+            "images_folder": 2,
+            "sku": "ART123457",
+            "tag": 1,
+            "ft_new": "False",
+            "ft_preview": "False"
+        }
+    }
+]

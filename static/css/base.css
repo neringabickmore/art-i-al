@@ -37,7 +37,8 @@ body {
 h1,
 h2,
 h3,
-h4 {
+h4,
+h5 {
     font-family: var(--header-font);
 }
 
@@ -85,8 +86,8 @@ p {
 .nav-link-header:hover,
 .dropdown-menu-header li a:focus,
 .dropdown-menu-header li a:hover {
-    color: var(--white);
-    background-color: var(--hunter-green);
+    color: var(--hunter-green);
+    /* background-color: var(--hunter-green); */
 }
 
 /* footer */

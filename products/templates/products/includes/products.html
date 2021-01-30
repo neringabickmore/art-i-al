@@ -1,0 +1,41 @@
+    <div class="col-12 col-lg-4 vh-75 my-4">
+        <div class="card h-100" id="product-card">
+            <div class="row h-100">
+                <div class="col col-md-7 col-lg-12 align-self-center">
+                    <!-- checks for images in the product images folder -->
+                    {% for img in product.images_folder.imgs.all %}
+                    <a href="{% url 'product_detail' product.id %}">
+                        <!-- if one of the images is set to be as main, it's then displayed-->
+                        {% if img.main_img is True %}
+                        <img class="card-img-top img-fluid" src="{{ img.url }}" alt="{{ img.name }}">
+                    </a>
+                    {% else %}
+                    <!-- if no image available it displays default image -->
+                    <a href="{% url 'product_detail' product.id %}">
+                        <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}noimage.png" alt="no image">
+                    </a>
+                    {% endif %}
+                    {% endfor %}
+                </div>
+                <div class="col-12 col-md-5 col-lg-12 ">
+                    <div class="container h-100">
+                        <div class="row align-items-start h-50">
+                            <div class="col p-0">
+                                <!-- checks for product name and assigns -->
+                                <h2 class="artwork-title">{{ product.name }}</h2>
+                                <!-- checks for tag and assigns -->
+                                <h4 class="artwork-tag tag-{{product.tag.friendly_name.lower}}">
+                                    {{product.tag.friendly_name}}</h4>
+                            </div>
+                        </div>
+                        <div class="row align-items-end h-50">
+                            <div class="col p-0">
+                                <a class="btn px-3" href="{% url 'product_detail' product.id %}" title="more info"
+                                    aria-label="add to favorites">More<i class="fas fa-info-circle"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
