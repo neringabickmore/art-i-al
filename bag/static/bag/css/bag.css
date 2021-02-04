@@ -1,0 +1,27 @@
+img {
+    border: solid 1px var(--black-chocolate)
+}
+
+#bag-container {
+    min-height: 75vh;
+}
+
+#bag-container .hr-style {
+    border: 1px solid var(--black-chocolate);
+}
+
+#checkout-btn-mobile .btn,
+#checkout-btn .btn,
+.return-btn {
+    font-size: 1.6rem;
+    margin: 3rem 0;
+    color: var(--white);
+    background-color: var(--dark-lava);
+    box-shadow: var(--dark-small-box-shadow);
+}
+
+#checkout-btn-mobile .btn:hover,
+#checkout-btn .btn:hover,
+.return-btn:hover {
+    background-color: var(--hunter-green);
+}
