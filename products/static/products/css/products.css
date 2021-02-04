@@ -1,3 +1,6 @@
+.hr-style {
+    border: 1px solid var(--black-chocolate);
+}
 #product-detail-container {
     min-height: 75vh;
 }
@@ -6,7 +9,7 @@
 #product-detail-card {
     width: 100%;
     padding: 2rem;
-    border: solid 2px var(--dark-lava);
+    border: solid 1px var(--dark-lava);
     border-radius: 0;
     box-shadow: var(--dark-small-box-shadow);
 }
