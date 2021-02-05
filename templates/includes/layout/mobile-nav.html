@@ -1,6 +1,18 @@
 <div class="col-12">
     <nav class="d-lg-none d-block navbar pt-0">
         <div class="container justify-content-end">
+            <div class="nav-item p-2">
+                <a class="nav-link p-0" href="{% url 'view_bag' %}">
+                    <div class="text-center d-flex p-0">
+                        {% if grand_total %}
+                        <div class="align-self-center"><i class="fas fa-shopping-bag"></i></div>
+                        <p class="m-0" id="nav-total"><strong>&euro;{{ grand_total|floatformat:2 }}</strong>
+                            
+                        </p>
+                        {% endif %}
+                    </div>
+                </a>
+            </div>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mobile-nav"
                 aria-controls="mobile-nav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-bars"><i class="fas fa-bars fa-lg"></i></span>

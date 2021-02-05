@@ -89,6 +89,12 @@ p {
     color: var(--hunter-green);
     /* background-color: var(--hunter-green); */
 }
+/* grand total nav item */
+.nav-link div {
+   font-size: 1.25rem;
+   padding: .5rem 1rem;
+   color: var(--tuscany);
+}
 
 /* footer */
 .footer {
