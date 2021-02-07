@@ -1,0 +1,18 @@
+<div class="modal fade" id="roomViewModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="text-center">
+                {% for img in product.images_folder.imgs.all %}
+                {% if img.room_view %}
+                <img class="card-img-top" src="{{ img.url }}" alt="{{ img.name }}">
+                {% else %}
+                <img class="card-img-top" src="{{ MEDIA_URL }}noimage.png" alt="no image">
+                {% endif %}
+                {% endfor %}
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,11 @@
+<div class="row no-gutters" id="about-home">
+    <div class="col-12 px-4">
+        <h1 class="my-4 ml-2">About</h1>
+    </div>
+    <div class="col-12 col-sm-9 p-4">
+        {% for about in about %}
+        <h2>{{ about.name }}</h2>
+        <p> {{ about.description }}</p>
+        {% endfor %}
+    </div>
+</div>

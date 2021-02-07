@@ -1,0 +1,56 @@
+/* contact-us section */
+#contact-form {
+    background-color: var(--almond);
+    padding: 4rem;
+    box-shadow: var(--dark-large-box-shadow);
+}
+#contact-form input,
+#contact-form textarea,
+#contact-form small,
+#contact-form div {
+    font-family: var(--main-font);
+    font-size: calc(1.4rem + .2vw);
+    color: var(--black-chocolate);  
+    border-color: var(--dark-lava);
+    border-radius: 0;
+    
+}
+
+#contact-form .btn {
+    background-color: var(--dark-lava);
+    color: var(--white);
+    box-shadow: var(--dark-small-box-shadow);
+}
+
+#contact-form .btn:hover {
+    background-color: var(--hunter-green);
+    color: var(--white);
+}
+
+.form-text{
+    margin-left: .25rem;
+}
+
+.fa-envelope {
+    font-size: 1.3rem;
+}
+
+/* New Art & Gallery section styling */
+.carousel-inner {
+    height: 50vh;
+}
+
+.carousel-item img{
+    width: 100%;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+    color: var(--black-chocolate);
+    opacity: 1;
+}
+
+.fa-chevron-left,
+.fa-chevron-right {
+    font-size: calc(2.5rem + .5vw);
+}

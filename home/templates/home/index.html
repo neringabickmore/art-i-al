@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'home/css/home.css' %}" type="text/css">
+{% endblock %}
+
+{% block content %}
+
+<div class="container h-100 mb-5">
+
+    {% include 'home/includes/video-banner.html' %}
+    {% include 'home/includes/new-art.html' %}
+    {% include 'home/includes/gallery.html' %}
+    {% include 'home/includes/about.html' %}
+    <hr>
+    {% include 'home/includes/contact-us.html' %}
+
+</div>
+
+{% endblock %}

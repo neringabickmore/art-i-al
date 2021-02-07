@@ -1,0 +1,26 @@
+[
+    {
+        "pk": 1,
+        "model": "products.tag",
+        "fields": {
+            "name": "new",
+            "friendly_name": "New"
+        }
+    },
+    {
+        "pk": 1,
+        "model": "products.tag",
+        "fields": {
+            "name": "available",
+            "friendly_name": "Available"
+        }
+    },
+    {
+        "pk": 1,
+        "model": "products.tag",
+        "fields": {
+            "name": "sold",
+            "friendly_name": "Sold"
+        }
+    }
+]

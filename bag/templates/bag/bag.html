@@ -1,0 +1,130 @@
+<!-- 
+    the idea behind the bag app was borrowed 
+    from Boutique Ado project at CI:
+    https://github.com/ckz8780/boutique_ado_v1 
+-->
+    
+    {% extends "base.html" %}
+    {% load static %}
+    
+    {% block extra_css %}
+    <link rel="stylesheet" href="{% static 'bag/css/bag.css' %}" type="text/css">
+    {% endblock %}
+
+{% block content%}
+
+<div class="container h-100 mb-5" id="bag-container">
+    <div class="row no-gutters">
+        <div class="col-12 px-4">
+            <!-- Title -->
+            <h1 class="my-4 ml-2 text-center">Shopping Bag</h1>
+        </div>
+    </div>
+    <div class="row no-gutters">
+        <div class="col-12 px-4">
+            {% if bag_items %}
+            <!-- mobile specific display -->
+            <div class="d-block d-md-none">
+                <div class="row">
+                    <!-- bag total at the top -->
+                    <div class="col">
+                        {% include 'bag/includes/bag-total.html' %}
+                    </div>
+                </div>
+                <div class="row">
+                    <!-- navigation buttons to checkout or continue shopping -->
+                    <div class="col" id="checkout-btn-mobile">
+                        {% include 'bag/includes/checkout-buttons.html' %}
+                        <hr class="hr-style">
+                        <p class="text-muted mb-5 text-center">A summary of your bag contents is below</p>
+                    </div>
+                </div>
+                {% for item in bag_items %}
+                <!-- detailed product information -->
+                <div class="row">
+                    <div class="col-6 mb-2">
+                        {% include 'bag/includes/product-image.html' %}
+                    </div>
+                    <div class="col-6 mb-2">
+                        {% include  'bag/includes/product-info.html' %}
+                        {% include  'bag/includes/remove-product.html' %}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col"></div>
+                </div>
+                {% endfor %}
+            </div>
+            <!-- bag display on larger than mobile displays -->
+            <div class="table-responsive rounded d-none d-md-block">
+                <table class="table table-sm table-borderless">
+                    <!-- detailed product information -->
+                    <thead>
+                        <tr>
+                            <th scope="col">
+                                <h4 class="text-uppercase">Product Info</h4>
+                            </th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    {% for item in bag_items %}
+                    <tr>
+                        <td class="p-3 w-25">
+                            {% include 'bag/includes/product-image.html' %}
+                        </td>
+                        <td class="py-3">
+                            {% include  'bag/includes/product-info.html' %}
+                        </td>
+                        <td>
+                            {% include 'bag/includes/remove-product.html' %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    <tr>
+                        <td colspan="5" class="pt-3">
+                            <hr class="hr-style">
+                            {% include 'bag/includes/bag-total.html' %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="5" class="text-right" id="checkout-btn">
+                            {% include 'bag/includes/checkout-buttons.html' %}
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            {% else %}
+            <!-- user informed if no items in the shopping bag + navigation buttons -->
+            <h5 class="lead my-5 text-center text-sm-start">Your bag is empty.</h5>
+            <a href="{% url 'shop' %}" class="btn return-btn">
+                <span class="icon">
+                    <i class="fas fa-chevron-left"></i>
+                </span>
+                <span class="text-uppercase">Return to the shop</span>
+            </a>
+            {% endif %}
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}
+
+{% block postloadjs %}
+{{ block.super }}
+<script>
+    
+    // Remove item from the bag and reload the page on click
+    $('.remove-product').click(function (e) {
+        let csrfToken = "{{ csrf_token }}";
+        let itemId = $(this).attr('id').split('remove-')[1];
+        let url = `/bag/remove/${itemId}/`;
+        let data = {'csrfmiddlewaretoken': csrfToken,};
+        
+        $.post(url, data).done(function () {
+            location.reload();
+        });
+    })
+
+</script>
+{% endblock %}

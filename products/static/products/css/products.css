@@ -1,0 +1,117 @@
+.hr-style {
+    border: 1px solid var(--black-chocolate);
+}
+#product-detail-container {
+    min-height: 75vh;
+}
+
+#product-card,
+#product-detail-card {
+    width: 100%;
+    padding: 2rem;
+    border: solid 1px var(--dark-lava);
+    border-radius: 0;
+    box-shadow: var(--dark-small-box-shadow);
+}
+
+#product-card img,
+#product-detail-card img {
+    border: solid 1px var(--black-chocolate);
+}
+
+#product-card img:hover,
+#product-detail-card img:hover {
+    opacity: .8;
+}
+
+#product-card .btn,
+#product-detail-card .btn {
+    font-size: 1.6rem;
+    margin: 3rem 0;
+    color: var(--white);
+    background-color: var(--dark-lava);
+    box-shadow: var(--dark-small-box-shadow);
+}
+
+#product-card .btn:hover,
+#product-detail-card .btn:hover {
+    background-color: var(--hunter-green);
+}
+
+#room-view {
+    color: var(--dark-lava);
+    text-decoration: underline;
+}
+
+#room-view:hover {
+    text-decoration: none;
+}
+
+.artwork-title {
+    padding: 1rem 0;
+    color: var(--dark-lava);
+    text-transform: uppercase;
+}
+
+
+.artwork-tag {
+    padding: 1rem .5rem;
+    text-transform: uppercase;
+}
+
+/* tag styling */
+.tag-new, 
+.tag-available, 
+.tag-sold {
+    text-align: center;
+    padding: 1rem;
+    box-shadow: var(--dark-small-box-shadow);
+}
+
+.tag-new{
+    background-color: var(--almond);
+    border: solid 1px var(--dark-lava);
+    max-width: 38%;
+}
+
+.tag-available {
+    border: solid 1px var(--dark-lava);
+    max-width: 58%;
+}
+
+.tag-sold {
+    color: var(--almond);
+    border: solid 1px var(--almond);
+    max-width: 38%;
+}
+
+/* font awesome styling */
+.fa-info-circle,
+.fa-shopping-bag,
+.fa-eye {
+    padding: .8rem;
+}
+
+/* room view modal styling */
+#roomViewModal {
+    padding-right: 0;
+}
+.modal-content {
+    background-color: var(--white);
+    padding: 3rem;
+}
+
+.modal-content img {
+    width: 80%;
+    height: auto;
+    opacity: 1!important;
+    justify-self: center;
+}
+
+.modal-footer {
+    border: none;
+}
+
+.modal-footer .btn {
+    margin: .5rem!important;
+}
