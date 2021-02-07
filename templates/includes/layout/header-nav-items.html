@@ -44,8 +44,8 @@
     <a class="nav-link px-5 py-0" href="{% url 'view_bag' %}">
         <div class="text-center d-flex p-0">
             {% if grand_total %}
-            <div class="align-self-center p-0"><i class="fas fa-shopping-bag"></i></div>
-            <p class="m-0 px-2" id="nav-total">{{ grand_total|floatformat:2 }}</p>
+            <p class="m-0 align-self-middle"><i class="fas fa-shopping-bag px-2 py-1"></i></p>
+            <p class="m-0 pb-2 align-self-middle" id="nav-total">{{ grand_total|floatformat:2 }}</p>
             {% endif %}
         </div>
     </a>
