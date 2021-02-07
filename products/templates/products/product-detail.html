@@ -67,9 +67,6 @@
                                         <!-- checks if item is not sold; if not then allows to add the product to the shopping bag -->
                                         {% if not product.tag.name == 'sold' %}
                                         <a class="btn px-3" href="{% url 'shop' %}">Keep Shopping</a>
-                                        <!-- Adds one item to bag by default-->
-                                        <input class="d-none" type="number" name="quantity" value="1"
-                                            data-product_id="{{ product.id }}">
                                         <input type="submit" class="btn px-3" value="Add to Bag">
                                         {% endif %}
                                     </div>
@@ -79,7 +76,7 @@
                             </form>
                             <!-- if item is sold,  contact us button on display and redirects to contact -->
                             {% if product.tag.name == 'sold' %}
-                            <a class="btn px-3" href="http://127.0.0.1:8000/#contact-us-home" title="contact us"
+                            <a class="btn px-3" href="/#contact-us-home" title="contact us"
                                 aria-label="enquire">enquire<i class="fas fa-envelope p-2"></i></a>
                             {% endif %}
                         </div>
