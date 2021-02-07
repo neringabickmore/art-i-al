@@ -25,3 +25,7 @@ img {
 .return-btn:hover {
     background-color: var(--hunter-green);
 }
+
+.fa-trash {
+    color: var(--tuscany);
+}

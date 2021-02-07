@@ -30,3 +30,18 @@ def add_to_bag(request, product_id):
     print(request.session['bag'])
     
     return redirect(redirect_url)
+
+
+def remove_from_bag(request, product_id):
+    """Remove the item from the shopping bag"""
+
+    try:
+        product = get_object_or_404(Product, pk=product_id)
+        
+        bag = request.session.get('bag', {})
+        bag.pop(product_id)
+        request.session['bag'] = bag
+        return HttpResponse(status=200)
+
+    except Exception as e:
+        return HttpResponse(status=500)

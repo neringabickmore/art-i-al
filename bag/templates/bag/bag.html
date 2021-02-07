@@ -1,14 +1,15 @@
 <!-- 
-the idea behind the bag app was borrowed 
-from Boutique Ado project at CI:
-https://github.com/ckz8780/boutique_ado_v1 -->
-
-{% extends "base.html" %}
-{% load static %}
-
-{% block extra_css %}
-<link rel="stylesheet" href="{% static 'bag/css/bag.css' %}" type="text/css">
-{% endblock %}
+    the idea behind the bag app was borrowed 
+    from Boutique Ado project at CI:
+    https://github.com/ckz8780/boutique_ado_v1 
+-->
+    
+    {% extends "base.html" %}
+    {% load static %}
+    
+    {% block extra_css %}
+    <link rel="stylesheet" href="{% static 'bag/css/bag.css' %}" type="text/css">
+    {% endblock %}
 
 {% block content%}
 
@@ -46,6 +47,7 @@ https://github.com/ckz8780/boutique_ado_v1 -->
                     </div>
                     <div class="col-6 mb-2">
                         {% include  'bag/includes/product-info.html' %}
+                        {% include  'bag/includes/remove-product.html' %}
                     </div>
                 </div>
                 <div class="row">
@@ -72,6 +74,9 @@ https://github.com/ckz8780/boutique_ado_v1 -->
                         </td>
                         <td class="py-3">
                             {% include  'bag/includes/product-info.html' %}
+                        </td>
+                        <td>
+                            {% include 'bag/includes/remove-product.html' %}
                         </td>
                     </tr>
                     {% endfor %}
@@ -103,4 +108,23 @@ https://github.com/ckz8780/boutique_ado_v1 -->
 
 </div>
 
+{% endblock %}
+
+{% block postloadjs %}
+{{ block.super }}
+<script>
+    
+    // Remove item from the bag and reload the page on click
+    $('.remove-product').click(function (e) {
+        let csrfToken = "{{ csrf_token }}";
+        let itemId = $(this).attr('id').split('remove-')[1];
+        let url = `/bag/remove/${itemId}/`;
+        let data = {'csrfmiddlewaretoken': csrfToken,};
+        
+        $.post(url, data).done(function () {
+            location.reload();
+        });
+    })
+
+</script>
 {% endblock %}
