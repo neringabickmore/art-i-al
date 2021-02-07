@@ -6,7 +6,7 @@
 </li>
 <!-- about -->
 <li class="nav-item">
-    <a class="nav-link-header" href="http://127.0.0.1:8000/#about-home" id="">
+    <a class="nav-link-header" href="/#about-home" id="">
         About
     </a>
 </li>
@@ -24,7 +24,7 @@
 </li>
 <!-- contact -->
 <li class="nav-item">
-    <a class="nav-link-header" href="http://127.0.0.1:8000/#contact-us-home" id="">
+    <a class="nav-link-header" href="/#contact-us-home" id="">
         Contact
     </a>
 </li>
@@ -39,4 +39,14 @@
         <li><a href="#" class="dropdown-item ">Register</a></li>
 
     </ul>
+</li>
+<li class="nav-item d-none d-lg-block">
+    <a class="nav-link px-5 py-0" href="{% url 'view_bag' %}">
+        <div class="text-center d-flex p-0">
+            {% if grand_total %}
+            <p class="m-0 align-self-middle"><i class="fas fa-shopping-bag px-2 py-1"></i></p>
+            <p class="m-0 pb-2 align-self-middle" id="nav-total">{{ grand_total|floatformat:2 }}</p>
+            {% endif %}
+        </div>
+    </a>
 </li>
