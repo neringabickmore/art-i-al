@@ -55,7 +55,10 @@ p {
 
 /* header - logo */
 #header-logo {
-    color: var(--black-chocolate);
+    display: block;
+    margin: 2rem auto 0 auto;
+    height: 10vh;
+    max-width: 99%;
 }
 
 /* header - site navigation */
