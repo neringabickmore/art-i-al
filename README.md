@@ -1,6 +1,6 @@
 # ART.I.AL #
 
-![ART.I.AL](/static/images/logo.jpg)
+![ART.I.AL](/media/logo.png)
 
 [ART.I.AL](https://art-ial-app.herokuapp.com/) is an e-commerce website with artwork gallery where you can not only view but also purchase available artwork.
 
