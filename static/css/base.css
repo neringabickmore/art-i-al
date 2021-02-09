@@ -123,6 +123,7 @@ p {
 .footer .hr-style {
     width: 30%;
     border: 1px solid var(--white);
+    display: inline-table;
 }
 
 .footer li {
