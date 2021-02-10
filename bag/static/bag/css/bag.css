@@ -1,3 +1,7 @@
+h3 {
+    text-transform: uppercase;
+}
+
 .bag-image {
     border: solid 1px var(--black-chocolate)
 }
@@ -28,4 +32,10 @@
 
 .fa-trash {
     color: var(--tuscany);
+}
+
+@media (max-width: 575.98px) { 
+    #checkout-btn-mobile .btn {
+        font-size: 1.2rem;
+    }
 }
