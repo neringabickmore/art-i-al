@@ -1,3 +1,6 @@
+h3, h4, h5 {
+    text-transform: uppercase;
+}
 .hr-style {
     border: 1px solid var(--black-chocolate);
 }
@@ -50,13 +53,12 @@
 .artwork-title {
     padding: 1rem 0;
     color: var(--dark-lava);
-    text-transform: uppercase;
 }
 
 
 .artwork-tag {
-    padding: 1rem .5rem;
     text-transform: uppercase;
+    margin: 0;
 }
 
 /* tag styling */
@@ -64,29 +66,28 @@
 .tag-available, 
 .tag-sold {
     text-align: center;
-    padding: 1rem;
     box-shadow: var(--dark-small-box-shadow);
 }
 
 .tag-new{
     background-color: var(--almond);
     border: solid 1px var(--dark-lava);
-    max-width: 38%;
+    max-width: 25%;
 }
 
 .tag-available {
     border: solid 1px var(--dark-lava);
-    max-width: 58%;
+    max-width: 43%;
 }
 
 .tag-sold {
     color: var(--almond);
     border: solid 1px var(--almond);
-    max-width: 38%;
+    max-width: 25%;
 }
 
 /* font awesome styling */
-.fa-info-circle,
+
 .fa-shopping-bag,
 .fa-eye {
     padding: .8rem;
