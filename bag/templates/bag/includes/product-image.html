@@ -3,6 +3,6 @@
 {% if img.main_img %}
 <img class="img-fluid" src="{{ img.url }}" alt="{{ item.product.name }}">
 {% else %}
-<img class="img-fluid" src="{{ MEDIA_URL }}noimage.png" alt="{{ item.product.name }}">
+<img class="img-fluid" src="/media/noimage.png" alt="{{ item.product.name }}">
 {% endif %}
 {% endfor %}
