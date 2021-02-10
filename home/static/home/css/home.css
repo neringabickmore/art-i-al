@@ -1,4 +1,8 @@
 /* contact-us section */
+h1, h2, h3, h4 {
+    text-transform: uppercase;
+}
+
 #contact-form {
     background-color: var(--almond);
     padding: 4rem;
@@ -40,17 +44,40 @@
     height: 50vh;
 }
 
-.carousel-item img{
+.carousel-item a {
+    position: relative;
     width: 100%;
+    height: auto;
+    overflow: hidden;
+    
+}
+
+.carousel-item img{
+    position: relative;
+    width: 100%;
+    height: auto;
+    overflow: hidden;
 }
 
 .carousel-control-prev,
 .carousel-control-next {
-    color: var(--black-chocolate);
     opacity: 1;
+    position: initial;
+    display: initial;
+    margin-right: 1.5rem;
+    text-decoration: none;
 }
+
+.carousel-control-prev,
+.carousel-control-next,
+.carousel-control-prev:focus,
+.carousel-control-next:focus,
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+    color: var(--black-chocolate);
+} 
 
 .fa-chevron-left,
 .fa-chevron-right {
-    font-size: calc(2.5rem + .5vw);
+    font-size: calc(1rem + .5vw);
 }
