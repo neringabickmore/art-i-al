@@ -44,8 +44,19 @@ h1, h2, h3, h4 {
     height: 50vh;
 }
 
-.carousel-item img{
+.carousel-item a {
+    position: relative;
     width: 100%;
+    height: auto;
+    overflow: hidden;
+    
+}
+
+.carousel-item img{
+    position: relative;
+    width: 100%;
+    height: auto;
+    overflow: hidden;
 }
 
 .carousel-control-prev,
