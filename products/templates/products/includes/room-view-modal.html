@@ -6,7 +6,7 @@
                 {% if img.room_view %}
                 <img class="card-img-top" src="{{ img.url }}" alt="{{ img.name }}">
                 {% else %}
-                <img class="card-img-top" src="{{ MEDIA_URL }}noimage.png" alt="no image">
+                <img class="card-img-top" src="/media/noimage.png" alt="{{ img.name }}">
                 {% endif %}
                 {% endfor %}
             </div>

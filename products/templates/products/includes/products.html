@@ -5,16 +5,14 @@
                     <!-- checks for images in the product images folder -->
                     {% for img in product.images_folder.imgs.all %}
                     <a href="{% url 'product_detail' product.id %}">
+                        {% if img.main_img %}
                         <!-- if one of the images is set to be as main, it's then displayed-->
-                        {% if img.main_img is True %}
                         <img class="card-img-top img-fluid" src="{{ img.url }}" alt="{{ img.name }}">
+                        {% else %}
+                        <!-- if no image available it displays default image -->
+                        <img class="card-img-top img-fluid" src="/media/noimage.png" alt="no image">
+                        {% endif %}
                     </a>
-                    {% else %}
-                    <!-- if no image available it displays default image -->
-                    <a href="{% url 'product_detail' product.id %}">
-                        <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}noimage.png" alt="no image">
-                    </a>
-                    {% endif %}
                     {% endfor %}
                 </div>
                 <div class="col-12 col-md-5 col-lg-12 ">
