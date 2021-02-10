@@ -171,3 +171,7 @@ p {
     /* color: var(--white); */
     box-shadow: var(--dark-small-box-shadow);
 }
+
+.fa-shopping-bag {
+    padding: .8rem;
+}
