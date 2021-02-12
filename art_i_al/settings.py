@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+    'sweetify',
     'home',
     'products',
     'bag',
@@ -83,6 +84,8 @@ TEMPLATES = [
         },
     },
 ]
+
+SWEETIFY_SWEETALERT_LIBRARY = 'sweetalert2'
 
 AUTHENTICATION_BACKENDS = [
     # Needed to login by username in Django admin, regardless of `allauth`

@@ -33,9 +33,12 @@
         {% include 'includes/layout/footer.html' %}
 
         {% block postloadjs %}
+        <!-- CDN for sweet alerts -->
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
         {% endblock %}
+        <!-- sweet alerts -->
+        {% load sweetify %}
+        {% sweetify %}
 
-
-    </body>
-
+  </body>
 </html>

@@ -175,3 +175,46 @@ p {
 .fa-shopping-bag {
     padding: .8rem;
 }
+
+/* sweet alert's styling */
+
+.swal2-container {
+    /* display: initial!important; */
+    /* flex-direction: initial!important; */
+    /* bottom: initial!important; */
+    /* left: initial!important; */
+    /* margin-top: 20vh; */
+}
+
+.swal2-title {
+    color: var(--black-chocolate)!important;
+    text-transform: uppercase!important;
+}
+
+.swal2-content {
+    color: var(--black-chocolate)!important;
+    font-family: var(--main-font)!important;
+}
+
+.swal2-popup,
+.swal2-confirm {
+    border-radius: 0!important;
+    box-shadow: var(--dark-small-box-shadow)!important;
+}
+
+.swal2-styled, .swal2-confirm {
+    background-color: var(--tuscany)!important;
+}
+
+.swal2-success, .swal2-success-ring {
+    border-color: var(--hunter-green)!important;
+    color: var(--hunter-green)!important;
+}
+
+.swal2-success-line-tip, .swal2-success-line-long {
+    background-color: var(--hunter-green)!important;
+}
+
+.swal2-loader {
+    border: none!important;
+}

@@ -1,3 +1,5 @@
+import sweetify
+
 from django.shortcuts import (
     render, redirect, reverse,
     HttpResponse, get_object_or_404
@@ -27,7 +29,7 @@ def add_to_bag(request, product_id):
     bag[product_id] = quantity
     
     request.session['bag'] = bag
-    print(request.session['bag'])
+    sweetify.sweetalert(request, title='Success', icon='success', text="You have added item to the bag", timer=5000, timerProgressBar='true', persistent="Close")
     
     return redirect(redirect_url)
 
