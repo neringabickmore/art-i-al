@@ -1,6 +1,16 @@
-<div class="row no-gutters my-5" id="gallery-home">
-    <div class="col-12 px-4 my-4">
-        <h1 class="my-4 ml-2">Gallery</h1>
+<div class="row no-gutters mb-5" id="gallery-home">
+    <div class="col-9 px-4 my-4">
+        <!-- section title -->
+        <h3 class="mb-4 ml-2 ">Gallery</h3>
+    </div>
+    <!-- carousel navigation -->
+    <div class="col-3 px-4 my-4 text-end">
+        <a class="carousel-control-prev" href="#galleryCarouselControl" role="button" data-bs-slide="prev">
+            <span aria-hidden="true"><i class="fas fa-chevron-left"></i></span>
+        </a>
+        <a class="carousel-control-next" href="#galleryCarouselControl" role="button" data-bs-slide="next">
+            <span aria-hidden="true"><i class="fas fa-chevron-right"></i></span>
+        </a>
     </div>
     <div id="galleryCarouselControl" class="carousel slide col-12" data-bs-ride="carousel">
         <div class="carousel-inner">
@@ -9,17 +19,16 @@
             <!-- below forloop idea is from: https://docs.djangoproject.com/en/2.2/ref/templates/builtins/#for -->
             <div class="carousel-item {% if forloop.first %}active{% endif %}">
                 <a href="{% url 'gallery' %}">
+                    {% if img.url %}
                     <!-- displays images -->
                     <img src="{{ img.url }}" class="d-block" alt="{{ img.name }}">
+                    {% else %}
+                        <!-- if no image available it displays default image -->
+                        <img class="card-img-top img-fluid" src="/media/noimage.png" alt="no image">
+                    {% endif %}
                 </a>
             </div>
             {% endfor %}
         </div>
-        <a class="carousel-control-prev" href="#galleryCarouselControl" role="button" data-bs-slide="prev">
-            <span aria-hidden="true"><i class="fas fa-chevron-left"></i></span>
-        </a>
-        <a class="carousel-control-next" href="#galleryCarouselControl" role="button" data-bs-slide="next">
-            <span aria-hidden="true"><i class="fas fa-chevron-right"></i></span>
-        </a>
     </div>
 </div>

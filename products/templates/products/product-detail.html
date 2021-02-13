@@ -11,8 +11,8 @@
     <div class="card" id="product-detail-card">
         <div class="row h-100 no-gutters">
             <div class="col-12 px-4">
-                <!-- checks for the product name in the database to include in the title-->
-                <h3 class="my-4 ml-2 text-uppercase">{{ product.name }} details</h3>
+                <!-- checks for the collection name in the database to include in the title-->
+                <h3 class="my-4 ml-2 text-uppercase">collection: {{ product.collection_name.friendly_name}}</h3>
             </div>
             <div class="col-12 col-md-6 my-4 align-self-center">
                 <!-- checks for images in the product images folder-->
@@ -25,7 +25,7 @@
                 <!-- if no image available it displays default image -->
                 {% else %}
                 <a href="">
-                    <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}noimage.png" alt="no image">
+                    <img class="card-img-top img-fluid" src="/media/noimage.png" alt="no image">
                 </a>
                 {% endif %}
                 {% endfor %}
@@ -35,10 +35,10 @@
                     <div class="row align-items-start h-75">
                         <div class="col p-0 mt-sm-6" id="product-detail-content">
                             <!-- checks for assigned tag -->
-                            <h4 class="artwork-tag tag-{{product.tag.friendly_name.lower}} my-4">
-                                {{product.tag.friendly_name}}</h4>
+                            <p class="artwork-tag tag-{{product.tag.friendly_name.lower}} my-4">
+                                {{product.tag.friendly_name}}</p>
                             <!-- checks for product name and assigns -->
-                            <h2 class="artwork-title">{{ product.name }}</h2>
+                            <h3 class="artwork-title">{{ product.name }}</h3>
                             <hr>
                             <!-- checks for product description-->
                             <p>{{ product.description }}</p>
@@ -52,7 +52,7 @@
                             <!-- room view button; triggers modal-->
                             <a class="px-3" href="" title="room view" aria-label="room view" id="room-view"
                                 data-bs-toggle="modal" data-bs-target="#roomViewModal">
-                                <h5>room view<i class="fas fa-eye"></i></h5>
+                                <p><i class="fas fa-eye"></i>room view</p>
                             </a>
                             <!-- room view modal -->
                             {% include 'products/includes/room-view-modal.html' %}
@@ -66,8 +66,12 @@
                                     <div class="col p-0">
                                         <!-- checks if item is not sold; if not then allows to add the product to the shopping bag -->
                                         {% if not product.tag.name == 'sold' %}
-                                        <a class="btn px-3" href="{% url 'shop' %}">Keep Shopping</a>
-                                        <input type="submit" class="btn px-3" value="Add to Bag">
+                                        <a class="btn px-3" href="{% url 'shop' %}"><span class="icon">
+                                                <i class="fas fa-chevron-left" aria-hidden="true"></i>
+                                            </span>Keep Shopping</a>
+                                        <button class="btn px-3" type="submit">Add to bag<span class="icon ps-1">
+                                                <i class="fas fa-plus" aria-hidden="true"></i>
+                                            </span></button>
                                         {% endif %}
                                     </div>
                                     <!-- by default, redirects to the same item -->
@@ -76,8 +80,10 @@
                             </form>
                             <!-- if item is sold,  contact us button on display and redirects to contact -->
                             {% if product.tag.name == 'sold' %}
-                            <a class="btn px-3" href="/#contact-us-home" title="contact us"
-                                aria-label="enquire">enquire<i class="fas fa-envelope p-2"></i></a>
+                            <a class="btn px-3" href="/#contact-us-home" title="contact us" aria-label="enquire">enquire
+                                <span class="icon ps-1">
+                                    <i class="fas fa-envelope p-2" aria-hidden="true"></i>
+                                </span></a>
                             {% endif %}
                         </div>
                     </div>

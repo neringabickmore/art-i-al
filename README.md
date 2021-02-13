@@ -1,8 +1,6 @@
-# ART.I.AL #
+# ![ART.IAL](/media/logo.png) #
 
-![ART.I.AL](/static/images/logo.jpg)
-
-[ART.I.AL](https://art-ial-app.herokuapp.com/) is an e-commerce website with artwork gallery where you can not only view but also purchase available artwork.
+[ART.IAL](https://art-ial-app.herokuapp.com/) is an e-commerce website with artwork gallery where you can not only view but also purchase available artwork.
 
 At the beginning of 2020, my sister started experimenting with paint on canvases that has now gained popularity amongst family, friends, colleagues as well as enquiries from her followers on Instagram. I have therefore decided to commit in creating a website for my sister as a professional platform to sell her artwork. After my graduation, this site will be used as fully functional e-commerce platform.
 
@@ -12,7 +10,7 @@ At the beginning of 2020, my sister started experimenting with paint on canvases
 
 ## Contents ##
 
-- [ART.I.AL](#artial)
+- [!ART.IAL](#)
   - [Contents](#contents)
   - [UX](#ux)
     - [Project Goals](#project-goals)
@@ -61,7 +59,7 @@ At the beginning of 2020, my sister started experimenting with paint on canvases
   - [Changes applied since planning](#changes-applied-since-planning)
   - [Testing](#testing)
   - [Deployment](#deployment)
-    - [Deploying ART.I.AL to Heroku](#deploying-artial-to-heroku)
+    - [Deploying art.ial to Heroku](#deploying-artial-to-heroku)
   - [Credits](#credits)
     - [Images](#images)
     - [Image editing](#image-editing)
@@ -437,7 +435,7 @@ Testing information can be found in a separate [Testing.md](Testing.md) file.
 ## Deployment ##
 
 
-### Deploying ART.I.AL to Heroku ###
+### Deploying art.ial to Heroku ###
 
 1: **Login** to Heroku and create a new app.
 
@@ -461,7 +459,7 @@ echo web: python run.py > Procfile
 git remote add heroku https://git.heroku.com/your-heroku-repo
 ```
 
-6: Push *ART.I.AL* to your heroku:
+6: Push *art.ial* to your heroku:
 
 ```
 git push heroku master
