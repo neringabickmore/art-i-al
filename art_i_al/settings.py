@@ -33,7 +33,10 @@ SECRET_KEY = os.environ.get('SECRET_KEY', '')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = dev
 
-ALLOWED_HOSTS = ['127.0.0.1', '291e83fd0246.ngrok.io', 'localhost']
+if dev:
+    ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+else:
+    ALLOWED_HOSTS = ['art-ial-app.herokuapp.com']
 
 
 # Application definition
