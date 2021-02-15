@@ -11,12 +11,13 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 from pathlib import Path
-import os
-from os import path
-if path.exists("env.py"): 
-    import env
 
+import os
 import dj_database_url
+
+
+if os.path.exists("env.py"): 
+    import env
 
 dev = os.environ.get('DEVELOPMENT', False)
 
