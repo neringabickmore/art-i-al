@@ -25,7 +25,7 @@
                 <!-- if no image available it displays default image -->
                 {% else %}
                 <a href="">
-                    <img class="card-img-top img-fluid" src="/media/noimage.png" alt="no image">
+                    <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}noimage.png" alt="no image">
                 </a>
                 {% endif %}
                 {% endfor %}
