@@ -66,10 +66,10 @@
                                     <div class="col p-0">
                                         <!-- checks if item is not sold; if not then allows to add the product to the shopping bag -->
                                         {% if not product.tag.name == 'sold' %}
-                                        <a class="btn px-3" href="{% url 'shop' %}"><span class="icon">
+                                        <a class="btn" href="{% url 'shop' %}"><span class="icon p-2">
                                                 <i class="fas fa-chevron-left" aria-hidden="true"></i>
                                             </span>Keep Shopping</a>
-                                        <button class="btn px-3" type="submit">Add to bag<span class="icon ps-1">
+                                        <button class="btn" type="submit">Add to bag<span class="icon p-2">
                                                 <i class="fas fa-plus" aria-hidden="true"></i>
                                             </span></button>
                                         {% endif %}
