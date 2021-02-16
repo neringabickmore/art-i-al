@@ -59,7 +59,9 @@ At the beginning of 2020, my sister started experimenting with paint on canvases
   - [Changes applied since planning](#changes-applied-since-planning)
   - [Testing](#testing)
   - [Deployment](#deployment)
-    - [Deploying art.ial to Heroku](#deploying-artial-to-heroku)
+    - [Local Deployment](#local-deployment)
+    - [Deployment to Heroku](#deployment-to-heroku)
+    - [Hosting Media files in AWS](#hosting-media-files-in-aws)
   - [Credits](#credits)
     - [Images](#images)
     - [Image editing](#image-editing)
@@ -504,6 +506,8 @@ python manage.py loaddata <fixture_name>
 ```
 
 7. To initiate the application, type the command `python manage.py runserver` in your terminal. The application is now available in your browser at the address: `http://localhoset:8000`
+
+[Back to content](#contents)
 
 ### Deployment to Heroku ###
 
