@@ -59,7 +59,9 @@ At the beginning of 2020, my sister started experimenting with paint on canvases
   - [Changes applied since planning](#changes-applied-since-planning)
   - [Testing](#testing)
   - [Deployment](#deployment)
-    - [Deploying art.ial to Heroku](#deploying-artial-to-heroku)
+    - [Local Deployment](#local-deployment)
+    - [Deployment to Heroku](#deployment-to-heroku)
+    - [Hosting Media files in AWS](#hosting-media-files-in-aws)
   - [Credits](#credits)
     - [Images](#images)
     - [Image editing](#image-editing)
@@ -434,49 +436,159 @@ Testing information can be found in a separate [Testing.md](Testing.md) file.
 
 ## Deployment ##
 
+**The Art-ial** project was deployed using the **VS Code IDE**, using **Git** and **GitHub** for version control. It is hosted on **Heroku** and all static files, including images, are hosted in **AWS S3 Bucket**. **Stripe** is used for payments and **gMail** for an email account.
 
-### Deploying art.ial to Heroku ###
+Before deploying the application, install the following:
 
-1: **Login** to Heroku and create a new app.
+- Python 3
+- PIP
+- Git
+- Heroku CLI
 
-2: **Create** a requirements.txt file using the following command:
+### Local Deployment ###
 
-```
-pip3 freeze --local > requirements.txt
-```
+To deploy Art-ial locally, take the following steps:
 
-3: **Create** a Procfile with the following command:
+1. From the applications [repository](https://github.com/neringabickmore/art-ial.git), click the *code* button and download the zip file.
 
-```
-echo web: python run.py > Procfile
-```
+    Alternatively, you can clone the repository using the following line in your terminal:
 
-4: **Push** these newly created files to your repository master.
-
-5: **Add heroku remote** to your git repository by getting the heroku git URL from the heroku account settings. Then type the following: 
-
-```
-git remote add heroku https://git.heroku.com/your-heroku-repo
+```terminal
+git clone https://github.com/neringabickmore/art-ial.git
 ```
 
-6: Push *art.ial* to your heroku:
+2. Access the folder in your terminal window and install the application's required modules with the following command:
 
+```terminal
+pip3 install -r requirements.txt
 ```
-git push heroku master
+
+3. Create `env.py` file to hold your environmental variables in the root level of the application:
+
+```python
+
+import os
+
+os.environ.setdefault('STRIPE_SECRET_KEY', 'YOUR_STRIPE_SECRET_KEY')
+os.environ.setdefault('STRIPE_PUBLIC_KEY', 'YOUR_STRIPE_PUBLIC_KEY')
+os.environ.setdefault('STRIPE_WH_SECRET', 'YOUR_STRIPE_WH_SECRET')
+os.environ.setdefault('DATABASE_URL', 'YOUR_DATABASE_URL')
+os.environ.setdefault('SECRET_KEY', 'YOUR_DJANGO_SECRET_KEY')
+os.environ.setdefault('DEVELOPMENT', 'True')
+
+os.environ.setdefault('EMAIL_HOST_USER', 'YOUR_EMAIL_USER')
+os.environ.setdefault('EMAIL_HOST_PASSWORD', 'YOUR_EMAIL_PASSWORD')
+os.environ.setdefault('EMAIL_HOST', 'smtp.google.com') # for gmail
+os.environ.setdefault('DEFAULT_ORDER_EMAIL', 'DEFAULT_EMAIL')
 ```
 
-7: In your heroku app, **set** the following variables:
+If you plan to make your repository public, ensure you add it to .gitignore before committing.
 
-**Key**|**Value**
-:-----:|:-----:
-HOSTNAME|0.0.0.0
-PORT|5000
-SECRET_KEY|YOUR_SECRET_KEY
+4. If your IDE terminal, migrate the models to create the database using the following commands:
 
-  ** Please make sure you enter your own *SECRET_KEY*, and **.
+```terminal
+python manage.py makemigrations
+python manage.py migrate
+```
 
-8: Click the deploy button on the Heroku dashboard.
-9: The site has been deployed the Heroku.
+5. Create a superuser to access the admin panel using the following command:
+
+```terminal
+python manage.py createsuperuser
+```
+
+Then follow the instructions to create the superuser.
+
+6. After you login to the admin panel, you can add data to be displayed in your app. Refer to [database modeling](#database-modelling). Alternatively, if you have data fixtures, use the following command to load data into the database:
+
+```terminal
+python manage.py loaddata <fixture_name>
+```
+
+7. To initiate the application, type the command `python manage.py runserver` in your terminal. The application is now available in your browser at the address: `http://localhoset:8000`
+
+[Back to content](#contents)
+
+### Deployment to Heroku ###
+
+To deploy the app to Heroku, use the following steps:
+
+1. Ensure you have the following dependancies installed in your app, such as PostgressSQL driver for Python, WSHI HTTP Server and dj database url that connects the the app with the database:
+
+```terminal
+pip3 install psycopg2-binary
+
+pip3 install install gunicorn
+
+pip3 install dj_database_url
+```
+
+2. If you haven't already, create `requirements.txt` file containing all of the dependancies:
+
+```terminal
+pip3 freeze > requirements.txt
+```
+
+3. Create a `Procfile` that contains the following: `web: gunicorn art_i_al.wsgi:application`.
+4. Push these newly created files to your repository master.
+5. Login to Heroku and create a new app.
+6. In Heroku dashboard of the new app, click **deploy**, then **deployment** method and select **GitHub** to connect your app to your github repository for automatic deployment.
+7. In Heroku Resources tab, navigate to **Add-Ons** section and search for **Heroku Postgres**. I recommend you choose hobby level for this application.
+8. In settings tab, navigate to **Reveal Config Vars** and add the following variables:
+
+| **KEY**               | **VALUE**                          |
+| --------------------- | -----------------------------------|
+| AWS_ACCESS_KEY_ID     | ACCESS_KEY_ID_PROVIDED_BY_AWS      |
+| AWS_SECRET_ACCESS_KEY | SECRET_ACCESS_KEY_PROVIDED_BY_AWS  |
+| DATABASE_URL          | YOUR_DATABASE_URL                  |
+| DEFAULT_ORDER_EMAIL   | DEFAULT_EMAIL                      |
+| EMAIL_HOST            | smtp.google.com (if using gmail)   |
+| EMAIL_HOST_PASSWORD   | YOUR_EMAIL_PASSWORD                |
+| EMAIL_HOST_USER       | YOUR_EMAIL_USER                    |
+| SECRET_KEY            | YOUR_DJANGO_SECRET_KEY             |
+| STRIPE_PUBLIC_KEY     | YOUR_STRIPE_SECRET_KEY             |
+| STRIPE_SECRET_KEY     | YOUR_STRIPE_PUBLIC_KEY             |
+| STRIPE_WH_SECRET      | YOUR_STRIPE_WH_SECRET              |
+| USE_AWS               | True                               |
+
+1. In settings.py in your IDE, temporarily comment out the database and use below code instead (make sure you do not commit!):
+
+```python
+DATABASES = {
+        'default': dj_database_url.parse('POSTGRESS URL')
+    }
+```
+
+10. In terminal, migrate the models to create the Postgress database using the following commands:
+
+```terminal
+python manage.py makemigrations
+python manage.py migrate
+```
+
+11. Create a superuser to access the admin panel using the following command:
+
+```terminal
+python manage.py createsuperuser
+```
+
+Then follow the instructions to create the superuser.
+
+12. After you login to the admin panel, you can add data manually to be displayed in your app. Refer to [database modeling](#database-modelling) for required data.
+
+    Alternatively, if you have data fixtures, use the following command to load data to the Postgress database:
+
+```terminal
+python manage.py loaddata <fixture_name>
+```
+
+13. Remove the temporary database from settings.py and uncomment the original code, then push the code to origin.
+14.  Back to in **Heroku dashboad**, deploy the application.
+15.  To view the site, click on **View App**.
+
+### Hosting Media files in AWS ###
+
+The *static* and *media file*s* are hosted in the [AWS S3 Bucket](https://aws.amazon.com/). To host them, you need to create an account in AWS and create your S3 basket with **public access**. More about setting it up you can read in [Amazon S3 documentation](https://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html) and this [tutorial](https://django-storages.readthedocs.io/en/latest/backends/amazon-S3.html).
 
 [Back to content](#contents)
 

@@ -29,7 +29,7 @@ h3, h4, h5 {
 
 #product-card .btn,
 #product-detail-card .btn {
-    font-size: 1.6rem;
+    font-size: 1.2rem;
     margin: 3rem 0;
     color: var(--white);
     background-color: var(--dark-lava);
