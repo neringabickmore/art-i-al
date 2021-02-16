@@ -434,8 +434,80 @@ Testing information can be found in a separate [Testing.md](Testing.md) file.
 
 ## Deployment ##
 
+**The Art-ial** project was deployed using the **VS Code IDE**, using **Git** and **GitHub** for version control. It is hosted on **Heroku** and all static files, including images, are hosted in **AWS S3 Bucket**. **Stripe** is used for payments and **gMail** for an email account.
 
-### Deploying art.ial to Heroku ###
+Before deploying the application, install the following:
+
+- Python 3
+- PIP
+- Git
+- Heroku CLI
+
+### Local Deployment ###
+
+To deploy Art-ial locally, take the following steps:
+
+1. From the applications [repository](https://github.com/neringabickmore/art-ial.git), click the *code* button and download the zip file.
+
+    Alternatively, you can clone the repository using the following line in your terminal:
+
+```terminal
+git clone https://github.com/neringabickmore/art-ial.git
+```
+
+2. Access the folder in your terminal window and install the application's required modules with the following command:
+
+```terminal
+pip3 install -r requirements.txt
+```
+
+3. Create `env.py` file to hold your environmental variables in the root level of the application:
+
+```python
+
+import os
+
+os.environ.setdefault('STRIPE_SECRET_KEY', 'YOUR_STRIPE_SECRET_KEY')
+os.environ.setdefault('STRIPE_PUBLIC_KEY', 'YOUR_STRIPE_PUBLIC_KEY')
+os.environ.setdefault('STRIPE_WH_SECRET', 'YOUR_STRIPE_WH_SECRET')
+os.environ.setdefault('DATABASE_URL', 'YOUR_DATABASE_URL')
+os.environ.setdefault('SECRET_KEY', 'YOUR_DJANGO_SECRET_KEY')
+os.environ.setdefault('DEVELOPMENT', 'True')
+
+os.environ.setdefault('EMAIL_HOST_USER', 'YOUR_EMAIL_USER')
+os.environ.setdefault('EMAIL_HOST_PASSWORD', 'YOUR_EMAIL_PASSWORD')
+os.environ.setdefault('EMAIL_HOST', 'smtp.google.com') # for gmail
+os.environ.setdefault('DEFAULT_ORDER_EMAIL', 'DEFAULT_EMAIL')
+```
+
+If you plan to make your repository public, ensure you add it to .gitignore before committing.
+
+4. If your IDE terminal, migrate the models to create the database using the following commands:
+
+```terminal
+python manage.py makemigrations
+python manage.py migrate
+```
+
+5. Create a superuser to access the admin panel using the following command:
+
+```terminal
+python manage.py createsuperuser
+```
+
+Then follow the instructions to create the superuser.
+
+6. After you login to the admin panel, you can add data to be displayed in your app. Refer to [database modeling](#database-modelling). Alternatively, if you have data fixtures, use the following command to load data into the database:
+
+```terminal
+python manage.py loaddata <fixture_name>
+```
+
+
+7. To initiate the application, type the command `python manage.py runserver` in your terminal. The application is now available in your browser at the address: `http://localhoset:8000`
+
+
+### Deployment to Heroku ###
 
 1: **Login** to Heroku and create a new app.
 
