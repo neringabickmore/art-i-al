@@ -61,6 +61,7 @@ INSTALLED_APPS = [
     
     #other
     'storages',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -74,6 +75,8 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'art_i_al.urls'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 TEMPLATES = [
     {
@@ -92,6 +95,10 @@ TEMPLATES = [
                 'django.template.context_processors.media',
                 'bag.contexts.bag_contents',
             ],
+            'builtins': [
+                'crispy_forms.templatetags.crispy_forms_tags',
+                'crispy_forms.templatetags.crispy_forms_field',
+            ]
         },
     },
 ]
