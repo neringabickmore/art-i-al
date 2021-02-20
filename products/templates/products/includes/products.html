@@ -17,7 +17,7 @@
                 </div>
                 <div class="col-12 col-md-5 col-lg-12 ">
                     <div class="container h-100">
-                        <div class="row align-items-start h-50">
+                        <div class="row align-items-left h-50">
                             <div class="col p-0">
                                 <!-- checks for product name and assigns -->
                                 <h3 class="artwork-title">{{ product.collection_name.friendly_name}}: {{ product.name }}
@@ -27,7 +27,7 @@
                                     {{product.tag.friendly_name}}</p>
                             </div>
                         </div>
-                        <div class="row align-items-end h-50">
+                        <div class="row align-items-right h-50">
                             <div class="col p-0">
                                 <a class="btn px-3" href="{% url 'product_detail' product.id %}" title="more info"
                                     aria-label="add to bag">More
