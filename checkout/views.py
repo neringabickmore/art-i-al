@@ -7,7 +7,7 @@ from .forms import OrderForm
 def checkout(request):
     bag = request.session.get('bag', {})
     if not bag:
-        sweetify.error(request, title='error', icon='error',
+        sweetify.sweetalert(request, title='error', icon='error',
         text= "There's nothing in your bag at the moment",
         timer=2000, timerProgressBar='true', persistent="Close")
         return redirect(reverse('shop'))
