@@ -2,25 +2,33 @@
 {% load static %}
 
 {% block extra_css %}
-    <link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}" type="text/css">
+<link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}" type="text/css">
 {% endblock %}
 
 {% block content %}
 <div class="container h-100 mb-5" id="checkout-container">
-    <div class="row no-gutters">
+    <div class="row">
         <div class="col-12 px-4">
             <!-- Title -->
-            <h3 class="my-4 ml-2 text-center">checkout</h3>
+            <h3 class="my-4 ml-2 text-center text-uppercase">checkout</h3>
         </div>
     </div>
-    <div class="row no-gutters">
-        <!--Checkout form-->
-        {% include 'checkout/includes/checkout-form.html' %} 
-        <!-- Order summary mobile-->
-        
-        <!--Order summary-->
-        
+    <div class="row">
+        <div class="col-12 px-4 col-lg-8" id="checkout-form-border">
+            <!--Checkout form-->
+            {% include 'checkout/includes/checkout-form.html' %}
+        </div>
+        <div class="col-12 px-4 col-lg-4">
+            {% if bag_items %}
+            <!-- Order summary mobile-->
+            {% include 'checkout/includes/order-summary-mobile.html' %}
+            <!--Order summary-->
+            {% include 'checkout/includes/order-summary.html' %}
+            {% endif %}
+
+        </div>
     </div>
+
 </div>
 {% endblock %}
 
