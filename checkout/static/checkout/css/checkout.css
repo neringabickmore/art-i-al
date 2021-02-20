@@ -1,0 +1,7 @@
+
+@media (min-width: 992px) {
+    #checkout-form-border {
+        border-right: 2px solid var(--black-chocolate);
+    }
+    
+}
