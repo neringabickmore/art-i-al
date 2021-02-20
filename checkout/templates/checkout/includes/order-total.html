@@ -1,0 +1,12 @@
+<!-- grand total amount -->
+<h4 class="mt-4 text-capitalize"><strong>grand total: &euro;{{ grand_total|floatformat:2 }}</strong></h4>
+<!-- bag total -->
+<h5 class="pt-3 text-capitalize"><strong>bag total: &euro;{{ total|floatformat:2 }}</strong></h5>
+<!-- delivery cost -->
+<h5 class="my-3 text-capitalize">delivery: &euro;{{ delivery|floatformat:2 }}</h5>
+<!-- notification about free delivery option-->
+{% if free_delivery_delta > 0 %}
+    <p class="my-1">
+        You could get free delivery by spending extra <strong>&euro;{{ free_delivery_delta }}</strong>. 
+    </p>
+{% endif %}
