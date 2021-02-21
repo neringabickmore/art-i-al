@@ -35,7 +35,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', '')
 DEBUG = dev
 
 if dev:
-    ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+    ALLOWED_HOSTS = ['localhost', '127.0.0.1', '0fdc6dbd93fe.ngrok.io']
 else:
     ALLOWED_HOSTS = ['art-ial-app.herokuapp.com']
 
@@ -211,5 +211,10 @@ if 'USE_AWS' in os.environ:
     MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{MEDIAFILES_LOCATION}/'
 
 
+# Stripe
 FREE_DELIVERY_THRESHOLD = 400
 STANDARD_DELIVERY_PERCENTAGE = 10
+STRIPE_CURRENCY = 'eur'
+STRIPE_PUBLIC_KEY = os.environ.get('STRIPE_PUBLIC_KEY', '')
+STRIPE_SECRET_KEY = os.environ.get('STRIPE_SECRET_KEY', '')
+STRIPE_WH_SECRET = os.environ.get('STRIPE_WH_SECRET', '')

@@ -35,11 +35,11 @@
 {% block postloadjs %}
 {{ block.super }}
 
+<!-- checkout form -->
+<script src="{% static 'checkout/js/checkout-form.js' %}"></script>
 {{ stripe_public_key|json_script:"id_stripe_public_key" }}
 {{ client_secret|json_script:"id_client_secret" }}
 <!-- include stripe js -->
 <script src="{% static 'checkout/js/stripe-elements.js' %}"></script>
-<!-- checkout form -->
-<script src="{% static 'checkout/js/checkout-form.js' %}"></script>
 
 {% endblock %}
