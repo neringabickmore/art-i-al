@@ -108,10 +108,9 @@ def checkout_success(request, order_number):
     order = get_object_or_404(Order, order_number=order_number)
 
     sweetify.sweetalert(request, title='success', icon='success',
-                    text= f'Order successfully processed! \
-        Your order number is {order_number}. A confirmation \
-        email will be sent to {order.email}.',
-                    timer=2000, timerProgressBar='true', persistent="Close")
+    text= f'Order successfully processed! \
+    A confirmation email will be sent to {order.email}.',
+    timer=2000)
 
     if 'bag' in request.session:
         del request.session['bag']
