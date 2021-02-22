@@ -35,7 +35,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', '')
 DEBUG = dev
 
 if dev:
-    ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'e96df29ac477.ngrok.io']
+    ALLOWED_HOSTS = ['localhost', '127.0.0.1', '192f42bf6e37.ngrok.io']
 else:
     ALLOWED_HOSTS = ['art-ial-app.herokuapp.com']
 
