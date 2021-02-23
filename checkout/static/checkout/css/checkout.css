@@ -62,55 +62,53 @@
     background-color: var(--hunter-green);
 }
 
-@media (min-width: 992px) {
-    #checkout-form-border {
-        border-right: 2px solid var(--black-chocolate);
-    }
-    
+/* payment table */
+.table {
+    color: var(--black-chocolate);
 }
+.table-sm td, .table td,
+.table-sm th, .table th {
+    border-top: 2px solid var(--almond);
+}
+
 
 /* stripe element */
-.StripeElement,
+/* .StripeElement, */
 .stripe-style-input {
-  box-sizing: border-box;
-  height: 40px;
-  padding: 10px 12px;
-  border: 1px solid transparent;
-  border-radius: 0px;
-  background-color: white;
-  box-shadow: 0 1px 3px 0 #e6ebf1;
-  -webkit-transition: box-shadow 150ms ease;
-  transition: box-shadow 150ms ease;
-}
-
-.StripeElement--focus,
-.stripe-style-input:focus,
-.stripe-style-input:active {
-  box-shadow: 0 1px 3px 0 #cfd7df;
-}
-
-.StripeElement--webkit-autofill {
-  background-color: #fefde5 !important;
+    box-sizing: border-box;
+    height: 4rem;
+    padding: 1rem 1.2rem;
+    border: 1px solid var(--dark-lava);
+    border-radius: 0px;
+    background-color: var(--white);
 }
 
 .stripe-style-input::placeholder {
-  color: #aab7c4;
+    color: #aab7c4;
 }
 
 .fieldset-label {
-  position: relative;
-  right: .5rem;
+    position: relative;
+    right: .5rem;
 }
 
 #payment-form .form-control,
 #card-element {
-  color: #000;
-  border: 1px solid #000;
+    color: var(--dark-lava);
+    border: 1px solid var(--dark-lava)!important;
 }
 
+.form-control {
+    color: var(--dark-lava);
+}
+
+.form-control:focus {
+    box-shadow: var(--dark-small-box-shadow);
+    border-color: var(--dark-lava);
+}
 select,
 select option {
-    color: #000000;
+    color: var(--dark-lava);
 }
 
 select:invalid,
@@ -118,27 +116,11 @@ select option[value=""] {
     color: #aab7c4 !important;
 }
 
-#loading-overlay {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(23, 162, 184, .85);
-  z-index: 9999;
-}
-
-.loading-spinner {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0;
-  height: 100%;
+#card-errors, #charge-note {
+    color: #700a15;
 }
 
 /* checkout-success */
-
 .order-confirmation-wrapper {
     border: 1px solid var(--black-chocolate);
     background-color: var(--almond);
@@ -160,12 +142,19 @@ select option[value=""] {
     background: var(--tuscany);
     opacity: .6;
     z-index: 9999;
-  }
-  
-  .loading-spinner {
+}
+
+.loading-spinner {
     display: flex;
     align-items: center;
     justify-content: center;
     margin: 0;
     height: 100%;
-  }
+}
+
+@media (min-width: 992px) {
+    #checkout-form-border {
+        border-right: 2px solid var(--black-chocolate);
+    }
+    
+}

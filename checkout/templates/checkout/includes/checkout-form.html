@@ -21,7 +21,7 @@
         <li class="nav-item disabled checkout-nav-item" role="presentation">
             <a class="nav-link " id="delivery-info-tab" data-toggle="" href="#delivery-info" role="tab"
                 aria-controls="delivery-info" aria-selected="false">
-                <span class="text-uppercase">delivery into</span>
+                <span class="text-uppercase">delivery info</span>
             </a>
         </li>
         <li class="nav-item disabled checkout-nav-item" role="presentation">
@@ -118,7 +118,7 @@
             <!--Stripe form-->
             <form action="{% url 'checkout' %}" method="POST" id="payment-form">
                 {% csrf_token %}
-                <h4 class="font-weight-bold mb-3 mt-3"> payment details</h4>
+                <h4 class="font-weight-bold mb-3 mt-5 text-uppercase"> payment details</h4>
 
                 <input type="hidden" id="full_name" name="full_name">
                 <input type="hidden" id="email" name="email">
@@ -157,7 +157,7 @@
                         </button>
                     </div>
                 </div>
-                <p class="text-right small">
+                <p class="text-right small" id="charge-note">
                     Your card will be charged <strong>&euro;{{ grand_total|floatformat:2 }}</strong>
                 </p>
             </form>
