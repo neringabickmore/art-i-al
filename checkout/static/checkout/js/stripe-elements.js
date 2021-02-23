@@ -1,15 +1,12 @@
 /*
-    Core logic/payment flow for this comes from here:
+    Core logic/payment flow for this comes from stripe docs:
     https://stripe.com/docs/payments/accept-a-payment
     CSS from here: 
     https://stripe.com/docs/stripe-js
+    and tailored modifications.
 */
 
-var stripePublicKey = $('#id_stripe_public_key').text().slice(1, -1);
-var clientSecret = $('#id_client_secret').text().slice(1, -1);
-var stripe = Stripe(stripePublicKey);
-var elements = stripe.elements();
-var style = {
+const style = {
     base: {
         color: '#1d1e18',
         fontFamily: '"Krona One", sans-serif',
@@ -24,16 +21,22 @@ var style = {
         iconColor: '#700a15'
     }
 };
-var card = elements.create('card', {
+const stripePublicKey = $('#id_stripe_public_key').text().slice(1, -1);
+let stripe = Stripe(stripePublicKey);
+let elements = stripe.elements();
+let clientSecret = $('#id_client_secret').text().slice(1, -1);
+
+// Create card element instance
+let card = elements.create('card', {
     style: style
 });
 card.mount('#card-element');
 
-// Handle realtime validation errors on the card element
+// Handle real-time validation errors on the card element
 card.addEventListener('change', function (event) {
-    var errorDiv = document.getElementById('card-errors');
+    const errorDiv = document.getElementById('card-errors');
     if (event.error) {
-        var html = `
+        let html = `
             <span class="icon" role="alert">
                 <i class="fas fa-times"></i>
             </span>
@@ -46,26 +49,24 @@ card.addEventListener('change', function (event) {
 });
 
 // Handle form submit
-var form = document.getElementById('payment-form');
+const form = document.getElementById('payment-form');
 
 form.addEventListener('submit', function (ev) {
     ev.preventDefault();
-    card.update({
-        'disabled': true
-    });
+    card.update({ 'disabled': true });
     $('#submit-button').attr('disabled', true);
     $('#payment-form').fadeToggle(100);
     $('#loading-overlay').fadeToggle(100);
 
-    var saveInfo = Boolean($('#id-save-info').attr('checked'));
+    let saveInfo = Boolean($('#id-save-info').attr('checked'));
     // From using {% csrf_token %} in the form
-    var csrfToken = $('input[name="csrfmiddlewaretoken"]').val();
-    var postData = {
+    let csrfToken = $('input[name="csrfmiddlewaretoken"]').val();
+    let postData = {
         'csrfmiddlewaretoken': csrfToken,
         'client_secret': clientSecret,
         'save_info': saveInfo,
     };
-    var url = '/checkout/cache_checkout_data/';
+    let url = '/checkout/cache_checkout_data/';
     $.post(url, postData).done(function () {
         stripe.confirmCardPayment(clientSecret, {
             payment_method: {
@@ -97,8 +98,8 @@ form.addEventListener('submit', function (ev) {
             },
         }).then(function (result) {
             if (result.error) {
-                var errorDiv = document.getElementById('card-errors');
-                var html = `
+                const errorDiv = document.getElementById('card-errors');
+                let html = `
                     <span class="icon" role="alert">
                     <i class="fas fa-times"></i>
                     </span>
