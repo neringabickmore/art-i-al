@@ -95,7 +95,7 @@
             </div>
             {% else %}
             <!-- user informed if no items in the shopping bag + navigation buttons -->
-            <h5 class="lead my-5 text-center text-sm-start">Your bag is empty.</h5>
+            <h5 class="lead my-5 text-center text-sm-left">Your bag is empty.</h5>
             <a href="{% url 'shop' %}" class="btn return-btn">
                 <span class="icon p-2">
                     <i class="fas fa-chevron-left"></i>
@@ -112,19 +112,6 @@
 
 {% block postloadjs %}
 {{ block.super }}
-<script>
-    
-    // Remove item from the bag and reload the page on click
-    $('.remove-product').click(function (e) {
-        let csrfToken = "{{ csrf_token }}";
-        let itemId = $(this).attr('id').split('remove-')[1];
-        let url = `/bag/remove/${itemId}/`;
-        let data = {'csrfmiddlewaretoken': csrfToken,};
-        
-        $.post(url, data).done(function () {
-            location.reload();
-        });
-    })
+<script src="{% static 'bag/js/bag.js' %}"></script>
 
-</script>
 {% endblock %}

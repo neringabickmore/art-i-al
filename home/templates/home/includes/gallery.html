@@ -4,15 +4,15 @@
         <h3 class="mb-4 ml-2 ">Gallery</h3>
     </div>
     <!-- carousel navigation -->
-    <div class="col-3 px-4 my-4 text-end">
-        <a class="carousel-control-prev" href="#galleryCarouselControl" role="button" data-bs-slide="prev">
+    <div class="col-3 px-4 my-4 text-right">
+        <a class="carousel-control-prev" href="#galleryCarouselControl" role="button" data-slide="prev">
             <span aria-hidden="true"><i class="fas fa-chevron-left"></i></span>
         </a>
-        <a class="carousel-control-next" href="#galleryCarouselControl" role="button" data-bs-slide="next">
+        <a class="carousel-control-next" href="#galleryCarouselControl" role="button" data-slide="next">
             <span aria-hidden="true"><i class="fas fa-chevron-right"></i></span>
         </a>
     </div>
-    <div id="galleryCarouselControl" class="carousel slide col-12" data-bs-ride="carousel">
+    <div id="galleryCarouselControl" class="carousel slide col-12" data-ride="carousel">
         <div class="carousel-inner">
             <!-- checks for images available in the DB -->
             {% for img in gallery_image %}

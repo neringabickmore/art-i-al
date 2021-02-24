@@ -97,7 +97,7 @@ p {
 .dropdown-menu-header li a:focus,
 .dropdown-menu-header li a:hover {
     color: var(--hunter-green);
-    /* background-color: var(--hunter-green); */
+    text-decoration: none;
 }
 
 /* grand total nav item */
@@ -169,8 +169,7 @@ p {
 }
 
 .btn:hover {
-    /* background-color: var(--tuscany); */
-    /* color: var(--white); */
+    color: var(--white);
     box-shadow: var(--dark-small-box-shadow);
 }
 

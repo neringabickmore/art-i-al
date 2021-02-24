@@ -57,9 +57,11 @@ INSTALLED_APPS = [
     'home',
     'products',
     'bag',
-
+    'checkout',
+    
     #other
     'storages',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -73,6 +75,8 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'art_i_al.urls'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 TEMPLATES = [
     {
@@ -91,6 +95,10 @@ TEMPLATES = [
                 'django.template.context_processors.media',
                 'bag.contexts.bag_contents',
             ],
+            'builtins': [
+                'crispy_forms.templatetags.crispy_forms_tags',
+                'crispy_forms.templatetags.crispy_forms_field',
+            ]
         },
     },
 ]
@@ -203,5 +211,10 @@ if 'USE_AWS' in os.environ:
     MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{MEDIAFILES_LOCATION}/'
 
 
+# Stripe
 FREE_DELIVERY_THRESHOLD = 400
 STANDARD_DELIVERY_PERCENTAGE = 10
+STRIPE_CURRENCY = 'eur'
+STRIPE_PUBLIC_KEY = os.environ.get('STRIPE_PUBLIC_KEY', '')
+STRIPE_SECRET_KEY = os.environ.get('STRIPE_SECRET_KEY', '')
+STRIPE_WH_SECRET = os.environ.get('STRIPE_WH_SECRET', '')

@@ -1,0 +1,23 @@
+<div class="d-none d-lg-block col-12">
+    <div class="row">
+        <!-- order total -->
+        <div class="col-12">
+            {% include 'checkout/includes/order-total.html' %}
+            <hr class="hr-style">
+            <p class="text-muted mb-5 text-center">A summary of your bag contents is below</p>
+        </div>
+    </div>
+    {% for item in bag_items %}
+    <!-- detailed product information -->
+    <div class="row">
+        <div class="col-6 mb-2">
+            <!-- product image -->
+            {% include 'bag/includes/product-image.html' %}
+        </div>
+        <div class="col-6 mb-2">
+            <!-- product details -->
+            {% include  'bag/includes/product-info.html' %}
+        </div>
+    </div>
+    {% endfor %}
+</div>
