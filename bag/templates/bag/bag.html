@@ -3,39 +3,40 @@
     from Boutique Ado project at CI:
     https://github.com/ckz8780/boutique_ado_v1 
 -->
-    
-    {% extends "base.html" %}
-    {% load static %}
-    
-    {% block extra_css %}
-    <link rel="stylesheet" href="{% static 'bag/css/bag.css' %}" type="text/css">
-    {% endblock %}
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'bag/css/bag.css' %}" type="text/css">
+{% endblock %}
 
 {% block content%}
-
 <div class="container h-100 mb-5" id="bag-container">
+    <!-- Page title -->
     <div class="row no-gutters">
-        <div class="col-12 px-4">
-            <!-- Title -->
-            <h3 class="my-4 ml-2 text-center">Shopping Bag</h3>
+        <div class="col-sm-12 px-4">
+            <h3 class="my-4 ml-2 text-center">shopping bag</h3>
         </div>
     </div>
+    <!-- Page content -->
     <div class="row no-gutters">
-        <div class="col-12 px-4">
+        <div class="col-sm-12 px-2">
             {% if bag_items %}
-            <!-- mobile specific display -->
+            <!-- Mobile specific display -->
             <div class="d-block d-md-none">
+                <!-- Bag total at the top -->
                 <div class="row">
-                    <!-- bag total at the top -->
-                    <div class="col">
+                    <div class="col-sm-12">
                         {% include 'bag/includes/bag-total.html' %}
                     </div>
                 </div>
+                <!-- navigation buttons to checkout or continue shopping -->
                 <div class="row">
-                    <!-- navigation buttons to checkout or continue shopping -->
-                    <div class="col" id="checkout-btn-mobile">
+                    <div class="col-sm-12 text-center">
                         {% include 'bag/includes/checkout-buttons.html' %}
-                        <hr class="hr-style">
+                    </div>
+                    <div class="hr-style mx-3"></div>
+                    <div class="col-sm-12 text-center">
                         <p class="text-muted mb-5 text-center">A summary of your bag contents is below</p>
                     </div>
                 </div>
@@ -50,44 +51,48 @@
                         {% include  'bag/includes/remove-product.html' %}
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col"></div>
-                </div>
-                {% endfor %}
+               {% endfor %}
             </div>
             <!-- bag display on larger than mobile displays -->
-            <div class="table-responsive rounded d-none d-md-block">
+            <div class="table-responsive d-none d-md-block">
+                <!-- Detailed product information -->
                 <table class="table table-sm table-borderless">
-                    <!-- detailed product information -->
+                    <!-- Head -->
                     <thead>
                         <tr>
                             <th scope="col">
-                                <h4 class="text-uppercase">Product Info</h4>
+                                <h4>product info</h4>
                             </th>
                             <th scope="col"></th>
                         </tr>
                     </thead>
+                    <!-- Detailed product info -->
                     {% for item in bag_items %}
                     <tr>
+                        <!-- Product image-->
                         <td class="p-3 w-25">
                             {% include 'bag/includes/product-image.html' %}
                         </td>
+                        <!-- Product summary -->
                         <td class="py-3">
                             {% include  'bag/includes/product-info.html' %}
                         </td>
+                        <!-- Remove /bin item-->
                         <td>
                             {% include 'bag/includes/remove-product.html' %}
                         </td>
                     </tr>
                     {% endfor %}
+                    <!-- Bag total -->
                     <tr>
                         <td colspan="5" class="pt-3">
-                            <hr class="hr-style">
+                            <div class="hr-style"></div>
                             {% include 'bag/includes/bag-total.html' %}
                         </td>
                     </tr>
+                    <!-- Checkout buttons -->
                     <tr>
-                        <td colspan="5" class="text-right" id="checkout-btn">
+                        <td colspan="5" class="text-right">
                             {% include 'bag/includes/checkout-buttons.html' %}
                         </td>
                     </tr>
@@ -95,12 +100,13 @@
             </div>
             {% else %}
             <!-- user informed if no items in the shopping bag + navigation buttons -->
-            <h5 class="lead my-5 text-center text-sm-left">Your bag is empty.</h5>
+            <p class="my-5 text-center text-sm-left">Your bag is empty.</p>
+            <!-- return button -->
             <a href="{% url 'shop' %}" class="btn return-btn">
                 <span class="icon p-2">
                     <i class="fas fa-chevron-left"></i>
                 </span>
-                <span class="text-uppercase">Return to the shop</span>
+                <span class="text-uppercase">return to shop</span>
             </a>
             {% endif %}
         </div>
