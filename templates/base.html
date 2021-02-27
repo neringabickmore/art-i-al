@@ -2,39 +2,36 @@
 <html lang="en">
 
     <head>
+        <!-- core meta -->
         {% include 'includes/head/meta.html' %}
-
+        <!-- extra meta -->
         {% block extra_meta %}
         {% endblock %}
-
+        <!-- core css -->
         {% include 'includes/head/stylesheets.html' %}
-
+        <!-- extra css -->
         {% block extra_css %}
         {% endblock %}
-
-        {% include 'includes/head/scripts.html' %}
-
-        {% block extra_js %}
+        <!-- onload JS-->
+        {% block onloadjs %}
         {% endblock %}
 
         <title>Art.i.al</title>
     </head>
 
     <body>
-
+        <!-- header -->
         {% include 'includes/layout/header.html' %}
-
-        {% block page_header %}
-        {% endblock %}
-
+        <!-- content -->
         {% block content %}
         {% endblock %}
-
+        <!-- footer -->
         {% include 'includes/layout/footer.html' %}
-
+        <!-- postload JS -->
         {% block postloadjs %}
+        {% include 'includes/postload-scripts/scripts.html' %}
         <!-- CDN for sweet alerts -->
-        <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.15.5/sweetalert2.all.js" integrity="sha512-Xf17iw0EVVbG2XuoUtwWxZnJWuPyGPb4CXvETp7u9KN7mzvRb9S+q8Mui4qtSxtHQ07hc2MXjN14BjyKqLKp5Q==" crossorigin="anonymous"></script>
         {% endblock %}
         <!-- sweet alerts -->
         {% load sweetify %}
