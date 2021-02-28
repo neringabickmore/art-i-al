@@ -1,7 +1,9 @@
-    <div class="col-12 col-lg-4 vh-75 my-4 px-4">
+    <!-- Product card -->
+    <div class="col-sm-12 col-lg-4 my-4 px-4">
         <div class="card h-100" id="product-card">
             <div class="row h-100">
-                <div class="col col-md-7 col-lg-12 align-self-center">
+                <!-- Product image -->
+                <div class="col-sm-12 col-md-7 col-lg-12 align-self-center">
                     <!-- checks for images in the product images folder -->
                     {% for img in product.images_folder.imgs.all %}
                     <a href="{% url 'product_detail' product.id %}">
@@ -15,23 +17,24 @@
                     </a>
                     {% endfor %}
                 </div>
-                <div class="col-12 col-md-5 col-lg-12 ">
+                <!-- Product info -->
+                <div class="col-sm-12 col-md-5 col-lg-12 ">
                     <div class="container h-100">
-                        <div class="row align-items-left h-50">
-                            <div class="col p-0">
+                        <div class="row align-items-start h-75">
+                            <div class="col-sm-12 mt-3 p-0">
                                 <!-- checks for product name and assigns -->
-                                <h3 class="artwork-title">{{ product.collection_name.friendly_name}}: {{ product.name }}
-                                </h3>
+                                <h4 class="artwork-title">{{ product.collection_name.friendly_name}}: {{ product.name }}
+                                </h4>
                                 <!-- checks for tag and assigns -->
-                                <p class="artwork-tag tag-{{product.tag.friendly_name.lower}}">
-                                    {{product.tag.friendly_name}}</p>
+                                <div class="artwork-tag tag-{{product.tag.friendly_name.lower}} my-3">
+                                    {{product.tag.friendly_name}}</div>
                             </div>
                         </div>
-                        <div class="row align-items-right h-50">
-                            <div class="col p-0">
-                                <a class="btn px-3" href="{% url 'product_detail' product.id %}" title="more info"
-                                    aria-label="add to bag">More
-                                    <span class="icon ps-1">
+                        <div class="row align-items-end h-25">
+                            <div class="p-0 col-sm-12">
+                                <a class="btn col-12 " href="{% url 'product_detail' product.id %}" title="more info"
+                                    aria-label="add to bag">view details
+                                    <span class="icon pl-1">
                                         <i class="fas fa-info-circle p-2" aria-hidden="true"></i>
                                     </span></a>
                             </div>

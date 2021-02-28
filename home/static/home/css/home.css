@@ -4,9 +4,9 @@ h1, h2, h3, h4 {
 }
 
 #contact-form {
-    background-color: var(--almond);
+    background-color: var(--hunter-green);
     padding: 4rem;
-    box-shadow: var(--dark-large-box-shadow);
+    box-shadow: var(--dark-small-box-shadow);
 }
 #contact-form input,
 #contact-form textarea,
@@ -27,8 +27,7 @@ h1, h2, h3, h4 {
 }
 
 #contact-form .btn:hover {
-    background-color: var(--hunter-green);
-    color: var(--white);
+    background-color: var(--plum);
 }
 
 .form-text{

@@ -8,16 +8,17 @@
 {% block content %}
 
 <div class="container h-100 mb-5">
-
-    {% include 'home/includes/video-banner.html' %}
+    <!-- New art, on click it takes to shop page-->
     {% include 'home/includes/new-art.html' %}
-    <hr class="hr-style">
+    <div class="hr-style"></div>
+    <!-- Other art but new, on click it takes to gallery page-->
     {% include 'home/includes/gallery.html' %}
-    <hr class="hr-style">
+    <div class="hr-style"></div>
+    <!-- About section -->
     {% include 'home/includes/about.html' %}
-    <hr class="hr-style">
+    <div class="hr-style"></div>
+    <!-- Contact form -->
     {% include 'home/includes/contact-us.html' %}
-
 </div>
 
 {% endblock %}

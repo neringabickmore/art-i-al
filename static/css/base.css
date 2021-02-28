@@ -12,6 +12,7 @@
     --hunter-green: #315E43;
     --almond: #EDE0D4;
     --tuscany: #D0A4A0;
+    --plum: #700A15;
 
     /* box shadows */
     --dark-large-box-shadow: 6px 6px 12px var(--dark-lava);
@@ -39,17 +40,12 @@ h3,
 h4,
 h5 {
     font-family: var(--header-font);
+    text-transform: uppercase;
 }
 
 p {
     font-size: 1.6rem;
     text-align: justify;
-}
-
-/* header */
-.header .hr-style {
-    width: 100%;
-    border: 1px solid var(--black-chocolate);
 }
 
 /* header - logo */
@@ -123,7 +119,7 @@ p {
 
 .footer .hr-style {
     width: 30%;
-    border: 1px solid var(--white);
+    border-color: var(--white);
     display: inline-table;
 }
 
@@ -155,28 +151,31 @@ p {
 
 /* thematic break*/
 .hr-style {
-    opacity: 1;
+    width: 100%;
     border: 1px solid var(--black-chocolate);
+    opacity: 1;
     align-content: center;
 }
 
+/* general button styling */
 .btn {
-    /* background-color: var(--hunter-green); */
-    /* color: var(--white); */
-    font-size: 1.2rem;
+    font-size: 1.6rem;
     text-transform: uppercase;
-    border-radius: 0
+    border-radius: 0;
+    color: var(--white);
+    background-color: var(--dark-lava);
 }
 
 .btn:hover {
     color: var(--white);
+    background-color: var(--hunter-green);
     box-shadow: var(--dark-small-box-shadow);
 }
 
+/* font awesome */
 .fa-shopping-bag {
     padding: .8rem;
 }
-
 
 /* sweet alert styling */
 /** container **/
@@ -191,6 +190,7 @@ p {
     background-color: var(--almond) !important;
     border-radius: 0 !important;
     box-shadow: var(--dark-small-box-shadow) !important;
+    width: 65%!important; 
 }
 
 /** icons **/
@@ -206,7 +206,7 @@ p {
 }
 
 .swal2-error {
-    background-color: var(--tuscany) !important;
+    background-color: var(--plum) !important;
 }
 
 .swal2-x-mark-line-right,
@@ -220,7 +220,7 @@ p {
 }
 
 .swal2-info {
-    background-color: var(--dark-lava);
+    background-color: var(--tuscany);
     color: var(--white) !important;
 }
 
@@ -259,4 +259,11 @@ p {
 
 .swal2-confirm:hover {
     background-color: var(--hunter-green) !important;
+}
+
+
+@media (max-width: 575.98px) { 
+    .btn {
+        font-size: 1.2rem;
+    }
 }
