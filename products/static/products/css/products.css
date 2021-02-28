@@ -1,9 +1,9 @@
-h3, h4, h5 {
-    text-transform: uppercase;
+#free-delivery-banner {
+    background-color: var(--hunter-green);
+    color: var(--white);
+    letter-spacing: 1px;
 }
-.hr-style {
-    border: 1px solid var(--black-chocolate);
-}
+
 #product-detail-container {
     min-height: 75vh;
 }

@@ -5,16 +5,23 @@
 <link rel="stylesheet" href="{% static 'products/css/products.css' %}" type="text/css">
 {% endblock %}
 
+<!-- Free delivery banner -->
+{% block extra_header %}
+<div class="container-fluid">
+    <div class="row no-gutters text-center" id="free-delivery-banner">
+        <div class="col-sm-12 my-1" id="free-delivery-banner">
+            <h5 class="py-2 mb-0">Free delivery on orders over &euro;{{ free_delivery_threshold }}!</h5>
+        </div>
+    </div>
+    <div class="hr-style"></div>
+</div>
+{% endblock %}
+
 {% block content %}
 
 <div class="container h-100 mb-5">
-    <div class="row no-gutters text-center">
-        <div class="col-12">
-            <h4 class="my-1">Free delivery on orders over &euro;{{ free_delivery_threshold }}!</h4>
-        </div>
-    </div>
-    <hr class="hr-style">
     <div class="row no-gutters">
+        <!-- Page header -->
         <div class="col-12 px-4">
             <h3 class="my-4 ml-2">Shop</h3>
         </div>

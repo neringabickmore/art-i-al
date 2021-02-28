@@ -22,6 +22,9 @@
     <body>
         <!-- header -->
         {% include 'includes/layout/header.html' %}
+        <!-- extra header -->
+        {% block extra_header %}
+        {% endblock %}
         <!-- content -->
         {% block content %}
         {% endblock %}

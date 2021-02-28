@@ -5,14 +5,26 @@
 <link rel="stylesheet" href="{% static 'products/css/products.css' %}" type="text/css">
 {% endblock %}
 
-{% block content %}
+<!-- Free delivery banner -->
+{% block extra_header %}
+<div class="container-fluid">
+<div class="row no-gutters text-center" id="free-delivery-banner">
+    <div class="col-sm-12 my-1" id="free-delivery-banner">
+        <h5 class="py-2 mb-0">Free delivery on orders over &euro;{{ free_delivery_threshold }}!</h5>
+    </div>
+</div>
+<div class="hr-style"></div>
+</div>
+{% endblock %}
 
-<div class="container mb-5" id="product-detail-container">
+{% block content %}
+<!-- Product detail -->
+<div class="container mb-5 mt-3" id="product-detail-container">
     <div class="card" id="product-detail-card">
         <div class="row h-100">
             <div class="col-12 px-4">
                 <!-- checks for the collection name in the database to include in the title-->
-                <h3 class="my-4 ml-2 text-uppercase">collection: {{ product.collection_name.friendly_name}}</h3>
+                <h4 class="my-4 ml-2 text-uppercase">collection: {{ product.collection_name.friendly_name}}</h4>
             </div>
             <div class="col-12 col-md-6 my-4 align-self-center">
                 <!-- checks for images in the product images folder-->
@@ -39,7 +51,7 @@
                                 {{product.tag.friendly_name}}</p>
                             <!-- checks for product name and assigns -->
                             <h3 class="artwork-title">{{ product.name }}</h3>
-                            <hr>
+                            <div class="hr-style"></div>
                             <!-- checks for product description-->
                             <p>{{ product.description }}</p>
                             <!-- product dimensions-->
@@ -48,7 +60,7 @@
                             {% if not product.tag.name == 'sold' %}
                             <h5 class="pt-4">&euro; {{ product.price }}</h5>
                             {%endif%}
-                            <hr>
+                            <div class="hr-style"></div>
                             <!-- room view button; triggers modal-->
                             <a class="px-3" href="" title="room view" aria-label="room view" id="room-view"
                                 data-toggle="modal" data-target="#roomViewModal">
