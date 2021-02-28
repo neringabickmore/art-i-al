@@ -48,12 +48,6 @@ p {
     text-align: justify;
 }
 
-/* header */
-.header .hr-style {
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-}
-
 /* header - logo */
 #logo-a {
     display: block;
