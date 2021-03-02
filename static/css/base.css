@@ -261,6 +261,22 @@ p {
     background-color: var(--hunter-green) !important;
 }
 
+/* Allauth form styling */
+#allauth-container {
+    min-height: 75vh;
+}
+
+.allauth-form-inner-content label:not([for='id_remember']) {
+    display: none;
+}
+.allauth-form-inner-content input {
+    font-size: 1.6rem;
+    border: 1px solid var(--dark-lava);
+    border-radius: 0;
+}
+.allauth-form-inner-content .form-check-label{
+    padding-left: .5rem;
+}
 
 @media (max-width: 575.98px) { 
     .btn {
