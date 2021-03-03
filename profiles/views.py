@@ -1,16 +1,33 @@
-  
+import sweetify
 from django.shortcuts import render, get_object_or_404
 
 from .models import UserProfile
+from .forms import UserProfileForm
 
 
 def profile(request):
     """ Display the user's profile. """
     profile = get_object_or_404(UserProfile, user=request.user)
 
+    if request.method == 'POST':
+        form = UserProfileForm(request.POST, instance=profile)
+        if form.is_valid():
+            form.save()
+            sweetify.sweetalert(request, title='success', icon='success',
+            text= f'Profile updated successfully.',
+            timer=2000)
+        else:
+            sweetify.sweetalert(request, title='error', icon='error',
+            text= "Update failed. Please ensure the form is valid",
+            timer=2000)
+    else:
+        form = UserProfileForm(instance=profile)
+    orders = profile.orders.all()
+
     template = 'profiles/profile.html'
     context = {
-        'profile': profile,
+        'form': form,
+        'orders': orders,
     }
 
     return render(request, template, context)
