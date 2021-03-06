@@ -3,6 +3,7 @@
     <h4>order history</h4>
 </div>
 <div class=" col-sm-12 order-history table-responsive">
+    {% if order in orders %}
     <table class="table table-borderless">
         <thead>
             <!-- Table titles -->
@@ -15,7 +16,6 @@
         </thead>
         <!-- Order details snippet -->
         <tbody>
-            {% for order in orders %}
                 <tr>
                     <!-- Order number linked to full order details-->
                     <td>
@@ -37,7 +37,9 @@
                     <!-- Totals -->
                     <td>&euro;{{ order.grand_total }}</td>
                 </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+            </tbody>
+        </table>
+        {% else %}
+        <p>You currently don't have any orders.</p>
+        {% endif %}
 </div>
