@@ -3,7 +3,11 @@
     <h4>order history</h4>
 </div>
 <div class=" col-sm-12 order-history table-responsive">
-    {% if order in orders %}
+    <!-- if no order history -->
+    {% if not orders %}
+    <p>You currently don't have any orders.</p>
+    {% else %}
+    <!-- order history -->
     <table class="table table-borderless">
         <thead>
             <!-- Table titles -->
@@ -15,31 +19,30 @@
             </tr>
         </thead>
         <!-- Order details snippet -->
+        {% for order in orders %}
         <tbody>
-                <tr>
-                    <!-- Order number linked to full order details-->
-                    <td>
-                        <a href="{% url 'order-history' order.order_number %}"
-                        title="{{ order.order_number }}">
-                            {{ order.order_number|truncatechars:6 }}
-                        </a>
-                    </td>
-                    <!--  Purchase date-->
-                    <td>{{ order.purchase_date }}</td>
-                    <!-- Items -->
-                    <td>
-                        <ul class="list-unstyled">
-                            {% for item in order.lineitems.all %}
-                                <li>{{ item.product.name }}</li>
-                            {% endfor %}
-                        </ul>
-                    </td>
-                    <!-- Totals -->
-                    <td>&euro;{{ order.grand_total }}</td>
-                </tr>
-            </tbody>
-        </table>
-        {% else %}
-        <p>You currently don't have any orders.</p>
-        {% endif %}
+            <tr>
+                <!-- Order number linked to full order details-->
+                <td>
+                    <a href="{% url 'order-history' order.order_number %}" title="{{ order.order_number }}">
+                        {{ order.order_number|truncatechars:6 }}
+                    </a>
+                </td>
+                <!--  Purchase date-->
+                <td>{{ order.purchase_date }}</td>
+                <!-- Items -->
+                <td>
+                    <ul class="list-unstyled">
+                        {% for item in order.lineitems.all %}
+                        <li>{{ item.product.name }}</li>
+                        {% endfor %}
+                    </ul>
+                </td>
+                <!-- Totals -->
+                <td>&euro;{{ order.grand_total }}</td>
+            </tr>
+        </tbody>
+        {% endfor %}
+    </table>
+    {% endif %}
 </div>
