@@ -289,7 +289,10 @@ p {
 }
 
 @media (max-width: 575.98px) { 
-    .btn {
+    .btn, .allauth-form-inner-content input {
         font-size: 1.2rem;
+    }
+    .allauth-form-inner-content p {
+        font-size: 1.4rem;
     }
 }

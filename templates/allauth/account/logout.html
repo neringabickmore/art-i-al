@@ -1,5 +1,4 @@
 {% extends "account/base.html" %}
-
 {% load i18n %}
 
 {% block inner_content %}
@@ -9,16 +8,16 @@
   <h3 class="my-4 text-center text-sm-left">{% trans "LogOut" %}</h3>
 </div>
 <!-- Logout form -->
-<div class="col-sm-12 px-4">
-  <p>{% trans 'Are you sure you want to log out?' %}</p>
+<div class="col-md-6 px-4">
+  <p class="text-center text-sm-left">{% trans 'Are you sure you want to log out?' %}</p>
 
-  <form method="post" action="{% url 'account_logout' %}">
+  <form class="text-center text-sm-left" method="post" action="{% url 'account_logout' %}">
     {% csrf_token %}
     {% if redirect_field_value %}
     <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
     {% endif %}
     <!-- Action button -->
-    <button type="submit" class="btn col-sm-12">{% trans 'Logout' %}</button>
+    <button type="submit" class="btn my-4">{% trans 'Logout' %}<span class="icon p-2"><i class="fas fa-sign-out-alt"></i></span></button>
   </form>
 
 </div>

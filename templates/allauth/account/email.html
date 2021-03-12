@@ -35,12 +35,10 @@
       {% endfor %}
       <!-- ACtion buttons -->
       <div class="buttonHolder my-3">
-        <button class="secondaryAction btn col-sm-12 mb-2" type="submit"
-          name="action_primary">{% trans 'Make Primary' %}</button>
-        <button class="secondaryAction btn col-sm-12 mb-2" type="submit"
+        <button class="secondaryAction btn mb-2" type="submit" name="action_primary">{% trans 'Make Primary' %}</button>
+        <button class="secondaryAction btn mb-2" type="submit"
           name="action_send">{% trans 'Re-send Verification' %}</button>
-        <button class="primaryAction btn col-sm-12 mb-2" type="submit"
-          name="action_remove">{% trans 'Remove' %}</button>
+        <button class="primaryAction btn mb-2" type="submit" name="action_remove">{% trans 'Remove' %}</button>
       </div>
 
     </fieldset>
@@ -59,10 +57,19 @@
   <form method="post" action="{% url 'account_email' %}" class="add_email">
     {% csrf_token %}
     {{ form|crispy }}
-    <button class="btn col-sm-12 my-2" name="action_add" type="submit">{% trans "Add E-mail" %}</button>
+    <div class="col-sm-12 p-0">
+      <!-- back button -->
+      <a class="btn my-3" href="/profiles"><span class="icon p-2">
+          <i class="fas fa-chevron-left" aria-hidden="true"></i>
+        </span> back to account</a>
+        <!-- add button -->
+      <button class="btn my-2" name="action_add" type="submit">{% trans "Add E-mail" %}<span class="icon p-2">
+          <i class="fas fa-plus" aria-hidden="true"></i>
+        </span></button>
+    </div>
   </form>
   {% endif %}
-  <a href="/profiles/" class="btn col-sm-12 mt-2">back to account</a>
+
 </div>
 {% endblock %}
 
