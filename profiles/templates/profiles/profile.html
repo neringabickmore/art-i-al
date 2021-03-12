@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'profiles/css/profile.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container mb-3" id="profile-container">
+    <div class="row">
+        <!-- Page header -->
+        <div class="col-sm-12 px-3">
+            <h3 class="my-4 ml-2">{{ user.username }}'s profile</h3>
+        </div>
+    </div>
+    <div class="row my-1 mx-1">
+        <!-- Personal Information-->
+        {% include 'profiles/includes/personal-info.html' %}
+        <!-- Shipping Information-->
+        {% include 'profiles/includes/shipping-info.html' %}
+        <!-- Order History -->
+        {% include 'profiles/includes/order-history.html' %}
+    </div>
+</div>
+{% endblock %}
+
+{% block postloadjs %}
+    {{ block.super }}
+    <script type="text/javascript" src="{% static 'profiles/js/profile.js' %}"></script>
+{% endblock %}

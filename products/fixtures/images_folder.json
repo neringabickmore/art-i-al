@@ -1,18 +1,42 @@
 [
     {
+        "model": "products.imagesfolder",
         "pk": 1,
-        "model": "products.ImagesFolder",
         "fields": {
-            "name": "images folder 1",
-            "imgs": {}
+            "name": "sunset",
+            "imgs": [
+                5
+            ]
         }
     },
     {
+        "model": "products.imagesfolder",
         "pk": 2,
-        "model": "products.ImagesFolder",
         "fields": {
-            "name": "images folder 2",
-            "imgs": {}
+            "name": "Tornado",
+            "imgs": [
+                4
+            ]
+        }
+    },
+    {
+        "model": "products.imagesfolder",
+        "pk": 3,
+        "fields": {
+            "name": "Rain",
+            "imgs": [
+                2
+            ]
+        }
+    },
+    {
+        "model": "products.imagesfolder",
+        "pk": 4,
+        "fields": {
+            "name": "on-fire",
+            "imgs": [
+                1
+            ]
         }
     }
 ]

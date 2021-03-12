@@ -1,38 +1,82 @@
 [
     {
-        "pk": 1,
         "model": "products.product",
+        "pk": 1,
         "fields": {
             "category": 1,
-            "name": "test product",
+            "name": "On fire",
             "collection_name": 1,
-            "description": "test description",
-            "author": "test author",
-            "dimensions": "10 x 13",
-            "price": 199.98,
-            "images_folder": 1,
-            "sku": "ART123456",
-            "tag": 1,
-            "ft_new": "False",
-            "ft_preview": "False"
+            "description": "Acrylic brush painting.",
+            "author": "I.AL.",
+            "dimensions": "100 x 100 cm",
+            "price": "300.00",
+            "images_folder": 4,
+            "sku": "art00001",
+            "tag": 1
         }
     },
     {
-        "pk": 2,
         "model": "products.product",
+        "pk": 2,
         "fields": {
             "category": 1,
-            "name": "test product2",
-            "collection_name": 2,
-            "description": "test description2",
-            "author": "test author2",
-            "dimensions": "10 x 13",
-            "price": 199.98,
+            "name": "rain",
+            "collection_name": 1,
+            "description": "Acrylic brush painting.",
+            "author": "I.AL.",
+            "dimensions": "70 x 70 cm",
+            "price": "200.00",
+            "images_folder": 3,
+            "sku": "art00002",
+            "tag": 2
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 3,
+        "fields": {
+            "category": 1,
+            "name": "nebula",
+            "collection_name": 1,
+            "description": "Acrylic brush painting.",
+            "author": "I.AL.",
+            "dimensions": "80 x 120 cm",
+            "price": "300.00",
+            "images_folder": null,
+            "sku": "art00003",
+            "tag": 1
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 4,
+        "fields": {
+            "category": 1,
+            "name": "Tornado",
+            "collection_name": 1,
+            "description": "Acrylic brush painting.",
+            "author": "I.AL.",
+            "dimensions": "120 x 80 cm",
+            "price": "350.00",
             "images_folder": 2,
-            "sku": "ART123457",
-            "tag": 1,
-            "ft_new": "False",
-            "ft_preview": "False"
+            "sku": "art00004",
+            "tag": 2
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 5,
+        "fields": {
+            "category": 1,
+            "name": "Sunset",
+            "collection_name": 1,
+            "description": "Acrylic brush painting.",
+            "author": "I.AL.",
+            "dimensions": "130 x 90 cm",
+            "price": "300.00",
+            "images_folder": 1,
+            "sku": "art00005",
+            "tag": 2
         }
     }
 ]

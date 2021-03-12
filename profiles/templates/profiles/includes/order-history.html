@@ -1,0 +1,54 @@
+<div class="col-sm-12 order-history table-responsive">
+    <div id="pd-order-history" class="py-3 my-5 pt-md-0">
+        <!-- Header -->
+        <div class="col-sm-12">
+            <h4 class="pt-3"><i class="fas fa-history"></i>order history</h4>
+        </div>
+        <div class="col-sm-12">
+            <!-- if no order history -->
+            {% if not orders %}
+            <p>You currently don't have any orders.</p>
+            {% else %}
+            <!-- order history -->
+            <table class="table table-borderless">
+                <thead>
+                    <!-- Table titles -->
+                    <tr>
+                        <th>Order Number</th>
+                        <th>Date</th>
+                        <!-- Items and Order total displayed on larger than mobile screens -->
+                        <th class="d-none d-sm-table-cell">Items</th>
+                        <th class="d-none d-sm-table-cell"> Order Total</th>
+                    </tr>
+                </thead>
+                <!-- Order details snippet -->
+                {% for order in orders %}
+                <tbody>
+                    <tr>
+                        <!-- Order number linked to full order details-->
+                        <td>
+                            <a href="{% url 'order-history' order.order_number %}" title="{{ order.order_number }}">
+                                {{ order.order_number|truncatechars:6 }}
+                            </a>
+                        </td>
+                        <!--  Purchase date-->
+                        <td>{{ order.purchase_date }}</td>
+                        <!-- Items -->
+                        <td>
+                            <ul class="list-unstyled">
+                                {% for item in order.lineitems.all %}
+                                <!-- Items list displayed on larger than mobile screens -->
+                                <li class="text-capitalize d-none d-sm-table-cell">{{ item.product.name}}</li>
+                                {% endfor %}
+                            </ul>
+                        </td>
+                        <!-- Order total list displayed on larger than mobile screens -->
+                        <td class="d-none d-sm-table-cell">&euro;{{ order.grand_total }}</td>
+                    </tr>
+                </tbody>
+                {% endfor %}
+            </table>
+            {% endif %}
+        </div>
+    </div>
+</div>

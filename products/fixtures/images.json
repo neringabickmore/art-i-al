@@ -1,29 +1,54 @@
 [
     {
+        "model": "products.image",
         "pk": 1,
-        "model": "products.image",
         "fields": {
-            "name": "image 1",
-            "img": "test1.jpg",
-            "image_url": ""
+            "name": "on-fire-rv",
+            "img": "test1_yzFpg3R.jpg",
+            "url": "https://art-ial-app.s3.eu-west-2.amazonaws.com/media/test1_yzFpg3R.jpg",
+            "main_img": false,
+            "room_view": true,
+            "show_in_gallery": false,
+            "show_in_new": true
         }
     },
     {
+        "model": "products.image",
         "pk": 2,
-        "model": "products.image",
         "fields": {
-            "name": "image 2",
-            "img": "test2.jpg",
-            "image_url": ""
+            "name": "rain-rv",
+            "img": "test3_RCJW4y2.jpg",
+            "url": "https://art-ial-app.s3.eu-west-2.amazonaws.com/media/test3_RCJW4y2.jpg",
+            "main_img": false,
+            "room_view": false,
+            "show_in_gallery": false,
+            "show_in_new": false
         }
     },
     {
-        "pk": 3,
         "model": "products.image",
+        "pk": 4,
         "fields": {
-            "name": "image 3",
-            "img": "test3.jpg",
-            "image_url": ""
+            "name": "tornado-rv",
+            "img": "test2_80VZQr4.jpg",
+            "url": "https://art-ial-app.s3.eu-west-2.amazonaws.com/media/test2_80VZQr4.jpg",
+            "main_img": false,
+            "room_view": true,
+            "show_in_gallery": false,
+            "show_in_new": true
+        }
+    },
+    {
+        "model": "products.image",
+        "pk": 5,
+        "fields": {
+            "name": "sunset-rv",
+            "img": "test4_HLbnCqL.jpg",
+            "url": "https://art-ial-app.s3.eu-west-2.amazonaws.com/media/test4_HLbnCqL.jpg",
+            "main_img": false,
+            "room_view": true,
+            "show_in_gallery": true,
+            "show_in_new": false
         }
     }
 ]
