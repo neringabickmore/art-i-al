@@ -92,3 +92,18 @@
 .close {
     opacity: 1;
 }
+
+/* Product management elements */
+.prod-mngmnt-form label, 
+.prod-mngmnt-form option {
+    font-size: 1.6rem;
+}
+.field-styling, .prod-mngmnt-form select {
+    border-radius: 0;
+    border: 1px solid var(--dark-lava);
+    font-size: 1.6rem;
+}
+
+.tooltip {
+    font-size: 1.2rem;
+}
