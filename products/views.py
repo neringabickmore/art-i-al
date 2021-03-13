@@ -1,5 +1,7 @@
 from django.shortcuts import render, get_object_or_404
-from .models import Product, Collection
+from .models import Product, Collection, Category
+
+from .forms import ProductForm
 
 
 def gallery(request):
@@ -36,3 +38,16 @@ def product_detail(request, product_id):
     }
 
     return render(request, 'products/product-detail.html', context)
+
+
+def add_product(request):
+    """ Add a product to the store """
+    
+    form = ProductForm()
+        
+    template = 'products/add-product.html'
+    context = {
+        'form': form,
+    }
+
+    return render(request, template, context)

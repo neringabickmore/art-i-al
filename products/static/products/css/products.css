@@ -92,3 +92,13 @@
 .close {
     opacity: 1;
 }
+
+/* Product management elements */
+.prod-mngmnt-form label {
+    font-size: 1.6rem;
+}
+.field-styling {
+    border-radius: 0;
+    border: 1px solid var(--dark-lava);
+    font-size: 1.6rem;
+}
