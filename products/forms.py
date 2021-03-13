@@ -44,12 +44,38 @@ class CollectionForm(forms.ModelForm):
         self.fields['friendly_name'].widget.attrs['class'] = 'field-styling'
 
 
+class ImageForm(forms.ModelForm):
+    
+    class Meta:
+        model = Image
+        fields = ('name', 'img', 'url', 'main_img',
+                'room_view', 'show_in_gallery',
+                'show_in_new')
+    
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+    
+        labels = {
+            'name': 'Artwork image name',
+            'img': 'Upload image',
+            'url': 'Image link', 
+            'main_img': 'Is this the main image?',
+            'room_view': 'Is this room-view image?',
+            'show_in_gallery': 'Show this image in the "gallery" banner on home page?',
+            'show_in_new': 'Show this image in the "new" banner on home page?',
+        }
+        for field in self.fields:
+            self.fields[field].label = labels[field]
+        self.fields['name'].widget.attrs['class'] = 'field-styling'
+        self.fields['img'].widget.attrs['class'] = 'field-styling'
+        self.fields['url'].widget.attrs['class'] = 'field-styling'
+    
+
 class ImagesFolderForm(forms.ModelForm):
 
     class Meta: 
         model = ImagesFolder
         fields = ('name', 'imgs')
-
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -69,6 +95,4 @@ class ImagesFolderForm(forms.ModelForm):
         self.fields['imgs'].widget.attrs['data-placement'] = 'top'
         self.fields['imgs'].widget.attrs['title'] = 'To select multiple images +shift'
         self.fields['name'].widget.attrs['class'] = 'field-styling'
-        for field in self.fields:
-            self.fields[field].label = labels[field]
         

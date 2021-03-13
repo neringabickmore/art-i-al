@@ -3,7 +3,7 @@ import sweetify
 from django.shortcuts import render, get_object_or_404, reverse, redirect
 from .models import Product, Collection, Category
 
-from .forms import ProductForm, CollectionForm, ImagesFolderForm
+from .forms import ProductForm, CollectionForm, ImagesFolderForm, ImageForm
 
 
 def gallery(request):
@@ -69,8 +69,35 @@ def add_collection(request):
     return render(request, template, context)
 
 
+def add_img(request):
+    """ Add new image """
+    
+    if request.method == 'POST':
+        img_form = ImageForm(request.POST, request.FILES)
+        if img_form.is_valid():
+            img = img_form.save()
+            sweetify.sweetalert(request, title='success', icon='success',
+            text= "Successfully added new image!",
+            timer=2000, timerProgressBar='true', persistent="Close")
+            return redirect(reverse('add_img'))
+        else:
+            sweetify.sweetalert(request, title='error', icon='error',
+            text= "Failed to add new image. Please ensure the form is valid.",
+            timer=2000, timerProgressBar='true', persistent="Close")
+
+    else:
+        img_form = ImageForm()
+       
+    template = 'products/add-image.html'
+    context = {
+        'img_form': img_form,
+    }
+
+    return render(request, template, context)
+
+
 def add_img_folder(request):
-    """ Add new collection name """
+    """ Add new image folder and select images """
     
     if request.method == 'POST':
         img_folder_form = ImagesFolderForm(request.POST)
@@ -106,7 +133,7 @@ def add_product(request):
             sweetify.sweetalert(request, title='success', icon='success',
             text= "Successfully added product!",
             timer=2000, timerProgressBar='true', persistent="Close")
-            return redirect(reverse('add_product'))
+            return redirect(reverse('product_detail', args=[product.id]))
         else:
             sweetify.sweetalert(request, title='error', icon='error',
             text= "Failed to add product. Please ensure the form is valid.",
