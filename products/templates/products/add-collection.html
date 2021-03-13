@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'products/css/products.css' %}" type="text/css">
+{% endblock %}
+
+{% block content %}
+<div class="container h-100 mb-5 prod-mngmnt-container">
+    <div class="row">
+        <div class="col-12 col-md-6 px-4">
+            <!-- Title -->
+            <h3 class="my-4 ml-2 text-uppercase">Product Management</h3>
+            <!-- Extra Title -->
+            <h4 class="my-4 ml-2 text-uppercase">Add New Collection</h4>
+        </div>
+    </div>
+    <div class="row">
+        <!-- Add Collection Form -->
+        <div class="col-12 col-md-6 px-4">
+            <form method="POST" action="{% url 'add_collection' %}" class="form mb-2 prod-mngmnt-form">
+                {% csrf_token %}
+                {{ collection_form | crispy }}
+                <div class="text-right">
+                    <a class="btn " href="{% url 'gallery' %}"><span class="icon p-2">
+                            <i class="fas fa-chevron-left" aria-hidden="true"></i>
+                        </span>Cancel</a>
+                    <button class="btn" type="submit">Add Collection<span class="icon p-2">
+                            <i class="fas fa-plus" aria-hidden="true"></i>
+                        </span></button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
