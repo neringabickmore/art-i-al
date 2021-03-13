@@ -31,10 +31,15 @@ class CollectionForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         labels = {
-            'name': 'name',
-            'friendly_name': 'friendly_name'
+            'name': 'Programmatic name',
+            'friendly_name': 'Display name*'
         }
+        for field in self.fields:
+            self.fields[field].label = labels[field]
         
+        self.fields['name'].widget.attrs['data-toggle'] = 'tooltip'
+        self.fields['name'].widget.attrs['data-placement'] = 'top'
+        self.fields['name'].widget.attrs['title'] = 'No spaces or special characters, use _ for word separation'        
         self.fields['name'].widget.attrs['class'] = 'field-styling'
         self.fields['friendly_name'].widget.attrs['class'] = 'field-styling'
 
