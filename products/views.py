@@ -1,7 +1,9 @@
-from django.shortcuts import render, get_object_or_404
+import sweetify
+
+from django.shortcuts import render, get_object_or_404, reverse, redirect
 from .models import Product, Collection, Category
 
-from .forms import ProductForm
+from .forms import ProductForm, CollectionForm
 
 
 def gallery(request):
@@ -28,10 +30,10 @@ def shop(request):
     return render(request, 'products/shop.html', context)
 
 
-def product_detail(request, product_id):
+def product_detail(request, name):
     """ A view to show individual product details """
 
-    product = get_object_or_404(Product, pk=product_id)
+    product = get_object_or_404(Product, name=name)
 
     context = {
         'product': product,
@@ -40,14 +42,57 @@ def product_detail(request, product_id):
     return render(request, 'products/product-detail.html', context)
 
 
-def add_product(request):
-    """ Add a product to the store """
+def add_collection(request):
+    """ Add new collection name """
     
-    form = ProductForm()
-        
-    template = 'products/add-product.html'
+    if request.method == 'POST':
+        collection_form = CollectionForm(request.POST)
+        if collection_form.is_valid():
+            collection = collection_form.save()
+            sweetify.sweetalert(request, title='success', icon='success',
+            text= "Successfully added collection name!",
+            timer=2000, timerProgressBar='true', persistent="Close")
+            return redirect(reverse('add_collection'))
+        else:
+            sweetify.sweetalert(request, title='error', icon='error',
+            text= "Failed to add new collection name. Please ensure the form is valid.",
+            timer=2000, timerProgressBar='true', persistent="Close")
+
+    else:
+        collection_form = CollectionForm()
+       
+    template = 'products/add-collection.html'
     context = {
-        'form': form,
+        'collection_form': collection_form,
     }
 
     return render(request, template, context)
+
+
+def add_product(request):
+    """ Add a product to the store """
+    
+    if request.method == 'POST':
+        prod_form = ProductForm(request.POST, request.FILES)
+        if prod_form.is_valid():
+            product = prod_form.save()
+            sweetify.sweetalert(request, title='success', icon='success',
+            text= "Successfully added product!",
+            timer=2000, timerProgressBar='true', persistent="Close")
+            return redirect(reverse('add_product'))
+        else:
+            sweetify.sweetalert(request, title='error', icon='error',
+            text= "Failed to add product. Please ensure the form is valid.",
+            timer=2000, timerProgressBar='true', persistent="Close")
+
+    else:
+        prod_form = ProductForm()
+       
+    template = 'products/add-product.html'
+    context = {
+        'prod_form': prod_form,
+    }
+
+    return render(request, template, context)
+
+
