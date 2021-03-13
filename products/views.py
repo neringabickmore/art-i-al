@@ -3,7 +3,7 @@ import sweetify
 from django.shortcuts import render, get_object_or_404, reverse, redirect
 from .models import Product, Collection, Category
 
-from .forms import ProductForm, CollectionForm
+from .forms import ProductForm, CollectionForm, ImagesFolderForm
 
 
 def gallery(request):
@@ -64,6 +64,33 @@ def add_collection(request):
     template = 'products/add-collection.html'
     context = {
         'collection_form': collection_form,
+    }
+
+    return render(request, template, context)
+
+
+def add_img_folder(request):
+    """ Add new collection name """
+    
+    if request.method == 'POST':
+        img_folder_form = ImagesFolderForm(request.POST)
+        if img_folder_form.is_valid():
+            img_folder = img_folder_form.save()
+            sweetify.sweetalert(request, title='success', icon='success',
+            text= "Successfully added new folder with selected images!",
+            timer=2000, timerProgressBar='true', persistent="Close")
+            return redirect(reverse('add_img_folder'))
+        else:
+            sweetify.sweetalert(request, title='error', icon='error',
+            text= "Failed to add new folder. Please ensure the form is valid.",
+            timer=2000, timerProgressBar='true', persistent="Close")
+
+    else:
+        img_folder_form = ImagesFolderForm()
+       
+    template = 'products/add-img-folder.html'
+    context = {
+        'img_folder_form': img_folder_form,
     }
 
     return render(request, template, context)

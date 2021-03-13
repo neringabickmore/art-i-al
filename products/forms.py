@@ -1,6 +1,6 @@
 from django import forms
 # from .widgets import CustomClearableFileInput
-from .models import Product, Category, Collection
+from .models import Product, Category, Collection, ImagesFolder, Image
 
 
 class ProductForm(forms.ModelForm):
@@ -39,3 +39,31 @@ class CollectionForm(forms.ModelForm):
         self.fields['friendly_name'].widget.attrs['class'] = 'field-styling'
 
 
+class ImagesFolderForm(forms.ModelForm):
+
+    class Meta: 
+        model = ImagesFolder
+        fields = ('name', 'imgs')
+
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        imgs = Image.objects.all()
+
+        labels = {
+            'name': 'Folder name',
+            'imgs': 'Select images',
+        }
+        for field in self.fields:
+            self.fields[field].label = labels[field]
+        
+        self.fields['name'].widget.attrs['data-toggle'] = 'tooltip'
+        self.fields['name'].widget.attrs['data-placement'] = 'top'
+        self.fields['name'].widget.attrs['title'] = 'No spaces or special characters, use _ for word separation'
+        self.fields['imgs'].widget.attrs['data-toggle'] = 'tooltip'
+        self.fields['imgs'].widget.attrs['data-placement'] = 'top'
+        self.fields['imgs'].widget.attrs['title'] = 'To select multiple images +shift'
+        self.fields['name'].widget.attrs['class'] = 'field-styling'
+        for field in self.fields:
+            self.fields[field].label = labels[field]
+        
