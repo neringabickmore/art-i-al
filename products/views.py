@@ -269,3 +269,12 @@ def edit_product(request, name):
 
     return render(request, template, context)
 
+
+def delete_product(request, name):
+    """ Delete product """
+    product = get_object_or_404(Product, name=name)
+    product.delete()
+    sweetify.sweetalert(request, title='success', icon='success',
+                text= "Successfully deleted the product!",
+                timer=2000)
+    return redirect(reverse('gallery'))

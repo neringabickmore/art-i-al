@@ -172,6 +172,13 @@ p {
     box-shadow: var(--dark-small-box-shadow);
 }
 
+.delete-btn {
+    background-color: var(--plum);
+}
+.delete-btn:hover {
+    background-color: var(--black-chocolate);
+}
+
 /* font awesome */
 .fa-shopping-bag {
     padding: .8rem;
