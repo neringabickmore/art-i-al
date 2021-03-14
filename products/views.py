@@ -69,6 +69,36 @@ def add_collection(request):
     return render(request, template, context)
 
 
+def edit_collection(request, name):
+    """ Edit collection name """
+    collection = get_object_or_404(Collection, name=name)
+    if request.method == 'POST':
+        collection_form = CollectionForm(request.POST, instance=collection)
+        if collection_form.is_valid():
+            collection_form.save()
+            sweetify.sweetalert(request, title='success', icon='success',
+                text= "Successfully updated collection name!",
+                timer=2000, timerProgressBar='true', persistent="Close")
+            return redirect(reverse('add_product'))
+        else:
+            sweetify.sweetalert(request, title='error', icon='error',
+                text= "Failed to update collection name. Please ensure the form is valid.",
+                timer=2000, timerProgressBar='true', persistent="Close")
+    else:
+        collection_form = CollectionForm(instance=collection)
+        sweetify.sweetalert(request, title='info', icon='info',
+                text= f"You are editing collection: {collection.friendly_name}",
+                timer=2000, timerProgressBar='true', persistent="Close")
+    
+    template = 'products/edit-collection.html'
+    context = {
+        'collection_form': collection_form,
+        'collection': collection,
+    }
+
+    return render(request, template, context)
+    
+
 def add_img(request):
     """ Add new image """
     
