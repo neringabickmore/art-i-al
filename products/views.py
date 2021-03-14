@@ -1,6 +1,7 @@
 import sweetify
 
 from django.shortcuts import render, get_object_or_404, reverse, redirect
+from django.contrib.auth.decorators import login_required
 from .models import Product, Collection, Category, Image, ImagesFolder
 
 from .forms import ProductForm, CollectionForm, ImagesFolderForm, ImageForm
@@ -42,8 +43,14 @@ def product_detail(request, name):
     return render(request, 'products/product-detail.html', context)
 
 
+@login_required
 def add_collection(request):
     """ Add new collection name """
+    if not request.user.is_superuser:
+        sweetify.sweetalert(request, title='error', icon='error',
+            text= "This functionality is available to admin only.",
+            timer=2000)
+        return redirect(reverse('home'))
     
     if request.method == 'POST':
         collection_form = CollectionForm(request.POST)
@@ -69,8 +76,15 @@ def add_collection(request):
     return render(request, template, context)
 
 
+@login_required
 def edit_collection(request, name):
     """ Edit collection name """
+    if not request.user.is_superuser:
+        sweetify.sweetalert(request, title='error', icon='error',
+            text= "This functionality is available to admin only.",
+            timer=2000)
+        return redirect(reverse('home'))
+
     collection = get_object_or_404(Collection, name=name)
     if request.method == 'POST':
         collection_form = CollectionForm(request.POST, instance=collection)
@@ -97,10 +111,16 @@ def edit_collection(request, name):
     }
 
     return render(request, template, context)
-    
 
+
+@login_required
 def add_img(request):
     """ Add new image """
+    if not request.user.is_superuser:
+        sweetify.sweetalert(request, title='error', icon='error',
+            text= "This functionality is available to admin only.",
+            timer=2000)
+        return redirect(reverse('home'))
     
     if request.method == 'POST':
         img_form = ImageForm(request.POST, request.FILES)
@@ -126,8 +146,15 @@ def add_img(request):
     return render(request, template, context)
 
 
+@login_required
 def edit_img(request, name):
-    """ Edit collection name """
+    """ Edit image name """
+    if not request.user.is_superuser:
+        sweetify.sweetalert(request, title='error', icon='error',
+            text= "This functionality is available to admin only.",
+            timer=2000)
+        return redirect(reverse('home'))
+    
     img = get_object_or_404(Image, name=name)
     if request.method == 'POST':
         img_form = ImageForm(request.POST, request.FILES, instance=img)
@@ -156,8 +183,14 @@ def edit_img(request, name):
     return render(request, template, context)
 
 
+@login_required
 def add_img_folder(request):
-    """ Add new image folder and select images """
+    """ Add new images folder and select images """
+    if not request.user.is_superuser:
+        sweetify.sweetalert(request, title='error', icon='error',
+            text= "This functionality is available to admin only.",
+            timer=2000)
+        return redirect(reverse('home'))
     
     if request.method == 'POST':
         img_folder_form = ImagesFolderForm(request.POST)
@@ -183,8 +216,15 @@ def add_img_folder(request):
     return render(request, template, context)
 
 
+@login_required
 def edit_img_folder(request, name):
-    """ Edit image folder """
+    """ Edit images folder """
+    if not request.user.is_superuser:
+        sweetify.sweetalert(request, title='error', icon='error',
+            text= "This functionality is available to admin only.",
+            timer=2000)
+        return redirect(reverse('home'))
+
     img_folder = get_object_or_404(ImagesFolder, name=name)
     if request.method == 'POST':
         img_folder_form = ImagesFolderForm(request.POST, instance=img_folder)
@@ -213,8 +253,14 @@ def edit_img_folder(request, name):
     return render(request, template, context)
 
 
+@login_required
 def add_product(request):
-    """ Add a product to the store """
+    """ Add a new product to the gallery """
+    if not request.user.is_superuser:
+        sweetify.sweetalert(request, title='error', icon='error',
+            text= "This functionality is available to admin only.",
+            timer=2000)
+        return redirect(reverse('home'))
     
     if request.method == 'POST':
         prod_form = ProductForm(request.POST, request.FILES)
@@ -240,8 +286,15 @@ def add_product(request):
     return render(request, template, context)
 
 
+@login_required
 def edit_product(request, name):
     """ Edit product details """
+    if not request.user.is_superuser:
+        sweetify.sweetalert(request, title='error', icon='error',
+            text= "This functionality is available to admin only.",
+            timer=2000)
+        return redirect(reverse('home'))
+
     product = get_object_or_404(Product, name=name)
     if request.method == 'POST':
         prod_form = ProductForm(request.POST, instance=product)
@@ -270,8 +323,15 @@ def edit_product(request, name):
     return render(request, template, context)
 
 
+@login_required
 def delete_product(request, name):
     """ Delete product """
+    if not request.user.is_superuser:
+        sweetify.sweetalert(request, title='error', icon='error',
+            text= "This functionality is available to admin only.",
+            timer=2000)
+        return redirect(reverse('home'))
+
     product = get_object_or_404(Product, name=name)
     product.delete()
     sweetify.sweetalert(request, title='success', icon='success',
