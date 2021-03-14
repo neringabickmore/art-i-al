@@ -1,7 +1,7 @@
 import sweetify
 
 from django.shortcuts import render, get_object_or_404, reverse, redirect
-from .models import Product, Collection, Category, Image
+from .models import Product, Collection, Category, Image, ImagesFolder
 
 from .forms import ProductForm, CollectionForm, ImagesFolderForm, ImageForm
 
@@ -177,6 +177,36 @@ def add_img_folder(request):
     template = 'products/add-img-folder.html'
     context = {
         'img_folder_form': img_folder_form,
+    }
+
+    return render(request, template, context)
+
+
+def edit_img_folder(request, name):
+    """ Edit image folder """
+    img_folder = get_object_or_404(ImagesFolder, name=name)
+    if request.method == 'POST':
+        img_folder_form = ImagesFolderForm(request.POST, instance=img_folder)
+        if img_folder_form.is_valid():
+            img_folder_form.save()
+            sweetify.sweetalert(request, title='success', icon='success',
+                text= "Successfully updated images folder content!",
+                timer=2000, timerProgressBar='true', persistent="Close")
+            return redirect(reverse('add_product'))
+        else:
+            sweetify.sweetalert(request, title='error', icon='error',
+                text= "Failed to update images folder content. Please ensure the form is valid.",
+                timer=2000, timerProgressBar='true', persistent="Close")
+    else:
+        img_folder_form = ImagesFolderForm(instance=img_folder)
+        sweetify.sweetalert(request, title='info', icon='info',
+                text= f"You are editing images folder: {img_folder.name}",
+                timer=2000, timerProgressBar='true', persistent="Close")
+    
+    template = 'products/edit-img-folder.html'
+    context = {
+        'img_folder_form': img_folder_form,
+        'img_folder': img_folder,
     }
 
     return render(request, template, context)

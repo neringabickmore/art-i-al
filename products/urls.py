@@ -11,5 +11,6 @@ urlpatterns = [
     path('add/image/', views.add_img, name='add_img'),
     path('edit/image/<name>/', views.edit_img, name='edit_img'),
     path('add/images/folder/', views.add_img_folder, name='add_img_folder'),
+    path('edit/images/folder/<name>', views.edit_img_folder, name='edit_img_folder'),
     path('add/product/', views.add_product, name='add_product'),
 ]
