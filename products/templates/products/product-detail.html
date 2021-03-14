@@ -8,12 +8,12 @@
 <!-- Free delivery banner -->
 {% block extra_header %}
 <div class="container-fluid">
-<div class="row no-gutters text-center" id="free-delivery-banner">
-    <div class="col-sm-12 my-1" id="free-delivery-banner">
-        <h5 class="py-2 mb-0">Free delivery on orders over &euro;{{ free_delivery_threshold }}!</h5>
+    <div class="row no-gutters text-center" id="free-delivery-banner">
+        <div class="col-sm-12 my-1" id="free-delivery-banner">
+            <h5 class="py-2 mb-0">Free delivery on orders over &euro;{{ free_delivery_threshold }}!</h5>
+        </div>
     </div>
-</div>
-<div class="hr-style"></div>
+    <div class="hr-style"></div>
 </div>
 {% endblock %}
 
@@ -63,9 +63,10 @@
                             {%endif%}
                             <div class="hr-style"></div>
                             <!-- Room view button; triggers modal-->
-                            <a class="" href="" aria-label="room view" id="room-view"
-                                data-toggle="modal" data-target="#roomViewModal">
-                                <p class="mt-1" data-toggle="tooltip" data-placement="left" title="room view"><i class="fas fa-eye"></i>room view</p>
+                            <a class="" href="" aria-label="room view" id="room-view" data-toggle="modal"
+                                data-target="#roomViewModal">
+                                <p class="mt-1" data-toggle="tooltip" data-placement="left" title="room view"><i
+                                        class="fas fa-eye"></i>room view</p>
                             </a>
                             <!-- Room view modal -->
                             {% include 'products/includes/room-view-modal.html' %}
@@ -74,12 +75,12 @@
                     <!-- Buttons -->
                     <div class="row">
                         <div class="col-sm-12 text-center text-sm-left p-0">
+                            <!-- Checks if item is not sold; if not then allows to add the product to the shopping bag -->
+                            {% if not product.tag.name == 'sold' %}
                             <form class="form" action="{% url 'add_to_bag' product.id %}" method="POST">
                                 {% csrf_token %}
                                 <div class="form-row">
                                     <div class="col-sm-12 p-0">
-                                        <!-- Checks if item is not sold; if not then allows to add the product to the shopping bag -->
-                                        {% if not product.tag.name == 'sold' %}
                                         <!-- Back to shop button -->
                                         <a class="btn my-3" href="{% url 'shop' %}"><span class="icon p-2">
                                                 <i class="fas fa-chevron-left" aria-hidden="true"></i>
@@ -88,18 +89,36 @@
                                         <button class="btn my-3" type="submit">Add to bag<span class="icon p-2">
                                                 <i class="fas fa-plus" aria-hidden="true"></i>
                                             </span></button>
-                                        {% endif %}
                                     </div>
                                     <!-- By default, redirects to the same item -->
                                     <input type="hidden" name="redirect_url" value="{{ request.path }}">
                                 </div>
                             </form>
+                            {% endif %}
                             <!-- If item is sold,  contact us button on display and redirects to contact -->
                             {% if product.tag.name == 'sold' %}
-                            <a class="btn my-3" href="/#contact-us-home" title="contact us" aria-label="enquire">enquire
-                                <span class="icon pl-1">
-                                    <i class="fas fa-envelope p-2" aria-hidden="true"></i>
-                                </span></a>
+                            <div class="col-sm-12 p-0">
+                                <a class="btn my-3" href="/#contact-us-home" title="contact us"
+                                    aria-label="enquire">enquire
+                                    <span class="icon pl-1">
+                                        <i class="fas fa-envelope p-2" aria-hidden="true"></i>
+                                    </span></a>
+                            </div>
+                            {% endif %}
+                            {% if request.user.is_superuser %}
+                            <!-- Product management -->
+                            <div class="col-sm-12 p-0">
+                                <!-- Edit product button-->
+                                <a class="btn my-3" href="{% url 'edit_product' product.name %}">Edit Product<span
+                                        class="icon p-2">
+                                        <i class="far fa-edit" aria-hidden="true"></i>
+                                    </span></a>
+                                <!-- Delete product button-->
+                                <a class="btn my-3 delete-btn" href="{% url 'delete_product' product.name %}">Delete
+                                    Product<span class="icon p-2">
+                                        <i class="fas fa-trash" aria-hidden="true"></i>
+                                    </span></a>
+                            </div>
                             {% endif %}
                         </div>
                     </div>

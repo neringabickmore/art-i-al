@@ -60,7 +60,7 @@ class ImageForm(forms.ModelForm):
             'img': 'Upload image',
             'url': 'Image link', 
             'main_img': 'Is this the main image?',
-            'room_view': 'Is this room-view image?',
+            'room_view': 'Is this a room-view image?',
             'show_in_gallery': 'Show this image in the "gallery" banner on home page?',
             'show_in_new': 'Show this image in the "new" banner on home page?',
         }
@@ -69,6 +69,9 @@ class ImageForm(forms.ModelForm):
         self.fields['name'].widget.attrs['class'] = 'field-styling'
         self.fields['img'].widget.attrs['class'] = 'field-styling'
         self.fields['url'].widget.attrs['class'] = 'field-styling'
+        self.fields['name'].widget.attrs['data-toggle'] = 'tooltip'
+        self.fields['name'].widget.attrs['data-placement'] = 'top'
+        self.fields['name'].widget.attrs['title'] = 'No spaces or special characters, use _ for word separation' 
     
 
 class ImagesFolderForm(forms.ModelForm):
