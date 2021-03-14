@@ -125,6 +125,7 @@ def add_img(request):
 
     return render(request, template, context)
 
+
 def edit_img(request, name):
     """ Edit collection name """
     img = get_object_or_404(Image, name=name)
@@ -222,7 +223,7 @@ def add_product(request):
             sweetify.sweetalert(request, title='success', icon='success',
             text= "Successfully added product!",
             timer=2000, timerProgressBar='true', persistent="Close")
-            return redirect(reverse('product_detail', args=[product.id]))
+            return redirect(reverse('product_detail', args=[product.name]))
         else:
             sweetify.sweetalert(request, title='error', icon='error',
             text= "Failed to add product. Please ensure the form is valid.",
@@ -238,4 +239,33 @@ def add_product(request):
 
     return render(request, template, context)
 
+
+def edit_product(request, name):
+    """ Edit product details """
+    product = get_object_or_404(Product, name=name)
+    if request.method == 'POST':
+        prod_form = ProductForm(request.POST, instance=product)
+        if prod_form.is_valid():
+            prod_form.save()
+            sweetify.sweetalert(request, title='success', icon='success',
+                text= "Successfully updated product details!",
+                timer=2000)
+            return redirect(reverse('product_detail', args=[product.name]))
+        else:
+            sweetify.sweetalert(request, title='error', icon='error',
+                text= "Failed to update product details. Please ensure the form is valid.",
+                timer=2000, timerProgressBar='true', persistent="Close")
+    else:
+        prod_form = ProductForm(instance=product)
+        sweetify.sweetalert(request, title='info', icon='info',
+                text= f"You are editing product: {product.name}",
+                timer=2000)
+    
+    template = 'products/edit-product.html'
+    context = {
+        'prod_form': prod_form,
+        'product': product,
+    }
+
+    return render(request, template, context)
 
