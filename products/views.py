@@ -1,7 +1,7 @@
 import sweetify
 
 from django.shortcuts import render, get_object_or_404, reverse, redirect
-from .models import Product, Collection, Category
+from .models import Product, Collection, Category, Image
 
 from .forms import ProductForm, CollectionForm, ImagesFolderForm, ImageForm
 
@@ -121,6 +121,35 @@ def add_img(request):
     template = 'products/add-image.html'
     context = {
         'img_form': img_form,
+    }
+
+    return render(request, template, context)
+
+def edit_img(request, name):
+    """ Edit collection name """
+    img = get_object_or_404(Image, name=name)
+    if request.method == 'POST':
+        img_form = ImageForm(request.POST, request.FILES, instance=img)
+        if img_form.is_valid():
+            img_form.save()
+            sweetify.sweetalert(request, title='success', icon='success',
+                text= "Successfully updated the image details!",
+                timer=2000, timerProgressBar='true', persistent="Close")
+            return redirect(reverse('add_product'))
+        else:
+            sweetify.sweetalert(request, title='error', icon='error',
+                text= "Failed to update image details. Please ensure the form is valid.",
+                timer=2000, timerProgressBar='true', persistent="Close")
+    else:
+        img_form = ImageForm(instance=img)
+        sweetify.sweetalert(request, title='info', icon='info',
+                text= f"You are editing image: {img.name}",
+                timer=2000, timerProgressBar='true', persistent="Close")
+    
+    template = 'products/edit-image.html'
+    context = {
+        'img_form': img_form,
+        'img': img,
     }
 
     return render(request, template, context)
