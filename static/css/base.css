@@ -295,6 +295,24 @@ p {
     font-weight: bolder;
 }
 
+/* Loader... */
+.loader-overlay-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 99999999;
+    background-color: var(--white);
+}
+
+.loader {
+    background-image: url("/media/loader/loader.gif");
+    background-repeat: no-repeat;
+    background-position: center;
+    height:100%;
+}
+
 @media (max-width: 575.98px) { 
     .btn, .allauth-form-inner-content input {
         font-size: 1.2rem;
