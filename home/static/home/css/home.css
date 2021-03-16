@@ -40,9 +40,8 @@ h1, h2, h3, h4 {
 
 /* New Art & Gallery section styling */
 .carousel-inner {
-    height: 50vh;
+    height: auto;
 }
-
 .carousel-item a {
     position: relative;
     width: 100%;
@@ -79,4 +78,10 @@ h1, h2, h3, h4 {
 .fa-chevron-left,
 .fa-chevron-right {
     font-size: calc(1rem + .5vw);
+}
+
+@media (min-width: 1025px) {
+    .carousel-inner {
+        height: 50vh;
+    }
 }
