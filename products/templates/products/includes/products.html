@@ -10,9 +10,6 @@
                         {% if img.main_img %}
                         <!-- if one of the images is set to be as main, it's then displayed-->
                         <img class="card-img-top img-fluid" src="{{ img.url }}" alt="{{ img.name }}">
-                        {% else %}
-                        <!-- if no image available it displays default image -->
-                        <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}noimage.png" alt="no image">
                         {% endif %}
                     </a>
                     {% endfor %}
