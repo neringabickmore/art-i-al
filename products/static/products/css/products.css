@@ -27,6 +27,9 @@
 #product-detail-card img:hover {
     opacity: .8;
 }
+#product-detail-card img:hover {
+    cursor: zoom-in;
+}
 
 #room-view {
     color: var(--plum);
