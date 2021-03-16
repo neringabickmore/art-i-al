@@ -30,16 +30,11 @@
             <div class="col-sm-12 col-md-6 my-4 align-self-center">
                 {% for img in product.images_folder.imgs.all %}
                 <!-- Image set as main in DB -->
-                {% if img.main_img %}
-                <a href="{{ img.url }}" target="_blank">
-                    <img class="card-img-top img-fluid" src="{{ img.url }}" alt="{{ img.name }}">
-                </a>
-                <!-- If no image set to main in DB, default no-image desplayed -->
-                {% else %}
-                <a href="">
-                    <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}noimage.png" alt="no image">
-                </a>
-                {% endif %}
+                    {% if img.main_img %}
+                        <a href="{{ img.url }}" target="_blank">
+                            <img class="card-img-top img-fluid" src="{{ img.url }}" alt="{{ img.name }}">
+                        </a>
+                    {% endif %}
                 {% endfor %}
             </div>
             <!-- Other product details-->

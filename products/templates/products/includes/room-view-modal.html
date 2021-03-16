@@ -8,11 +8,9 @@
             <!-- Room view image -->
             <div class="text-center modal-body">
                 {% for img in product.images_folder.imgs.all %}
-                {% if img.room_view %}
-                <img class="card-img-top" src="{{ img.url }}" alt="{{ img.name }}">
-                {% else %}
-                <img class="card-img-top" src="{{ MEDIA_URL }}noimage.png" alt="no image">
-                {% endif %}
+                    {% if img.room_view %}
+                        <img class="card-img-top" src="{{ img.url }}" alt="{{ img.name }}">
+                    {% endif %}
                 {% endfor %}
             </div>
         </div>
