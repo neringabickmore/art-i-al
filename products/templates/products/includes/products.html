@@ -6,7 +6,7 @@
                 <div class="col-sm-12 col-md-7 col-lg-12 align-self-center">
                     <!-- checks for images in the product images folder -->
                     {% for img in product.images_folder.imgs.all %}
-                    <a href="{% url 'product_detail' product.name %}">
+                    <a href="{% url 'product_detail' product.name %}" title="view details" aria-label="view details">
                         {% if img.main_img %}
                         <!-- if one of the images is set to be as main, it's then displayed-->
                         <img class="card-img-top img-fluid" src="{{ img.url }}" alt="{{ img.name }}">
@@ -29,8 +29,8 @@
                         </div>
                         <div class="row align-items-end {% if request.user.is_superuser %}h-75 {% else %}h-50{% endif %} ">
                             <div class="p-0 col-sm-12">
-                                <a class="btn my-2 col-sm-12 " href="{% url 'product_detail' product.name %}" title="more info"
-                                    aria-label="add to bag">view details
+                                <a class="btn my-2 col-sm-12 " href="{% url 'product_detail' product.name %}" title="view details"
+                                    aria-label="view details">view details
                                     <span class="icon pl-1">
                                         <i class="fas fa-info-circle p-2" aria-hidden="true"></i>
                                     </span></a>
