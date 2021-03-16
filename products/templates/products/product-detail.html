@@ -28,8 +28,8 @@
             </div>
             <!-- Product image-->
             <div class="col-sm-12 col-md-6 my-4 align-self-center">
-                {% for img in product.images_folder.imgs.all %}
                 <!-- Image set as main in DB -->
+                {% for img in product.images_folder.imgs.all %}
                 {% if img.main_img %}
                 <a href="{% if img.url %}{{ img.url }}{% else %}{{ MEDIA_URL }}noimage.png{% endif %}" target="_blank">
                     <img class="card-img-top img-fluid"
