@@ -9,7 +9,9 @@
                     <a href="{% url 'product_detail' product.name %}" title="view details" aria-label="view details">
                         {% if img.main_img %}
                         <!-- if one of the images is set to be as main, it's then displayed-->
-                        <img class="card-img-top img-fluid" src="{{ img.url }}" alt="{{ img.name }}">
+                        <img class="card-img-top img-fluid"
+                            src="{% if img.url %}{{ img.url }}{% else %}{{ MEDIA_URL }}noimage.png{% endif %}"
+                            alt="{{ img.name }}">
                         {% endif %}
                     </a>
                     {% endfor %}
@@ -17,7 +19,8 @@
                 <!-- Product info -->
                 <div class="col-sm-12 col-md-5 col-lg-12 ">
                     <div class="container h-100">
-                        <div class="row align-items-start {% if request.user.is_superuser %}h-25{% else %}h-50{% endif %}">
+                        <div
+                            class="row align-items-start {% if request.user.is_superuser %}h-25{% else %}h-50{% endif %}">
                             <div class="col-sm-12 mt-3 p-0">
                                 <!-- checks for product name and assigns -->
                                 <h4 class="artwork-title">{{ product.collection_name.friendly_name}}: {{ product.name }}
@@ -27,22 +30,24 @@
                                     {{product.tag.friendly_name}}</div>
                             </div>
                         </div>
-                        <div class="row align-items-end {% if request.user.is_superuser %}h-75 {% else %}h-50{% endif %} ">
+                        <div
+                            class="row align-items-end {% if request.user.is_superuser %}h-75 {% else %}h-50{% endif %} ">
                             <div class="p-0 col-sm-12">
-                                <a class="btn my-2 col-sm-12 " href="{% url 'product_detail' product.name %}" title="view details"
-                                    aria-label="view details">view details
+                                <a class="btn my-2 col-sm-12 " href="{% url 'product_detail' product.name %}"
+                                    title="view details" aria-label="view details">view details
                                     <span class="icon pl-1">
                                         <i class="fas fa-info-circle p-2" aria-hidden="true"></i>
                                     </span></a>
                                 {% if request.user.is_superuser %}
                                 <!-- Product management -->
                                 <!-- Edit product button-->
-                                <a class="btn my-2 col-sm-12" href="{% url 'edit_product' product.name %}">Edit Product<span
-                                        class="icon p-2">
+                                <a class="btn my-2 col-sm-12" href="{% url 'edit_product' product.name %}">Edit
+                                    Product<span class="icon p-2">
                                         <i class="far fa-edit" aria-hidden="true"></i>
                                     </span></a>
                                 <!-- Delete product button-->
-                                <a class="btn my-2 col-sm-12 delete-btn" href="{% url 'delete_product' product.name %}">Delete
+                                <a class="btn my-2 col-sm-12 delete-btn"
+                                    href="{% url 'delete_product' product.name %}">Delete
                                     Product<span class="icon p-2">
                                         <i class="fas fa-trash" aria-hidden="true"></i>
                                     </span></a>
