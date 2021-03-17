@@ -103,6 +103,11 @@ p {
     color: var(--tuscany);
 }
 
+/* body */
+.error-container {
+   min-height: 66vh; 
+}
+
 /* footer */
 .footer {
     background-color: var(--black-chocolate);
