@@ -28,13 +28,16 @@
             </div>
             <!-- Product image-->
             <div class="col-sm-12 col-md-6 my-4 align-self-center">
-                {% for img in product.images_folder.imgs.all %}
                 <!-- Image set as main in DB -->
-                    {% if img.main_img %}
-                        <a href="{{ img.url }}" target="_blank">
-                            <img class="card-img-top img-fluid" src="{{ img.url }}" alt="{{ img.name }}">
-                        </a>
-                    {% endif %}
+                {% for img in product.images_folder.imgs.all %}
+                {% if img.main_img %}
+                <a href="{% if img.url %}{{ img.url }}{% else %}{{ MEDIA_URL }}noimage.png{% endif %}" target="_blank"
+                    title="enlarge image" aria-label="enlarge image">
+                    <img class="card-img-top img-fluid"
+                        src="{% if img.url %}{{ img.url }}{% else %}{{ MEDIA_URL }}noimage.png{% endif %}"
+                        alt="{{ img.name }}">
+                </a>
+                {% endif %}
                 {% endfor %}
             </div>
             <!-- Other product details-->

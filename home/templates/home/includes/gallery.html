@@ -22,9 +22,6 @@
                     {% if img.url %}
                     <!-- displays images -->
                     <img src="{{ img.url }}" class="d-block" alt="{{ img.name }}">
-                    {% else %}
-                        <!-- if no image available it displays default image -->
-                        <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}noimage.png" alt="no image">
                     {% endif %}
                 </a>
             </div>

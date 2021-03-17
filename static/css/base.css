@@ -313,6 +313,32 @@ p {
     height:100%;
 }
 
+/** Go Up button styling **/
+#goUpBtn {
+    display: none;
+    position: fixed;
+    bottom: 2rem; 
+    right: 1rem; 
+    z-index: 99;
+    border: none;
+    outline: none;
+    background-color: var(--black-chocolate);
+    cursor: pointer;
+    padding: 1.4px;
+    border-radius: 50%;
+    vertical-align: middle;
+}
+
+#goUpBtn:hover {
+    background-color: var(--white);
+}
+
+.fa-arrow-alt-circle-up{
+    font-size: 5rem;
+    color: var(--plum);
+    border-radius: 50%;
+}
+
 @media (max-width: 575.98px) { 
     .btn, .allauth-form-inner-content input {
         font-size: 1.2rem;
