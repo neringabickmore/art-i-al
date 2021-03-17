@@ -26,9 +26,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get('SECRET_KEY')
-DEBUG = os.environ.get('DEVELOPMENT')
 
 # SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = 'DEVELOPMENT' in os.environ
 
 if DEBUG:
     ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'art-ial-app.herokuapp.com']
@@ -114,7 +114,7 @@ SITE_ID = 1
 
 
 # Email set up
-if 'DEBUG' in os.environ:
+if DEBUG:
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
     DEFAULT_FROM_EMAIL = 'art.ial@example.com'
 else: 
