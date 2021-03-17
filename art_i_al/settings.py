@@ -31,7 +31,7 @@ DEBUG = os.environ.get('DEVELOPMENT')
 # SECURITY WARNING: don't run with debug turned on in production!
 
 if DEBUG:
-    ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+    ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'art-ial-app.herokuapp.com']
 else:
     ALLOWED_HOSTS = ['art-ial-app.herokuapp.com']
 
