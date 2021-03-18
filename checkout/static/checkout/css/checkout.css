@@ -123,8 +123,8 @@ select option[value=""] {
 /* checkout-success */
 .order-confirmation-wrapper {
     border: 1px solid var(--black-chocolate);
-    background-color: var(--almond);
-    color: var(--black-chocolate);
+    background-color: var(--hunter-green);
+    color: var(--white);
     margin: 3rem 0;
     padding: 2rem;
     font-size: 1.6rem;
