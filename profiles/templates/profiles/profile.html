@@ -16,10 +16,12 @@
     <div class="row my-1 mx-1">
         <!-- Personal Information-->
         {% include 'profiles/includes/personal-info.html' %}
+        {% if not user.is_superuser %}
         <!-- Shipping Information-->
         {% include 'profiles/includes/shipping-info.html' %}
         <!-- Order History -->
         {% include 'profiles/includes/order-history.html' %}
+        {% endif %}
     </div>
 </div>
 {% endblock %}
