@@ -9,7 +9,7 @@
   <h3 class="my-4 text-center text-sm-left">{% trans "email addresses" %}</h3>
 </div>
 {% if user.emailaddress_set.all %}
-<div class="col-sm-12 px-4">
+<div class="col-sm-7 px-4">
   <p>{% trans 'The following e-mail addresses are associated with your account: ' %}</p>
   <!-- form with a list of email addresses with option to change/add -->
   <form action="{% url 'account_email' %}" class="email_list" method="post">
