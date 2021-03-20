@@ -181,7 +181,8 @@ p {
     background-color: var(--plum);
 }
 .delete-btn:hover {
-    background-color: var(--black-chocolate);
+    background-color: var(--white);
+    color: var(--black-chocolate);
 }
 
 /* font awesome */
