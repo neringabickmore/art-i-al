@@ -84,9 +84,17 @@
                                                 <i class="fas fa-chevron-left" aria-hidden="true"></i>
                                             </span>Keep Shopping</a>
                                         <!-- Add to bag button-->
+                                        {% if bag %}
+                                        <!-- If product is in the bag show view bag -->
+                                        <a class="btn my-3" href="{% url 'view_bag' %}">view bag<span class="icon p-2">
+                                            <i class="fas fa-chevron-right" aria-hidden="true"></i>
+                                        </span></a>
+                                        {% else %}
+                                        <!-- If product is not in the bag, give option to add it -->
                                         <button class="btn my-3" type="submit">Add to bag<span class="icon p-2">
-                                                <i class="fas fa-plus" aria-hidden="true"></i>
-                                            </span></button>
+                                            <i class="fas fa-plus" aria-hidden="true"></i>
+                                        </span></button>
+                                        {% endif %}
                                     </div>
                                     <!-- By default, redirects to the same item -->
                                     <input type="hidden" name="redirect_url" value="{{ request.path }}">

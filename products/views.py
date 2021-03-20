@@ -6,6 +6,7 @@ from .models import Product, Collection, Category, Image, ImagesFolder
 
 from .forms import ProductForm, CollectionForm, ImagesFolderForm, ImageForm
 
+from bag.contexts import bag_contents
 
 def gallery(request):
     """ A view to show all products"""
@@ -35,9 +36,12 @@ def product_detail(request, name):
     """ A view to show individual product details """
 
     product = get_object_or_404(Product, name=name)
+    # do not remove this else view bag button won't show
+    bag = request.session['bag']
 
     context = {
         'product': product,
+        'bag': bag,
     }
 
     return render(request, 'products/product-detail.html', context)
