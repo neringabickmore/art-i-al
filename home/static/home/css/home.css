@@ -17,7 +17,9 @@ h1, h2, h3, h4 {
     color: var(--black-chocolate);  
     border-color: var(--dark-lava);
     border-radius: 0;
-    
+}
+.form-text {
+    color: var(--white)!important;
 }
 
 #contact-form .btn {

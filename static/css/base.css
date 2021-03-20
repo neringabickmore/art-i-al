@@ -344,6 +344,11 @@ p {
     border-radius: 50%;
 }
 
+/* All forms on the site */
+.form-control:focus {
+    box-shadow: var(--dark-small-box-shadow)!important;
+}
+
 @media (max-width: 575.98px) { 
     .btn, .allauth-form-inner-content input {
         font-size: 1.2rem;
