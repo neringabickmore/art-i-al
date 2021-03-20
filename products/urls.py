@@ -6,6 +6,8 @@ urlpatterns = [
     path('gallery/', views.gallery, name='gallery'),
     path('shop/', views.shop, name='shop'),
     path('<name>/', views.product_detail, name='product_detail'), 
+    # Product management options
+    path('manage/product/', views.product_management, name='product_management'),
     # Collections management
     path('add/collection/', views.add_collection, name='add_collection'),
     path('edit/collection/<name>/', views.edit_collection, name='edit_collection'),

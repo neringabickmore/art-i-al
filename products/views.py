@@ -46,6 +46,17 @@ def product_detail(request, name):
 
     return render(request, 'products/product-detail.html', context)
 
+@login_required
+def product_management(request):
+    """ Manage products """
+    if not request.user.is_superuser:
+        sweetify.sweetalert(request, title='error', icon='error',
+            text= "This functionality is available to admin only.",
+            timer=2000)
+        return redirect(reverse('home'))
+
+    return render(request, 'products/product-management.html')
+
 
 @login_required
 def add_collection(request):
