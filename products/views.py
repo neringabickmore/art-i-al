@@ -37,7 +37,7 @@ def product_detail(request, name):
 
     product = get_object_or_404(Product, name=name)
     # do not remove this else view bag button won't show
-    bag = request.session['bag']
+    bag = request.session.get('bag', {})
 
     context = {
         'product': product,
