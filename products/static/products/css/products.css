@@ -47,27 +47,21 @@
 
 /* tag styling */
 .tag-new, 
-.tag-available, 
 .tag-sold {
     text-align: center;
-    box-shadow: var(--dark-small-box-shadow);
-}
-
-.tag-new{
-    background-color: var(--almond);
-    border: solid 1px var(--dark-lava);
+    box-shadow: var(--dark-small-box-shadow); 
     max-width: 25%;
 }
 
-.tag-available {
-    border: solid 1px var(--dark-lava);
-    max-width: 43%;
+.tag-new{
+    color: var(--hunter-green);
+    border: solid 1px var(--hunter-green);
+   
 }
 
 .tag-sold {
     color: var(--almond);
     border: solid 1px var(--almond);
-    max-width: 25%;
 }
 
 /* font awesome styling */
