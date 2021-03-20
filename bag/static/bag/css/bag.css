@@ -11,6 +11,15 @@
     margin: 3rem 0;
 }
 
+.btn-secure-checkout {
+    background-color: var(--hunter-green);
+}
+
+.btn-secure-checkout:hover {
+    background-color: var(--white);
+    color: var(--hunter-green);
+}
+
 .fa-trash {
     color: var(--plum);
 }

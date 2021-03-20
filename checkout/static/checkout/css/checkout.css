@@ -1,3 +1,4 @@
+/* checkout form */
 #checkout-container,
 #checkout-success-container {
     min-height: 75vh;
@@ -50,16 +51,28 @@
     font-size: 1.2rem;
 }
 
+/* text in delivery info part of the form */
+.text-info {
+    color: var(--hunter-green)!important;
+    font-weight: 900;
+}
+.text-info:hover {
+    text-decoration: none;
+}
+
+/* buttons specific to checkout */
 .checkout-btn {
     font-size: 1.4rem;
     margin: 2rem .25rem;
-    color: var(--white);
-    background-color: var(--dark-lava);
-    box-shadow: var(--dark-small-box-shadow);
 }
 
-.checkout-btn:hover {
+.btn-secure-payment {
     background-color: var(--hunter-green);
+}
+
+.btn-secure-payment:hover {
+    background-color: var(--white);
+    color: var(--hunter-green);
 }
 
 /* payment table */
