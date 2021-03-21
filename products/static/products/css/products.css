@@ -92,6 +92,9 @@
 }
 
 /* Product management elements */
+.prod-mngmnt-container {
+    min-height: 63vh;
+}
 .prod-mngmnt-form label, 
 .prod-mngmnt-form option {
     font-size: 1.6rem;
@@ -101,9 +104,79 @@
     border: 1px solid var(--dark-lava);
     font-size: 1.6rem;
 }
+.list-group-item::first-letter {
+    text-transform:capitalize;
+}
 
-.tooltip {
-    font-size: 1.2rem;
+.list-group-item, .list-group-item-action:active {
+    border-color: var(--dark-lava);
+    color: var(--white);
+}
+
+.list-group-item.active, .list-group-item-action:active{
+    background-color: var(--hunter-green);
+    border-color: var(--black-chocolate);
+    border-radius: 0;
+}
+.list-group-item-action{
+    color: var(--black-chocolate);
+}
+.list-group-item:hover{
+    background-color: var(--almond);
+    color: var(--black-chocolate);
+    font-weight: 600;
+}
+
+ul {
+    list-style: none;
+}
+.list-style{
+    list-style-type: disc;
+}
+li .fa-hand-point-right, li .fa-check {
+    color: var(--hunter-green);
+    font-size: 2rem;
+}
+
+#nav-tabContent li a {
+    color: var(--hunter-green);
+    font-weight: 900;
+}
+
+li a:hover{
+    color: var(--hunter-green);
+    text-decoration: none;
+}
+
+/* All images template */
+#all-images-table {
+    background-color: var(--almond);
+    color: var(--black-chocolate);
+    font-size: calc(1rem + .2vw);
+}
+.table thead th {
+
+    border-bottom: 3px solid var(--white);
+}
+
+.table tbody+tbody, .table td {
+    border-color: var(--white);
+}
+#all-images-table thead {
+    text-transform: uppercase;
+    color: var(--black-chocolate);
+}
+
+#all-images-table td a {
+    color: var(--hunter-green);
+    font-weight: 900;
+}
+
+#all-images-table .fa-times {
+    color: var(--plum);
+}
+#all-images-table .fa-check {
+    color: var(--hunter-green);
 }
 
 /* Delete product warning modal */
@@ -113,4 +186,9 @@
 .cancel-delete-product:hover {
     background-color: var(--white);
     color: var(--hunter-green);
+}
+
+/* other */
+.tooltip {
+    font-size: 1.2rem;
 }

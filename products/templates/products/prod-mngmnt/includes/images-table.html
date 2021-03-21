@@ -1,0 +1,52 @@
+<table class="table" id="all-images-table">
+  <!-- headers -->
+  <thead>
+    <tr>
+      <th scope="col">artwork name</th>
+      <th scope="col">main image?</th>
+      <th scope="col">room view?</th>
+      <th scope="col">show in gallery?</th>
+      <th scope="col">show in new?</th>
+    </tr>
+  </thead>
+  {% for image in images %}
+  <!-- body content -->
+  <tbody>
+    <tr>
+      <!-- name -->
+      <td data-toggle="tooltip" data-placement ="top" title="edit {{image.name}}"><a href="{% url 'edit_img' image.name %}">{{image.name}}</a> </td>
+      <!-- main image: Y/N -->
+      <td>{% if image.main_img %}
+        <i class="fas fa-check"></i>
+        {% else %}
+        <i class="fas fa-times"></i>
+        {% endif %}
+      </td>
+      <!-- room view: Y/N -->
+      <td>
+        {% if image.room_view %}
+        <i class="fas fa-check"></i>
+        {% else %}
+        <i class="fas fa-times"></i>
+        {% endif %}
+      </td>
+      <!-- show in gallery: Y/N -->
+      <td>
+        {% if image.show_in_gallery %}
+        <i class="fas fa-check"></i>
+        {% else %}
+        <i class="fas fa-times"></i>
+        {% endif %}
+      </td>
+      <!-- show in new: Y/N -->
+      <td>
+        {% if image.show_in_new %}
+        <i class="fas fa-check"></i>
+        {% else %}
+        <i class="fas fa-times"></i>
+        {% endif %}
+      </td>
+    </tr>
+  </tbody>
+  {% endfor %}
+</table>
