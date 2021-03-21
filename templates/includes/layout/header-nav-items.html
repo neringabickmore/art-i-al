@@ -4,22 +4,23 @@
         Home
     </a>
 </li>
-<!-- about -->
-<li class="nav-item">
-    <a class="nav-link-header" href="/#about-home" id="">
-        About
-    </a>
-</li>
 <!-- gallery -->
 <li class="nav-item">
     <a class="nav-link-header" href="{% url 'gallery' %}" id="">
         Gallery
     </a>
 </li>
+{% if not user.is_superuser %}
 <!-- shop -->
 <li class="nav-item">
     <a class="nav-link-header" href="{% url 'shop' %}" id="">
         Shop
+    </a>
+</li>
+<!-- about -->
+<li class="nav-item">
+    <a class="nav-link-header" href="/#about-home" id="">
+        About
     </a>
 </li>
 <!-- contact -->
@@ -28,18 +29,22 @@
         Contact
     </a>
 </li>
-<!-- profile -->
+{% endif %}
+{% if user.is_superuser %}
+<!-- Product management -->
+<li class="nav-item">
+    <a class="nav-link-header" href="{% url 'product_management' %}" id="">
+        Product Management
+    </a>
+    {% endif %}
+    <!-- profile -->
 <li class="nav-item  dropdown">
     <a class="nav-link-header" role="button" id="profileDropdown" data-toggle="dropdown" aria-haspopup="true"
         aria-expanded="false">
         Profile
     </a>
     <ul class="dropdown-menu-header dropdown-menu border-0" aria-labelledby="profileDropdown">
-        {% if user.is_superuser %}
-        <li><a href="{% url 'product_management' %}" class="dropdown-item ">Product Management</a></li>
-        <li><a href="{% url 'profile' %}" class="dropdown-item ">Account</a></li>
-        <li><a href="{% url 'account_logout' %}" class="dropdown-item ">Logout</a></li>
-        {% elif user.is_authenticated %}
+        {% if user.is_authenticated %}
         <li><a href="{% url 'profile' %}" class="dropdown-item ">Account</a></li>
         <li><a href="{% url 'account_logout' %}" class="dropdown-item ">Logout</a></li>
         {% else %}
