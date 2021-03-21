@@ -46,6 +46,7 @@ def product_detail(request, name):
 
     return render(request, 'products/product-detail.html', context)
 
+
 @login_required
 def product_management(request):
     """ Manage products """
@@ -293,7 +294,7 @@ def edit_img_folder(request, name):
                 text= f"You are editing images folder: {img_folder.name}",
                 timer=2000, timerProgressBar='true', persistent="Close")
     
-    template = 'products/edit-img-folder.html'
+    template = 'products/prod-mngmnt/edit-img-folder.html'
     context = {
         'img_folder_form': img_folder_form,
         'img_folder': img_folder,
