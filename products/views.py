@@ -46,6 +46,7 @@ def product_detail(request, name):
 
     return render(request, 'products/product-detail.html', context)
 
+
 @login_required
 def product_management(request):
     """ Manage products """
@@ -55,7 +56,24 @@ def product_management(request):
             timer=2000)
         return redirect(reverse('home'))
 
-    return render(request, 'products/product-management.html')
+    return render(request, 'products/prod-mngmnt/product-management.html')
+
+
+@login_required
+def view_all_collections(request):
+    """ View all collections """
+    if not request.user.is_superuser:
+        sweetify.sweetalert(request, title='error', icon='error',
+            text= "This functionality is available to admin only.",
+            timer=2000)
+        return redirect(reverse('product_management'))
+    
+    collections = Collection.objects.all()
+    template = 'products/prod-mngmnt/view-all-collections.html'
+    context = {
+        'collections': collections,
+    }
+    return render(request, template, context)
 
 
 @login_required
@@ -83,7 +101,7 @@ def add_collection(request):
     else:
         collection_form = CollectionForm()
        
-    template = 'products/add-collection.html'
+    template = 'products/prod-mngmnt/add-collection.html'
     context = {
         'collection_form': collection_form,
     }
@@ -106,25 +124,39 @@ def edit_collection(request, name):
         if collection_form.is_valid():
             collection_form.save()
             sweetify.sweetalert(request, title='success', icon='success',
-                text= "Successfully updated collection name!",
-                timer=2000, timerProgressBar='true', persistent="Close")
-            return redirect(reverse('add_product'))
+                text= "Successfully updated collection name!")
+            return redirect(reverse('view_all_collections'))
         else:
             sweetify.sweetalert(request, title='error', icon='error',
                 text= "Failed to update collection name. Please ensure the form is valid.",
                 timer=2000, timerProgressBar='true', persistent="Close")
     else:
         collection_form = CollectionForm(instance=collection)
-        sweetify.sweetalert(request, title='info', icon='info',
-                text= f"You are editing collection: {collection.friendly_name}",
-                timer=2000, timerProgressBar='true', persistent="Close")
+        sweetify.sweetalert(request, title=f"You are editing collection: {collection.friendly_name}", icon='info')
     
-    template = 'products/edit-collection.html'
+    template = 'products/prod-mngmnt/edit-collection.html'
     context = {
         'collection_form': collection_form,
         'collection': collection,
     }
 
+    return render(request, template, context)
+
+
+@login_required
+def view_all_images(request):
+    """ View all images """
+    if not request.user.is_superuser:
+        sweetify.sweetalert(request, title='error', icon='error',
+            text= "This functionality is available to admin only.",
+            timer=2000)
+        return redirect(reverse('home'))
+    
+    images = Image.objects.all()
+    template = 'products/prod-mngmnt/view-all-images.html'
+    context = {
+        'images': images,
+    }
     return render(request, template, context)
 
 
@@ -153,7 +185,7 @@ def add_img(request):
     else:
         img_form = ImageForm()
        
-    template = 'products/add-image.html'
+    template = 'products/prod-mngmnt/add-image.html'
     context = {
         'img_form': img_form,
     }
@@ -176,9 +208,8 @@ def edit_img(request, name):
         if img_form.is_valid():
             img_form.save()
             sweetify.sweetalert(request, title='success', icon='success',
-                text= "Successfully updated the image details!",
-                timer=2000, timerProgressBar='true', persistent="Close")
-            return redirect(reverse('add_product'))
+                text= "Successfully updated the image details!")
+            return redirect(reverse('view_all_images'))
         else:
             sweetify.sweetalert(request, title='error', icon='error',
                 text= "Failed to update image details. Please ensure the form is valid.",
@@ -186,10 +217,9 @@ def edit_img(request, name):
     else:
         img_form = ImageForm(instance=img)
         sweetify.sweetalert(request, title='info', icon='info',
-                text= f"You are editing image: {img.name}",
-                timer=2000, timerProgressBar='true', persistent="Close")
+                text= f"You are editing image: {img.name}")
     
-    template = 'products/edit-image.html'
+    template = 'products/prod-mngmnt/edit-image.html'
     context = {
         'img_form': img_form,
         'img': img,
@@ -223,11 +253,28 @@ def add_img_folder(request):
     else:
         img_folder_form = ImagesFolderForm()
        
-    template = 'products/add-img-folder.html'
+    template = 'products/prod-mngmnt/add-img-folder.html'
     context = {
         'img_folder_form': img_folder_form,
     }
 
+    return render(request, template, context)
+
+
+@login_required
+def view_all_folders(request):
+    """ View all images folders """
+    if not request.user.is_superuser:
+        sweetify.sweetalert(request, title='error', icon='error',
+            text= "This functionality is available to admin only.",
+            timer=2000)
+        return redirect(reverse('home'))
+    
+    folders = ImagesFolder.objects.all()
+    template = 'products/prod-mngmnt/view-all-folders.html'
+    context = {
+        'folders': folders,
+    }
     return render(request, template, context)
 
 
@@ -246,9 +293,8 @@ def edit_img_folder(request, name):
         if img_folder_form.is_valid():
             img_folder_form.save()
             sweetify.sweetalert(request, title='success', icon='success',
-                text= "Successfully updated images folder content!",
-                timer=2000, timerProgressBar='true', persistent="Close")
-            return redirect(reverse('add_product'))
+                text= "Successfully updated images folder content!")
+            return redirect(reverse('view_all_folders'))
         else:
             sweetify.sweetalert(request, title='error', icon='error',
                 text= "Failed to update images folder content. Please ensure the form is valid.",
@@ -256,10 +302,9 @@ def edit_img_folder(request, name):
     else:
         img_folder_form = ImagesFolderForm(instance=img_folder)
         sweetify.sweetalert(request, title='info', icon='info',
-                text= f"You are editing images folder: {img_folder.name}",
-                timer=2000, timerProgressBar='true', persistent="Close")
+                text= f"You are editing images folder: {img_folder.name}")
     
-    template = 'products/edit-img-folder.html'
+    template = 'products/prod-mngmnt/edit-img-folder.html'
     context = {
         'img_folder_form': img_folder_form,
         'img_folder': img_folder,
@@ -293,7 +338,7 @@ def add_product(request):
     else:
         prod_form = ProductForm()
        
-    template = 'products/add-product.html'
+    template = 'products/prod-mngmnt/add-product.html'
     context = {
         'prod_form': prod_form,
     }
@@ -329,7 +374,7 @@ def edit_product(request, name):
                 text= f"You are editing product: {product.name}",
                 timer=2000)
     
-    template = 'products/edit-product.html'
+    template = 'products/prod-mngmnt/edit-product.html'
     context = {
         'prod_form': prod_form,
         'product': product,
