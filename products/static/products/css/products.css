@@ -149,7 +149,7 @@ li a:hover{
 }
 
 /* All images template */
-#all-images-table {
+table {
     background-color: var(--almond);
     color: var(--black-chocolate);
     font-size: calc(1rem + .2vw);
@@ -162,20 +162,23 @@ li a:hover{
 .table tbody+tbody, .table td {
     border-color: var(--white);
 }
-#all-images-table thead {
+table thead {
     text-transform: uppercase;
     color: var(--black-chocolate);
 }
 
-#all-images-table td a {
+table td a {
     color: var(--hunter-green);
     font-weight: 900;
 }
+table td a:hover {
+    color: var(--hunter-green);
+}
 
-#all-images-table .fa-times {
+table .fa-times {
     color: var(--plum);
 }
-#all-images-table .fa-check {
+table .fa-check {
     color: var(--hunter-green);
 }
 
