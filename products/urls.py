@@ -12,9 +12,11 @@ urlpatterns = [
     path('add/collection/', views.add_collection, name='add_collection'),
     path('edit/collection/<name>/', views.edit_collection, name='edit_collection'),
     # Images management
+    path('view/all/images/', views.view_all_images, name='view_all_images'),
     path('add/image/', views.add_img, name='add_img'),
     path('edit/image/<name>/', views.edit_img, name='edit_img'),
     # Images Folder management
+    path('view/all/folders/', views.view_all_folders, name='view_all_folders'),
     path('add/images/folder/', views.add_img_folder, name='add_img_folder'),
     path('edit/images/folder/<name>', views.edit_img_folder, name='edit_img_folder'),
     # Product Management
