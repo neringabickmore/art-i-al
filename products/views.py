@@ -55,7 +55,7 @@ def product_management(request):
             timer=2000)
         return redirect(reverse('home'))
 
-    return render(request, 'products/product-management.html')
+    return render(request, 'products/prod-mngmnt/product-management.html')
 
 
 @login_required
@@ -83,7 +83,7 @@ def add_collection(request):
     else:
         collection_form = CollectionForm()
        
-    template = 'products/add-collection.html'
+    template = 'products/prod-mngmnt/add-collection.html'
     context = {
         'collection_form': collection_form,
     }
@@ -119,7 +119,7 @@ def edit_collection(request, name):
                 text= f"You are editing collection: {collection.friendly_name}",
                 timer=2000, timerProgressBar='true', persistent="Close")
     
-    template = 'products/edit-collection.html'
+    template = 'products/prod-mngmnt/edit-collection.html'
     context = {
         'collection_form': collection_form,
         'collection': collection,
@@ -170,7 +170,7 @@ def add_img(request):
     else:
         img_form = ImageForm()
        
-    template = 'products/add-image.html'
+    template = 'products/prod-mngmnt/add-image.html'
     context = {
         'img_form': img_form,
     }
@@ -206,7 +206,7 @@ def edit_img(request, name):
                 text= f"You are editing image: {img.name}",
                 timer=2000, timerProgressBar='true', persistent="Close")
     
-    template = 'products/edit-image.html'
+    template = 'products/prod-mngmnt/edit-image.html'
     context = {
         'img_form': img_form,
         'img': img,
@@ -240,7 +240,7 @@ def add_img_folder(request):
     else:
         img_folder_form = ImagesFolderForm()
        
-    template = 'products/add-img-folder.html'
+    template = 'products/prod-mngmnt/add-img-folder.html'
     context = {
         'img_folder_form': img_folder_form,
     }
@@ -327,7 +327,7 @@ def add_product(request):
     else:
         prod_form = ProductForm()
        
-    template = 'products/add-product.html'
+    template = 'products/prod-mngmnt/add-product.html'
     context = {
         'prod_form': prod_form,
     }
@@ -363,7 +363,7 @@ def edit_product(request, name):
                 text= f"You are editing product: {product.name}",
                 timer=2000)
     
-    template = 'products/edit-product.html'
+    template = 'products/prod-mngmnt/edit-product.html'
     context = {
         'prod_form': prod_form,
         'product': product,

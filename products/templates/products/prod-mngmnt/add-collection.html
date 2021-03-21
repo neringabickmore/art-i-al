@@ -12,20 +12,20 @@
             <!-- Title -->
             <h3 class="my-4 ml-2 text-uppercase">Product Management</h3>
             <!-- Extra Title -->
-            <h4 class="my-4 ml-2 text-uppercase">Add New Artwork Image</h4>
+            <h4 class="my-4 ml-2 text-uppercase">Add New Collection</h4>
         </div>
     </div>
     <div class="row">
-        <!-- Add Image Form -->
+        <!-- Add Collection Form -->
         <div class="col-12 col-md-6 px-4">
-            <form method="POST" action="{% url 'add_img' %}" class="form mb-2 prod-mngmnt-form" enctype="multipart/form-data">
+            <form method="POST" action="{% url 'add_collection' %}" class="form mb-2 prod-mngmnt-form">
                 {% csrf_token %}
-                {{ img_form | crispy }}
+                {{ collection_form | crispy }}
                 <div class="text-right">
-                    <a class="btn " href="{% url 'gallery' %}"><span class="icon p-2">
+                    <a class="btn " href="{% url 'product_management' %}"><span class="icon p-2">
                             <i class="fas fa-chevron-left" aria-hidden="true"></i>
                         </span>Cancel</a>
-                    <button class="btn" type="submit">Add Image<span class="icon p-2">
+                    <button class="btn" type="submit">Add Collection<span class="icon p-2">
                             <i class="fas fa-plus" aria-hidden="true"></i>
                         </span></button>
                 </div>

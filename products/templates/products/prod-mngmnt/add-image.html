@@ -12,22 +12,29 @@
             <!-- Title -->
             <h3 class="my-4 ml-2 text-uppercase">Product Management</h3>
             <!-- Extra Title -->
-            <h4 class="my-4 ml-2 text-uppercase">Add New Collection</h4>
+            <h4 class="my-4 ml-2 text-uppercase">Add New Artwork Image</h4>
         </div>
     </div>
     <div class="row">
-        <!-- Add Collection Form -->
+        <!-- Add Image Form -->
         <div class="col-12 col-md-6 px-4">
-            <form method="POST" action="{% url 'add_collection' %}" class="form mb-2 prod-mngmnt-form">
+            <form method="POST" action="{% url 'add_img' %}" class="form mb-2 prod-mngmnt-form"
+                enctype="multipart/form-data">
                 {% csrf_token %}
-                {{ collection_form | crispy }}
+                {{ img_form | crispy }}
                 <div class="text-right">
-                    <a class="btn " href="{% url 'gallery' %}"><span class="icon p-2">
+                    <!-- cancel -->
+                    <a class="btn " href="{% url 'product_management' %}"><span class="icon p-2">
                             <i class="fas fa-chevron-left" aria-hidden="true"></i>
                         </span>Cancel</a>
-                    <button class="btn" type="submit">Add Collection<span class="icon p-2">
+                    <!-- add new image -->
+                    <button class="btn" type="submit">Add Image<span class="icon p-2">
                             <i class="fas fa-plus" aria-hidden="true"></i>
                         </span></button>
+                    <!-- view all images -->
+                    <a class="btn " href="{% url 'view_all_images' %}">view all<span class="icon p-2">
+                            <i class="fas fa-chevron-right" aria-hidden="true"></i>
+                        </span></a>
                 </div>
             </form>
         </div>
