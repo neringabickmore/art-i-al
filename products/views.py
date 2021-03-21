@@ -60,6 +60,23 @@ def product_management(request):
 
 
 @login_required
+def view_all_collections(request):
+    """ View all collections """
+    if not request.user.is_superuser:
+        sweetify.sweetalert(request, title='error', icon='error',
+            text= "This functionality is available to admin only.",
+            timer=2000)
+        return redirect(reverse('product_management'))
+    
+    collections = Collection.objects.all()
+    template = 'products/prod-mngmnt/view-all-collections.html'
+    context = {
+        'collections': collections,
+    }
+    return render(request, template, context)
+
+
+@login_required
 def add_collection(request):
     """ Add new collection name """
     if not request.user.is_superuser:
@@ -107,18 +124,15 @@ def edit_collection(request, name):
         if collection_form.is_valid():
             collection_form.save()
             sweetify.sweetalert(request, title='success', icon='success',
-                text= "Successfully updated collection name!",
-                timer=2000, timerProgressBar='true', persistent="Close")
-            return redirect(reverse('add_product'))
+                text= "Successfully updated collection name!")
+            return redirect(reverse('view_all_collections'))
         else:
             sweetify.sweetalert(request, title='error', icon='error',
                 text= "Failed to update collection name. Please ensure the form is valid.",
                 timer=2000, timerProgressBar='true', persistent="Close")
     else:
         collection_form = CollectionForm(instance=collection)
-        sweetify.sweetalert(request, title='info', icon='info',
-                text= f"You are editing collection: {collection.friendly_name}",
-                timer=2000, timerProgressBar='true', persistent="Close")
+        sweetify.sweetalert(request, title=f"You are editing collection: {collection.friendly_name}", icon='info')
     
     template = 'products/prod-mngmnt/edit-collection.html'
     context = {
@@ -194,9 +208,8 @@ def edit_img(request, name):
         if img_form.is_valid():
             img_form.save()
             sweetify.sweetalert(request, title='success', icon='success',
-                text= "Successfully updated the image details!",
-                timer=2000, timerProgressBar='true', persistent="Close")
-            return redirect(reverse('add_product'))
+                text= "Successfully updated the image details!")
+            return redirect(reverse('view_all_images'))
         else:
             sweetify.sweetalert(request, title='error', icon='error',
                 text= "Failed to update image details. Please ensure the form is valid.",
@@ -204,8 +217,7 @@ def edit_img(request, name):
     else:
         img_form = ImageForm(instance=img)
         sweetify.sweetalert(request, title='info', icon='info',
-                text= f"You are editing image: {img.name}",
-                timer=2000, timerProgressBar='true', persistent="Close")
+                text= f"You are editing image: {img.name}")
     
     template = 'products/prod-mngmnt/edit-image.html'
     context = {
@@ -281,9 +293,8 @@ def edit_img_folder(request, name):
         if img_folder_form.is_valid():
             img_folder_form.save()
             sweetify.sweetalert(request, title='success', icon='success',
-                text= "Successfully updated images folder content!",
-                timer=2000, timerProgressBar='true', persistent="Close")
-            return redirect(reverse('add_product'))
+                text= "Successfully updated images folder content!")
+            return redirect(reverse('view_all_folders'))
         else:
             sweetify.sweetalert(request, title='error', icon='error',
                 text= "Failed to update images folder content. Please ensure the form is valid.",
@@ -291,8 +302,7 @@ def edit_img_folder(request, name):
     else:
         img_folder_form = ImagesFolderForm(instance=img_folder)
         sweetify.sweetalert(request, title='info', icon='info',
-                text= f"You are editing images folder: {img_folder.name}",
-                timer=2000, timerProgressBar='true', persistent="Close")
+                text= f"You are editing images folder: {img_folder.name}")
     
     template = 'products/prod-mngmnt/edit-img-folder.html'
     context = {

@@ -9,6 +9,7 @@ urlpatterns = [
     # Product management options
     path('manage/product/', views.product_management, name='product_management'),
     # Collections management
+    path('view/all/collections/', views.view_all_collections, name='view_all_collections'),
     path('add/collection/', views.add_collection, name='add_collection'),
     path('edit/collection/<name>/', views.edit_collection, name='edit_collection'),
     # Images management
