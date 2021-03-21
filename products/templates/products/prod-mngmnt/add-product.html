@@ -17,19 +17,19 @@
     </div>
     <div class="row">
         <!-- Add Product Form -->
-        <div class="col-12 col-md-6 px-4">
+        <div class="col-12 col-md-8 px-4">
             <form method="POST" action="{% url 'add_product' %}" class="form mb-2 prod-mngmnt-form"
                 enctype="multipart/form-data">
                 {% csrf_token %}
                 {{ prod_form | crispy }}
-                <div class="text-right">
-                    <a class="btn " href="{% url 'gallery' %}"><span class="icon p-2">
+                <!-- back to product management-->
+                <a class="btn col-12 col-sm-3 my-2" href="{% url 'product_management' %}"><span class="icon p-2">
                         <i class="fas fa-chevron-left" aria-hidden="true"></i>
-                      </span>Cancel</a>
-                    <button class="btn" type="submit">Add Product<span class="icon p-2">
+                    </span>Cancel</a>
+                <!-- add product -->
+                <button class="btn col-12 col-sm-5 my-2" type="submit">Add Product<span class="icon p-2">
                         <i class="fas fa-plus" aria-hidden="true"></i>
-                      </span></button>
-                </div>
+                    </span></button>
             </form>
         </div>
     </div>
