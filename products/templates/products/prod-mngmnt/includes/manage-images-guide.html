@@ -1,0 +1,66 @@
+<!-- go to add image -->
+<a class="btn" href="{% url 'add_img' %}">add image<span class="icon p-2">
+        <i class="fas fa-plus" aria-hidden="true"></i>
+    </span></a>
+<!-- go to view all images -->
+<a class="btn" href="{% url 'view_all_images' %}">view all images<span class="icon p-2">
+        <i class="fas fa-chevron-right" aria-hidden="true"></i>
+    </span></a>
+<!-- title -->
+<h4 class="py-4">user guide:</h4>
+<!-- instructions -->
+<ul class="pl-0">
+    <!-- step 1 -->
+    <li><span class="icon p-2">
+            <i class="fas fa-hand-point-right" aria-hidden="true"></i>
+        </span>Choose 3 images for each piece of art and name them as follows:
+        <!-- step 1 helper  -->
+        <small>
+            <ul class="list-style">
+                <li>main image (i.e. image.main)</li>
+                <li>room view image (i.e. image.rv)</li>
+                <li>home Page image (i.e. name.hp)</li>
+            </ul>
+        </small>
+    </li>
+    <!-- step 2 -->
+    <li><span class="icon p-2">
+            <i class="fas fa-hand-point-right" aria-hidden="true"></i></span>Upload the artwork images on <a
+            href="https://s3.console.aws.amazon.com/s3/buckets/art-ial-app?region=eu-west-2&prefix=media/&showversions=false">AWS
+            S3 bucket.</a>
+        <!-- step 2 helper -->
+        <small>
+            <ul class="list-style">
+                <li>For continuity, upload images from step 1.</li>
+                <li>Once your files are uploaded, find each image url by clicking on it.</li>
+            </ul>
+        </small>
+    </li>
+    <!-- step 3 -->
+    <li><span class="icon p-2">
+            <i class="fas fa-hand-point-right" aria-hidden="true"></i></span><a href="{% url 'add_img' %}">Add </a>your
+        images to Art.ial
+        <!-- step 3 helper -->
+        <small>
+            <ul class="list-style">
+                <li>For continuity, upload images from step 1.</li>
+                <li>complete the form.</li>
+            </ul>
+        </small>
+    </li>
+    <!-- step 4 -->
+    <li><span class="icon p-2">
+            <i class="fas fa-hand-point-right" aria-hidden="true"></i></span><a
+            href="{% url 'view_all_images' %}">Edit</a> your images.
+        <!-- step 4 helper -->
+        <small>
+            <ul class="list-style">
+                <li>You can edit each image by clicking on the name</li>
+            </ul>
+        </small>
+    </li>
+    <!-- finale -->
+    <li><span class="icon p-2">
+            <i class="fas fa-check" aria-hidden="true"></i></span>Your images are now available to sort into <a
+            href="{% url 'add_img_folder' %}">folders</a>!</li>
+</ul>
