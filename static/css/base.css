@@ -301,6 +301,16 @@ p {
     font-weight: bolder;
 }
 
+.login a {
+    color: var(--hunter-green);
+    font-weight: 900;
+}
+
+.login a:hover{
+    color: var(--hunter-green);
+    text-decoration: none;
+}
+
 /* Loader... */
 .loader-overlay-wrapper {
     position: fixed;
