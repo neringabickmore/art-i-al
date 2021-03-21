@@ -129,6 +129,23 @@ def edit_collection(request, name):
 
 
 @login_required
+def view_all_images(request):
+    """ View all images """
+    if not request.user.is_superuser:
+        sweetify.sweetalert(request, title='error', icon='error',
+            text= "This functionality is available to admin only.",
+            timer=2000)
+        return redirect(reverse('home'))
+    
+    images = Image.objects.all()
+    template = 'products/prod-mngmnt/view-all-images.html'
+    context = {
+        'images': images,
+    }
+    return render(request, template, context)
+
+
+@login_required
 def add_img(request):
     """ Add new image """
     if not request.user.is_superuser:
@@ -228,6 +245,23 @@ def add_img_folder(request):
         'img_folder_form': img_folder_form,
     }
 
+    return render(request, template, context)
+
+
+@login_required
+def view_all_folders(request):
+    """ View all images folders """
+    if not request.user.is_superuser:
+        sweetify.sweetalert(request, title='error', icon='error',
+            text= "This functionality is available to admin only.",
+            timer=2000)
+        return redirect(reverse('home'))
+    
+    folders = ImagesFolder.objects.all()
+    template = 'products/prod-mngmnt/view-all-folders.html'
+    context = {
+        'folders': folders,
+    }
     return render(request, template, context)
 
 
