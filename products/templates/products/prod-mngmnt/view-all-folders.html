@@ -8,7 +8,7 @@
 {% block content %}
 <div class="container h-100 mb-5 prod-mngmnt-container">
     <div class="row">
-        <div class="col-12 col-md-6 px-4">
+        <div class="col-12 col-md-7 px-4">
             <!-- Title -->
             <h3 class="my-4 ml-2 text-uppercase">Product Management</h3>
             <!-- Extra Title -->
@@ -16,13 +16,14 @@
             <small>For best experience, please manage products on larger devices</small>
         </div>
     </div>
-    <div class="row">
-        <div class="col-12 col-sm-8">
+    <div class="row pt-2">
+        <div class="col-12 col-md-7">
             <table class="table">
                 <!-- header -->
                 <thead>
                     <tr>
                         <th scope="col">images folder name</th>
+                        <th scope="col"></th>
                     </tr>
                 </thead>
                 {% for folder in folders %}
@@ -30,9 +31,13 @@
                 <tbody>
                     <tr>
                         <!-- name -->
-                        <td data-toggle="tooltip" data-placement="top" title="edit {{folder.name}}"><a
+                        <td data-toggle="tooltip" data-placement="top" title="edit {{folder.name}}" class="text-center pt-4"><a
                                 href="{% url 'edit_img_folder' folder.name %}">{{folder.name}}</a> </td>
+                        <!-- Delete folder button-->
+                        <td class="text-center">{% include 'products/prod-mngmnt/includes/delete-folder-button.html' %} </td>
                 </tbody>
+                <!-- delete folder modal -->
+                {% include 'products/prod-mngmnt/includes/delete-folder-modal.html' %}
                 {% endfor %}
             </table>
         </div>

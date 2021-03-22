@@ -17,7 +17,7 @@
     </div>
     <div class="row">
         <!-- Add Collection Form -->
-        <div class="col-12 col-md-7 px-4">
+        <div class="col-12 col-md-8 px-4">
             <form method="POST" action="{% url 'add_collection' %}" class="form mb-2 prod-mngmnt-form">
                 {% csrf_token %}
                 {{ collection_form | crispy }}
@@ -30,10 +30,10 @@
                     <button class="btn col-sm-5" type="submit">Add Collection<span class="icon p-2">
                             <i class="fas fa-plus" aria-hidden="true"></i>
                         </span></button>
-                        <!-- view all collections -->
+                    <!-- view all collections -->
                     <a class="btn col-sm-3" href="{% url 'view_all_collections' %}">View all<span class="icon p-2">
-                        <i class="fas fa-chevron-right" aria-hidden="true"></i>
-                    </span></a>
+                            <i class="fas fa-chevron-right" aria-hidden="true"></i>
+                        </span></a>
                 </div>
             </form>
         </div>

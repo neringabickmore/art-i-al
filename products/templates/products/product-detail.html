@@ -127,7 +127,7 @@
                                         <i class="far fa-edit" aria-hidden="true"></i>
                                     </span></a>
                                 <!-- Delete product button-->
-                                {% include 'products/includes/delete-product-button.html' %}
+                                {% include 'products/prod-mngmnt/includes/delete-product-button.html' %}
                                 <!-- Back to gallery button -->
                                 <a class="btn my-2 col-sm-12" href="{% url 'gallery' %}"><span class="icon p-2">
                                     <i class="fas fa-chevron-left" aria-hidden="true"></i>
@@ -142,6 +142,6 @@
     </div>
 </div>
 <!-- delete product modal -->
-{% include 'products/includes/delete-product-modal.html' %}
+{% include 'products/prod-mngmnt/includes/delete-product-modal.html' %}
 
 {% endblock %}
