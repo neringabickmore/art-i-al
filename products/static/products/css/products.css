@@ -182,6 +182,10 @@ table .fa-check {
     color: var(--hunter-green);
 }
 
+table .fa-trash {
+    color: var(--plum);
+}
+
 /* Delete product warning modal */
 .cancel-delete-product {
     background-color: var(--hunter-green)

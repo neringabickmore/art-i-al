@@ -92,7 +92,7 @@ def add_collection(request):
             sweetify.sweetalert(request, title='success', icon='success',
             text= "Successfully added collection name!",
             timer=2000, timerProgressBar='true', persistent="Close")
-            return redirect(reverse('add_collection'))
+            return redirect(reverse('view_all_collections'))
         else:
             sweetify.sweetalert(request, title='error', icon='error',
             text= "Failed to add new collection name. Please ensure the form is valid.",
@@ -173,14 +173,13 @@ def add_img(request):
         img_form = ImageForm(request.POST, request.FILES)
         if img_form.is_valid():
             img = img_form.save()
-            sweetify.sweetalert(request, title='success', icon='success',
-            text= "Successfully added new image!",
-            timer=2000, timerProgressBar='true', persistent="Close")
+            sweetify.sweetalert(request, icon='success',
+            title= "Successfully added new image!")
             return redirect(reverse('add_img'))
         else:
             sweetify.sweetalert(request, title='error', icon='error',
             text= "Failed to add new image. Please ensure the form is valid.",
-            timer=2000, timerProgressBar='true', persistent="Close")
+            timer=2000, timerProgressBar='true', persistent="close")
 
     else:
         img_form = ImageForm()
@@ -207,8 +206,8 @@ def edit_img(request, name):
         img_form = ImageForm(request.POST, request.FILES, instance=img)
         if img_form.is_valid():
             img_form.save()
-            sweetify.sweetalert(request, title='success', icon='success',
-                text= "Successfully updated the image details!")
+            sweetify.sweetalert(request, icon='success',
+                title= "Successfully updated the image details!")
             return redirect(reverse('view_all_images'))
         else:
             sweetify.sweetalert(request, title='error', icon='error',
@@ -216,8 +215,8 @@ def edit_img(request, name):
                 timer=2000, timerProgressBar='true', persistent="Close")
     else:
         img_form = ImageForm(instance=img)
-        sweetify.sweetalert(request, title='info', icon='info',
-                text= f"You are editing image: {img.name}")
+        sweetify.sweetalert(request, icon='info',
+                title= f"You are editing image: {img.name}")
     
     template = 'products/prod-mngmnt/edit-image.html'
     context = {
@@ -241,10 +240,9 @@ def add_img_folder(request):
         img_folder_form = ImagesFolderForm(request.POST)
         if img_folder_form.is_valid():
             img_folder = img_folder_form.save()
-            sweetify.sweetalert(request, title='success', icon='success',
-            text= "Successfully added new folder with selected images!",
-            timer=2000, timerProgressBar='true', persistent="Close")
-            return redirect(reverse('add_img_folder'))
+            sweetify.sweetalert(request, icon='success',
+            title= "Successfully added new folder with selected images!")
+            return redirect(reverse('view_all_folders'))
         else:
             sweetify.sweetalert(request, title='error', icon='error',
             text= "Failed to add new folder. Please ensure the form is valid.",
@@ -292,8 +290,8 @@ def edit_img_folder(request, name):
         img_folder_form = ImagesFolderForm(request.POST, instance=img_folder)
         if img_folder_form.is_valid():
             img_folder_form.save()
-            sweetify.sweetalert(request, title='success', icon='success',
-                text= "Successfully updated images folder content!")
+            sweetify.sweetalert(request icon='success',
+                title= "Successfully updated images folder content!")
             return redirect(reverse('view_all_folders'))
         else:
             sweetify.sweetalert(request, title='error', icon='error',
@@ -301,8 +299,8 @@ def edit_img_folder(request, name):
                 timer=2000, timerProgressBar='true', persistent="Close")
     else:
         img_folder_form = ImagesFolderForm(instance=img_folder)
-        sweetify.sweetalert(request, title='info', icon='info',
-                text= f"You are editing images folder: {img_folder.name}")
+        sweetify.sweetalert(request, icon='info',
+                title= f"You are editing images folder: {img_folder.name}")
     
     template = 'products/prod-mngmnt/edit-img-folder.html'
     context = {
@@ -311,6 +309,22 @@ def edit_img_folder(request, name):
     }
 
     return render(request, template, context)
+
+
+@login_required
+def delete_folder(request, name):
+    """ Delete images folder """
+    if not request.user.is_superuser:
+        sweetify.sweetalert(request, title='error', icon='error',
+            text= "This functionality is available to admin only.",
+            timer=2000)
+        return redirect(reverse('home'))
+
+    folder = get_object_or_404(ImagesFolder, name=name)
+    folder.delete()
+    sweetify.sweetalert(request, icon='success',
+                title= f"Successfully deleted folder {folder.name}!")
+    return redirect(reverse('view_all_folders'))
 
 
 @login_required
