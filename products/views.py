@@ -175,7 +175,7 @@ def add_img(request):
             img = img_form.save()
             sweetify.sweetalert(request, icon='success',
             title= "Successfully added new image!")
-            return redirect(reverse('add_img'))
+            return redirect(reverse('view_all_images'))
         else:
             sweetify.sweetalert(request, title='error', icon='error',
             text= "Failed to add new image. Please ensure the form is valid.",
@@ -225,6 +225,22 @@ def edit_img(request, name):
     }
 
     return render(request, template, context)
+
+
+@login_required
+def delete_image(request, name):
+    """ Delete images  """
+    if not request.user.is_superuser:
+        sweetify.sweetalert(request, title='error', icon='error',
+            text= "This functionality is available to admin only.",
+            timer=2000)
+        return redirect(reverse('home'))
+
+    images = get_object_or_404(Image, name=name)
+    images.delete()
+    sweetify.sweetalert(request, icon='success',
+                title= f"Successfully deleted {images.name} image!")
+    return redirect(reverse('view_all_images'))
 
 
 @login_required
@@ -290,7 +306,7 @@ def edit_img_folder(request, name):
         img_folder_form = ImagesFolderForm(request.POST, instance=img_folder)
         if img_folder_form.is_valid():
             img_folder_form.save()
-            sweetify.sweetalert(request icon='success',
+            sweetify.sweetalert(request, icon='success',
                 title= "Successfully updated images folder content!")
             return redirect(reverse('view_all_folders'))
         else:

@@ -37,4 +37,8 @@
         </div>
     </div>
 </div>
+{% for image in images %}
+<!-- delete image modal -->
+{% include 'products/prod-mngmnt/includes/delete-img-modal.html' %}
+{% endfor %}
 {% endblock %}

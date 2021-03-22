@@ -16,13 +16,14 @@ urlpatterns = [
     path('view/all/images/', views.view_all_images, name='view_all_images'),
     path('add/image/', views.add_img, name='add_img'),
     path('edit/image/<name>/', views.edit_img, name='edit_img'),
+    path('delete/img/<name>/', views.delete_image, name='delete_image'),
     # Images Folder management
     path('view/all/folders/', views.view_all_folders, name='view_all_folders'),
     path('add/images/folder/', views.add_img_folder, name='add_img_folder'),
-    path('edit/images/folder/<name>', views.edit_img_folder, name='edit_img_folder'),
-    path('delete/img/folder/<name>', views.delete_folder, name='delete_folder'),
+    path('edit/images/folder/<name>/', views.edit_img_folder, name='edit_img_folder'),
+    path('delete/img/folder/<name>/', views.delete_folder, name='delete_folder'),
     # Product Management
     path('add/product/', views.add_product, name='add_product'),
-    path('edit/product/<name>', views.edit_product, name='edit_product'),
-    path('delete/product/<name>', views.delete_product, name='delete_product'),
+    path('edit/product/<name>/', views.edit_product, name='edit_product'),
+    path('delete/product/<name>/', views.delete_product, name='delete_product'),
 ]
