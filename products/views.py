@@ -60,6 +60,89 @@ def product_management(request):
 
 
 @login_required
+def add_product(request):
+    """ Add a new product to the gallery """
+    if not request.user.is_superuser:
+        sweetify.sweetalert(request, title='error', icon='error',
+            text= "This functionality is available to admin only.",
+            timer=2000)
+        return redirect(reverse('home'))
+    
+    if request.method == 'POST':
+        prod_form = ProductForm(request.POST, request.FILES)
+        if prod_form.is_valid():
+            product = prod_form.save()
+            sweetify.sweetalert(request, icon='success',
+            title= "Successfully added product!")
+            return redirect(reverse('product_detail', args=[product.name]))
+        else:
+            sweetify.sweetalert(request, title='error', icon='error',
+            text= "Failed to add product. Please ensure the form is valid.",
+            timer=2000, timerProgressBar='true', persistent="Close")
+
+    else:
+        prod_form = ProductForm()
+       
+    template = 'products/prod-mngmnt/add-product.html'
+    context = {
+        'prod_form': prod_form,
+    }
+
+    return render(request, template, context)
+
+
+@login_required
+def edit_product(request, name):
+    """ Edit product details """
+    if not request.user.is_superuser:
+        sweetify.sweetalert(request, title='error', icon='error',
+            text= "This functionality is available to admin only.",
+            timer=2000)
+        return redirect(reverse('home'))
+
+    product = get_object_or_404(Product, name=name)
+    if request.method == 'POST':
+        prod_form = ProductForm(request.POST, instance=product)
+        if prod_form.is_valid():
+            prod_form.save()
+            sweetify.sweetalert(request, icon='success',
+                title= "Successfully updated product details!")
+            return redirect(reverse('product_detail', args=[product.name]))
+        else:
+            sweetify.sweetalert(request, title='error', icon='error',
+                text= "Failed to update product details. Please ensure the form is valid.",
+                timer=2000, timerProgressBar='true', persistent="Close")
+    else:
+        prod_form = ProductForm(instance=product)
+        sweetify.sweetalert(request, icon='info',
+                title= f"You are editing product: {product.name}")
+    
+    template = 'products/prod-mngmnt/edit-product.html'
+    context = {
+        'prod_form': prod_form,
+        'product': product,
+    }
+
+    return render(request, template, context)
+
+
+@login_required
+def delete_product(request, name):
+    """ Delete product """
+    if not request.user.is_superuser:
+        sweetify.sweetalert(request, title='error', icon='error',
+            text= "This functionality is available to admin only.",
+            timer=2000)
+        return redirect(reverse('home'))
+
+    product = get_object_or_404(Product, name=name)
+    product.delete()
+    sweetify.sweetalert(request, icon='success',
+                titlw= "Successfully deleted the product!")
+    return redirect(reverse('gallery'))
+
+
+@login_required
 def view_all_collections(request):
     """ View all collections """
     if not request.user.is_superuser:
@@ -89,9 +172,8 @@ def add_collection(request):
         collection_form = CollectionForm(request.POST)
         if collection_form.is_valid():
             collection = collection_form.save()
-            sweetify.sweetalert(request, title='success', icon='success',
-            text= "Successfully added collection name!",
-            timer=2000, timerProgressBar='true', persistent="Close")
+            sweetify.sweetalert(request, icon='success',
+            title= "Successfully added collection name!")
             return redirect(reverse('view_all_collections'))
         else:
             sweetify.sweetalert(request, title='error', icon='error',
@@ -123,8 +205,8 @@ def edit_collection(request, name):
         collection_form = CollectionForm(request.POST, instance=collection)
         if collection_form.is_valid():
             collection_form.save()
-            sweetify.sweetalert(request, title='success', icon='success',
-                text= "Successfully updated collection name!")
+            sweetify.sweetalert(request, icon='success',
+                title= "Successfully updated collection name!")
             return redirect(reverse('view_all_collections'))
         else:
             sweetify.sweetalert(request, title='error', icon='error',
@@ -141,6 +223,22 @@ def edit_collection(request, name):
     }
 
     return render(request, template, context)
+
+
+@login_required
+def delete_collection(request, name):
+    """ Delete collections  """
+    if not request.user.is_superuser:
+        sweetify.sweetalert(request, title='error', icon='error',
+            text= "This functionality is available to admin only.",
+            timer=2000)
+        return redirect(reverse('home'))
+
+    collection = get_object_or_404(Collection, name=name)
+    collection.delete()
+    sweetify.sweetalert(request, icon='success',
+                title= f"Successfully deleted {collection.name} collection!")
+    return redirect(reverse('view_all_collections'))
 
 
 @login_required
@@ -341,90 +439,3 @@ def delete_folder(request, name):
     sweetify.sweetalert(request, icon='success',
                 title= f"Successfully deleted folder {folder.name}!")
     return redirect(reverse('view_all_folders'))
-
-
-@login_required
-def add_product(request):
-    """ Add a new product to the gallery """
-    if not request.user.is_superuser:
-        sweetify.sweetalert(request, title='error', icon='error',
-            text= "This functionality is available to admin only.",
-            timer=2000)
-        return redirect(reverse('home'))
-    
-    if request.method == 'POST':
-        prod_form = ProductForm(request.POST, request.FILES)
-        if prod_form.is_valid():
-            product = prod_form.save()
-            sweetify.sweetalert(request, title='success', icon='success',
-            text= "Successfully added product!",
-            timer=2000, timerProgressBar='true', persistent="Close")
-            return redirect(reverse('product_detail', args=[product.name]))
-        else:
-            sweetify.sweetalert(request, title='error', icon='error',
-            text= "Failed to add product. Please ensure the form is valid.",
-            timer=2000, timerProgressBar='true', persistent="Close")
-
-    else:
-        prod_form = ProductForm()
-       
-    template = 'products/prod-mngmnt/add-product.html'
-    context = {
-        'prod_form': prod_form,
-    }
-
-    return render(request, template, context)
-
-
-@login_required
-def edit_product(request, name):
-    """ Edit product details """
-    if not request.user.is_superuser:
-        sweetify.sweetalert(request, title='error', icon='error',
-            text= "This functionality is available to admin only.",
-            timer=2000)
-        return redirect(reverse('home'))
-
-    product = get_object_or_404(Product, name=name)
-    if request.method == 'POST':
-        prod_form = ProductForm(request.POST, instance=product)
-        if prod_form.is_valid():
-            prod_form.save()
-            sweetify.sweetalert(request, title='success', icon='success',
-                text= "Successfully updated product details!",
-                timer=2000)
-            return redirect(reverse('product_detail', args=[product.name]))
-        else:
-            sweetify.sweetalert(request, title='error', icon='error',
-                text= "Failed to update product details. Please ensure the form is valid.",
-                timer=2000, timerProgressBar='true', persistent="Close")
-    else:
-        prod_form = ProductForm(instance=product)
-        sweetify.sweetalert(request, title='info', icon='info',
-                text= f"You are editing product: {product.name}",
-                timer=2000)
-    
-    template = 'products/prod-mngmnt/edit-product.html'
-    context = {
-        'prod_form': prod_form,
-        'product': product,
-    }
-
-    return render(request, template, context)
-
-
-@login_required
-def delete_product(request, name):
-    """ Delete product """
-    if not request.user.is_superuser:
-        sweetify.sweetalert(request, title='error', icon='error',
-            text= "This functionality is available to admin only.",
-            timer=2000)
-        return redirect(reverse('home'))
-
-    product = get_object_or_404(Product, name=name)
-    product.delete()
-    sweetify.sweetalert(request, title='success', icon='success',
-                text= "Successfully deleted the product!",
-                timer=2000)
-    return redirect(reverse('gallery'))

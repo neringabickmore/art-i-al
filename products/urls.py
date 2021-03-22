@@ -12,6 +12,7 @@ urlpatterns = [
     path('view/all/collections/', views.view_all_collections, name='view_all_collections'),
     path('add/collection/', views.add_collection, name='add_collection'),
     path('edit/collection/<name>/', views.edit_collection, name='edit_collection'),
+    path('delete/collection/<name>/', views.delete_collection, name='delete_collection'),
     # Images management
     path('view/all/images/', views.view_all_images, name='view_all_images'),
     path('add/image/', views.add_img, name='add_img'),
