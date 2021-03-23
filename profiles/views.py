@@ -25,7 +25,7 @@ def profile(request):
             timer=2000)
     else:
         form = UserProfileForm(instance=profile)
-    orders = profile.orders.all()
+    orders = profile.orders.all().order_by('-purchase_date')
 
     template = 'profiles/profile.html'
     context = {
@@ -38,6 +38,7 @@ def profile(request):
 
 @login_required
 def order_history(request, order_number):
+    """ User order history """
     order = get_object_or_404(Order, order_number=order_number)
 
     sweetify.sweetalert(request, title='info', icon='info',
