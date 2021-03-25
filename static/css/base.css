@@ -360,6 +360,50 @@ p {
     box-shadow: var(--dark-small-box-shadow)!important;
 }
 
+/* Image Upload styling in Forms */
+.btn-file {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-file input[type="file"] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+
+#filename, .custom-control-label {
+    color: var(--plum);
+}
+
+/* custom checkbox styling */
+.custom-checkbox .custom-control-label::before {
+    border-radius: 0;
+    border-color: var(--plum);
+}
+
+.custom-control-input:focus:not(:checked)~.custom-control-label::before, 
+.custom-control-input:focus:not(:checked)~.custom-control-label::after { 
+    border-color: var(--tuscany);
+    box-shadow: var(--dark-small-box-shadow);
+}
+
+.custom-control-label::before, .custom-control-label::after {
+    top: .4em;
+    width: 1.25rem;
+    height: 1.25rem;
+}
+
+.custom-checkbox .custom-control-input:checked~.custom-control-label::before {
+    background-color: var(--plum);
+    border-color: var(--plum);
+    border-radius: 0;
+}
+
 @media (max-width: 575.98px) { 
     .btn, .allauth-form-inner-content input {
         font-size: 1.2rem;
