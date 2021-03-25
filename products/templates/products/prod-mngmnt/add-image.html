@@ -21,7 +21,13 @@
             <form method="POST" action="{% url 'add_img' %}" class="form mb-2 prod-mngmnt-form"
                 enctype="multipart/form-data">
                 {% csrf_token %}
-                {{ img_form | crispy }}
+                {% for field in img_form %}
+                        {% if field.name != 'img' %}
+                            {{ field | as_crispy_field }}
+                        {% else %}
+                            {{ field }}
+                        {% endif %}
+                    {% endfor %}
                 <div class="text-right">
                     <!-- cancel -->
                     <a class="btn " href="{% url 'product_management' %}"><span class="icon p-2">
@@ -40,5 +46,11 @@
         </div>
     </div>
 </div>
+
+{% endblock %}
+
+{% block postloadjs %}
+{{ block.super }}
+<script src="{% static 'products/js/products.js' %}"></script>
 
 {% endblock %}
