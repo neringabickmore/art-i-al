@@ -4,11 +4,17 @@
         <h3 class="my-4 ml-2">About</h3>
     </div>
     <div class="col-sm-12 p-4">
-        {% for about in about %}
         <!-- content title -->
+        {% for about in about_section %}
         <h4>{{ about.name }}</h4>
         <!-- content -->
         <p> {{ about.description }}</p>
+        {% if request.user.is_superuser %}
+        <!-- Edit product button-->
+        <a class="btn my-2 col-12 col-sm-2" href="{% url 'edit_about' about.id %}">Edit<span class="icon p-2">
+                <i class="far fa-edit" aria-hidden="true"></i>
+            </span></a>
+        {% endif %}
         {% endfor %}
     </div>
 </div>
