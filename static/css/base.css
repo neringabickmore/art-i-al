@@ -335,6 +335,7 @@ p {
 
 /** Go Up button styling **/
 #goUpBtn {
+    opacity: .8;
     display: none;
     position: fixed;
     bottom: 2rem;
@@ -342,9 +343,8 @@ p {
     z-index: 99;
     border: none;
     outline: none;
-    background-color: var(--black-chocolate);
+    background-color: var(--white);
     cursor: pointer;
-    padding: 1.4px;
     border-radius: 50%;
     vertical-align: middle;
 }
@@ -353,10 +353,13 @@ p {
     background-color: var(--white);
 }
 
-.fa-arrow-alt-circle-up {
-    font-size: 5rem;
+.fa-chevron-up {
+    font-size: 3rem;
     color: var(--plum);
     border-radius: 50%;
+}
+.fa-chevron-up:hover {
+    color: var(--hunter-green);
 }
 
 /* All forms on the site */
