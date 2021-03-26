@@ -1,5 +1,8 @@
 /* contact-us section */
-h1, h2, h3, h4 {
+h1,
+h2,
+h3,
+h4 {
     text-transform: uppercase;
 }
 
@@ -8,18 +11,20 @@ h1, h2, h3, h4 {
     padding: 4rem;
     box-shadow: var(--dark-small-box-shadow);
 }
+
 #contact-form input,
 #contact-form textarea,
 #contact-form small,
 #contact-form div {
     font-family: var(--main-font);
     font-size: calc(1.4rem + .2vw);
-    color: var(--black-chocolate);  
+    color: var(--black-chocolate);
     border-color: var(--dark-lava);
     border-radius: 0;
 }
+
 .form-text {
-    color: var(--white)!important;
+    color: var(--white) !important;
 }
 
 #contact-form .btn {
@@ -32,7 +37,7 @@ h1, h2, h3, h4 {
     background-color: var(--plum);
 }
 
-.form-text{
+.form-text {
     margin-left: .25rem;
 }
 
@@ -44,15 +49,16 @@ h1, h2, h3, h4 {
 .carousel-inner {
     height: auto;
 }
+
 .carousel-item a {
     position: relative;
     width: 100%;
     height: auto;
     overflow: hidden;
-    
+
 }
 
-.carousel-item img{
+.carousel-item img {
     position: relative;
     width: 100%;
     height: auto;
@@ -75,11 +81,33 @@ h1, h2, h3, h4 {
 .carousel-control-prev:hover,
 .carousel-control-next:hover {
     color: var(--black-chocolate);
-} 
+}
 
 .fa-chevron-left,
 .fa-chevron-right {
     font-size: calc(1rem + .5vw);
+}
+
+/** custom checkbox **/
+.checkmark {
+    border: 2px solid var(--white);
+    background-color: var(--white);
+}
+
+.form-check input:checked~.checkmark {
+    background-color: var(--white);
+}
+
+.form-check .checkmark:after {
+    bottom: .2rem;
+    left: .4rem;
+    width: .5rem;
+    height: 1rem;
+    border: solid var(--hunter-green);
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
 }
 
 @media (min-width: 1025px) {
