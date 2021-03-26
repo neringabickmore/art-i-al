@@ -15,7 +15,7 @@
         <li class="nav-item checkout-nav-item" role="presentation">
             <a class="nav-link active" id="personal-details-tab" data-toggle="tab" href="#personal-details" role="tab"
                 aria-controls="personal-details" aria-selected="true">
-                    <span class="text-uppercase">personal details</span>
+                <span class="text-uppercase">personal details</span>
             </a>
         </li>
         <li class="nav-item disabled checkout-nav-item" role="presentation">
@@ -75,15 +75,16 @@
 
                 <div class="form-check form-check-inline">
                     {% if user.is_authenticated %}
-                    <input class="form-check-input" type="checkbox" id="id-save-info" name="save_info" checked>
-                    <label class="form-check-label text-muted small" for="id-save-info">
+                    <label class="form-check-label small" for="id-save-info">
+                        <input class="form-check-input" type="checkbox" id="id-save-info" name="save_info" checked>
+                        <span class="checkmark"></span>
                         Save this information to my profile
                     </label>
                     {% else %}
                     <p class="small">
-                        <a class="text-info" href="">create an account</a>
+                        <a class="text-info" href="/accounts/signup/">create an account</a>
                         or
-                        <a class="text-info" href="">login</a>
+                        <a class="text-info" href="/accounts/login/">login</a>
                         to save this information to your profile and to save this order to your order history.
                     </p>
                     {% endif %}

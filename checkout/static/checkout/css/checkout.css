@@ -8,7 +8,7 @@
     margin-bottom: 1rem;
 }
 
-#nav-tab .nav-link{
+#nav-tab .nav-link {
     color: var(--white);
     margin: 0;
     padding: .75rem;
@@ -26,18 +26,20 @@
     color: var(--white);
     font-weight: normal;
 }
+
 #nav-tab .nav-link.active {
     background-color: var(--almond);
     color: var(--dark-lava);
     font-weight: bold;
 }
-.nav-tabs, 
+
+.nav-tabs,
 .nav-link,
-.nav-tabs:hover, 
+.nav-tabs:hover,
 .nav-link:hover,
-.nav-tabs:focus, 
+.nav-tabs:focus,
 .nav-link:focus {
-    border: none!important;
+    border: none !important;
 }
 
 .checkout-nav-item {
@@ -51,11 +53,33 @@
     font-size: 1.2rem;
 }
 
+/** custom checkbox **/
+.checkmark {
+    border: 2px solid var(--hunter-green);
+}
+
+.form-check input:checked~.checkmark {
+    background-color: var(--hunter-green);
+}
+
+.form-check .checkmark:after {
+    bottom: .2rem;
+    left: .4rem;
+    width: .5rem;
+    height: 1rem;
+    border: solid var(--white);
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
 /* text in delivery info part of the form */
 .text-info {
-    color: var(--hunter-green)!important;
+    color: var(--hunter-green) !important;
     font-weight: 900;
 }
+
 .text-info:hover {
     text-decoration: none;
 }
@@ -79,8 +103,11 @@
 .table {
     color: var(--black-chocolate);
 }
-.table-sm td, .table td,
-.table-sm th, .table th {
+
+.table-sm td,
+.table td,
+.table-sm th,
+.table th {
     border-top: 2px solid var(--almond);
 }
 
@@ -108,7 +135,7 @@
 #payment-form .form-control,
 #card-element {
     color: var(--dark-lava);
-    border: 1px solid var(--dark-lava)!important;
+    border: 1px solid var(--dark-lava) !important;
 }
 
 .form-control {
@@ -119,6 +146,7 @@
     box-shadow: var(--dark-small-box-shadow);
     border-color: var(--dark-lava);
 }
+
 select,
 select option {
     color: var(--dark-lava);
@@ -129,7 +157,8 @@ select option[value=""] {
     color: #aab7c4 !important;
 }
 
-#card-errors, #charge-note {
+#card-errors,
+#charge-note {
     color: #700a15;
 }
 
@@ -170,5 +199,4 @@ select option[value=""] {
     #checkout-form-border {
         border-right: 2px solid var(--black-chocolate);
     }
-    
 }

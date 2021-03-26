@@ -105,7 +105,7 @@ p {
 
 /* body */
 .error-container {
-   min-height: 66vh; 
+    min-height: 66vh;
 }
 
 /* footer */
@@ -180,6 +180,7 @@ p {
 .delete-btn {
     background-color: var(--plum);
 }
+
 .delete-btn:hover {
     background-color: var(--white);
     color: var(--black-chocolate);
@@ -203,7 +204,7 @@ p {
     background-color: var(--almond) !important;
     border-radius: 0 !important;
     box-shadow: var(--dark-small-box-shadow) !important;
-    width: 65%!important; 
+    width: 65% !important;
 }
 
 /** icons **/
@@ -282,16 +283,19 @@ p {
 .allauth-form-inner-content label:not([for='id_remember'], [for^='email_radio_']) {
     display: none;
 }
+
 .allauth-form-inner-content input {
     font-size: 1.6rem;
     border: 1px solid var(--dark-lava);
     border-radius: 0;
 }
-.allauth-form-inner-content .form-check-label{
+
+.allauth-form-inner-content .form-check-label {
     padding-left: .5rem;
 }
 
-.verified, .primary {
+.verified,
+.primary {
     color: var(--hunter-green);
     font-weight: bolder;
 }
@@ -306,7 +310,7 @@ p {
     font-weight: 900;
 }
 
-.login a:hover{
+.login a:hover {
     color: var(--hunter-green);
     text-decoration: none;
 }
@@ -326,15 +330,15 @@ p {
     background-image: url("/media/loader/loader.gif");
     background-repeat: no-repeat;
     background-position: center;
-    height:100%;
+    height: 100%;
 }
 
 /** Go Up button styling **/
 #goUpBtn {
     display: none;
     position: fixed;
-    bottom: 2rem; 
-    right: 1rem; 
+    bottom: 2rem;
+    right: 1rem;
     z-index: 99;
     border: none;
     outline: none;
@@ -349,7 +353,7 @@ p {
     background-color: var(--white);
 }
 
-.fa-arrow-alt-circle-up{
+.fa-arrow-alt-circle-up {
     font-size: 5rem;
     color: var(--plum);
     border-radius: 50%;
@@ -357,7 +361,7 @@ p {
 
 /* All forms on the site */
 .form-control:focus {
-    box-shadow: var(--dark-small-box-shadow)!important;
+    box-shadow: var(--dark-small-box-shadow) !important;
 }
 
 /* Image Upload styling in Forms */
@@ -376,7 +380,8 @@ p {
     cursor: pointer;
 }
 
-#filename, .custom-control-label {
+#filename,
+.custom-control-label {
     color: var(--plum);
 }
 
@@ -386,13 +391,14 @@ p {
     border-color: var(--plum);
 }
 
-.custom-control-input:focus:not(:checked)~.custom-control-label::before, 
-.custom-control-input:focus:not(:checked)~.custom-control-label::after { 
+.custom-control-input:focus:not(:checked)~.custom-control-label::before,
+.custom-control-input:focus:not(:checked)~.custom-control-label::after {
     border-color: var(--tuscany);
     box-shadow: var(--dark-small-box-shadow);
 }
 
-.custom-control-label::before, .custom-control-label::after {
+.custom-control-label::before,
+.custom-control-label::after {
     top: .4em;
     width: 1.25rem;
     height: 1.25rem;
@@ -404,10 +410,62 @@ p {
     border-radius: 0;
 }
 
-@media (max-width: 575.98px) { 
-    .btn, .allauth-form-inner-content input {
+/* Styling idea: 
+https://www.w3schools.com/howto/howto_css_custom_checkbox.asp */
+/* save info checkbox */
+.form-check {
+    position: relative;
+    z-index: 1;
+    display: block;
+    min-height: 1.5rem;
+    padding-left: 1.5rem;
+    -webkit-print-color-adjust: exact;
+}
+
+.checkmark {
+    position: absolute;
+    left: 0;
+    top: .4em;
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+.form-check-label {
+    color: var(--hunter-green);
+}
+
+/** hide default checkbox **/
+.form-check input {
+    position: absolute;
+    left: 0;
+    z-index: -1;
+    width: 1rem;
+    height: 1.25rem;
+    opacity: 0;
+}
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.form-check-inline .form-check-input {
+    margin-right: 0;
+    position: relative;
+}
+
+.form-check input:checked~.checkmark:after {
+    display: block;
+}
+
+@media (max-width: 575.98px) {
+
+    .btn,
+    .allauth-form-inner-content input {
         font-size: 1.2rem;
     }
+
     .allauth-form-inner-content p {
         font-size: 1.4rem;
     }
