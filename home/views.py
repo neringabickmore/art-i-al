@@ -95,6 +95,25 @@ def social_media(request):
 
 
 @login_required
+def remove_social_media(request, social_media_id):
+    """ Management view to remove social media """
+    if not request.user.is_superuser:
+        sweetify.sweetalert(request, title='error', icon='error',
+            text= "This functionality is available to admin only.",
+            timer=2000)
+        return redirect(reverse('home'))
+
+    social_media = get_object_or_404(SocialMedia, pk=social_media_id)
+    social_media.delete()
+    sweetify.sweetalert(request, icon='success',
+                title= 'Social media icon removed successfully!')
+
+    return redirect(reverse('social_media'))
+
+
+
+
+@login_required
 def edit_about(request, about_id):
     """ Edit about section  """
     if not request.user.is_superuser:
