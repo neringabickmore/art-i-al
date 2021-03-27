@@ -43,6 +43,10 @@ def index(request):
                     [settings.DEFAULT_FROM_EMAIL],
                     fail_silently=False
                 )
+                sweetify.sweetalert(request, icon='success',
+                title= "Thank you! We have received your message!",
+                text= "Please expect to hear from us within 72hours.",
+                timer=2000, timerProgressBar='true', persistent="Close")
                 return redirect('home')
             except BadHeaderError:
                 return HttpResponse('Invalid header found.')
