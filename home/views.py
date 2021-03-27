@@ -133,6 +133,46 @@ def add_social_media(request):
 
 
 @login_required
+def edit_social_media(request, social_media_id):
+    """ Edit social media icons """
+    if not request.user.is_superuser:
+        sweetify.sweetalert(request, title='error', icon='error',
+            text= "This functionality is available to admin only.",
+            timer=2000)
+        return redirect(reverse('home'))
+
+    social_media = get_object_or_404(SocialMedia, pk=social_media_id)
+    # shows social icons in a footer
+    social_media_icons = SocialMedia.objects.all()
+
+    if request.method == 'POST':
+        social_media_form = SocialMediaForm(request.POST, instance=social_media)
+        if social_media_form.is_valid():
+            social_media_form.save()
+            sweetify.sweetalert(request, icon='success',
+                title= 'Social media icon edited successfully!')
+            return redirect(reverse('social_media'))
+        else:
+            sweetify.sweetalert(request, title='error', icon='error',
+                text= "Editing social media icon failed. \
+                     Please ensure the form is valid.",
+                timer=2000, timerProgressBar='true', persistent="Close")
+    else:
+        social_media_form = SocialMediaForm(instance=social_media)
+        sweetify.sweetalert(request, icon='info',
+                title= "You are editing social icons")
+
+    template = "home/management/edit-social-media.html"
+    context = {
+        'social_media': social_media,
+        'all_social_media': social_media_icons,
+        'social_media_form': social_media_form,
+    }
+
+    return render(request, template, context)
+
+
+@login_required
 def remove_social_media(request, social_media_id):
     """ Management view to remove social media """
     if not request.user.is_superuser:

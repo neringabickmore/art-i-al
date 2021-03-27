@@ -32,7 +32,7 @@
                     <tr class="text-center">
                         <!-- name -->
                         <td data-toggle="tooltip" data-placement="top" title="edit {{social_media.name}}"><a
-                                href="">{{social_media.name|title}}</a>
+                                href="{% url 'edit_social_media' social_media.id %}">{{social_media.name|title}}</a>
                         </td>
                         <td>{% if social_media.url %}
                             <span aria-hidden="true" class="icon p-2"><i class="fas fa-check"></i></span>
@@ -51,9 +51,9 @@
                                 </span></a>
                         </td>
                 </tbody>
-                
+
                 <!-- delete modal -->
-{% include 'home/management/delete-modal.html' %}
+                {% include 'home/management/delete-modal.html' %}
                 {% endfor %}
             </table>
         </div>
