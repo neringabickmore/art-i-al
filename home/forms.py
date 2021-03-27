@@ -1,6 +1,6 @@
 from django import forms
 # from .widgets import CustomClearableFileInput
-from .models import About
+from .models import About, SocialMedia
 
 
 class AboutForm(forms.ModelForm):
@@ -46,3 +46,23 @@ class ContactForm(forms.Form):
 
     class Meta:
         fields = ['full_name', 'email', 'message']
+
+
+class SocialMediaForm(forms.ModelForm):
+    """ Social media selection form """
+    class Meta:
+        model = SocialMedia
+        fields = ('name', 'icon', 'url',)
+
+    def __init__(self, *args, **kwargs):
+        """ Add placeholders and classes, remove auto-generated lables,
+            set focus on the first field in form """
+
+        super().__init__(*args, **kwargs)
+        self.fields['name'].widget.attrs['autofocus'] = True
+        for field in self.fields:
+            if field == 'url':
+                self.fields[field].widget.attrs['placeholder'] = '...'
+            else:
+                self.fields[field].widget.attrs['placeholder'] = False
+            self.fields[field].widget.attrs['class'] = 'field-styling'
