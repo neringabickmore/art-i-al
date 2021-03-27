@@ -24,3 +24,25 @@ class AboutForm(forms.ModelForm):
         self.fields['description'].widget.attrs['class'] = 'field-styling'
         self.fields['img'].widget.attrs['class'] = 'field-styling'
         self.fields['url'].widget.attrs['class'] = 'field-styling'
+
+
+class ContactForm(forms.Form):
+    """
+    Contact form on the home page
+    """
+
+    full_name = forms.CharField(
+         label="Full Name"
+    )
+    email = forms.EmailField(
+        label="Email"
+    )
+    message = forms.CharField(
+        label="Message",
+        widget=forms.Textarea(attrs={
+            "rows": 8,
+        })
+    )
+
+    class Meta:
+        fields = ['full_name', 'email', 'message']
