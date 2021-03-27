@@ -5,7 +5,7 @@ from .models import About, SocialMedia
 
 class AboutForm(forms.ModelForm):
 
-    class Meta: 
+    class Meta:
         model = About
         fields = ('name', 'description', 'img', 'url')
 
@@ -19,7 +19,7 @@ class AboutForm(forms.ModelForm):
         }
         for field in self.fields:
             self.fields[field].label = labels[field]
-        
+
         self.fields['name'].widget.attrs['class'] = 'field-styling'
         self.fields['description'].widget.attrs['class'] = 'field-styling'
         self.fields['img'].widget.attrs['class'] = 'field-styling'

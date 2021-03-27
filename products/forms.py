@@ -22,7 +22,7 @@ class ProductForm(forms.ModelForm):
 
 class CollectionForm(forms.ModelForm):
 
-    class Meta: 
+    class Meta:
         model = Collection
         fields = ('name', 'friendly_name')
 
@@ -34,35 +34,41 @@ class CollectionForm(forms.ModelForm):
         }
         for field in self.fields:
             self.fields[field].label = labels[field]
-        
+
         self.fields['name'].widget.attrs['data-toggle'] = 'tooltip'
         self.fields['name'].widget.attrs['data-placement'] = 'top'
-        self.fields['name'].widget.attrs['title'] = 'No spaces or special characters, use _ for word separation'        
+        self.fields['name'].widget.attrs['title'] = 'No spaces \
+            or special characters, use _ for word separation'
         self.fields['name'].widget.attrs['class'] = 'field-styling'
         self.fields['friendly_name'].widget.attrs['class'] = 'field-styling'
 
 
 class ImageForm(forms.ModelForm):
-    
+
     class Meta:
         model = Image
-        fields = ('name', 'img', 'url', 'main_img',
-                'room_view', 'show_in_gallery',
-                'show_in_new')
-    
-    img = forms.ImageField(label='Image', required=False, widget=CustomClearableFileInput)
-    
+        fields = (
+            'name', 'img', 'url', 'main_img',
+            'room_view', 'show_in_gallery',
+            'show_in_new')
+
+    img = forms.ImageField(
+        label='Image', required=False,
+        widget=CustomClearableFileInput)
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-    
+
         labels = {
             'name': 'Artwork image name',
             'img': 'Upload image',
-            'url': 'Image link', 
+            'url': 'Image link',
             'main_img': 'Is this the main image?',
             'room_view': 'Is this a room-view image?',
-            'show_in_gallery': 'Show this image in the "gallery" banner on home page?',
-            'show_in_new': 'Show this image in the "new" banner on home page?',
+            'show_in_gallery':
+            'Show this image in the "gallery" banner on home page?',
+            'show_in_new':
+            'Show this image in the "new" banner on home page?',
         }
         for field in self.fields:
             self.fields[field].label = labels[field]
@@ -71,12 +77,13 @@ class ImageForm(forms.ModelForm):
         self.fields['url'].widget.attrs['class'] = 'field-styling'
         self.fields['name'].widget.attrs['data-toggle'] = 'tooltip'
         self.fields['name'].widget.attrs['data-placement'] = 'top'
-        self.fields['name'].widget.attrs['title'] = 'No spaces or special characters, use _ for word separation' 
-    
+        self.fields['name'].widget.attrs['title'] = 'No spaces \
+            or special characters, use _ for word separation'
+
 
 class ImagesFolderForm(forms.ModelForm):
 
-    class Meta: 
+    class Meta:
         model = ImagesFolder
         fields = ('name', 'imgs')
 
@@ -90,12 +97,14 @@ class ImagesFolderForm(forms.ModelForm):
         }
         for field in self.fields:
             self.fields[field].label = labels[field]
-        
+
         self.fields['name'].widget.attrs['data-toggle'] = 'tooltip'
         self.fields['name'].widget.attrs['data-placement'] = 'top'
-        self.fields['name'].widget.attrs['title'] = 'No spaces or special characters, use _ for word separation'
+        self.fields['name'].widget.attrs['title'] = 'No spaces or \
+            special characters, use _ for word separation'
         self.fields['imgs'].widget.attrs['data-toggle'] = 'tooltip'
         self.fields['imgs'].widget.attrs['data-placement'] = 'top'
-        self.fields['imgs'].widget.attrs['title'] = 'To select multiple images +shift'
+        self.fields['imgs'].widget.attrs['title'] = 'To select \
+            multiple images +shift'
         self.fields['name'].widget.attrs['class'] = 'field-styling'
-        
+

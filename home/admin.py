@@ -1,6 +1,7 @@
 from django.contrib import admin
 from .models import About, SocialMedia
 
+
 class AboutAdmin(admin.ModelAdmin):
     list_display = (
         'name',
@@ -8,6 +9,7 @@ class AboutAdmin(admin.ModelAdmin):
         'img',
         'url',
     )
+
 
 class SocialMediaAdmin(admin.ModelAdmin):
     list_display = (
