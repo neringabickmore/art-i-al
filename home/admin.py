@@ -14,7 +14,6 @@ class SocialMediaAdmin(admin.ModelAdmin):
         'name',
         'icon',
         'url',
-        'on'
     )
     ordering = ('name',)
 
