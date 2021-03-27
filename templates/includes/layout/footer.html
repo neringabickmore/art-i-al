@@ -15,9 +15,17 @@
             <hr class="hr-style">
             <ul class="flex-column p-0">
                 <li class="p-2">
-                    <a target="_blank" href="https://www.instagram.com/" rel="noopener" aria-label="Find us on Instagram">
-                      <i class="p-2 fab fa-instagram" aria-hidden="true"></i>
+                    {% for social_media in all_social_media %}
+                    {% if social_media.url %}
+                    <a href="{{ social_media.url }}" rel="noopener noreferrer" target="_blank">
+                        <i class="p-2 fab {{ social_media.icon }}" aria-hidden="true"></i>
                     </a>
+                    {% else %}
+                    <a href="#" rel="noopener noreferrer">
+                        <i class="p-2 fab {{ social_media.icon }}" aria-hidden="true"></i>
+                    </a>
+                    {% endif %}
+                    {% endfor %}
                   </li>
             </ul>
         </div>

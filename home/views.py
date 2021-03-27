@@ -7,8 +7,7 @@ from django.conf import settings
 from django.http import HttpResponse
 
 from .models import About, SocialMedia
-from .forms import ContactForm
-from .forms import AboutForm
+from .forms import ContactForm, AboutForm, SocialMediaForm
 
 from profiles.models import UserProfile
 from products.models import Image
@@ -24,7 +23,7 @@ def index(request):
     """
 
     about_section = About.objects.all()
-    social_icons = SocialMedia.objects.all()
+    social_media = SocialMedia.objects.all()
     new_image = Image.objects.filter(show_in_new=True)
     gallery_image = Image.objects.filter(show_in_gallery=True)
 
@@ -70,10 +69,29 @@ def index(request):
         'gallery_image': gallery_image,
         'about_section': about_section,
         'contact_form': contact_form,
-        'social_icons': social_icons,
+        'all_social_media': social_media,
     }
 
     return render(request, 'home/index.html', context)
+
+# Social Media Management
+@login_required
+def social_media(request):
+    """ A view to manage social media """
+    if not request.user.is_superuser:
+        sweetify.sweetalert(request, title='error', icon='error',
+            text= "This functionality is available to admin only.",
+            timer=2000)
+        return redirect(reverse('home'))
+
+    social_media = SocialMedia.objects.all()
+
+    template = "home/social-media.html"
+    context = {
+        'all_social_media': social_media,
+    }
+
+    return render(request, template, context)
 
 
 @login_required
@@ -86,6 +104,8 @@ def edit_about(request, about_id):
         return redirect(reverse('home'))
 
     about_section = get_object_or_404(About, pk=about_id)
+    # shows social icons in a footer
+    social_media_icons = SocialMedia.objects.all()
     if request.method == 'POST':
         about_form = AboutForm(request.POST, instance=about_section)
         if about_form.is_valid():
@@ -106,6 +126,7 @@ def edit_about(request, about_id):
     template = 'home/edit-about.html'
     context = {
         'about_form': about_form,
+        'all_social_media': social_media_icons,
         'about_section': about_section,
     }
 
