@@ -8,23 +8,24 @@ h4 {
 
 #contact-form {
     background-color: var(--hunter-green);
-    padding: 4rem;
+    padding: 3rem;
     box-shadow: var(--dark-small-box-shadow);
+}
+
+#contact-form label,
+.form-text,
+#contact-form small {
+    color: var(--white) !important;
 }
 
 #contact-form input,
 #contact-form textarea,
-#contact-form small,
 #contact-form div {
     font-family: var(--main-font);
     font-size: calc(1.4rem + .2vw);
     color: var(--black-chocolate);
     border-color: var(--dark-lava);
     border-radius: 0;
-}
-
-.form-text {
-    color: var(--white) !important;
 }
 
 #contact-form .btn {
@@ -37,12 +38,16 @@ h4 {
     background-color: var(--plum);
 }
 
-.form-text {
-    margin-left: .25rem;
-}
-
 .fa-envelope {
     font-size: 1.3rem;
+}
+
+#div_id_email {
+    margin-bottom: 0;
+}
+
+#div_id_message {
+    margin-top: 1rem;
 }
 
 /* New Art & Gallery section styling */
@@ -55,7 +60,6 @@ h4 {
     width: 100%;
     height: auto;
     overflow: hidden;
-
 }
 
 .carousel-item img {
