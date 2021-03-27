@@ -188,7 +188,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-sm-12 text-center">
+        <div class="col-sm-12 text-center mb-5">
             <!-- back to profile -->
             {% if from_profile %}
             <a href="{% url 'profile' %}" class="btn">
@@ -216,4 +216,6 @@
         </span>
     </h1>
 </div>
+<!-- footer -->
+{% include 'includes/layout/footer.html' %}
 {% endblock %}

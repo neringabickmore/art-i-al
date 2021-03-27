@@ -23,15 +23,15 @@
                 {{ collection_form | crispy }}
                 <div class="text-right">
                     <!-- back to product management -->
-                    <a class="btn col-12 col-sm-3" href="{% url 'product_management' %}"><span class="icon p-2">
+                    <a class="btn col-12 col-sm-3 mb-2" href="{% url 'product_management' %}"><span class="icon p-2">
                             <i class="fas fa-chevron-left" aria-hidden="true"></i>
                         </span>Cancel</a>
                     <!-- Add collection -->
-                    <button class="btn col-sm-5" type="submit">Add Collection<span class="icon p-2">
+                    <button class="btn col-sm-3 mb-2" type="submit">Add<span class="icon p-2">
                             <i class="fas fa-plus" aria-hidden="true"></i>
                         </span></button>
                     <!-- view all collections -->
-                    <a class="btn col-sm-3" href="{% url 'view_all_collections' %}">View all<span class="icon p-2">
+                    <a class="btn col-sm-3 mb-2" href="{% url 'view_all_collections' %}">View all<span class="icon p-2">
                             <i class="fas fa-chevron-right" aria-hidden="true"></i>
                         </span></a>
                 </div>
@@ -39,5 +39,6 @@
         </div>
     </div>
 </div>
-
+<!-- footer -->
+{% include 'includes/layout/footer.html' %}
 {% endblock %}
