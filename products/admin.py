@@ -1,6 +1,7 @@
 from django.contrib import admin
 from .models import Product, Category, Collection, Image, ImagesFolder, Tag
 
+
 class ProductAdmin(admin.ModelAdmin):
     list_display = (
         'name',
@@ -16,6 +17,7 @@ class ProductAdmin(admin.ModelAdmin):
     )
 
     ordering = ['collection_name']
+
 
 class CategoryAdmin(admin.ModelAdmin):
     list_display = (

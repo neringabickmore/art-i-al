@@ -31,11 +31,20 @@
 </li>
 {% endif %}
 {% if user.is_superuser %}
-<!-- Product management -->
-<li class="nav-item">
-    <a class="nav-link-header" href="{% url 'product_management' %}" id="">
-        Product Management
+<!-- Superuser management options -->
+<li class="nav-item dropdown">
+    <a class="nav-link-header" role="button" id="managementDropdown" data-toggle="dropdown" aria-haspopup="true"
+        aria-expanded="false">
+        Management
     </a>
+    {% if user.is_authenticated %}
+    <ul class="dropdown-menu-header dropdown-menu border-0" aria-labelledby="managementDropdown">
+        <!-- manage product -->
+        <li><a href="{% url 'product_management' %}" class="dropdown-item ">Products</a></li>
+        <!-- manage social media icons -->
+        <li><a href="{% url 'social_media' %}" class="dropdown-item ">Social Media</a></li>
+        {% endif %}
+    </ul>
     {% endif %}
     <!-- profile -->
 <li class="nav-item  dropdown">
@@ -45,10 +54,14 @@
     </a>
     <ul class="dropdown-menu-header dropdown-menu border-0" aria-labelledby="profileDropdown">
         {% if user.is_authenticated %}
+        <!-- Account details option -->
         <li><a href="{% url 'profile' %}" class="dropdown-item ">Account</a></li>
+        <!-- Logout -->
         <li><a href="{% url 'account_logout' %}" class="dropdown-item ">Logout</a></li>
         {% else %}
+        <!-- login -->
         <li><a href="{% url 'account_login' %}" class="dropdown-item">Login</a></li>
+        <!-- register -->
         <li><a href="{% url 'account_signup' %}" class="dropdown-item ">Register</a></li>
         {% endif %}
 

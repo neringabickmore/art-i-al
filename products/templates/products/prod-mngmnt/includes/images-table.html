@@ -1,7 +1,7 @@
 <table class="table">
   <!-- headers -->
   <thead>
-    <tr>
+    <tr class="text-center">
       <th scope="col">artwork name</th>
       <th scope="col">main image?</th>
       <th scope="col">room view?</th>
@@ -13,7 +13,7 @@
   {% for image in images %}
   <!-- body content -->
   <tbody>
-    <tr>
+    <tr class="text-center">
       <!-- name -->
       <td data-toggle="tooltip" data-placement="top" title="edit {{image.name}}"><a
           href="{% url 'edit_img' image.name %}">{{image.name}}</a> </td>

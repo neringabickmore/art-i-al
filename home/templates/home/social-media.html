@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'products/css/products.css' %}" type="text/css">
+{% endblock %}
+
+{% block content %}
+
+<div class="container h-100 mb-5 prod-mngmnt-container">
+    <div class="row">
+        <!-- Title -->
+        <div class="col-12 col-md-6 px-4">
+            <h3 class="my-4 ml-2 text-uppercase">Social media management</h3>
+        </div>
+    </div>
+
+    <!-- Manage social media -->
+    <div class="row">
+        <div class="col-12 col-md-7 px-4">
+            <table class="table">
+                <!-- header -->
+                <thead>
+                    <tr class="text-center">
+                        <th scope="col">Active Icons</th>
+                        <th scope="col">Account URL provided?</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                {% for social_media in all_social_media %}
+                <tbody>
+                    <tr class="text-center">
+                        <!-- name -->
+                        <td data-toggle="tooltip" data-placement="top" title="edit {{social_media.name}}"><a
+                                href="{% url 'edit_social_media' social_media.id %}">{{social_media.name|title}}</a>
+                        </td>
+                        <td>{% if social_media.url %}
+                            <span aria-hidden="true" class="icon p-2"><i class="fas fa-check"></i></span>
+                            {% else %}
+                            <span aria-hidden="true" class="icon p-2"><i class="fas fa-times"></i></span>
+                            {% endif %}
+                        </td>
+                        <!-- Delete button-->
+                        <td class="text-center">
+                            <!-- remove -->
+                            <a type="button" class="my-2" href="" aria-label="delete icon"
+                                id="delete-icon-{{social_media.id}}-button" data-toggle="modal"
+                                data-target="#delete-icon-{{social_media.id}}-button-modal" title="delete icon">
+                                <span class="icon p-2">
+                                    <i class="fas fa-trash" aria-hidden="true"></i>
+                                </span></a>
+                        </td>
+                </tbody>
+
+                <!-- delete modal -->
+                {% include 'home/management/delete-modal.html' %}
+                {% endfor %}
+            </table>
+        </div>
+        <div class="col-12 col-sm-8">
+            <!-- Add New Icon  -->
+            <a class="btn " href="{% url 'add_social_media' %}">add new icon<span class="icon p-2">
+                    <i class="fas fa-plus" aria-hidden="true"></i>
+                </span></a>
+        </div>
+    </div>
+</div>
+
+<!-- footer -->
+{% include 'includes/layout/footer.html' %}
+{% endblock %}

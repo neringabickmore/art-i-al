@@ -1,20 +1,19 @@
 import sweetify
-
-from django.shortcuts import render, redirect, reverse, get_object_or_404, HttpResponse
-from django.views.decorators.http import require_POST
-from django.contrib import messages
-from django.conf import settings
+import stripe
+import json
 
 from .forms import OrderForm
 from .models import Order, OrderLineItem
-
 from products.models import Product
 from profiles.models import UserProfile
 from profiles.forms import UserProfileForm
+from home.models import SocialMedia
 from bag.contexts import bag_contents
 
-import stripe
-import json
+from django.views.decorators.http import require_POST
+from django.contrib import messages
+from django.conf import settings
+from django.shortcuts import render, redirect, reverse, get_object_or_404, HttpResponse
 
 
 @require_POST
@@ -29,8 +28,9 @@ def cache_checkout_data(request):
         })
         return HttpResponse(status=200)
     except Exception as e:
-        sweetify.sweetalert(request, title='error', icon='error',
-            text= 'Sorry, your payment cannot be \
+        sweetify.sweetalert(
+            request, title='error', icon='error',
+            text='Sorry, your payment cannot be \
             processed right now. Please try again later.',
             timer=2000, timerProgressBar='true', persistent="Close")
         return HttpResponse(content=e, status=400)
@@ -39,6 +39,8 @@ def cache_checkout_data(request):
 def checkout(request):
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
     stripe_secret_key = settings.STRIPE_SECRET_KEY
+
+    social_media = SocialMedia.objects.all()
 
     if request.method == 'POST':
         bag = request.session.get('bag', {})
@@ -58,7 +60,7 @@ def checkout(request):
         order_form = OrderForm(form_data)
         if order_form.is_valid():
             # prevents multiple saves with commit=False
-            order = order_form.save(commit=False) 
+            order = order_form.save(commit=False)
             pid = request.POST.get('client_secret').split('_secret')[0]
             order.stripe_pid = pid
             order.original_bag = json.dumps(bag)
@@ -74,27 +76,35 @@ def checkout(request):
                         )
                         order_line_item.save()
                 except Product.DoesNotExist:
-                    sweetify.sweetalert(request, title='error', icon='error',
-                    text= "One of the products in your bag wasn't found in our database. "
+                    sweetify.sweetalert(
+                        request, title='error', icon='error',
+                        text="One of the products in your bag \
+                        wasn't found in our database. "
                         "Please call us for assistance!",
-                    timer=2000, timerProgressBar='true', persistent="Close")
+                        timer=2000, timerProgressBar='true',
+                        persistent="Close")
                     order.delete()
                     return redirect(reverse('view_bag'))
 
             # Save the info to the user's profile if all is well
             request.session['save_info'] = 'save-info' in request.POST
-            return redirect(reverse('checkout_success', args=[order.order_number]))
+            return redirect(
+                reverse(
+                    'checkout_success',
+                    args=[order.order_number]))
         else:
-            sweetify.sweetalert(request, title='error', icon='error',
-            text= 'There was an error with your form. \
-            Please double check your information.',
-            timer=2000, timerProgressBar='true', persistent="Close")
-    else: 
+            sweetify.sweetalert(
+                request, title='error', icon='error',
+                text='There was an error with your form. \
+                Please double check your information.',
+                timer=2000, timerProgressBar='true', persistent="Close")
+    else:
         bag = request.session.get('bag', {})
         if not bag:
-            sweetify.sweetalert(request, title='error', icon='error',
-            text= "There's nothing in your bag at the moment",
-            timer=2000, timerProgressBar='true', persistent="Close")
+            sweetify.sweetalert(
+                request, title='error', icon='error',
+                text="There's nothing in your bag at the moment",
+                timer=2000, timerProgressBar='true', persistent="Close")
             return redirect(reverse('shop'))
 
         current_bag = bag_contents(request)
@@ -106,7 +116,10 @@ def checkout(request):
                 currency=settings.STRIPE_CURRENCY,
         )
 
-        # Attempt to prefill the form with any info the user maintains in their profile
+        """
+        Attempt to prefill the form with any
+        info the user maintains in their profile
+        """
         if request.user.is_authenticated:
             try:
                 profile = UserProfile.objects.get(user=request.user)
@@ -125,18 +138,20 @@ def checkout(request):
                 order_form = OrderForm()
         else:
             order_form = OrderForm()
-            
+
         if not stripe_public_key:
-            sweetify.sweetalert(request, title='warning', icon='warning',
-            text= "Stripe public key is missing. \
-            Did you forget to set it in your environment?",
-            timer=2000, timerProgressBar='true', persistent="Close")
-                
+            sweetify.sweetalert(
+                request, title='warning', icon='warning',
+                text="Stripe public key is missing. \
+                Did you forget to set it in your environment?",
+                timer=2000, timerProgressBar='true', persistent="Close")
+
         template = 'checkout/checkout.html'
         context = {
             'order_form': order_form,
             'stripe_public_key': stripe_public_key,
             'client_secret':  intent.client_secret,
+            'all_social_media': social_media,
         }
 
     return render(request, template, context)
@@ -148,7 +163,9 @@ def checkout_success(request, order_number):
     """
     save_info = request.session.get('save_info')
     order = get_object_or_404(Order, order_number=order_number)
-    
+
+    social_media = SocialMedia.objects.all()
+
     # Only if the user is authenticated save the info to their profile
     if request.user.is_authenticated:
         profile = UserProfile.objects.get(user=request.user)
@@ -168,15 +185,16 @@ def checkout_success(request, order_number):
                 'default_street_address2': order.street_address2,
                 'default_county': order.county,
             }
-            user_profile_form = UserProfileForm(profile_data, instance=profile)
+            user_profile_form = UserProfileForm(
+                profile_data, instance=profile)
             if user_profile_form.is_valid():
                 user_profile_form.save()
 
-
-    sweetify.sweetalert(request, title='success', icon='success',
-    text= f'Order successfully processed! \
-    A confirmation email will be sent to {order.email}.',
-    timer=2000)
+    sweetify.sweetalert(
+        request, title='success', icon='success',
+        text=f'Order successfully processed! \
+        A confirmation email will be sent to {order.email}.',
+        timer=2000)
 
     if 'bag' in request.session:
         del request.session['bag']
@@ -184,7 +202,7 @@ def checkout_success(request, order_number):
     template = 'checkout/checkout-success.html'
     context = {
         'order': order,
+        'all_social_media': social_media,
     }
 
     return render(request, template, context)
-

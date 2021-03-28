@@ -10,12 +10,13 @@ from profiles.models import UserProfile
 import json
 import time
 
+
 class StripeWH_Handler:
     """Handle Stripe webhooks"""
 
     def __init__(self, request):
         self.request = request
- 
+
     def _send_confirmation_email(self, order):
         """Send the user a confirmation email"""
         customer_email = order.email
@@ -25,13 +26,13 @@ class StripeWH_Handler:
         body = render_to_string(
             'checkout/confirmation-emails/confirmation-email-body.txt',
             {'order': order, 'contact_email': settings.DEFAULT_FROM_EMAIL})
-        
+
         send_mail(
             subject,
             body,
             settings.DEFAULT_FROM_EMAIL,
             [customer_email]
-        )        
+        )
 
     def handle_event(self, event):
         """
@@ -79,14 +80,15 @@ class StripeWH_Handler:
         order_exists = False
         attempt = 1
         """
-        A loop to handle potential delay with synchronisation 
+        A loop to handle potential delay with synchronisation
         with view to prevent errors or orders place twice.
         """
         while attempt <= 5:
             try:
                 order = Order.objects.get(
                     full_name__iexact=shipping_details.name,
-                    # shipping details don't have email hence billing_details required
+                    # shipping details don't have email
+                    # hence billing_details required
                     email__iexact=billing_details.email,
                     phone_number__iexact=shipping_details.phone,
                     # ensure address key is present
@@ -106,11 +108,12 @@ class StripeWH_Handler:
             except Order.DoesNotExist:
                 attempt += 1
                 # 1 second delay
-                time.sleep(1) 
+                time.sleep(1)
         if order_exists:
             self._send_confirmation_email(order)
             return HttpResponse(
-                content=f'Webhook received: {event["type"]} | SUCCESS: Verified order already in database',
+                content=f'Webhook received: {event["type"]} \
+                    | SUCCESS: Verified order already in database',
                 status=200)
         else:
             order = None
@@ -118,7 +121,8 @@ class StripeWH_Handler:
                 order = Order.objects.create(
                     full_name=shipping_details.name,
                     user_profile=profile,
-                    # shipping details don't have email hence billing_details required
+                    # shipping details don't have email
+                    # hence billing_details required
                     email=billing_details.email,
                     phone_number=shipping_details.phone,
                     # ensure address key is present
@@ -146,11 +150,11 @@ class StripeWH_Handler:
                 return HttpResponse(
                     content=f'Webhook received: {event["type"]} | ERROR: {e}',
                     status=500)
-        self._send_confirmation_email(order)            
+        self._send_confirmation_email(order)
         return HttpResponse(
-            content=f'Webhook received: {event["type"]} | SUCCESS: Created order in webhook',
+            content=f'Webhook received: {event["type"]} \
+                | SUCCESS: Created order in webhook',
             status=200)
-
 
     def handle_payment_intent_payment_failed(self, event):
         """

@@ -153,6 +153,13 @@ p {
 .footer-nav .nav-link:hover {
     color: var(--hunter-green);
 }
+.footer ul li a:hover {
+    text-decoration: none;
+}
+
+.footer ul li a {
+    color: var(--white);
+}
 
 /* thematic break*/
 .hr-style {
