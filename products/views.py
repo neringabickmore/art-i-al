@@ -114,7 +114,7 @@ def add_product(request):
 
 
 @login_required
-def edit_product(request, name):
+def edit_product(request, product_id):
     """ Edit product details """
     if not request.user.is_superuser:
         sweetify.sweetalert(
@@ -125,7 +125,8 @@ def edit_product(request, name):
 
     social_media = SocialMedia.objects.all()
 
-    product = get_object_or_404(Product, name=name)
+    product = get_object_or_404(Product, pk=product_id)
+    print(product)
     if request.method == 'POST':
         prod_form = ProductForm(request.POST, instance=product)
         if prod_form.is_valid():
@@ -138,8 +139,7 @@ def edit_product(request, name):
             sweetify.sweetalert(
                 request, title='error', icon='error',
                 text="Failed to update product details. \
-                Please ensure the form is valid.",
-                timer=2000, timerProgressBar='true', persistent="Close")
+                Please ensure the form is valid.")
     else:
         prod_form = ProductForm(instance=product)
         sweetify.sweetalert(
@@ -235,7 +235,7 @@ def add_collection(request):
 
 
 @login_required
-def edit_collection(request, name):
+def edit_collection(request, collection_id):
     """ Edit collection name """
     if not request.user.is_superuser:
         sweetify.sweetalert(
@@ -246,7 +246,7 @@ def edit_collection(request, name):
 
     social_media = SocialMedia.objects.all()
 
-    collection = get_object_or_404(Collection, name=name)
+    collection = get_object_or_404(Collection, pk=collection_id)
     if request.method == 'POST':
         collection_form = CollectionForm(
             request.POST, instance=collection)
@@ -357,7 +357,7 @@ def add_img(request):
 
 
 @login_required
-def edit_img(request, name):
+def edit_img(request, image_id):
     """ Edit image name """
     if not request.user.is_superuser:
         sweetify.sweetalert(
@@ -368,7 +368,7 @@ def edit_img(request, name):
 
     social_media = SocialMedia.objects.all()
 
-    img = get_object_or_404(Image, name=name)
+    img = get_object_or_404(Image, pk=image_id)
     if request.method == 'POST':
         img_form = ImageForm(
             request.POST, request.FILES,
@@ -480,7 +480,7 @@ def view_all_folders(request):
 
 
 @login_required
-def edit_img_folder(request, name):
+def edit_img_folder(request, folder_id):
     """ Edit images folder """
     if not request.user.is_superuser:
         sweetify.sweetalert(
@@ -491,7 +491,7 @@ def edit_img_folder(request, name):
 
     social_media = SocialMedia.objects.all()
 
-    img_folder = get_object_or_404(ImagesFolder, name=name)
+    img_folder = get_object_or_404(ImagesFolder, pk=folder_id)
     if request.method == 'POST':
         img_folder_form = ImagesFolderForm(
             request.POST, instance=img_folder)

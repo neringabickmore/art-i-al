@@ -7,7 +7,7 @@ class Collection(models.Model):
     class Meta:
         verbose_name_plural = "Collection Names"
 
-    name = models.CharField(max_length=50)
+    name = models.CharField(max_length=50, unique=True)
     friendly_name = models.CharField(
         max_length=50, null=True, blank=True)
 
@@ -23,7 +23,7 @@ class Category(models.Model):
     class Meta:
         verbose_name_plural = "Product Categories"
 
-    name = models.CharField(max_length=50)
+    name = models.CharField(max_length=50, unique=True)
     friendly_name = models.CharField(
         max_length=50, null=True, blank=True)
 
@@ -38,7 +38,7 @@ class Product(models.Model):
     category = models.ForeignKey(
         'Category', null=True, blank=True, on_delete=models.SET_NULL)
     name = models.CharField(
-        max_length=254, null=True, blank=True)
+        max_length=254, null=True, blank=True, unique=True)
     collection_name = models.ForeignKey(
         'Collection', null=True, blank=True, on_delete=models.SET_NULL)
     description = models.TextField(max_length=800)
@@ -80,7 +80,7 @@ class Image(models.Model):
     class Meta:
         verbose_name_plural = "Artwork Images"
 
-    name = models.CharField(max_length=254)
+    name = models.CharField(max_length=254, unique=True)
     img = models.ImageField(null=True, blank=True)
     url = models.URLField(max_length=1024, null=True, blank=True)
     main_img = models.BooleanField(default=False, null=True, blank=True)
@@ -97,7 +97,7 @@ class ImagesFolder(models.Model):
     class Meta:
         verbose_name_plural = "Images Folders"
 
-    name = models.CharField(max_length=254)
+    name = models.CharField(max_length=254, unique=True)
     imgs = models.ManyToManyField('Image')
 
     def __str__(self):

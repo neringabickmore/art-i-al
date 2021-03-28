@@ -16,7 +16,7 @@
     <tr class="text-center">
       <!-- name -->
       <td data-toggle="tooltip" data-placement="top" title="edit {{image.name}}"><a
-          href="{% url 'edit_img' image.name %}">{{image.name}}</a> </td>
+          href="{% url 'edit_img' image.id %}">{{image.name}}</a> </td>
       <!-- main image: Y/N -->
       <td>{% if image.main_img %}
         <span aria-hidden="true" class="icon p-2"><i class="fas fa-check"></i></span>
