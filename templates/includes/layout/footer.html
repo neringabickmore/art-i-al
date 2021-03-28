@@ -1,18 +1,20 @@
 <footer class="container-fluid footer">
     <div class="row no-gutters">
+        <!-- quicklinks -->
         <div class="col-sm-4 text-center">
-            <h4>quicklinks</h3>
-            <hr class="hr-style">
+            <h4>quicklinks</h4>
+            <!-- <hr class="hr-style"> -->
             <div class="nav footer-nav flex-column pb-2">
-                <a class="nav-link footer-link py-1" href=''>Home</a>
-                <a class="nav-link footer-link py-1" href=''>Gallery</a>
-                <a class="nav-link footer-link py-1" href=''>Shop</a>
-                <a class="nav-link footer-link py-1" href=''>Profile</a>
+                <a class="nav-link footer-link py-1" href='/'>Home</a>
+                <a class="nav-link footer-link py-1" href='/products/gallery/'>Gallery</a>
+                <a class="nav-link footer-link py-1" href='/products/shop/'>Shop</a>
+                <a class="nav-link footer-link py-1" href='/profiles/'>Profile</a>
             </div>
         </div>
+        <!-- social links -->
         <div class="col-sm-4 text-center">
-            <h4>connect with us</h3>
-            <hr class="hr-style">
+            <!-- empty header purposely required -->
+            <h4></h4>
             <ul class="flex-column p-0">
                 <li class="p-2">
                     {% for social_media in all_social_media %}
@@ -26,15 +28,16 @@
                     </a>
                     {% endif %}
                     {% endfor %}
-                  </li>
+                </li>
             </ul>
         </div>
+        <!-- address -->
         <div class="col-sm-4 text-center footer-contact-info">
-            <h4>contact Info</h3>
-            <hr class="hr-style">
-            <p>Address</p>
-            <p>Phone Number</p>
+            <h4>address</h4>
+            <p class="text-center">Arsenalo str. 5</p>
+            <p class="text-center">Vilnius, Lithuania</p>
+            <p class="text-center">8 5 261 74 53</p>
         </div>
     </div>
-    
+
 </footer>
