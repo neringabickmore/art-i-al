@@ -20,7 +20,7 @@ urlpatterns = [
         'add/collection/', views.add_collection,
         name='add_collection'),
     path(
-        'edit/collection/<name>/', views.edit_collection,
+        'edit/collection/<int:collection_id>/', views.edit_collection,
         name='edit_collection'),
     path(
         'delete/collection/<name>/', views.delete_collection,
@@ -32,7 +32,7 @@ urlpatterns = [
     path(
         'add/image/', views.add_img, name='add_img'),
     path(
-        'edit/image/<name>/', views.edit_img,
+        'edit/image/<int:image_id>/', views.edit_img,
         name='edit_img'),
     path(
         'delete/img/<name>/', views.delete_image,
@@ -45,7 +45,7 @@ urlpatterns = [
         'add/images/folder/', views.add_img_folder,
         name='add_img_folder'),
     path(
-        'edit/images/folder/<name>/', views.edit_img_folder,
+        'edit/images/folder/<int:folder_id>/', views.edit_img_folder,
         name='edit_img_folder'),
     path(
         'delete/img/folder/<name>/', views.delete_folder,
@@ -55,7 +55,7 @@ urlpatterns = [
         'add/product/', views.add_product,
         name='add_product'),
     path(
-        'edit/product/<name>/', views.edit_product,
+        'edit/product/<int:product_id>/', views.edit_product,
         name='edit_product'),
     path(
         'delete/product/<name>/', views.delete_product,

@@ -32,7 +32,7 @@
                     <tr>
                         <!-- name -->
                         <td data-toggle="tooltip" data-placement="top" title="edit {{folder.name}}" class="text-center pt-4"><a
-                                href="{% url 'edit_img_folder' folder.name %}">{{folder.name}}</a> </td>
+                                href="{% url 'edit_img_folder' folder.id %}">{{folder.name}}</a> </td>
                         <!-- Delete folder button-->
                         <td class="text-center">{% include 'products/prod-mngmnt/includes/delete-folder-button.html' %} </td>
                 </tbody>

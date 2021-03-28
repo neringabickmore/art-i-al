@@ -33,7 +33,7 @@
                         <!-- name -->
                         <td class="text-center" data-toggle="tooltip" data-placement="top"
                             title="edit {{collection.name}}"><a
-                                href="{% url 'edit_collection' collection.name %}">{{collection.name}}</a> </td>
+                                href="{% url 'edit_collection' collection.id %}">{{collection.name}}</a> </td>
                         <!-- Delete folder button-->
                         <td class="text-center">
                             {% include 'products/prod-mngmnt/includes/delete-collection-button.html' %} </td>
