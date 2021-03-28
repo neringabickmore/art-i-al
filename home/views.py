@@ -10,7 +10,6 @@ from .models import About, SocialMedia
 from .forms import ContactForm, AboutForm, SocialMediaForm
 
 from profiles.models import UserProfile
-from products.models import Image
 
 
 # Original code idea for sending mail:
@@ -24,8 +23,6 @@ def index(request):
 
     about_section = About.objects.all()
     social_media = SocialMedia.objects.all()
-    new_image = Image.objects.filter(show_in_new=True)
-    gallery_image = Image.objects.filter(show_in_gallery=True)
 
     if request.method == 'POST':
         contact_form = ContactForm(request.POST)
@@ -66,8 +63,6 @@ def index(request):
             contact_form = ContactForm()
     template = 'home/index.html'
     context = {
-        'new_image': new_image,
-        'gallery_image': gallery_image,
         'about_section': about_section,
         'contact_form': contact_form,
         'all_social_media': social_media,

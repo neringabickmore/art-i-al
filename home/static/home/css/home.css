@@ -50,6 +50,12 @@ h4 {
     margin-top: 1rem;
 }
 
+/* Video banner */
+video {
+    width: 100%;
+    height: auto;
+}
+
 /* New Art & Gallery section styling */
 .carousel-inner {
     height: auto;
