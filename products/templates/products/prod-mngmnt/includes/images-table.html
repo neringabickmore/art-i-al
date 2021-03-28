@@ -5,8 +5,6 @@
       <th scope="col">artwork name</th>
       <th scope="col">main image?</th>
       <th scope="col">room view?</th>
-      <th scope="col">show in gallery?</th>
-      <th scope="col">show in new?</th>
       <th scope="col"></th>
     </tr>
   </thead>
@@ -27,22 +25,6 @@
       <!-- room view: Y/N -->
       <td>
         {% if image.room_view %}
-        <span aria-hidden="true" class="icon p-2"><i class="fas fa-check"></i></span>
-        {% else %}
-        <span aria-hidden="true" class="icon p-2"><i class="fas fa-times"></i></span>
-        {% endif %}
-      </td>
-      <!-- show in gallery: Y/N -->
-      <td>
-        {% if image.show_in_gallery %}
-        <span aria-hidden="true" class="icon p-2"><i class="fas fa-check"></i></span>
-        {% else %}
-        <span aria-hidden="true" class="icon p-2"><i class="fas fa-times"></i></span>
-        {% endif %}
-      </td>
-      <!-- show in new: Y/N -->
-      <td>
-        {% if image.show_in_new %}
         <span aria-hidden="true" class="icon p-2"><i class="fas fa-check"></i></span>
         {% else %}
         <span aria-hidden="true" class="icon p-2"><i class="fas fa-times"></i></span>

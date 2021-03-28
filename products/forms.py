@@ -49,8 +49,7 @@ class ImageForm(forms.ModelForm):
         model = Image
         fields = (
             'name', 'img', 'url', 'main_img',
-            'room_view', 'show_in_gallery',
-            'show_in_new')
+            'room_view',)
 
     img = forms.ImageField(
         label='Image', required=False,
@@ -65,10 +64,6 @@ class ImageForm(forms.ModelForm):
             'url': 'Image link',
             'main_img': 'Is this the main image?',
             'room_view': 'Is this a room-view image?',
-            'show_in_gallery':
-            'Show this image in the "gallery" banner on home page?',
-            'show_in_new':
-            'Show this image in the "new" banner on home page?',
         }
         for field in self.fields:
             self.fields[field].label = labels[field]

@@ -133,9 +133,9 @@ ul {
 .list-style{
     list-style-type: disc;
 }
-li .fa-hand-point-right, li .fa-check {
+li .fa-check {
     color: var(--hunter-green);
-    font-size: 2rem;
+    font-size: 1.6rem;
 }
 
 #nav-tabContent li a {
