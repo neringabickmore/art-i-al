@@ -47,8 +47,6 @@ class ImageAdmin(admin.ModelAdmin):
         'url',
         'main_img',
         'room_view',
-        'show_in_gallery',
-        'show_in_new',
     )
 
     ordering = ('name',)

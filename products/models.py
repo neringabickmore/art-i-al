@@ -85,8 +85,6 @@ class Image(models.Model):
     url = models.URLField(max_length=1024, null=True, blank=True)
     main_img = models.BooleanField(default=False, null=True, blank=True)
     room_view = models.BooleanField(default=False, null=True, blank=True)
-    show_in_gallery = models.BooleanField(default=False, null=True, blank=True)
-    show_in_new = models.BooleanField(default=False, null=True, blank=True)
 
     def __str__(self):
         return self.name
