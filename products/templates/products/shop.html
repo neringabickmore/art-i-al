@@ -25,6 +25,8 @@
         <div class="col-sm-12 px-4">
             <h3 class="my-4 ml-2">Shop</h3>
         </div>
+    </div>
+    <div class="row no-gutters align-items-center">
         {% for product in products %}
         {% if not product.tag.name == 'sold' %}
         {% include 'products/includes/products.html' %}
