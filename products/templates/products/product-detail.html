@@ -49,7 +49,7 @@
                             <p class="artwork-tag tag-{{product.tag.friendly_name.lower}} my-4">
                                 {{product.tag.friendly_name}}</p>
                             <!-- Product name -->
-                            <h3 class="py-3">{{ product.name }}</h3>
+                            <h3 class="py-3">{{ product.friendly_name }}</h3>
                             <div class="hr-style"></div>
                             <!-- Product description-->
                             <p class="pt-2">{{ product.description }}</p>
@@ -80,21 +80,20 @@
                                 <div class="form-row">
                                     <div class="col-sm-12">
                                         <!-- Back to shop button -->
-                                        <a class="btn my-3" href="{% url 'shop' %}"><span class="icon p-2">
+                                        <a class="btn col-12 col-sm-3 my-3" href="{% url 'shop' %}"><span class="icon p-2">
                                                 <i class="fas fa-chevron-left" aria-hidden="true"></i>
-                                            </span>Keep Shopping</a>
+                                            </span>shop</a>
                                         <!-- Add to bag button-->
                                         {% if bag %}
                                         <!-- If product is in the bag show view bag -->
-                                        <a class="btn my-3" href="{% url 'view_bag' %}">view bag<span class="icon p-2">
+                                        <a class="btn col-12 col-sm-4 my-3" href="{% url 'view_bag' %}">view bag<span class="icon p-2">
                                                 <i class="fas fa-chevron-right" aria-hidden="true"></i>
                                             </span></a>
-                                        {% else %}
+                                        {% endif %}
                                         <!-- If product is not in the bag, give option to add it -->
-                                        <button class="btn my-3" type="submit">Add to bag<span class="icon p-2">
+                                        <button class="btn col-12 col-sm-4 my-3" type="submit">Add to bag<span class="icon p-2">
                                                 <i class="fas fa-plus" aria-hidden="true"></i>
                                             </span></button>
-                                        {% endif %}
                                     </div>
                                     <!-- By default, redirects to the same item -->
                                     <input type="hidden" name="redirect_url" value="{{ request.path }}">
