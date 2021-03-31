@@ -80,20 +80,23 @@
                                 <div class="form-row">
                                     <div class="col-sm-12">
                                         <!-- Back to shop button -->
-                                        <a class="btn col-12 col-sm-3 my-3" href="{% url 'shop' %}"><span class="icon p-2">
+                                        <a class="btn col-12 col-sm-3 my-3" href="{% url 'shop' %}"><span
+                                                class="icon p-2">
                                                 <i class="fas fa-chevron-left" aria-hidden="true"></i>
                                             </span>shop</a>
-                                        <!-- Add to bag button-->
-                                        {% if bag %}
+                                        {% if show_add_btn %}
+                                        <!-- If product is not in the bag, show add btn -->
+                                        <button class="btn col-12 col-sm-4 my-3" type="submit">Add to bag<span
+                                                class="icon p-2">
+                                                <i class="fas fa-plus" aria-hidden="true"></i>
+                                            </span></button>
+                                        {% else %}
                                         <!-- If product is in the bag show view bag -->
-                                        <a class="btn col-12 col-sm-4 my-3" href="{% url 'view_bag' %}">view bag<span class="icon p-2">
+                                        <a class="btn col-12 col-sm-4 my-3" href="{% url 'view_bag' %}">view bag<span
+                                                class="icon p-2">
                                                 <i class="fas fa-chevron-right" aria-hidden="true"></i>
                                             </span></a>
                                         {% endif %}
-                                        <!-- If product is not in the bag, give option to add it -->
-                                        <button class="btn col-12 col-sm-4 my-3" type="submit">Add to bag<span class="icon p-2">
-                                                <i class="fas fa-plus" aria-hidden="true"></i>
-                                            </span></button>
                                     </div>
                                     <!-- By default, redirects to the same item -->
                                     <input type="hidden" name="redirect_url" value="{{ request.path }}">
@@ -125,8 +128,8 @@
                                 {% include 'products/prod-mngmnt/includes/delete-product-button.html' %}
                                 <!-- Back to gallery button -->
                                 <a class="btn my-2 col-sm-12" href="{% url 'gallery' %}"><span class="icon p-2">
-                                    <i class="fas fa-chevron-left" aria-hidden="true"></i>
-                                </span>Back to gallery</a>
+                                        <i class="fas fa-chevron-left" aria-hidden="true"></i>
+                                    </span>Back to gallery</a>
                             </div>
                             {% endif %}
                         </div>

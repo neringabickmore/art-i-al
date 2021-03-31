@@ -46,8 +46,15 @@ def product_detail(request, name):
     social_media = SocialMedia.objects.all()
     # do not remove this else view bag button won't show
     bag = request.session.get('bag', {})
+
+    show_add_btn = True
+
+    if str(product.id) in bag:
+        show_add_btn = False
+
     template = 'products/product-detail.html'
     context = {
+        'show_add_btn': show_add_btn,
         'product': product,
         'bag': bag,
         'all_social_media': social_media,
