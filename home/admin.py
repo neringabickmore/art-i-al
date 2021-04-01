@@ -6,8 +6,6 @@ class AboutAdmin(admin.ModelAdmin):
     list_display = (
         'name',
         'description',
-        'img',
-        'url',
     )
 
 
