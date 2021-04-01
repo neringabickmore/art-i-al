@@ -14,6 +14,7 @@ class ProductAdmin(admin.ModelAdmin):
         'images_folder',
         'sku',
         'tag',
+        'is_sold',
     )
 
     ordering = ['collection_name']
