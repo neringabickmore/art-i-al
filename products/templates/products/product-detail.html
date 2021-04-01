@@ -44,10 +44,23 @@
             <div class="col-sm-12 col-md-6">
                 <div class="container">
                     <div class="row">
-                        <div class="col-sm-12 p-0 mt-sm-6" id="product-detail-content">
-                            <!-- Tag -->
-                            <p class="artwork-tag tag-{{product.tag.friendly_name.lower}} my-4">
-                                {{product.tag.friendly_name}}</p>
+                        <div class="col-sm-12 p-0 mt-sm-6 my-4" id="product-detail-content">
+                            <div class="container">
+                                <div class="row">
+                                    {% if product.tag %}
+                                    <!-- Tag - New -->
+                                    <div class="col-4 artwork-tag tag-{{product.tag.friendly_name.lower}} mr-3">
+                                        {{product.tag.friendly_name}}
+                                    </div>
+                                    {% endif %}
+                                    {% if product.is_sold %}
+                                    <!-- Sold -->
+                                    <div class="col-4 artwork-tag tag-sold">
+                                        sold
+                                    </div>
+                                    {% endif %}
+                                </div>
+                            </div>
                             <!-- Product name -->
                             <h3 class="py-3">{{ product.friendly_name }}</h3>
                             <div class="hr-style"></div>
@@ -56,7 +69,7 @@
                             <!-- Product dimensions-->
                             <p class="pt-2">Dimensions: {{ product.dimensions }}</p>
                             <!-- If tag is other than "sold" price is displayed -->
-                            {% if not product.tag.name == 'sold' %}
+                            {% if not product.is_sold %}
                             <h5 class="pt-2 pb-2">&euro; {{ product.price }}</h5>
                             {%endif%}
                             <div class="hr-style"></div>
@@ -73,8 +86,8 @@
                     <!-- Buttons -->
                     <div class="row">
                         <div class="col-sm-12 text-center text-sm-left p-0">
+                            {% if not product.is_sold and not request.user.is_superuser %}
                             <!-- Checks if item is not sold; if not then allows to add the product to the shopping bag -->
-                            {% if not product.tag.name == 'sold' and not request.user.is_superuser %}
                             <form class="form" action="{% url 'add_to_bag' product.id %}" method="POST">
                                 {% csrf_token %}
                                 <div class="form-row">
@@ -102,7 +115,7 @@
                                     <input type="hidden" name="redirect_url" value="{{ request.path }}">
                                 </div>
                             </form>
-                            {% elif product.tag.name == 'sold' and not request.user.is_superuser %}
+                            {% elif product.is_sold and not request.user.is_superuser %}
                             <!-- If item is sold,  contact us button on display and redirects to contact -->
                             <div class="col-sm-12 p-0">
                                 <!-- Back to gallery button -->

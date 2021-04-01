@@ -51,19 +51,18 @@
 .tag-new,
 .tag-sold {
     text-align: center;
-    box-shadow: var(--dark-small-box-shadow);
-    max-width: 25%;
+    box-shadow: var(--dark-small-box-shadow); 
+    border: solid 1px var(--white);
+    color: var(--white);
 }
 
 .tag-new {
-    color: var(--hunter-green);
-    border: solid 1px var(--hunter-green);
-
+    background-color: var(--hunter-green);
+   
 }
 
 .tag-sold {
-    color: var(--almond);
-    border: solid 1px var(--almond);
+    background-color: var(--plum);
 }
 
 /* font awesome styling */

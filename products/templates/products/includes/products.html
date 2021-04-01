@@ -22,14 +22,27 @@
                         <div
                             class="row align-items-end {% if request.user.is_superuser %}h-25{% else %}h-50{% endif %}">
                             <div class="col-sm-12 mt-3 p-0">
-                                <!-- checks for tag and assigns -->
-                                <div class="artwork-tag tag-{{product.tag.friendly_name.lower}} my-3">
-                                    {{product.tag.friendly_name}}</div>
+                                <div class="container">
+                                    <div class="row">
+                                        {% if product.tag %}
+                                        <!-- Tag - New -->
+                                        <div class="col-4 artwork-tag tag-{{product.tag.friendly_name.lower}} mr-3">
+                                            {{product.tag.friendly_name}}
+                                        </div>
+                                        {% endif %}
+                                        {% if product.is_sold %}
+                                        <!-- Sold -->
+                                        <div class="col-4 artwork-tag tag-sold">
+                                            sold
+                                        </div>
+                                        {% endif %}
+                                    </div>
+                                </div>
                                 <!-- checks for product name and assigns -->
-                                <h4 class="artwork-title">{{ product.collection_name.friendly_name }}: {{ product.friendly_name }}
+                                <h4 class="artwork-title py-3">{{ product.collection_name.friendly_name }}:
+                                    {{ product.friendly_name }}
                                 </h4>
                             </div>
-                      
                             <div class="p-0 col-sm-12 mt-4">
                                 <a class="btn my-2 col-sm-12 " href="{% url 'product_detail' product.name %}"
                                     title="view details" aria-label="view details">view details
@@ -44,7 +57,7 @@
                                         <i class="far fa-edit" aria-hidden="true"></i>
                                     </span></a>
                                 <!-- Delete product button-->
-                                {% include 'products/prod-mngmnt/includes/delete-product-button.html' %} 
+                                {% include 'products/prod-mngmnt/includes/delete-product-button.html' %}
                                 {% endif %}
                             </div>
                         </div>
