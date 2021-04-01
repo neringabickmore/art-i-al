@@ -212,70 +212,72 @@ You can view all wireframes created for this project in [site wireframes](/wiref
 
 | **Title** | **Database Key** | **Field Type** | **Validation** |
 --- | --- | --- | ---
- Username | username | OneToOneField 'User' |  on_delete=models.CASCADE
- Full Name | profile_full_name | CharField | max_length=70, null=True, blank=True
- Phone number | profile_phone_number | CharField | max_length=20, null=True, blank=True
- Address Line1 | profile_address_line1 | CharField | max_length=60, null=True, blank=True
- Address Line2 | profile_address_line2 | CharField | max_length=60, null=True, blank=True
- Town/City | profile_town_or_city | CharField | max_length=50, null=True, blank=True
- County | profile_county | CharField | max_length=50, null=True, blank=True
- Postcode | profile_postcode | CharField | max_length=20, null=True, blank=True
- Country | profile_country | CountryField | blank_label='Country', null=True, blank=True
+ Username | user | OneToOneField 'User' |  on_delete=models.CASCADE
+ Full Name | default_full_name | CharField | max_length=200, null=True, blank=True
+ Phone number | default_phone_number | CharField | max_length=20, null=True, blank=True
+ Address Line1 | default_address_line1 | CharField | max_length=80, null=True, blank=True
+ Address Line2 | default_address_line2 | CharField | max_length=80, null=True, blank=True
+ Town/City | default_town_or_city | CharField | max_length=40, null=True, blank=True
+ County | default_county | CountryField | blank_label='County', null=True, blank=True
+ Postcode | default_postcode | CharField | max_length=20, null=True, blank=True
+ Country | default_country | CountryField | blank_label='Country', null=True, blank=True
 
 #### **Product App** ####
-
-##### Product #####
-
-| **Title** | **Database Key** | **Field Type** | **Validation** |
---- | --- | --- | ---
- Product Category | product_category | ForeignKey 'Product Category' | null=True, blank=True, on_delete=models.SET_NULL
- Title | title | CharField | max_length=254
- Collection Name |collection_name | ForeignKey 'Collection Name'| null=True, blank=True, on_delete=models.SET_NULL
- Description | description | TextField | max_length=800
- Author | author | CharField | max_length=254
- Dimensions | dimensions | CharField | max_length=70, null=True, blank=True
- Price | price | DecimalField |max_digits=6, decimal_places=2, validators=[MinValueValidator(0.01)]
- Images Folder| images_folder| ForeignKey 'Images Folder'| null=True, blank=True, on_delete=models.SET_NULL
- Sku | sku | CharField | max_length=254, null=True, blank=True
- Tag| tag | ForeignKey 'Tag'| null=True, blank=True, on_delete=models.SET_NULL
- Featured as New | ft_new | BooleanField | default=False
- Featured as Preview | ft_preview| BooleanField | default=False
 
 ##### Product Category #####
 
 | **Title** | **Database Key** | **Field Type** | **Validation** |
 --- | --- | --- | ---
-Programmatic Name | name | CharField | max_length=50
-Friendly Name | friendly_name | CharField | max_length=50, null=True, blank=True
+Programmatic Name | name | CharField | max_length=50, null=True, blank=False, unique=True
+Friendly Name | friendly_name | CharField | max_length=50, null=True, blank=False
 
 ##### Collection Name #####
 
 | **Title** | **Database Key** | **Field Type** | **Validation** |
 --- | --- | --- | ---
 Programmatic Name | name | CharField | max_length=50
-Friendly Name | friendly_name | CharField | max_length=50, null=True, blank=True
-
-##### Images Folder #####
-
-| **Title** | **Database Key** | **Field Type** | **Validation** |
---- | --- | --- | ---
-Title | title | CharField | max_length=254
-Artwork Images | imgs | ForeignKey 'Artwork Images'| null=True, blank=True, on_delete=models.SET_NULL
-
-##### Artwork Images #####
-
-| **Title** | **Database Key** | **Field Type** | **Validation** |
---- | --- | --- | ---
-Title | title | CharField | max_length=254
-Image | img | ImageField | null=True, blank=True
-Image Url | image_url | URLField | max_length=1024, null=True, blank=True
+Friendly Name | friendly_name | CharField | max_length=50, null=True, blank=False
 
 ##### Tag #####
 
 | **Title** | **Database Key** | **Field Type** | **Validation** |
 --- | --- | --- | ---
-Programmatic Name | name | CharField | max_length=50
-Friendly Name | friendly_name | CharField | max_length=50, null=True, blank=True
+Programmatic Name | name | CharField | max_length=50, null=True, blank=False
+Friendly Name | friendly_name | CharField | max_length=50, null=True, blank=False
+
+##### Artwork Images #####
+
+| **Title** | **Database Key** | **Field Type** | **Validation** |
+--- | --- | --- | ---
+Name | name | CharField | max_length=254, null=True, blank=False, unique=True
+Image | img | ImageField | null=True, blank=False
+Image Url | image_url | URLField | max_length=1024, null=True, blank=False
+Main image | main_img |BooleanField | default=False
+Room view | room_view |BooleanField | default=False
+
+##### Images Folder #####
+
+| **Title** | **Database Key** | **Field Type** | **Validation** |
+--- | --- | --- | ---
+Name | name | CharField | max_length=254, null=True, blank=False, unique=True
+Artwork Images Folder| imgs | ManyToManyField'| Image
+
+##### Product #####
+
+| **Title** | **Database Key** | **Field Type** | **Validation** |
+--- | --- | --- | ---
+ Product Category | category | ForeignKey 'Category' | null=True, blank=False, on_delete=models.SET_NULL
+ Name | name | CharField | max_length=254, null=True, blank=False, unique=True
+ Friendly Name | friendly_name | CharField | max_length=50, null=True
+ Collection Name |collection_name | ForeignKey 'Collection'| null=True, blank=False, on_delete=models.SET_NULL
+ Description | description | TextField | max_length=800, null=True, blank=False
+ Author | author | CharField | max_length=254, null=True, blank=False
+ Dimensions | dimensions | CharField | max_length=70, null=True, blank=False
+ Price | price | DecimalField |max_digits=6, decimal_places=2, validators=[MinValueValidator(0.01)]
+ Images Folder| images_folder| ForeignKey 'ImagesFolder'| null=True, blank=False, on_delete=models.SET_NULL
+ Sku | sku | CharField | max_length=254, null=True, blank=False
+ Tag| tag | ForeignKey 'Tag'| null=True, blank=True, on_delete=models.SET_NULL
+ Is sold | is_sold| BooleanField | default=False
 
 #### **Checkout App** ####
 
@@ -284,23 +286,22 @@ Friendly Name | friendly_name | CharField | max_length=50, null=True, blank=True
 | **Title** | **Database Key** | **Field Type** | **Validation** |
 --- | --- | --- | ---
 Order Number | order_number | CharField | max_length=32, null=False, editable=False
-Profile | profile | ForeignKey 'Profile' | on_delete=models.SET_NULL, null=True, blank=True, related_name='orders'
-Full Name | full_name | CharField | max_length=70, null=False, blank=False
+Profile | use_profile | ForeignKey 'Profile' | on_delete=models.SET_NULL, null=True, blank=True, related_name='orders'
+Full Name | full_name | CharField | max_length=50, null=False, blank=False
 Email | email | EmailField | max_length=254, null=False, blank=False
 Phone number | phone_number | CharField | max_length=20, null=False, blank=False
-Address Line1 | address_line1 | CharField | max_length=60, null=False, blank=False
-Address Line2 | address_line2 | CharField | max_length=60, null=False, blank=False
-Town/City | town_or_city | CharField | max_length=50, null=False, blank=False
-County | county | CharField | max_length=50, null=True, blank=True
-Postcode | postcode | CharField | max_length=20, null=True, blank=True
+Address Line1 | address_line1 | CharField | max_length=80, null=False, blank=False
+Address Line2 | address_line2 | CharField | max_length=80, null=False, blank=True
+Town/City | town_or_city | CharField | max_length=40, null=False, blank=False
+County | county | CharField | max_length=80, null=True, blank=True
 Country | country | CountryField | blank_label='Country*', null=False, blank=False
+Postcode | postcode | CharField | max_length=20, null=True, blank=True
 Purchase Date | purchase_date | DateTimeField | auto_now_add=True
 Delivery Cost | delivery_cost | DecimalField | max_digits=6, decimal_places=2, null=False, default=0
 Order Total | order_total | DecimalField | max_digits=10, decimal_places=2, null=False, default=0
 Grand Total | grand_total | DecimalField | max_digits=10, decimal_places=2, null=False, default=0
-Original Cart | original_cart | TextField | null=False, blank=False, default=''
+Original Bag| original_bag | TextField | null=False, blank=False, default=''
 Stripe Pid | stripe_pid | CharField | max_length=254, null=False, blank=False, default=''
-Comment | comment | TextField | max_length=254, null=True, blank=True
 
 ##### Order Line #####
 
@@ -308,7 +309,8 @@ Comment | comment | TextField | max_length=254, null=True, blank=True
 --- | --- | --- | ---
 Order | order | ForeignKey 'Order' | null=False, blank=False, on_delete=models.CASCADE, related_name='lineitems'
 Product | product | ForeignKey 'Product' | null=False, blank=False, on_delete=models.PROTECT
-Item Total | item_total | DecimalField | max_digits=6, decimal_places=2, null=False, blank=False, editable=False
+Quantity | quantity | IntegerField | null=False, blank=False, default=1
+Line Item Total | line_item_total | DecimalField | max_digits=6, decimal_places=2, null=False, blank=False, editable=False
 Datetime | datetime | CharField | null=True, blank=True, max_length=20
 
 #### **Home App** ####
@@ -317,18 +319,16 @@ Datetime | datetime | CharField | null=True, blank=True, max_length=20
 
 | **Title** | **Database Key** | **Field Type** | **Validation** |
 --- | --- | --- | ---
-Title | title | CharField | max_length=254
+Name | name | CharField | max_length=254
 Description | description | TextField | max_length=800
-Image | img| ImageField | null=True, blank=True
-Image Url | img_url | URLField | max_length=1024, null=True, blank=True
 
 ##### Social Media Icons #####
 
 | **Title** | **Database Key** | **Field Type** | **Validation** |
 --- | --- | --- | ---
-Title | title | CharField | max_length=254
-Icon | icon | CharField | max_length_50
-Icon url | icon_url | URLField | max_length=1024, default= '', null=True, blank=True
+Name | name | TextField | choices=SelectName.choices, max_length=254
+Icon | icon | CharField | choices=SelectIcon.choices, max_length=50
+Icon url | url | URLField | max_length=1024, default= '', null=True, blank=True
 
 [Back to content](#contents)
 
