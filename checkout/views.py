@@ -41,9 +41,37 @@ def checkout(request):
     stripe_secret_key = settings.STRIPE_SECRET_KEY
 
     social_media = SocialMedia.objects.all()
+    product = Product.objects.all()
 
     if request.method == 'POST':
         bag = request.session.get('bag', {})
+        
+        """
+        Checks if items are still available for sale
+        if not, pops items that are sold.
+        """
+        for product_id, item_data in bag.items():
+            product = Product.objects.get(id=product_id)
+            if product.is_sold:
+                sweetify.sweetalert(
+                    request, title='info', icon='info',
+                    text="Oh no, somebody bought your item a moment ago. \
+                    Please check the shop for alternatives or contact us.",
+                    timer=2000, timerProgressBar='true',
+                    persistent="close")
+                bag.pop(product_id)
+                request.session['bag'] = bag
+                if not bag.items():
+                        return redirect(reverse('shop'))
+                else:
+                    sweetify.sweetalert(
+                        request, title='info', icon='info',
+                        text="Oh no, somebody bought one of your items. \
+                        Continue to checkout or see for more items \
+                        in the shop.",
+                        timer=2000, timerProgressBar='true',
+                        persistent="Close")
+                    return redirect(reverse('checkout'))  
 
         form_data = {
             'full_name': request.POST['full_name'],
@@ -68,6 +96,9 @@ def checkout(request):
             for product_id, item_data in bag.items():
                 try:
                     product = Product.objects.get(id=product_id)
+                    # switches item to sold.
+                    product.is_sold = True
+                    product.save()
                     if isinstance(item_data, int):
                         order_line_item = OrderLineItem(
                             order=order,
@@ -82,7 +113,7 @@ def checkout(request):
                         wasn't found in our database. "
                         "Please call us for assistance!",
                         timer=2000, timerProgressBar='true',
-                        persistent="Close")
+                        persistent="close")
                     order.delete()
                     return redirect(reverse('view_bag'))
 
