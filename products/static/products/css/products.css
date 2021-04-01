@@ -3,6 +3,7 @@
     color: var(--white);
     letter-spacing: 1px;
 }
+
 /* Product styling */
 
 #product-detail-container {
@@ -27,6 +28,7 @@
 #product-detail-card img:hover {
     opacity: .8;
 }
+
 #product-detail-card img:hover {
     cursor: zoom-in;
 }
@@ -46,17 +48,17 @@
 }
 
 /* tag styling */
-.tag-new, 
+.tag-new,
 .tag-sold {
     text-align: center;
-    box-shadow: var(--dark-small-box-shadow); 
+    box-shadow: var(--dark-small-box-shadow);
     max-width: 25%;
 }
 
-.tag-new{
+.tag-new {
     color: var(--hunter-green);
     border: solid 1px var(--hunter-green);
-   
+
 }
 
 .tag-sold {
@@ -70,6 +72,7 @@
     padding: .8rem;
     color: var(--plum);
 }
+
 .fa-times {
     color: var(--white);
 }
@@ -84,9 +87,10 @@
 .modal-content img {
     width: 100%;
     height: auto;
-    opacity: 1!important;
+    opacity: 1 !important;
     justify-self: center;
 }
+
 .close {
     opacity: 1;
 }
@@ -95,33 +99,41 @@
 .prod-mngmnt-container {
     min-height: 63vh;
 }
-.prod-mngmnt-form label, 
+
+.prod-mngmnt-form label,
 .prod-mngmnt-form option {
     font-size: 1.6rem;
 }
-.field-styling, .prod-mngmnt-form select {
+
+.field-styling,
+.prod-mngmnt-form select {
     border-radius: 0;
     border: 1px solid var(--dark-lava);
     font-size: 1.6rem;
 }
+
 .list-group-item::first-letter {
-    text-transform:capitalize;
+    text-transform: capitalize;
 }
 
-.list-group-item, .list-group-item-action:active {
+.list-group-item,
+.list-group-item-action:active {
     border-color: var(--dark-lava);
     color: var(--white);
 }
 
-.list-group-item.active, .list-group-item-action:active{
+.list-group-item.active,
+.list-group-item-action:active {
     background-color: var(--hunter-green);
     border-color: var(--black-chocolate);
     border-radius: 0;
 }
-.list-group-item-action{
+
+.list-group-item-action {
     color: var(--black-chocolate);
 }
-.list-group-item:hover{
+
+.list-group-item:hover {
     background-color: var(--almond);
     color: var(--black-chocolate);
     font-weight: 600;
@@ -130,9 +142,11 @@
 ul {
     list-style: none;
 }
-.list-style{
+
+.list-style {
     list-style-type: disc;
 }
+
 li .fa-check {
     color: var(--hunter-green);
     font-size: 1.6rem;
@@ -143,7 +157,7 @@ li .fa-check {
     font-weight: 900;
 }
 
-li a:hover{
+li a:hover {
     color: var(--hunter-green);
     text-decoration: none;
 }
@@ -154,14 +168,17 @@ table {
     color: var(--black-chocolate);
     font-size: 1rem;
 }
+
 .table thead th {
 
     border-bottom: 3px solid var(--white);
 }
 
-.table tbody+tbody, .table td {
+.table tbody+tbody,
+.table td {
     border-color: var(--white);
 }
+
 table thead {
     text-transform: uppercase;
     color: var(--black-chocolate);
@@ -171,6 +188,7 @@ table td a {
     color: var(--hunter-green);
     font-weight: 900;
 }
+
 table td a:hover {
     color: var(--hunter-green);
 }
@@ -178,6 +196,7 @@ table td a:hover {
 table .fa-times {
     color: var(--plum);
 }
+
 table .fa-check {
     color: var(--hunter-green);
 }
@@ -190,15 +209,31 @@ table .fa-trash {
 .cancel-delete-product {
     background-color: var(--hunter-green)
 }
+
 .cancel-delete-product:hover {
     background-color: var(--white);
     color: var(--hunter-green);
 }
 
+/* checkbox in management */
+
+.form-check-input {
+    position: initial;
+}
+
+.form-check-label {
+    font-size: 1.6rem !important;
+    text-transform: uppercase;
+    color: var(--plum);
+    font-weight: bold;
+}
+
+
 /* other */
 .tooltip {
     font-size: 1.2rem;
 }
+
 .btn {
     font-size: 1.6rem;
 }
@@ -208,6 +243,7 @@ table .fa-trash {
         font-size: 1rem;
     }
 }
+
 @media (min-width: 1024px) {
     .btn {
         font-size: 1.2rem;
