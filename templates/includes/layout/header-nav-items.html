@@ -30,6 +30,10 @@
     </a>
 </li>
 {% endif %}
+{% if not user.is_authenticated %}
+<!-- login -->
+<li class="nav-item"><a href="{% url 'account_login' %}" class="nav-link-header">Login</a></li>
+{% endif %}
 {% if user.is_superuser %}
 <!-- Superuser management options -->
 <li class="nav-item dropdown">
@@ -47,26 +51,20 @@
     </ul>
     {% endif %}
     <!-- profile -->
+    {% if user.is_authenticated %}
 <li class="nav-item  dropdown">
     <a class="nav-link-header" role="button" id="profileDropdown" data-toggle="dropdown" aria-haspopup="true"
         aria-expanded="false">
         Profile
     </a>
     <ul class="dropdown-menu-header dropdown-menu border-0" aria-labelledby="profileDropdown">
-        {% if user.is_authenticated %}
         <!-- Account details option -->
         <li><a href="{% url 'profile' %}" class="dropdown-item ">Account</a></li>
         <!-- Logout -->
         <li><a href="{% url 'account_logout' %}" class="dropdown-item ">Logout</a></li>
-        {% else %}
-        <!-- login -->
-        <li><a href="{% url 'account_login' %}" class="dropdown-item">Login</a></li>
-        <!-- register -->
-        <li><a href="{% url 'account_signup' %}" class="dropdown-item ">Register</a></li>
-        {% endif %}
-
     </ul>
 </li>
+{% endif %}
 <li class="nav-item d-none d-lg-block">
     <a class="nav-link px-5 py-0" href="{% url 'view_bag' %}">
         <div class="text-center d-flex p-0">
