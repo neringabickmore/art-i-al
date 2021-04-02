@@ -91,7 +91,7 @@ This project is my final project for the Code Institute's Full stack development
 
 **As a user (*applies to all site users*) I am able to:**
 
-1. Access the site on my mobile, tablet and desktop which is adapted to provide the best experience.
+1. Access the site on my mobile, tablet, and desktop which is adapted to provide the best experience.
 
 2. Easily navigate through the website without too much thought and find what I am looking for quickly.
 
@@ -101,17 +101,15 @@ This project is my final project for the Code Institute's Full stack development
 
 5. Find key information about the artwork I am interested in (such as images, title, dimensions, etc)
 
-6. Filter the artwork in the gallery page to identify new, available, and sold artwork.
+6. Add the artwork to my shopping bag.
 
-7. Add the artwork in my shopping bag.
+7. Change the content of my shopping bag before continuing to completion (add more or remove the artwork).
 
-8. Change the content of my shopping bag before continuing to completion (add more or remove the artwork).
+8. See a full breakdown of the total cost, including the shipping charge before proceeding to payment.
 
-9. See full breakdown of the total cost, including the shipping charge before proceeding to payment.
+9. Purchase the artwork using my card in a secure environment.
 
-10. Purchase the artwork using my card in a secure environment.
-
-11. Receive an email confirmation once I complete the payment.
+10. Receive an email confirmation once I complete the payment.
 
 **As a new site user I am able to:**
 
@@ -121,7 +119,7 @@ This project is my final project for the Code Institute's Full stack development
 
 1. Login to my existing account and make a quicker purchase.
 
-2. View, save, and update my personal information.
+2. View, save and update my personal information.
 
 3. View past orders.
 
@@ -133,19 +131,15 @@ This project is my final project for the Code Institute's Full stack development
 
 1. Securely add, edit and delete the information for the specific artwork listed on the website.
 
-2. Change the tags on the products to specify new, available, an sold artwork.
+2. Change the tags on the products to specify new items to promote them.
 
-3. Receive enquiries from the site users after they fill in the contact form straight to my email inbox.
+3. Receive inquiries from the site users after they fill in the contact form straight to my email inbox.
 
 4. Get an email with the customer orders when the purchases are made.
 
-5. Manipulate social media icons in the footer of the site (turn social media icons *on/off* and edit URL's).
+5. Manipulate social media icons in the footer of the site (turn social media icons *on/off* and edit URLs).
 
 6. Edit content in the `About` section of the `Home` page.
-
-7. Manipulate what images are displayed in the carousels (New Artwork and Gallery Preview).
-
-8. View history of all orders with minimal order information.
 
 [Back to content](#contents)
 
@@ -195,6 +189,8 @@ Firstly, I have created a site [map](/wireframes/site-map/sitemap.png) to enable
 I designed my site moc-ups using [balsamiq wireframes](https://balsamiq.com/). I was focusing on defining the basic layout structure of the app and identifying how displays would change on different screen sizes such as [mobile](/wireframes/site-wireframes/gallery-buy.mobile.png), [tablet](/wireframes/site-wireframes/gallery-buy.tablet.png), and [desktop](/wireframes/site-wireframes/gallery-buy.desktop.png).
 
 You can view all wireframes created for this project in [site wireframes](/wireframes/site-wireframes) folder.
+
+  **Please note, as I was developing the project, I have identified some weaknesses in the UX and therefore made the required changes. The deployed site looks somewhat different in comparison to the wireframes. These changes will allow the user to have a better experience and allow easier navigation. Some wireframes that are available to view may not be present in current features. This is due to time constraints and I may consider them for the future, therefore, leaving them. I have also added additional superuser features in the front-end that at the time of the site design didn't realize will be required. Wireframes of these features are not included due to time constraints. The design theme of the features is a close match to the overall site to ensure continuation and flow.*
 
 [Back to content](#contents)
 
@@ -343,22 +339,34 @@ Icon url | url | URLField | max_length=1024, default= '', null=True, blank=True
 - [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 - [Python](https://www.python.org/)
 
-### Libraries & Tools ###
+### Libraries & Frameworks ###
 
+- [Django](https://www.djangoproject.com/)
+- [Django Crispy Forms](https://django-crispy-forms.readthedocs.io/en/latest/)
+- [Jinja](https://jinja.palletsprojects.com/en/2.10.x/)
 - [jQuery](https://jquery.com/)
-- [Popper](https://popper.js.org/)
 - [Popper JS](https://popper.js.org/)
 - [Bootstrap](https://getbootstrap.com/)
-- [Flask](https://www.fullstackpython.com/flask.html)
-- [Jinja](https://jinja.palletsprojects.com/en/2.11.x/)
-- [Font-Awesome](https://fontawesome.com/icons?d=gallery)
+- [Sweetalert](https://sweetalert2.github.io/#declarative-templates)
+- [Stripe](https://stripe.com/ie)
+- [Gunicorn](https://pypi.org/project/gunicorn/)
+- [Psycopg2](https://pypi.org/project/psycopg2/)
 - [Google fonts](https://fonts.google.com/)
+- [Font-Awesome](https://fontawesome.com/icons?d=gallery)
+
+### Tools ###
+
+- [PIP](https://pypi.org/project/pip/)
 - [Git](https://git-scm.com/)
 - [GitHub](https://github.com/)
 - [Heroku](https://www.heroku.com/)
 - [Visual Studio Code](https://code.visualstudio.com/)
+- [Boto 3](https://boto3.amazonaws.com/v1/documentation/api/latest/index.html)
+- [AWS bucket](https://aws.amazon.com/s3/)
 - [Color editor](https://coolors.co/)
-- [Image editor](https://www.birme.net/)
+- [Pre-loaders](https://icons8.com/preloaders/en/horizontal)
+- [Favicons](https://fontawesome.com/icons?d=gallery)
+- [Balsamiq](https://balsamiq.com/)
 
 [Back to content](#contents)
 
@@ -601,18 +609,22 @@ The *static* and *media file*s* are hosted in the [AWS S3 Bucket](https://aws.am
 ### Image editing ###
 
 - I have used the snippet tool for capturing screengrabs which I saved as images.
-- MS Paint 3D to edit images as required.
-- A handy [Birme](https://www.birme.net/?target_width=300&target_height=300&quality=100&border_width=1&border_color=%23bd3d3a) site allowed me to resize the images all at once.
 - I have also used [giphy.com](https://giphy.com/) to convert MP4 video files to gif files used in Testing.md.
+- [Image size editor](https://tinyjpg.com/)
+- [Video Compressor](https://www.freeconvert.com/video-compressor)
+- [Videezy](https://www.videezy.com/free-video/lithuania-sea?page=3&from=mainsite&in_se=true) for video content on the home page.
 
 ### Code ideas ###
 
+- Project was developed by following the Code Institute video course 'Boutique Ado'.
+- Stack Overflow for finding solutions or hints on how to solve issues and how to make it work.
+- I referred to the Django documentation sources during the development.
+- Former CI student's projects.
 
 [Back to content](#contents)
 
 ---
 
 ## Acknowledgements ##
-
 
 [Back to content](#contents)
