@@ -482,15 +482,19 @@ os.environ.setdefault('STRIPE_PUBLIC_KEY', 'YOUR_STRIPE_PUBLIC_KEY')
 os.environ.setdefault('STRIPE_WH_SECRET', 'YOUR_STRIPE_WH_SECRET')
 os.environ.setdefault('DATABASE_URL', 'YOUR_DATABASE_URL')
 os.environ.setdefault('SECRET_KEY', 'YOUR_DJANGO_SECRET_KEY')
-os.environ.setdefault('DEVELOPMENT', 'True')
-
+os.environ.setdefault('DEVELOPMENT', '1')
+os.environ.setdefault('AWS_S3_REGION_NAME', 'YOUR_REGION')
+os.environ.setdefault('AWS_STORAGE_BUCKET_NAME', 'YOUR_BUCKET_NAME')
+os.environ.setdefault('STRIPE_CURRENCY', 'YOUR_CURRENCY')
+os.environ.setdefault('LANGUAGE_CODE', 'YOUR_LANGUAGE_CODE')
+os.environ.setdefault('TIME_ZONE', 'YOUR_TIMEZONE')
 os.environ.setdefault('EMAIL_HOST_USER', 'YOUR_EMAIL_USER')
 os.environ.setdefault('EMAIL_HOST_PASSWORD', 'YOUR_EMAIL_PASSWORD')
-os.environ.setdefault('EMAIL_HOST', 'smtp.google.com') # for gmail
-os.environ.setdefault('DEFAULT_ORDER_EMAIL', 'DEFAULT_EMAIL')
+os.environ.setdefault('EMAIL_HOST', 'smtp.google.com') # if you use gmail 
+
 ```
 
-If you plan to make your repository public, ensure you add it to .gitignore before committing.
+If you plan to make your repository public, ensure you add `.env` file to `.gitignore` before committing.
 
 4. If your IDE terminal, migrate the models to create the database using the following commands:
 
@@ -507,7 +511,15 @@ python manage.py createsuperuser
 
 Then follow the instructions to create the superuser.
 
-6. After you login to the admin panel, you can add data to be displayed in your app. Refer to [database modeling](#database-modelling). Alternatively, if you have data fixtures, use the following command to load data into the database:
+6. After you login to the admin panel, you can add data to be displayed in your app for `HOME` and `PRODUCT` apps. Refer to [database modeling](#database-modelling). Alternatively, you can use fixtures, follow below command to load data into the database in the following order:
+
+`PRODUCT APP`:
+
+`product_category`, `collection_name`, `tag`, `artwork_images`, `images_folder` and only then `product`.
+
+`HOME APP`:
+
+`about_section`, `social_media_icons`.
 
 ```terminal
 python manage.py loaddata <fixture_name>
@@ -547,16 +559,20 @@ pip3 freeze > requirements.txt
 | **KEY**               | **VALUE**                          |
 | --------------------- | -----------------------------------|
 | AWS_ACCESS_KEY_ID     | ACCESS_KEY_ID_PROVIDED_BY_AWS      |
+| AWS_S3_REGION_NAME    | REGION_PROVIDED_BY_AWS             |
 | AWS_SECRET_ACCESS_KEY | SECRET_ACCESS_KEY_PROVIDED_BY_AWS  |
+| AWS_STORAGE_BUCKET    | STORAGE_BUCKET_PROVIDED_BY_AWS     |
 | DATABASE_URL          | YOUR_DATABASE_URL                  |
-| DEFAULT_ORDER_EMAIL   | DEFAULT_EMAIL                      |
 | EMAIL_HOST            | smtp.google.com (if using gmail)   |
-| EMAIL_HOST_PASSWORD   | YOUR_EMAIL_PASSWORD                |
+| EMAIL_HOST_PASS       | YOUR_EMAIL_PASSWORD                |
 | EMAIL_HOST_USER       | YOUR_EMAIL_USER                    |
+| LANGUAGE_CODE         | YOUR_LANGUAGE_CODE                 |
 | SECRET_KEY            | YOUR_DJANGO_SECRET_KEY             |
+| STRIPE_CURRENCY       | YOUR_STRIPE_CURRENCY               |
 | STRIPE_PUBLIC_KEY     | YOUR_STRIPE_SECRET_KEY             |
 | STRIPE_SECRET_KEY     | YOUR_STRIPE_PUBLIC_KEY             |
 | STRIPE_WH_SECRET      | YOUR_STRIPE_WH_SECRET              |
+| TIME_ZONE             | YOUR_TIME_ZONE                     |
 | USE_AWS               | True                               |
 
 1. In settings.py in your IDE, temporarily comment out the database and use below code instead (make sure you do not commit!):
@@ -582,9 +598,15 @@ python manage.py createsuperuser
 
 Then follow the instructions to create the superuser.
 
-12. After you login to the admin panel, you can add data manually to be displayed in your app. Refer to [database modeling](#database-modelling) for required data.
+12. After you login to the admin panel, you can add data to be displayed in your app for `HOME` and `PRODUCT` apps. Refer to [database modeling](#database-modelling). Alternatively, you can use fixtures, follow below command to load data into the database in the following order:
 
-    Alternatively, if you have data fixtures, use the following command to load data to the Postgress database:
+`PRODUCT APP`:
+
+`product_category`, `collection_name`, `tag`, `artwork_images`, `images_folder` and only then `product`.
+
+`HOME APP`:
+
+`about_section`, `social_media_icons`.
 
 ```terminal
 python manage.py loaddata <fixture_name>
@@ -596,7 +618,7 @@ python manage.py loaddata <fixture_name>
 
 ### Hosting Media files in AWS ###
 
-The *static* and *media file*s* are hosted in the [AWS S3 Bucket](https://aws.amazon.com/). To host them, you need to create an account in AWS and create your S3 basket with **public access**. More about setting it up you can read in [Amazon S3 documentation](https://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html) and this [tutorial](https://django-storages.readthedocs.io/en/latest/backends/amazon-S3.html).
+The *static* and *media files* are hosted in the [AWS S3 Bucket](https://aws.amazon.com/). To host them, you need to create an account in AWS and create your S3 basket with **public access**. More about setting it up you can read in [Amazon S3 documentation](https://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html) and this [tutorial](https://django-storages.readthedocs.io/en/latest/backends/amazon-S3.html).
 
 [Back to content](#contents)
 
