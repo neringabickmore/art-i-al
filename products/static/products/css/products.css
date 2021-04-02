@@ -10,7 +10,7 @@
     min-height: 61vh;
 }
 
-#product-card,
+.product-card,
 #product-detail-card {
     width: 100%;
     padding: 2rem;
@@ -20,12 +20,12 @@
     box-shadow: var(--dark-small-box-shadow);
 }
 
-#product-card img,
+.product-card img,
 #product-detail-card img {
     border: solid 1px var(--black-chocolate);
 }
 
-#product-card img:hover,
+.product-card img:hover,
 #product-detail-card img:hover {
     opacity: .8;
 }
