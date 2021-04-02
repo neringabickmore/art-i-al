@@ -1,5 +1,5 @@
 <div class="modal fade" id="delete-product-{{ product.id}}-button-modal" data-backdrop="static" data-keyboard="false" tabindex="-1"
-    aria-labelledby="delete-modal-label" aria-hidden="true">
+    aria-labelledby="delete-modal-label-{{product.id}}" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <!-- close button -->
@@ -8,7 +8,7 @@
             </button>
             <!-- Message -->
             <div class="text-center modal-body">
-                <p id="delete-modal-label" class="text-center"> Do you really want to delete this product? </p>
+                <p id="delete-modal-label-{{product.id}}" class="text-center"> Do you really want to delete this product? </p>
             </div>
             <!-- Delete product button-->
             <a class="btn my-3 delete-btn" href="{% url 'delete_product' product.name %}" aria-label="delete product">
@@ -18,7 +18,7 @@
             <!-- Go back button -->
             <button type="button" class="btn cancel-delete-product" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true" class="icon p-2"><i class="fas fa-chevron-left"></i></span>no, go back
-
+                </button>   
         </div>
     </div>
 </div>

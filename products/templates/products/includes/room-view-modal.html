@@ -1,4 +1,4 @@
-<div class="modal fade" id="roomViewModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="roomViewModal" tabindex="-1" aria-labelledby="room-view-label" aria-hidden="true">
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <!-- close button -->
@@ -6,7 +6,7 @@
                 <span aria-hidden="true"><i class="fas fa-times"></i></span>
             </button>
             <!-- Room view image -->
-            <div class="text-center modal-body">
+            <div class="text-center modal-body" id="room-view-label">
                 {% for img in product.images_folder.imgs.all %}
                 {% if img.room_view %}
                 <img class="card-img-top"

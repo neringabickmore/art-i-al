@@ -1,31 +1,31 @@
 <!-- home -->
 <li class="nav-item">
-    <a class="nav-link-header" href="{% url 'home' %}" id="home-link">
+    <a class="nav-link-header" href="{% url 'home' %}">
         Home
     </a>
 </li>
 <!-- gallery -->
 <li class="nav-item">
-    <a class="nav-link-header" href="{% url 'gallery' %}" id="">
+    <a class="nav-link-header" href="{% url 'gallery' %}">
         Gallery
     </a>
 </li>
 {% if not user.is_superuser %}
 <!-- shop -->
 <li class="nav-item">
-    <a class="nav-link-header" href="{% url 'shop' %}" id="">
+    <a class="nav-link-header" href="{% url 'shop' %}">
         Shop
     </a>
 </li>
 <!-- about -->
 <li class="nav-item">
-    <a class="nav-link-header" href="/#about-home" id="">
+    <a class="nav-link-header" href="/#about-home">
         About
     </a>
 </li>
 <!-- contact -->
 <li class="nav-item">
-    <a class="nav-link-header" href="/#contact-us-home" id="">
+    <a class="nav-link-header" href="/#contact-us-home">
         Contact
     </a>
 </li>

@@ -3,7 +3,16 @@
 }
 
 /* Shipping info form */
-#profile-update-form input {
+
+#profile-update-form input::-webkit-input-placeholder,
+#profile-update-form input,
+#profile-update-form input::placeholder,
+#profile-update-form input::-webkit-input-placeholder,
+#profile-update-form input::-moz-placeholder,
+#profile-update-form input:-ms-input-placeholder,
+#profile-update-form input::-ms-input-placeholder,
+#id_default_country,
+#id_default_country option:not(:first-child) {
     color: var(--black-chocolate);
 }
 
@@ -14,17 +23,9 @@
     font-size: 1.6rem;
 }
 
-#profile-update-form input::placeholder {
-    color: #aab7c4;
-}
-
-#id_default_country,
-#id_default_country option:not(:first-child) {
-    color: var(--black-chocolate);
-}
-
 #id_default_country option:first-child {
-    color: #aab7c4;
+    color: var(--plum);
+    font-weight: bold;
 }
 
 /* Order history */
@@ -37,6 +38,7 @@
 #personal-details,
 #shipping-info,
 #pd-order-history {
+    -webkit-box-shadow: var(--dark-small-box-shadow);
     box-shadow: var(--dark-small-box-shadow);
 }
 
@@ -56,6 +58,7 @@
 }
 
 @media (max-width: 575.98px) {
+
     #pd-order-history td,
     #pd-order-history th {
         font-size: 1.2rem;
