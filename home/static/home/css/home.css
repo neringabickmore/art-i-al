@@ -9,6 +9,7 @@ h4 {
 #contact-form {
     background-color: var(--hunter-green);
     padding: 3rem;
+    -webkit-box-shadow: var(--dark-small-box-shadow);
     box-shadow: var(--dark-small-box-shadow);
 }
 
@@ -31,6 +32,7 @@ h4 {
 #contact-form .btn {
     background-color: var(--dark-lava);
     color: var(--white);
+    -webkit-box-shadow: var(--dark-small-box-shadow);
     box-shadow: var(--dark-small-box-shadow);
 }
 

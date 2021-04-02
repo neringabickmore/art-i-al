@@ -57,6 +57,8 @@ p {
 }
 
 #header-logo {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
     margin: 0 auto;
     height: 100%;
@@ -139,6 +141,7 @@ p {
     padding: 1.2rem 0;
     font-size: 2.5rem;
 }
+
 .footer-link {
     font-family: var(--header-font);
     font-size: 1.2rem;
@@ -153,6 +156,7 @@ p {
 .footer-nav .nav-link:hover {
     color: var(--hunter-green);
 }
+
 .footer ul li a:hover {
     text-decoration: none;
 }
@@ -166,6 +170,7 @@ p {
     width: 100%;
     border: 1px solid var(--black-chocolate);
     opacity: 1;
+    -ms-flex-line-pack: center;
     align-content: center;
 }
 
@@ -181,6 +186,7 @@ p {
 .btn:hover {
     color: var(--white);
     background-color: var(--hunter-green);
+    -webkit-box-shadow: var(--dark-small-box-shadow);
     box-shadow: var(--dark-small-box-shadow);
 }
 
@@ -201,7 +207,7 @@ p {
 /* sweet alert styling */
 /** container **/
 .swal2-container {
-    background-color: 0 var(--white) !important;
+    background-color: var(--white) !important;
     display: initial !important;
     bottom: initial !important;
     margin-top: 22vh;
@@ -210,6 +216,7 @@ p {
 .swal2-popup {
     background-color: var(--almond) !important;
     border-radius: 0 !important;
+    -webkit-box-shadow: var(--dark-small-box-shadow) !important;
     box-shadow: var(--dark-small-box-shadow) !important;
     width: 65% !important;
 }
@@ -270,6 +277,7 @@ p {
 
 .swal2-confirm {
     border-radius: 0 !important;
+    -webkit-box-shadow: none !important;
     box-shadow: none !important;
 }
 
@@ -287,9 +295,11 @@ p {
     min-height: 75vh;
 }
 
-.allauth-form-inner-content label:not([for='id_remember'], [for^='email_radio_']) {
+.allauth-form-inner-content label:not([for='id_remember']),
+.allauth-form-inner-content label:not([for^='email_radio_']) {
     display: none;
 }
+
 
 .allauth-form-inner-content input {
     font-size: 1.6rem;
@@ -365,12 +375,14 @@ p {
     color: var(--plum);
     border-radius: 50%;
 }
+
 .fa-chevron-up:hover {
     color: var(--hunter-green);
 }
 
 /* All forms on the site */
 .form-control:focus {
+    -webkit-box-shadow: var(--dark-small-box-shadow) !important;
     box-shadow: var(--dark-small-box-shadow) !important;
 }
 
@@ -404,6 +416,7 @@ p {
 .custom-control-input:focus:not(:checked)~.custom-control-label::before,
 .custom-control-input:focus:not(:checked)~.custom-control-label::after {
     border-color: var(--tuscany);
+    -webkit-box-shadow: var(--dark-small-box-shadow);
     box-shadow: var(--dark-small-box-shadow);
 }
 

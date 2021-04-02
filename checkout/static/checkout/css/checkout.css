@@ -155,12 +155,29 @@ https://www.w3schools.com/howto/howto_css_custom_checkbox.asp */
 /* stripe element */
 /* .StripeElement, */
 .stripe-style-input {
+    -webkit-box-sizing: border-box;
     box-sizing: border-box;
     height: 4rem;
     padding: 1rem 1.2rem;
     border: 1px solid var(--dark-lava);
     border-radius: 0px;
     background-color: var(--white);
+}
+
+.stripe-style-input::-webkit-input-placeholder {
+    color: #aab7c4;
+}
+
+.stripe-style-input::-moz-placeholder {
+    color: #aab7c4;
+}
+
+.stripe-style-input:-ms-input-placeholder {
+    color: #aab7c4;
+}
+
+.stripe-style-input::-ms-input-placeholder {
+    color: #aab7c4;
 }
 
 .stripe-style-input::placeholder {
@@ -183,6 +200,7 @@ https://www.w3schools.com/howto/howto_css_custom_checkbox.asp */
 }
 
 .form-control:focus {
+    -webkit-box-shadow: var(--dark-small-box-shadow);
     box-shadow: var(--dark-small-box-shadow);
     border-color: var(--dark-lava);
 }
@@ -210,6 +228,7 @@ select option[value=""] {
     margin: 3rem 0;
     padding: 2rem;
     font-size: 1.6rem;
+    -webkit-box-shadow: var(--dark-small-box-shadow);
     box-shadow: var(--dark-small-box-shadow);
 }
 
@@ -227,8 +246,14 @@ select option[value=""] {
 }
 
 .loading-spinner {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
     justify-content: center;
     margin: 0;
     height: 100%;
