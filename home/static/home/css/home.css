@@ -30,7 +30,7 @@ h4 {
 }
 
 #contact-form .btn {
-    background-color: var(--dark-lava);
+    background-color: var(--black-chocolate);
     color: var(--white);
     -webkit-box-shadow: var(--dark-small-box-shadow);
     box-shadow: var(--dark-small-box-shadow);
