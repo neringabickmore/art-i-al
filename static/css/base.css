@@ -352,13 +352,12 @@ p {
 
 /** Go Up button styling **/
 #goUpBtn {
-    opacity: .8;
     display: none;
     position: fixed;
     bottom: 2rem;
     right: 1rem;
     z-index: 99;
-    border: none;
+    border: 3px solid var(--black-chocolate);
     outline: none;
     background-color: var(--white);
     cursor: pointer;
