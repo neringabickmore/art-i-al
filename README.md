@@ -436,7 +436,15 @@ Art-ial website is designed using five applications: `Home`, `Products`, `Profil
 
 ## Testing ##
 
-Testing information can be found in a separate [Testing.md](Testing.md) file.
+Testing was done manually throughout the development process. The full rundown of the testing can be found in a separate [TESTING.md](TESTING.md) file.
+
+Additionally, all code was validated in the following ways:
+
+HTML - All pages were successfully run through the [W3C HTML Validator](https://validator.w3.org/) to ensure compliance with the standards set by the W3C.
+
+CSS - CSS validation with the [W3C Jigsaw Validator](https://jigsaw.w3.org/css-validator/) returned some expected and necessary flags from vendor extensions. Other than that, the code complies to the W3C standards.
+
+Python - All Python code was checked with the [PEP8 online validator](http://pep8online.com/) and is PEP8 compliant, aside from line length flags, which were left for code readability.
 
 [Back to content](#contents)
 
