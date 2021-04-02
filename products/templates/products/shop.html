@@ -5,16 +5,8 @@
 <link rel="stylesheet" href="{% static 'products/css/products.css' %}" type="text/css">
 {% endblock %}
 
-<!-- Free delivery banner -->
 {% block extra_header %}
-<div class="container-fluid">
-    <div class="row no-gutters text-center" id="free-delivery-banner">
-        <div class="col-sm-12 my-1" id="free-delivery-banner">
-            <h5 class="py-2 mb-0">Free delivery on orders over &euro;{{ free_delivery_threshold }}!</h5>
-        </div>
-    </div>
-    <div class="hr-style"></div>
-</div>
+{% include 'products/includes/free-delivery.html' %}
 {% endblock %}
 
 {% block content %}
