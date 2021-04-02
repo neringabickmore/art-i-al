@@ -627,4 +627,11 @@ The *static* and *media file*s* are hosted in the [AWS S3 Bucket](https://aws.am
 
 ## Acknowledgements ##
 
+I'd like to say thank you to everyone who has supported me throughout this project:
+
+- My husband James and my Sister Indre - you were great at supporting me! Thank you ❤
+- Fellow CI Students and Tutors - to name a few: [Simon](https://github.com/jumboduck), [Karol](https://github.com/KarolSliwka), [Michael](https://github.com/mparkcode), [Igor](https://github.com/bravoalpha79), [Chris](https://github.com/ckz8780/)
+- Big thank you to everyone who tested my site, including [Byllsa](https://github.com/byIlsa), [Daisy](https://github.com/Daisy-McG), [Richard](https://github.com/richardhenyash) and anonymous Ngiap! Thanks for breaking my site and allowing me to fix it! ❤
+- My mentor [Simen Daehlin](https://github.com/Eventyret) - you're the best.
+
 [Back to content](#contents)
