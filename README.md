@@ -515,7 +515,7 @@ Then follow the instructions to create the superuser.
 
 `PRODUCT APP`:
 
-`product_category`, `collection_name`, `tag`, `artwork_images`, `images_folder` and only then `product`.
+`product_categories`, `collections`, `tags`, `images`, `images_folder` and only then `products`.
 
 `HOME APP`:
 
@@ -602,7 +602,7 @@ Then follow the instructions to create the superuser.
 
 `PRODUCT APP`:
 
-`product_category`, `collection_name`, `tag`, `artwork_images`, `images_folder` and only then `product`.
+`product_categories`, `collections`, `tags`, `images`, `images_folder` and only then `products`.
 
 `HOME APP`:
 
