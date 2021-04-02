@@ -231,7 +231,7 @@ Friendly Name | friendly_name | CharField | max_length=50, null=True, blank=Fals
 
 | **Title** | **Database Key** | **Field Type** | **Validation** |
 --- | --- | --- | ---
-Programmatic Name | name | CharField | max_length=50
+Programmatic Name | name | CharField | max_length=50, null=True, blank=False, unique=True
 Friendly Name | friendly_name | CharField | max_length=50, null=True, blank=False
 
 ##### Tag #####
