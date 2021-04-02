@@ -5,16 +5,10 @@
 <link rel="stylesheet" href="{% static 'products/css/products.css' %}" type="text/css">
 {% endblock %}
 
-<!-- Free delivery banner -->
 {% block extra_header %}
-<div class="container-fluid">
-    <div class="row no-gutters text-center" id="free-delivery-banner">
-        <div class="col-sm-12 my-1">
-            <h5 class="py-2 mb-0">Free delivery on orders over &euro;{{ free_delivery_threshold }}!</h5>
-        </div>
-    </div>
-    <div class="hr-style"></div>
-</div>
+{% if not product.is_sold %}
+{% include 'products/includes/free-delivery.html' %}
+{% endif %}
 {% endblock %}
 
 {% block content %}
@@ -144,6 +138,8 @@
                                         <i class="fas fa-chevron-left" aria-hidden="true"></i>
                                     </span>Back to gallery</a>
                             </div>
+                            <!-- delete product modal -->
+                            {% include 'products/prod-mngmnt/includes/delete-product-modal.html' %}
                             {% endif %}
                         </div>
                     </div>
@@ -154,7 +150,5 @@
 </div>
 <!-- footer -->
 {% include 'includes/layout/footer.html' %}
-<!-- delete product modal -->
-{% include 'products/prod-mngmnt/includes/delete-product-modal.html' %}
 
 {% endblock %}
