@@ -9,4 +9,4 @@ $('.remove-product').click(function (e) {
 
     fetch(url, data)
         .then(() => location.reload());
-})
+});
