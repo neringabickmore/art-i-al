@@ -85,6 +85,7 @@ def product_management(request):
 @login_required
 def add_product(request):
     """ Add a new product to the gallery """
+
     if not request.user.is_superuser:
         sweetify.sweetalert(
             request, title='error', icon='error',
@@ -123,6 +124,7 @@ def add_product(request):
 @login_required
 def edit_product(request, product_id):
     """ Edit product details """
+
     if not request.user.is_superuser:
         sweetify.sweetalert(
             request, title='error', icon='error',
@@ -166,6 +168,7 @@ def edit_product(request, product_id):
 @login_required
 def delete_product(request, name):
     """ Delete product """
+
     if not request.user.is_superuser:
         sweetify.sweetalert(
             request, title='error', icon='error',
@@ -184,6 +187,7 @@ def delete_product(request, name):
 @login_required
 def view_all_collections(request):
     """ View all collections """
+
     if not request.user.is_superuser:
         sweetify.sweetalert(
             request, title='error', icon='error',
@@ -205,6 +209,7 @@ def view_all_collections(request):
 @login_required
 def add_collection(request):
     """ Add new collection name """
+
     if not request.user.is_superuser:
         sweetify.sweetalert(
             request, title='error', icon='error',
@@ -244,6 +249,7 @@ def add_collection(request):
 @login_required
 def edit_collection(request, collection_id):
     """ Edit collection name """
+
     if not request.user.is_superuser:
         sweetify.sweetalert(
             request, title='error', icon='error',
@@ -288,6 +294,7 @@ def edit_collection(request, collection_id):
 @login_required
 def delete_collection(request, name):
     """ Delete collections  """
+
     if not request.user.is_superuser:
         sweetify.sweetalert(
             request, title='error', icon='error',
@@ -306,6 +313,7 @@ def delete_collection(request, name):
 @login_required
 def view_all_images(request):
     """ View all images """
+
     if not request.user.is_superuser:
         sweetify.sweetalert(
             request, title='error', icon='error',
@@ -327,6 +335,7 @@ def view_all_images(request):
 @login_required
 def add_img(request):
     """ Add new image """
+
     if not request.user.is_superuser:
         sweetify.sweetalert(
             request, title='error', icon='error',
@@ -366,6 +375,7 @@ def add_img(request):
 @login_required
 def edit_img(request, image_id):
     """ Edit image name """
+
     if not request.user.is_superuser:
         sweetify.sweetalert(
             request, title='error', icon='error',
@@ -411,6 +421,7 @@ def edit_img(request, image_id):
 @login_required
 def delete_image(request, name):
     """ Delete images  """
+
     if not request.user.is_superuser:
         sweetify.sweetalert(
             request, title='error', icon='error',
@@ -429,6 +440,7 @@ def delete_image(request, name):
 @login_required
 def add_img_folder(request):
     """ Add new images folder and select images """
+
     if not request.user.is_superuser:
         sweetify.sweetalert(
             request, title='error', icon='error',
@@ -468,6 +480,7 @@ def add_img_folder(request):
 @login_required
 def view_all_folders(request):
     """ View all images folders """
+
     if not request.user.is_superuser:
         sweetify.sweetalert(
             request, title='error', icon='error',
@@ -489,6 +502,7 @@ def view_all_folders(request):
 @login_required
 def edit_img_folder(request, folder_id):
     """ Edit images folder """
+
     if not request.user.is_superuser:
         sweetify.sweetalert(
             request, title='error', icon='error',
@@ -533,6 +547,7 @@ def edit_img_folder(request, folder_id):
 @login_required
 def delete_folder(request, name):
     """ Delete images folder """
+
     if not request.user.is_superuser:
         sweetify.sweetalert(
             request, title='error', icon='error',

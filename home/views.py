@@ -75,6 +75,7 @@ def index(request):
 @login_required
 def social_media(request):
     """ A view to manage social media """
+
     if not request.user.is_superuser:
         sweetify.sweetalert(
             request, title='error', icon='error',
@@ -95,6 +96,7 @@ def social_media(request):
 @login_required
 def add_social_media(request):
     """ Add social media icon """
+
     if not request.user.is_superuser:
         sweetify.sweetalert(
             request, title='error', icon='error',
@@ -137,6 +139,7 @@ def add_social_media(request):
 @login_required
 def edit_social_media(request, social_media_id):
     """ Edit social media icons """
+
     if not request.user.is_superuser:
         sweetify.sweetalert(
             request, title='error', icon='error',
@@ -183,6 +186,7 @@ def edit_social_media(request, social_media_id):
 @login_required
 def remove_social_media(request, social_media_id):
     """ Management view to remove social media """
+
     if not request.user.is_superuser:
         sweetify.sweetalert(
             request, title='error', icon='error',
@@ -202,6 +206,7 @@ def remove_social_media(request, social_media_id):
 @login_required
 def edit_about(request, about_id):
     """ Edit about section  """
+
     if not request.user.is_superuser:
         sweetify.sweetalert(
             request, title='error', icon='error',

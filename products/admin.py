@@ -3,6 +3,10 @@ from .models import Product, Category, Collection, Image, ImagesFolder, Tag
 
 
 class ProductAdmin(admin.ModelAdmin):
+    """
+    Poduct management in admin.
+    """
+
     list_display = (
         'name',
         'category',
@@ -21,6 +25,10 @@ class ProductAdmin(admin.ModelAdmin):
 
 
 class CategoryAdmin(admin.ModelAdmin):
+    """
+    Poduct category management in admin.
+    """
+
     list_display = (
         'friendly_name',
         'name',
@@ -28,6 +36,10 @@ class CategoryAdmin(admin.ModelAdmin):
 
 
 class CollectionAdmin(admin.ModelAdmin):
+    """
+    Poduct collection management in admin.
+    """
+
     list_display = (
         'friendly_name',
         'name',
@@ -35,6 +47,10 @@ class CollectionAdmin(admin.ModelAdmin):
 
 
 class TagAdmin(admin.ModelAdmin):
+    """
+    Poduct tag management in admin.
+    """
+
     list_display = (
         'friendly_name',
         'name',
@@ -42,6 +58,10 @@ class TagAdmin(admin.ModelAdmin):
 
 
 class ImageAdmin(admin.ModelAdmin):
+    """
+    Image management in admin.
+    """
+
     list_display = (
         'name',
         'img',
@@ -54,6 +74,10 @@ class ImageAdmin(admin.ModelAdmin):
 
 
 class ImagesFolderAdmin(admin.ModelAdmin):
+    """
+    Images folder management in admin.
+    """
+
     display = 'name'
     filter_horizontal = ('imgs',)
 

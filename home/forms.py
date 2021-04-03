@@ -4,6 +4,9 @@ from .models import About, SocialMedia
 
 
 class AboutForm(forms.ModelForm):
+    """
+    About form on the home page
+    """
 
     class Meta:
         model = About
@@ -48,6 +51,7 @@ class ContactForm(forms.Form):
 
 class SocialMediaForm(forms.ModelForm):
     """ Social media selection form """
+
     class Meta:
         model = SocialMedia
         fields = ('name', 'icon', 'url',)

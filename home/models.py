@@ -2,6 +2,9 @@ from django.db import models
 
 
 class About(models.Model):
+    """
+    About Section Model for home page
+    """
 
     class Meta:
         verbose_name_plural = "About Section"
@@ -16,6 +19,9 @@ class About(models.Model):
 # Original code idea from:
 # https://github.com/KarolSliwka/ArcticSchool/blob/main/home/models.py#L32
 class SocialMedia(models.Model):
+    """
+    Social Media Model for dynamic Social Icons include
+    """
 
     class Meta:
         verbose_name_plural = "Social Media Icons"

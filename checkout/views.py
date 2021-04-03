@@ -18,6 +18,9 @@ from django.shortcuts import render, redirect, reverse, get_object_or_404, HttpR
 
 @require_POST
 def cache_checkout_data(request):
+    """
+    Caches data in the checkout.
+    """
     try:
         pid = request.POST.get('client_secret').split('_secret')[0]
         stripe.api_key = settings.STRIPE_SECRET_KEY
@@ -37,6 +40,9 @@ def cache_checkout_data(request):
 
 
 def checkout(request):
+    """
+    Checkout view to process the order
+    """
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
     stripe_secret_key = settings.STRIPE_SECRET_KEY
 
@@ -45,7 +51,6 @@ def checkout(request):
 
     if request.method == 'POST':
         bag = request.session.get('bag', {})
-        
         """
         Checks if items are still available for sale
         if not, pops items that are sold.
@@ -62,7 +67,7 @@ def checkout(request):
                 bag.pop(product_id)
                 request.session['bag'] = bag
                 if not bag.items():
-                        return redirect(reverse('shop'))
+                    return redirect(reverse('shop'))
                 else:
                     sweetify.sweetalert(
                         request, title='info', icon='info',
@@ -71,7 +76,7 @@ def checkout(request):
                         in the shop.",
                         timer=2000, timerProgressBar='true',
                         persistent="Close")
-                    return redirect(reverse('checkout'))  
+                    return redirect(reverse('checkout'))
 
         form_data = {
             'full_name': request.POST['full_name'],
