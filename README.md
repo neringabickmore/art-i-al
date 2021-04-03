@@ -452,7 +452,7 @@ Python - All Python code was checked with the [PEP8 online validator](http://pep
 
 ## Deployment ##
 
-**The Art-ial** project was deployed using the **VS Code IDE**, using **Git** and **GitHub** for version control. It is hosted on **Heroku** and all static files, including images, are hosted in **AWS S3 Bucket**. **Stripe** is used for payments and **gMail** for an email account.
+**The Art-ial** project was deployed using the **VS Code IDE** on a windows machine, using **Git** and **GitHub** for version control. It is hosted on **Heroku** and all static files, including images, are hosted in **AWS S3 Bucket**. **Stripe** is used for payments and **gMail** for an email account. Instructions written up below are for a windows based machines and may not work on other as described.
 
 Before deploying the application, install the following:
 
@@ -481,6 +481,8 @@ pip3 install -r requirements.txt
 
 3. Create `env.py` file to hold your environmental variables in the root level of the application:
 
+**Please note, this process will be different depending on IDE you use. If PIP3 is not fully functional on your machine, please check how to set up and run virtual environment on your machine.*
+
 ```python
 
 import os
@@ -502,9 +504,11 @@ os.environ.setdefault('EMAIL_HOST', 'smtp.google.com') # if you use gmail
 
 ```
 
+**Read more about how to set up the Stripe keys in the [Stripe Documentation](https://stripe.com/docs/keys)*
+
 If you plan to make your repository public, ensure you add `.env` file to `.gitignore` before committing.
 
-4. If your IDE terminal, migrate the models to create the database using the following commands:
+1. If your IDE terminal, migrate the models to create the database using the following commands:
 
 ```terminal
 python manage.py makemigrations
