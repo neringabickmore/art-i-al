@@ -3,6 +3,10 @@ from django.core.validators import MinValueValidator, MaxValueValidator
 
 
 class Collection(models.Model):
+    """
+    Model Colllection allowing to group products
+    in collections.
+    """
 
     class Meta:
         verbose_name_plural = "Collection Names"
@@ -18,6 +22,9 @@ class Collection(models.Model):
 
 
 class Category(models.Model):
+    """
+    Model Category to categorise products on the website.
+    """
 
     class Meta:
         verbose_name_plural = "Product Categories"
@@ -33,6 +40,11 @@ class Category(models.Model):
 
 
 class Product(models.Model):
+    """
+    Model Product to gather required information to create
+    a product as an item on the site.
+    """
+
     category = models.ForeignKey(
         'Category', null=True, blank=False, on_delete=models.SET_NULL)
     name = models.CharField(
@@ -61,6 +73,9 @@ class Product(models.Model):
 
 
 class Tag(models.Model):
+    """
+    Model to create a tag, such as new.
+    """
 
     class Meta:
         verbose_name_plural = "Tags"
@@ -76,26 +91,37 @@ class Tag(models.Model):
 
 
 class Image(models.Model):
+    """
+    Model for images
+    """
 
     class Meta:
         verbose_name_plural = "Artwork Images"
 
-    name = models.CharField(max_length=254, null=True, blank=False, unique=True)
+    name = models.CharField(
+        max_length=254, null=True, blank=False, unique=True)
     img = models.ImageField(null=True, blank=False)
-    url = models.URLField(max_length=1024, null=True, blank=False)
+    url = models.URLField(
+        max_length=1024, null=True, blank=False)
     main_img = models.BooleanField(default=False)
-    room_view= models.BooleanField(default=False)
+    room_view = models.BooleanField(default=False)
 
     def __str__(self):
         return self.name
 
 
 class ImagesFolder(models.Model):
+    """
+    Model to group images in a folder.
+    This allows multiple images allocation
+    to one product.
+    """
 
     class Meta:
         verbose_name_plural = "Images Folders"
 
-    name = models.CharField(max_length=254, null=True, blank=False, unique=True)
+    name = models.CharField(
+        max_length=254, null=True, blank=False, unique=True)
     imgs = models.ManyToManyField('Image')
 
     def __str__(self):

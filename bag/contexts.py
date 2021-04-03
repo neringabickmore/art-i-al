@@ -5,6 +5,10 @@ from products.models import Product
 
 
 def bag_contents(request):
+    """
+    Bag contents that are allow to show bag contents
+    accross the whole site.
+    """
 
     bag_items = []
     total = 0

@@ -11,6 +11,7 @@ from home.models import SocialMedia
 @login_required
 def profile(request):
     """ Display the user's profile. """
+
     profile = get_object_or_404(UserProfile, user=request.user)
     social_media = SocialMedia.objects.all()
 
@@ -45,6 +46,7 @@ def profile(request):
 @login_required
 def order_history(request, order_number):
     """ User order history """
+
     order = get_object_or_404(Order, order_number=order_number)
     social_media = SocialMedia.objects.all()
 

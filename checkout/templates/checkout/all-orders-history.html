@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'products/css/products.css' %}" type="text/css">
+{% endblock %}
+
+{% block content %}
+<div class="container mb-5 prod-mngmnt-container">
+    <div class="row">
+        <div class="col-12 col-md-8 px-4">
+            <!-- Title -->
+            <h3 class="my-4 ml-2 text-uppercase">All orders</h3>
+            <!-- Extra Title -->
+            <small>For best experience, please manage products on larger devices.</small><br>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            {% include 'checkout/includes/orders-table.html' %}
+        </div>
+        <div class="col-12 text-left mt-3">
+            <!-- back to product management -->
+            <a class="btn col-12 col-sm-4 mb-2" href="{% url 'product_management' %}"><span class="icon p-2">
+                    <i class="fas fa-chevron-left" aria-hidden="true"></i>
+                </span>go to product management</a>
+        </div>
+    </div>
+</div>
+<!-- footer -->
+{% include 'includes/layout/footer.html' %}
+{% endblock %}

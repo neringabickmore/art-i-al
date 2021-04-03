@@ -12,6 +12,7 @@ import stripe
 @csrf_exempt
 def webhook(request):
     """Listen for webhooks from Stripe"""
+
     # Setup
     wh_secret = settings.STRIPE_WH_SECRET
     stripe.api_key = settings.STRIPE_SECRET_KEY
@@ -54,6 +55,3 @@ def webhook(request):
     # Call the event handler with the event
     response = event_handler(event)
     return response
-
-    print('Go girl!')
-    return HttpResponse(status=200)

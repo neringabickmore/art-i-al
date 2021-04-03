@@ -3,6 +3,10 @@ from .models import About, SocialMedia
 
 
 class AboutAdmin(admin.ModelAdmin):
+    """
+    About section admin
+    """
+
     list_display = (
         'name',
         'description',
@@ -10,6 +14,10 @@ class AboutAdmin(admin.ModelAdmin):
 
 
 class SocialMediaAdmin(admin.ModelAdmin):
+    """
+    Social Media Admin
+    """
+
     list_display = (
         'name',
         'icon',

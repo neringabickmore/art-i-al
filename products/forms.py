@@ -4,6 +4,9 @@ from .models import Product, Category, Collection, ImagesFolder, Image
 
 
 class ProductForm(forms.ModelForm):
+    """
+    Form allowing to make changes in the product
+    """
 
     class Meta:
         model = Product
@@ -21,6 +24,9 @@ class ProductForm(forms.ModelForm):
 
 
 class CollectionForm(forms.ModelForm):
+    """
+    Form allowing to make changes in the product
+    """
 
     class Meta:
         model = Collection
@@ -44,6 +50,9 @@ class CollectionForm(forms.ModelForm):
 
 
 class ImageForm(forms.ModelForm):
+    """
+    Form allowing to make changes to Images
+    """
 
     class Meta:
         model = Image
@@ -77,6 +86,9 @@ class ImageForm(forms.ModelForm):
 
 
 class ImagesFolderForm(forms.ModelForm):
+    """
+    Form allowing to make changes to Images Folder
+    """
 
     class Meta:
         model = ImagesFolder
@@ -102,4 +114,3 @@ class ImagesFolderForm(forms.ModelForm):
         self.fields['imgs'].widget.attrs['title'] = 'To select \
             multiple images +shift'
         self.fields['name'].widget.attrs['class'] = 'field-styling'
-

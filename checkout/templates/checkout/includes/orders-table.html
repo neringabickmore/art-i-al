@@ -1,0 +1,37 @@
+<div id="order-table">
+    <table class="table w-75 mb-1">
+        <!-- headers -->
+        <thead>
+            <tr class="text-center">
+                <th scope="col">purchase date</th>
+                <th scope="col">order number</th>
+                <th scope="col">item sku</th>
+                <th scope="col">item title</th>
+                <th scope="col">item total</th>
+                <th scope="col">customer name</th>
+                <th scope="col">customer email</th>
+            </tr>
+        </thead>
+        {% for order in line_item %}
+        <!-- body content -->
+        <tbody>
+            <tr class="text-center">
+                <!-- purchase date -->
+                <td>{{ order.date_time }}</td>
+                <!-- order number -->
+                <td>{{ order.order.order_number|truncatechars:8 }}</td>
+                <!-- item sku-->
+                <td> {{ order.product.sku}} </td>
+                <!-- full name -->
+                <td>{{ order.product.name }}</td>
+                <!-- item total -->
+                <td>{{ order.line_item_total }}</td>
+                <!-- customer name -->
+                <td>{{ order.order.full_name }}</td>
+                <!-- customer email -->
+                <td>{{ order.order.email }}</td>
+            </tr>
+        </tbody>
+        {% endfor %}
+    </table>
+</div>
