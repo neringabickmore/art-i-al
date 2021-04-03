@@ -172,7 +172,7 @@ This project is my final project for the Code Institute's Full stack development
 
 - *Paragraphs, descriptions*
 
-  ```font-family: 'Exo', sans-serif;```
+  ```font-family: 'Lato', sans-serif;```
 
 #### **Colours** ####
 
