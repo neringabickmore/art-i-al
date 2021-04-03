@@ -10,52 +10,54 @@ At the beginning of 2020, my sister started experimenting with paint on canvases
 
 ## Contents ##
 
-- [!ART.IAL](#)
+- ART.IAL
   - [Contents](#contents)
   - [UX](#ux)
     - [Project Goals](#project-goals)
     - [Site Owner Goals](#site-owner-goals)
-    - [Site Visitor/User Goals](#site-visitoruser-goals)
+    - [Site Visitor/User Goals](#site-visitor-user-goals)
     - [User Stories](#user-stories)
     - [User Requirements and Expectations](#user-requirements-and-expectations)
-      - [**Requirements**](#requirements)
-      - [**Expectations**](#expectations)
+      - [**Requirements**](#--requirements--)
+      - [**Expectations**](#--expectations--)
     - [Design Choices](#design-choices)
-      - [**Fonts**](#fonts)
-      - [**Colours**](#colours)
+      - [**Fonts**](#--fonts--)
+      - [**Colours**](#--colours--)
   - [Wireframes](#wireframes)
-    - [**Site Map**](#site-map)
-    - [**Site Layout**](#site-layout)
+    - [**Site Map**](#--site-map--)
+    - [**Site Layout**](#--site-layout--)
   - [Information Architecture](#information-architecture)
     - [Database Choice](#database-choice)
     - [Database Modelling](#database-modelling)
-      - [**Profile App**](#profile-app)
+      - [**Profile App**](#--profile-app--)
         - [Profile](#profile)
-      - [**Product App**](#product-app)
-        - [Product](#product)
+      - [**Product App**](#--product-app--)
         - [Product Category](#product-category)
         - [Collection Name](#collection-name)
-        - [Images Folder](#images-folder)
-        - [Artwork Images](#artwork-images)
         - [Tag](#tag)
-      - [**Checkout App**](#checkout-app)
+        - [Artwork Images](#artwork-images)
+        - [Images Folder](#images-folder)
+        - [Product](#product)
+      - [**Checkout App**](#--checkout-app--)
         - [Order](#order)
         - [Order Line](#order-line)
-      - [**Home App**](#home-app)
+      - [**Home App**](#--home-app--)
         - [About Section](#about-section)
         - [Social Media Icons](#social-media-icons)
   - [Technologies](#technologies)
     - [Languages](#languages)
-    - [Libraries & Tools](#libraries--tools)
+    - [Libraries & Frameworks](#libraries---frameworks)
+    - [Tools](#tools)
   - [Features](#features)
     - [Implemented Features](#implemented-features)
-      - [**User Account**](#user-account)
-      - [**Super User**](#super-user)
-      - [**Gallery page**](#gallery-page)
-      - [**Shop page**](#shop-page)
-      - [**Shopping bag**](#shopping-bag)
-      - [**Payments**](#payments)
+      - [**User Account**](#--user-account--)
+      - [**Super User**](#--super-user--)
+      - [**Gallery page**](#--gallery-page--)
+      - [**Shop page**](#--shop-page--)
+      - [**Shopping bag**](#--shopping-bag--)
+      - [**Payments**](#--payments--)
     - [Future Features](#future-features)
+    - [Redundant features](#redundant-features)
   - [Changes applied since planning](#changes-applied-since-planning)
   - [Testing](#testing)
   - [Deployment](#deployment)
@@ -89,57 +91,57 @@ This project is my final project for the Code Institute's Full stack development
 
 ### User Stories ###
 
-**As a user (*applies to all site users*) I am able to:**
+**Applies to all site users:**
 
-1. Access the site on my mobile, tablet, and desktop which is adapted to provide the best experience.
+- As a user, I am able to access the site on my mobile, tablet, and desktop which is adapted to provide the best experience.
 
-2. Easily navigate through the website without too much thought and find what I am looking for quickly.
+- As a user, I am able to easily navigate through the website without too much thought and find what I am looking for quickly.
 
-3. Identify instantly what the site is all about and what it has to offer.
+- As a user, I am able to identify instantly what the site is all about and what it has to offer.
 
-4. Contact the site owner using a simple form.
+- As a user, I am able to contact the site owner using a simple form.
 
-5. Find key information about the artwork I am interested in (such as images, title, dimensions, etc)
+- As a user, I am able to find key information about the artwork I am interested in (such as images, title, dimensions, etc)
 
-6. Add the artwork to my shopping bag.
+- As a user, I am able to add the artwork to my shopping bag, except if I am a superuser.
 
-7. Change the content of my shopping bag before continuing to completion (add more or remove the artwork).
+- As a user, I am able to change the content of my shopping bag before continuing to completion (add more or remove the artwork), except if I am a superuser.
 
-8. See a full breakdown of the total cost, including the shipping charge before proceeding to payment.
+- As a user, I am able to see a full breakdown of the total cost, including the shipping charge before proceeding to payment, except if I am a superuser.
 
-9. Purchase the artwork using my card in a secure environment.
+- As a user, I am able to purchase the artwork using my card in a secure environment, except if I am a superuser.
 
-10. Receive an email confirmation once I complete the payment.
+- As a user, I am able to receive an email confirmation once I complete the payment, except if I am a superuser.
 
-**As a new site user I am able to:**
+**Applies to new site users:**
 
-1. Create an account.
+- As a user, I am able to  create an account.
 
-**As a returning user I am able to:**
+**Applies to all returning users:**
 
-1. Login to my existing account and make a quicker purchase.
+- As a user, I am able to login to my existing account and make a quicker purchase.
 
-2. View, save and update my personal information.
+- As a user, I am able to view, save and update my personal information.
 
-3. View past orders.
+- As a user, I am able to view past orders, except if I am a superuser.
 
-4. Make purchases quicker by having stored information such as address.
+- As a user, I am able to make purchases quicker by having stored information such as address, except if I am a superuser.
 
-5. Change or reset my password securely.
+- As a user, I am able to change or reset my password securely.
 
-**As a superuser (site owner) I am able to:**
+**Applies to a superuser (site owner):**
 
-1. Securely add, edit and delete the information for the specific artwork listed on the website.
+- As a user, I am able to securely add, edit and delete the information for the specific artwork listed on the website.
 
-2. Change the tags on the products to specify new items to promote them.
+- As a user, I am able to change the tags on the products to specify new items to promote them.
 
-3. Receive inquiries from the site users after they fill in the contact form straight to my email inbox.
+- As a user, I am able to receive inquiries from the site users after they fill in the contact form straight to my email inbox.
 
-4. Get an email with the customer orders when the purchases are made.
+- As a user, I am able to get an email with the customer orders when the purchases are made.
 
-5. Manipulate social media icons in the footer of the site (turn social media icons *on/off* and edit URLs).
+- As a user, I am able to manipulate social media icons in the footer of the site (turn social media icons *on/off* and edit URLs).
 
-6. Edit content in the `About` section of the `Home` page.
+- As a user, I am able to edit content in the `About` section of the `Home` page.
 
 [Back to content](#contents)
 
@@ -155,7 +157,7 @@ This project is my final project for the Code Institute's Full stack development
 #### **Expectations** ####
 
 - User information is protected by the site
-- User is able to manipulate elements of the particular page
+- User can manipulate elements of the particular page
 - Quick app load time
 
 [Back to content](#contents)
@@ -378,40 +380,37 @@ Art-ial website is designed using five applications: `Home`, `Products`, `Profil
 
 ### Implemented Features ###
 
-- The site has **responsive design** when viewed on mobile, tablet, and desktop.
+- The site has **responsive design** when viewed on a mobile, tablet, and desktop.
 - **Easy navigation** to external sites, such as social media accounts.
-- The user is given feedback when they interact with the website (i.e. when items are added/deleted from cart, or payment is processed, or they send an enquiry using the form on `Home` page).
+- The user is given feedback when they interact with the website (i.e. when items are added/deleted from the bag, or payment is processed, or they send an enquiry using the form on the `Home` page).
 - **Purchased** artwork is immediately allocated ***sold*** tag, removed from `Shop` page and is only visible in the `Gallery` page.
 
 #### **User Account** ####
 
-- The users are able to **create** an account where they can store personal information such as their address and **edit** their details.
+- The users can **create** an account where they can store personal information such as their address and **edit** their details.
 - **Password re-set**.
-- **User** can completely delete their account.
 
 #### **Super User** ####
 
-- Existing content about the **artwork** can be edited, updated, archived or completely deleted by the **Super User** in the front end.
-- The **Super User** is able to **add new** artwork to `Gallery` and `Shop` sections of the site.
-- The **Super User** is able to change the content displayed in `About` section of the site.
-- The **Super User** is able to change the pictures displays in New Artwork and Gallery preview carousels located in `Home` page.
-- The **Super User** is able to add/remove/edit additional ***social media*** icons displayed in the footer.
-- The **Super User** is able to see history of all orders.
+- Existing content about the **artwork** can be edited, updated, or completely deleted by the **Super User** in the front end.
+- The **Super User** can **add new** artwork to `Gallery` and `Shop` sections of the site.
+- The **Super User** can change the content displayed in the `About` section of the site.
+- The **Super User** can add/remove/edit additional ***social media*** icons displayed in the footer.
+- The **Super User** can see the history of all orders.
 
 #### **Gallery page** ####
 
-- **Search function** in the gallery page to narrow down and search for *all artwork*, *new*, *sold* or *available to purchase* artwork.
-- The artwork has allocated tags that are clearly visible to allow the user to identify if it's available for purchase or it's newly added or still available for purchase.
-- **Room view** image is available for the users to view to enhance experience.
+- The artwork has allocated tags that are visible to allow the user to identify if it's available for purchase, sold or is newly added.
+- **Room view** image is available for the users to view to enhance the experience.
 
 #### **Shop page** ####
 
 - All of the artwork listed on this page is available for purchase.
-- **Room view** image is available for the users to enhance shopping experience.
+- **Room view** image is available for the users to enhance the shopping experience.
 
 #### **Shopping bag** ####
 
-- Items added to the shopping bag appear in the shopping cart.
+- Items added to the shopping bag appear in the shopping bag in the navigation part of the header.
 - Artwork can be removed from the shopping bag.
 - The user can choose to proceed to payment.
 
@@ -424,7 +423,23 @@ Art-ial website is designed using five applications: `Home`, `Products`, `Profil
 ### Future Features ###
 
 - The **Super User** can update ***video banner*** content and ***contact info***.
-- The **Super User** is able switch quick links ***on*** and ***off***, and add others.
+- The **Super User** can switch quick links ***on*** and ***off***, and add others.
+- FAQ app, which would hold some useful information about shipping, payments, refunds and any other relevant questions answered that many users will have. This would prevent them from filling in a contact form.
+- **Search function** in the gallery page to narrow down and search for *all artwork*, *new*, *sold* or *available to purchase* artwork.
+
+The reason this feature was not implemented right now as it is not necessary. Art-ial is a small e-commerce site with only a few items available for purchase. Should the site grow, this feature will be reconsidered.
+
+### Redundant features ###
+
+During the development of the site, I have identified a few features that will not be included in the current site or in future. They are:
+
+- The **Super User** can change the pictures displays in New Artwork and Gallery preview carousels located in the `Home` page.
+  
+This section was completely removed from the site as I have identified a better and more UX friendly solution by keeping only video-banner on a home page.
+
+- **User** can completely delete their account.
+  
+Superuser can remove user account in the admin section of the site. This option will not be given to registered users but can be requested by filling in a form.
 
 [Back to content](#contents)
 
@@ -438,21 +453,13 @@ Art-ial website is designed using five applications: `Home`, `Products`, `Profil
 
 Testing was done manually throughout the development process. The full rundown of the testing can be found in a separate [TESTING.md](TESTING.md) file.
 
-Additionally, all code was validated in the following ways:
-
-HTML - All pages were successfully run through the [W3C HTML Validator](https://validator.w3.org/) to ensure compliance with the standards set by the W3C.
-
-CSS - CSS validation with the [W3C Jigsaw Validator](https://jigsaw.w3.org/css-validator/) returned some expected and necessary flags from vendor extensions. Other than that, the code complies to the W3C standards.
-
-Python - All Python code was checked with the [PEP8 online validator](http://pep8online.com/) and is PEP8 compliant, aside from line length flags, which were left for code readability.
-
 [Back to content](#contents)
 
 ---
 
 ## Deployment ##
 
-**The Art-ial** project was deployed using the **VS Code IDE** on a windows machine, using **Git** and **GitHub** for version control. It is hosted on **Heroku** and all static files, including images, are hosted in **AWS S3 Bucket**. **Stripe** is used for payments and **gMail** for an email account. Instructions written up below are for a windows based machines and may not work on other as described.
+**The Art-ial** project was deployed using the **VS Code IDE**, using **Git** and **GitHub** for version control. It is hosted on **Heroku** and all static files, including images, are hosted in **AWS S3 Bucket**. **Stripe** is used for payments and **gMail** for an email account.
 
 Before deploying the application, install the following:
 
@@ -481,8 +488,6 @@ pip3 install -r requirements.txt
 
 3. Create `env.py` file to hold your environmental variables in the root level of the application:
 
-**Please note, this process will be different depending on IDE you use. If PIP3 is not fully functional on your machine, please check how to set up and run virtual environment on your machine.*
-
 ```python
 
 import os
@@ -504,11 +509,9 @@ os.environ.setdefault('EMAIL_HOST', 'smtp.google.com') # if you use gmail
 
 ```
 
-**Read more about how to set up the Stripe keys in the [Stripe Documentation](https://stripe.com/docs/keys)*
-
 If you plan to make your repository public, ensure you add `.env` file to `.gitignore` before committing.
 
-1. If your IDE terminal, migrate the models to create the database using the following commands:
+4. If your IDE terminal, migrate the models to create the database using the following commands:
 
 ```terminal
 python manage.py makemigrations
@@ -587,7 +590,7 @@ pip3 freeze > requirements.txt
 | TIME_ZONE             | YOUR_TIME_ZONE                     |
 | USE_AWS               | True                               |
 
-1. In settings.py in your IDE, temporarily comment out the database and use below code instead (make sure you do not commit!):
+9. In settings.py in your IDE, temporarily comment out the database and use below code instead (make sure you do not commit!):
 
 ```python
 DATABASES = {
