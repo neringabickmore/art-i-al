@@ -67,6 +67,12 @@ p {
 
 
 /* header - site navigation */
+.navbar, 
+#mobile-nav {
+    margin-right: -15px;
+    margin-left: -15px;
+}
+
 #mobile-nav,
 #main-nav,
 .nav-link-header,
@@ -167,11 +173,13 @@ p {
 
 /* thematic break*/
 .hr-style {
-    width: 100%;
+    /* width: 100%; */
     border: 1px solid var(--black-chocolate);
     opacity: 1;
     -ms-flex-line-pack: center;
     align-content: center;
+    margin-right: -15px;
+    margin-left: -15px;
 }
 
 /* general button styling */
