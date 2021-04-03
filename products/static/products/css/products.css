@@ -211,11 +211,9 @@ table .fa-trash {
 }
 
 /* Order table in checkout app */
-
-/* #order-table {
-    overflow: scroll;
-    width: 90%;
-} */
+#order-table {
+    overflow-x: auto;
+}
 
 /* Delete product warning modal */
 .cancel-delete-product {

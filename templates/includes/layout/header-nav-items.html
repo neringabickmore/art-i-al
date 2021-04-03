@@ -41,17 +41,18 @@
         aria-expanded="false">
         Management
     </a>
-    {% if user.is_authenticated %}
     <ul class="dropdown-menu-header dropdown-menu border-0" aria-labelledby="managementDropdown">
         <!-- manage product -->
         <li><a href="{% url 'product_management' %}" class="dropdown-item ">Products</a></li>
         <!-- manage social media icons -->
         <li><a href="{% url 'social_media' %}" class="dropdown-item ">Social Media</a></li>
-        {% endif %}
+        <!-- list of all orders -->
+        <li><a href="{% url 'all_orders_history' %}" class="dropdown-item ">Order history</a></li>
+        
     </ul>
-    {% endif %}
-    <!-- profile -->
-    {% if user.is_authenticated %}
+{% endif %}
+<!-- profile -->
+{% if user.is_authenticated %}
 <li class="nav-item  dropdown">
     <a class="nav-link-header" role="button" id="profileDropdown" data-toggle="dropdown" aria-haspopup="true"
         aria-expanded="false">

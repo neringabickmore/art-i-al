@@ -12,6 +12,7 @@ from bag.contexts import bag_contents
 
 from django.views.decorators.http import require_POST
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from django.conf import settings
 from django.shortcuts import render, redirect, reverse, get_object_or_404, HttpResponse
 
@@ -239,6 +240,26 @@ def checkout_success(request, order_number):
     context = {
         'order': order,
         'all_social_media': social_media,
+    }
+
+    return render(request, template, context)
+
+@login_required
+def all_orders_history(request):
+    """ A view that renders all historical orders """
+
+    orders = Order.objects.all().order_by('purchase_date')
+    product = Product.objects.all()
+    line_item = OrderLineItem.objects.all()
+    social_media = SocialMedia.objects.all()
+
+    template = 'checkout/all-orders-history.html'
+
+    context = {
+        'all_social_media': social_media,
+        'orders': orders,
+        'line_item': line_item,
+        'product' : product,
     }
 
     return render(request, template, context)

@@ -7,7 +7,6 @@ from .models import Product, Collection, Category, Image, ImagesFolder
 from .forms import ProductForm, CollectionForm, ImagesFolderForm, ImageForm
 
 from home.models import SocialMedia
-
 from bag.contexts import bag_contents
 
 

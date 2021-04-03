@@ -48,6 +48,22 @@ p {
     text-align: justify;
 }
 
+/* Scrollbar styling*/
+::-webkit-scrollbar {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px var(--black-chocolate); 
+}
+::-webkit-scrollbar-thumb {
+    background: var(--black-chocolate);
+}
+::before{
+    height: 12px;
+    width: 12px;
+}
+
 /* header - logo */
 #logo-a {
     display: block;
