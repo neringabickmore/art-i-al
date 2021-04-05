@@ -17,9 +17,6 @@ View [website](https://art-ial-app.herokuapp.com/) deployed to Heroku.
     - [Other Testing](#other-testing)
   - [Bugs](#bugs)
     - [Known Bugs](#known-bugs)
-      - [1. Messages in all-auth templates are not showing](#1-messages-in-all-auth-templates-are-not-showing)
-      - [2. Sold items in the bag](#2-sold-items-in-the-bag)
-      - [3. Sold-out defence](#3-sold-out-defence)
     - [Solved Bugs](#solved-bugs)
 
 ## Validation Services ##
@@ -46,27 +43,31 @@ JavaScript - All files were tested with [JSHint](https://jshint.com/) validators
 
 ### Known Bugs ###
 
-#### 1. Messages in all-auth templates are not showing ####
+- **🐞 500.html**
+  
+  Template 500.html doesn't work. It is placed in root template just as is 404.html, however it's not working.
 
-- When a user takes actions, such as log in, logout, change password etc. The bug was discovered during the testing phase of the project. I have since identified that throughout the project I was using sweetify sweet-alerts and all-auth templates by default use messages as a form of notification. This is something I will be looking at a later stage of the development of this project and unable to fix due to time constrains as I would ideally like to use sweet-alerts and not have two forms of messaging in one application.
+- **🐞 Messages in all-auth templates are not showing**
 
-#### 2. Sold items in the bag ####
+    When a user takes actions, such as log in, logout, change password etc. The bug was discovered during the testing phase of the project. I have since identified that throughout the project I was using sweetify sweet-alerts and all-auth templates by default use messages as a form of notification. This is something I will be looking at a later stage of the development of this project and unable to fix due to time constrains as I would ideally like to use sweet-alerts and not have two forms of messaging in one application.
 
-**Only happens if item sells elsewhere while a user has it sitting in the bag.*
+- **🐞 Sold items in the bag**
 
-- The intention of the app is to have one off pieces of artwork. Currently implemented code in checkout views is not completing the intended functionality which is meant to stop processing the checkout if one or more items in the bag are no longer available for sale. This can happen if two authentic users have the same item in the bag and user A checkouts successfully, leaving user B with the same item in the bag, which is now sold but yet user B bag is not updated.
+    **Only happens if item sells elsewhere while a user has it sitting in the bag.*
+
+    The intention of the app is to have one off pieces of artwork. Currently implemented code in checkout views is not completing the intended functionality which is meant to stop processing the checkout if one or more items in the bag are no longer available for sale. This can happen if two authentic users have the same item in the bag and user A checkouts successfully, leaving user B with the same item in the bag, which is now sold but yet user B bag is not updated.
   
     Current code does check these steps and does action redirect reverse with sweetify sweet-alerts notifications, and popping the sold items out of the bag however, the order still gets created, and the payment is taken, however user is not aware of that.
 
     You can find [buggy code here](https://github.com/neringabickmore/art-ial/pull/41/commits/efe613953a81b999ba1225a9c9b058934e9747af).
 
-#### 3. Sold-out defence ####
+- **🐞 Sold-out defence**
 
-- Shop template doesn't have a defence message if all items are sold out. I have attempted the following code to try and render the message, however what it did was show content even though there are items available for purchase.
+  Shop template doesn't have a defence message if all items are sold out. I have attempted the following code to try and render the message, however what it did was show content even though there are items available for purchase.
 
-**Closed Pull request #54*
+    **Closed Pull request #54*
 
-```htmml
+    ```HTML
 
         {% for product in products %}
         <!-- if products are not sold show them -->
@@ -91,46 +92,228 @@ JavaScript - All files were tested with [JSHint](https://jshint.com/) validators
         {% endif %}
         {% endfor %}
         
-```
+    ```
 
 ### Solved Bugs ###
 
-- After W3S validation and error corrections in css files, available user emails in email management template were not showing. I have revered the CSS which fixed the error:
+- **Product image url paths**
 
-Before fix:
+    **🐞 Bug:**
 
-```CSS
-.allauth-form-inner-content label:not([for='id_remember']),
-.allauth-form-inner-content label:not([for^='email_radio_']) {
+    Images Model has boolean fields that state if image is `main` or if it is `room-view`. the original code for `product-image` if it has URL was rendering both the image which is set to be main as well as if the image isn't set to be main as it was not an intention for it to render in such way.
+
+    ```HTML
+        {% for img in item.product.images_folder.imgs.all %}
+        {% if img.main_img %}
+        <img class="img-fluid bag-image" src="{{ img.url }}" alt="{{ item.product.name }}">
+        {% else %}
+        <img class="img-fluid" src="{{ MEDIA_URL }}noimage.png" alt="{{ item.product.name }}">
+        {% endif %}
+        {% endfor %}
+    ```
+
+    **🔨 Fix:**
+
+    ```HTML
+        {% for img in item.product.images_folder.imgs.all %}
+        {% if img.main_img %}
+        <img class="img-fluid bag-image" src="{% if img.url %}{{ img.url }}{% else %}{{ MEDIA_URL }}noimage.png{% endif %}"
+            alt="{{ item.product.name }}">
+        {% endif %}
+        {% endfor %}
+    ```
+
+    **✅  Verdict:**
+
+    Bug was successfully fixed and all test passed.
+
+- **Checkout form buttons**
+  
+  **🐞 Bug:**
+  
+  While I was wornking on minimising the code I have decided to create submit button include for the checkout form without taking much notice that buttons cannot be reused in a way as I intended as they had specific different IDs.
+
+  **🔨 Fix:**
+
+  Reversed the code to one button per required field instead of creating an include:
+
+  ```HTML
+    <!--Button Next-->
+    <button type="submit" id="personal-details-btn" class="btn checkout-btn">
+        <span class="text-uppercase">next</span>
+        <span class="icon p-2">
+            <i class="fas fa-chevron-right" aria-hidden="true"></i>
+        <span class="text-uppercase">back</span>
+    </a>
+    <!-- Next button -->
+    <button type="submit" id="delivery-info-btn" class="btn checkout-btn">
+        <span class="text-uppercase">next</span>
+        <span class="icon p-2">
+            <i class="fas fa-chevron-right" aria-hidden="true"></i>
+    </button>
+  ```
+
+    **✅  Verdict:**
+
+    Bug was successfully fixed and all test passed.
+
+- **Add product - unique name**
+
+    **🐞 Bug:**
+    In my `add-poduct` view I wanted the system to double check the database if the product doesn't already exist in the system before adding it to the DB. I ran into a few problems when working through this solution:
+    1. Product models were not explicit to allow only unique names in the names entered in the particular model. I have identified this as a particularly important feature that I need to fix to prevent the repeat of the names.
+    2. Edit product was not handling `product.name` as it was supposed to on `form-post`.
+
+    **🔨 Fix:**
+
+    1. Here is an example of the code used to fix the issue, where I have included `unique=True` when defining the elements of the model. This prevents names to be repeated in the particular model by default.
+
+    ```python
+
+    class Category(models.Model):
+
+    class Meta:
+        verbose_name_plural = "Product Categories"
+
+    name = models.CharField(max_length=50, unique=True)
+    friendly_name = models.CharField(
+        max_length=50, null=True, blank=True)
+    ```
+
+    1. View `edit_product` was changed to call for `product_id` rather than name and therefore the views and html was changed as follows in python files (snippet that's important. you can find full view [here](https://github.com/neringabickmore/art-ial/blob/master/products/views.py#L124)):
+
+    ```python
+    view.py:
+
+    @login_required
+    def edit_product(request, product_id):
+        """ Edit product details """
+
+        product = get_object_or_404(Product, pk=product_id)
+        if request.method == 'POST':
+            prod_form = ProductForm(request.POST, instance=product)
+            if prod_form.is_valid():
+                prod_form.save()
+                sweetify.sweetalert(
+                    request, icon='success',
+                    title="Successfully updated product details!")
+                return redirect(reverse('product_detail', args=[product.name]))
+
+        template = 'products/prod-mngmnt/edit-product.html'
+        context = {
+            'prod_form': prod_form,
+            'product': product,
+            'all_social_media': social_media,
+        }
+
+    return render(request, template, context)
+    
+    url.py:
+    path(
+        'edit/product/<int:product_id>/', views.edit_product,
+        name='edit_product'),
+
+    ```
+
+    and the template:
+
+    ```HTML
+    <form method="POST" action="{% url 'edit_product' product.id %}" class="form mb-2 prod-mngmnt-form">   
+    ```
+
+    **✅  Verdict:**
+
+    Bug was successfully fixed and all test passed.
+
+- **Product add/view button**
+
+    **🐞 Bug:**
+
+    During the development stage of the product I have come up with a better UX idea for the user and swap button from `add to bag` to `view bag` if the user has added the item to their shopping bag, although I do have a defence built in my views to prevent the user adding the same item twice.
+
+    **🔨 Fix:**
+
+    Added additional code in product views to allow to check which button to show in html:
+
+    ```python
+
+    show_add_btn = True
+
+        if str(product.id) in bag:
+            show_add_btn = False
+
+    ```
+
+    ```HTML
+
+        {% if show_add_btn %}
+            <!-- If product is not in the bag, show add btn -->
+            <button class="btn col-12 my-3" type="submit">Add to bag<span
+                    class="icon p-2">
+                    <i class="fas fa-plus" aria-hidden="true"></i>
+                </span></button>
+            {% else %}
+            <!-- If product is in the bag show view bag -->
+            <a class="btn col-12 col-sm-4 my-3" href="{% url 'view_bag' %}">view bag<span
+                    class="icon p-2">
+                    <i class="fas fa-chevron-right" aria-hidden="true"></i>
+                </span></a>
+            {% endif %}
+
+    ```
+
+    **✅  Verdict:**
+
+    Bug was successfully fixed and all test passed.
+
+- **All-auth template - email**
+
+    **🐞 Bug:**
+
+     After W3S validation and error corrections in css files, available user emails in email management template were not showing. I have revered the CSS which fixed the error:
+
+    ```CSS
+    .allauth-form-inner-content label:not([for='id_remember']),
+    .allauth-form-inner-content label:not([for^='email_radio_']) {
     display: none;
-}
-```
+    }
+    ```
 
-After fix:
+    **🔨 Fix:**
 
-```css
-.allauth-form-inner-content label:not([for='id_remember'], [for^='email_radio_']) {
+    ```css
+    .allauth-form-inner-content label:not([for='id_remember'], [for^='email_radio_']) {
 
-```
+    ```
 
-- **Templates path error in all-auth templates** During the testing of all-auth templates it became apparent that password-change, password-reset and password-reset-from-key templates were not re-directing the user to the shop as intended. This was due to the fact that during the development of the project I have changed the URL path in products app but my url path in all-auth templates was not dynamic to reflect the changes.
+    **✅ Verdict:**
 
-Before fix:
+    Bug was successfully fixed and all test passed.
 
-```HTML
+- **Templates path error in all-auth templates**
 
-<a class="btn my-2 col-sm-12" href="/shop/">
-        <span class="icon p-2"><i class="fa fa-chevron-left"></i></span>go shopping
-    </a>
-```
+    **🐞 Bug:**
 
-After fix:
+  During the testing of all-auth templates it became apparent that password-change, password-reset and password-reset-from-key templates were not re-directing the user to the shop as intended. This was due to the fact that during the development of the project I have changed the URL path in products app but my url path in all-auth templates was not dynamic to reflect the changes.
 
-```HTML
-<a class="btn my-2 col-sm-12" href="{% url 'shop' %}">
-        <span class="icon p-2"><i class="fa fa-chevron-left"></i></span>go shopping
-    </a>
-```
+    ```HTML
+
+    <a class="btn my-2 col-sm-12" href="/shop/">
+            <span class="icon p-2"><i class="fa fa-chevron-left"></i></span>go shopping
+        </a>
+    ```
+
+    **🔨 Fix:**
+
+    ```HTML
+    <a class="btn my-2 col-sm-12" href="{% url 'shop' %}">
+            <span class="icon p-2"><i class="fa fa-chevron-left"></i></span>go shopping
+        </a>
+    ```
+
+    **✅ Verdict:**
+
+    Bug was successfully fixed and all test passed.
 
 **Applies to all site users:**
 
