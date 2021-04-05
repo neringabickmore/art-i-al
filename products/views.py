@@ -134,7 +134,6 @@ def edit_product(request, product_id):
     social_media = SocialMedia.objects.all()
 
     product = get_object_or_404(Product, pk=product_id)
-    print(product)
     if request.method == 'POST':
         prod_form = ProductForm(request.POST, instance=product)
         if prod_form.is_valid():
