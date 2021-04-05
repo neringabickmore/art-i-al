@@ -16,7 +16,11 @@ View [website](https://art-ial-app.herokuapp.com/) deployed to Heroku.
     - [Compatibility and Responsiveness](#compatibility-and-responsiveness)
     - [Other Testing](#other-testing)
   - [Bugs](#bugs)
-    - [Solves Bugs](#solves-bugs)
+    - [Known Bugs](#known-bugs)
+      - [1. Messages in all-auth templates are not showing](#1-messages-in-all-auth-templates-are-not-showing)
+      - [2. Sold items in the bag](#2-sold-items-in-the-bag)
+      - [3. Sold-out defence](#3-sold-out-defence)
+    - [Solved Bugs](#solved-bugs)
 
 ## Validation Services ##
 
@@ -40,8 +44,93 @@ JavaScript - All files were tested with [JSHint](https://jshint.com/) validators
 
 ## Bugs ##
 
-### Solves Bugs ###
+### Known Bugs ###
 
+#### 1. Messages in all-auth templates are not showing ####
+
+- When a user takes actions, such as log in, logout, change password etc. The bug was discovered during the testing phase of the project. I have since identified that throughout the project I was using sweetify sweet-alerts and all-auth templates by default use messages as a form of notification. This is something I will be looking at a later stage of the development of this project and unable to fix due to time constrains as I would ideally like to use sweet-alerts and not have two forms of messaging in one application.
+
+#### 2. Sold items in the bag ####
+
+**Only happens if item sells elsewhere while a user has it sitting in the bag.*
+
+- The intention of the app is to have one off pieces of artwork. Currently implemented code in checkout views is not completing the intended functionality which is meant to stop processing the checkout if one or more items in the bag are no longer available for sale. This can happen if two authentic users have the same item in the bag and user A checkouts successfully, leaving user B with the same item in the bag, which is now sold but yet user B bag is not updated.
+  
+    Current code does check these steps and does action redirect reverse with sweetify sweet-alerts notifications, and popping the sold items out of the bag however, the order still gets created, and the payment is taken, however user is not aware of that.
+
+    You can find [buggy code here](https://github.com/neringabickmore/art-ial/pull/41/commits/efe613953a81b999ba1225a9c9b058934e9747af).
+
+#### 3. Sold-out defence ####
+
+- Shop template doesn't have a defence message if all items are sold out. I have attempted the following code to try and render the message, however what it did was show content even though there are items available for purchase.
+
+**Closed Pull request #54*
+
+```htmml
+
+        {% for product in products %}
+        <!-- if products are not sold show them -->
+        {% if not product.is_sold %}
+        {% include 'products/includes/products.html' %}
+        <!-- if sold out -->
+        {% elif product.is_sold %}
+        <!-- only show once -->
+        {% if forloop.first %}
+        <div class="col-sm-12 px-4">
+            <h4 class="my-4">Looks like we are out of stock.</h4>
+            <p>Check again soon or contact us for enquiries.</p>
+        </div>
+        <div class="col-sm-12 px-4">
+            <!-- enquire button -->
+            <a class="btn my-3" href="/#contact-us-home" title="contact us" aria-label="enquire">enquire
+                <span class="icon p-2">
+                    <i class="fas fa-envelope" aria-hidden="true"></i>
+                </span></a>
+        </div>
+        {% endif %}
+        {% endif %}
+        {% endfor %}
+        
+```
+
+### Solved Bugs ###
+
+- After W3S validation and error corrections in css files, available user emails in email management template were not showing. I have revered the CSS which fixed the error:
+
+Before fix:
+
+```CSS
+.allauth-form-inner-content label:not([for='id_remember']),
+.allauth-form-inner-content label:not([for^='email_radio_']) {
+    display: none;
+}
+```
+
+After fix:
+
+```css
+.allauth-form-inner-content label:not([for='id_remember'], [for^='email_radio_']) {
+
+```
+
+- **Templates path error in all-auth templates** During the testing of all-auth templates it became apparent that password-change, password-reset and password-reset-from-key templates were not re-directing the user to the shop as intended. This was due to the fact that during the development of the project I have changed the URL path in products app but my url path in all-auth templates was not dynamic to reflect the changes.
+
+Before fix:
+
+```HTML
+
+<a class="btn my-2 col-sm-12" href="/shop/">
+        <span class="icon p-2"><i class="fa fa-chevron-left"></i></span>go shopping
+    </a>
+```
+
+After fix:
+
+```HTML
+<a class="btn my-2 col-sm-12" href="{% url 'shop' %}">
+        <span class="icon p-2"><i class="fa fa-chevron-left"></i></span>go shopping
+    </a>
+```
 
 **Applies to all site users:**
 
