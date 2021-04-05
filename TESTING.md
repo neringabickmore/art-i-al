@@ -41,7 +41,7 @@ View [website](https://art-ial-app.herokuapp.com/) deployed to Heroku.
   - [Validation Services](#validation-services)
   - [Manual Testing](#manual-testing)
     - [User Stories Testing](#user-stories-testing)
-    - [Compatibility and Responsiveness](#compatibility-and-responsiveness)
+  - [Compatibility and Responsiveness](#compatibility-and-responsiveness)
     - [Other Testing](#other-testing)
   - [Bugs](#bugs)
     - [Known Bugs](#known-bugs)
@@ -63,7 +63,21 @@ JavaScript - All files were tested with [JSHint](https://jshint.com/) validators
 
 ### User Stories Testing ###
 
-### Compatibility and Responsiveness ###
+## Compatibility and Responsiveness ##
+
+The following tools were used to continuously test the compatibility and responsiveness of the site:
+
+1. Google Chrome developer tools on HP Envy
+2. Mobile phone (Huawei P30 Pro, Iphone X)
+3. tablet (iPad)
+4. Multiple browsers (Chrome, Safari, FireFox, Chromium and Vivaldi )
+5. Am I Responsive (Had to use ngrok to test the feature as Heroku has restrictions)
+
+***Note***:
+
+- *Apple devices were overriding CSS on `trash` button in a shopping bag.*
+
+- *Video banner on `home` page originally had sound on, however as auto-play wasn't compatible across all browsers without default mute, I have decided to mute it by default.*
 
 ### Other Testing ###
 
