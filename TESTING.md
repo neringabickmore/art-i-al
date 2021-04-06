@@ -1,14 +1,14 @@
 <!-- TODO: Applies to all site users:
-1. As a user, I am able to access the site on my mobile, tablet, and desktop which is adapted to provide the best experience.
-2. As a user, I am able to easily navigate through the website without too much thought and find what I am looking for quickly.
-1. As a user, I am able to identify instantly what the site is all about and what it has to offer.
-2. As a user, I am able to contact the site owner using a simple form.
-3. As a user, I am able to find key information about the artwork I am interested in (such as images, title, dimensions, etc)
-4. As a user, I am able to add the artwork to my shopping bag, except if I am a superuser.
-5. As a user, I am able to change the content of my shopping bag before continuing to completion (add more or remove the artwork), except if I am a superuser.
-6. As a user, I am able to see a full breakdown of the total cost, including the shipping charge before proceeding to payment, except if I am a superuser.
-7. As a user, I am able to purchase the artwork using my card in a secure environment, except if I am a superuser.
-8.  As a user, I am able to receive an email confirmation once I complete the payment, except if I am a superuser.
+
+1. As a user, I am able to easily navigate through the website without too much thought and find what I am looking for quickly.
+2. As a user, I am able to identify instantly what the site is all about and what it has to offer.
+3. As a user, I am able to contact the site owner using a simple form.
+4. As a user, I am able to find key information about the artwork I am interested in (such as images, title, dimensions, etc)
+5. As a user, I am able to add the artwork to my shopping bag, except if I am a superuser.
+6. As a user, I am able to change the content of my shopping bag before continuing to completion (add more or remove the artwork), except if I am a superuser.
+7. As a user, I am able to see a full breakdown of the total cost, including the shipping charge before proceeding to payment, except if I am a superuser.
+8. As a user, I am able to purchase the artwork using my card in a secure environment, except if I am a superuser.
+9.  As a user, I am able to receive an email confirmation once I complete the payment, except if I am a superuser.
 TODO: Applies to new site users:
 1. As a user, I am able to  create an account.
 **Applies to all returning users:**
@@ -38,14 +38,70 @@ View [website](https://art-ial-app.herokuapp.com/) deployed to Heroku.
 
 - [Art-ial - Testing Details](#art-ial---testing-details)
   - [Contents](#contents)
-  - [Validation Services](#validation-services)
   - [Manual Testing](#manual-testing)
-    - [User Stories Testing](#user-stories-testing)
+    - [Responsiveness](#responsiveness)
+    - [Navbar](#navbar)
+    - [Footer](#footer)
+    - [Home Page](#home-page)
+    - [Shop Page](#shop-page)
+    - [Gallery Page](#gallery-page)
+    - [Product Details Page](#product-details-page)
+    - [Bag Page](#bag-page)
+    - [Checkout & Checkout Success](#checkout--checkout-success)
+    - [User Authentication Pages](#user-authentication-pages)
+    - [Profiles Pages](#profiles-pages)
+    - [Superuser Site Management Functionality (CRUD)](#superuser-site-management-functionality-crud)
+  - [Validation Services](#validation-services)
   - [Compatibility and Responsiveness](#compatibility-and-responsiveness)
     - [Other Testing](#other-testing)
   - [Bugs](#bugs)
     - [Known Bugs](#known-bugs)
     - [Solved Bugs](#solved-bugs)
+
+## Manual Testing ##
+
+### Responsiveness ###
+
+- **📖 User story:**
+  
+    *As a user, I am able to access the site on my mobile, tablet, and desktop which is adapted to provide the best experience.*
+
+- **🧪 Test:**
+  
+  - Chrome Dev tools used to view layout of the site on all resolutions available.
+  - Please see [Compatibility and Responsiveness](#compatibility-and-responsiveness) for more detailed information.
+
+- **📌 Result:**
+  
+    This test was performed continuously throughout the development of the application. Wherever required, I made styling adjustments to ensure the user story is complete.
+
+- **✅ Verdict:**
+
+    The bug was successfully fixed and all test passed.
+
+### Navbar ###
+
+### Footer ###
+
+### Home Page ###
+
+### Shop Page ###
+
+### Gallery Page ###
+
+### Product Details Page ###
+
+### Bag Page ###
+
+### Checkout & Checkout Success ###
+
+### User Authentication Pages ###
+
+### Profiles Pages ###
+
+### Superuser Site Management Functionality (CRUD) ###
+
+
 
 ## Validation Services ##
 
@@ -59,9 +115,6 @@ Python - All Python code was checked with the [PEP8 online validator](http://pep
 
 JavaScript - All files were tested with [JSHint](https://jshint.com/) validators.
 
-## Manual Testing ##
-
-### User Stories Testing ###
 
 ## Compatibility and Responsiveness ##
 
@@ -175,7 +228,7 @@ Bugs below I have discovered throughout the development of the site and I was un
         {% endfor %}
     ```
 
-    **✅  Verdict:**
+    **✅ Verdict:**
 
     The bug was successfully fixed and all test passed.
 
@@ -205,7 +258,7 @@ Bugs below I have discovered throughout the development of the site and I was un
     </button>
   ```
 
-    **✅  Verdict:**
+    **✅ Verdict:**
 
     The bug was successfully fixed and all test passed.
 
@@ -273,7 +326,7 @@ Bugs below I have discovered throughout the development of the site and I was un
     <form method="POST" action="{% url 'edit_product' product.id %}" class="form mb-2 prod-mngmnt-form">   
     ```
 
-    **✅  Verdict:**
+    **✅ Verdict:**
 
     The bug was successfully fixed and all test passed.
 
@@ -314,7 +367,7 @@ Bugs below I have discovered throughout the development of the site and I was un
 
     ```
 
-    **✅  Verdict:**
+    **✅ Verdict:**
 
     The bug was successfully fixed and all test passed.
 
