@@ -36,7 +36,7 @@ class CollectionForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
         labels = {
             'name': 'Programmatic name',
-            'friendly_name': 'Display name*'
+            'friendly_name': 'Display name'
         }
         for field in self.fields:
             self.fields[field].label = labels[field]

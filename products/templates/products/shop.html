@@ -21,6 +21,7 @@
     <div class="row no-gutters align-items-center">
 
         {% for product in products %}
+        <!-- if products are not sold show them -->
         {% if not product.is_sold %}
         {% include 'products/includes/products.html' %}
         {% endif %}
