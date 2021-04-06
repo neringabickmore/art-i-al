@@ -116,6 +116,9 @@
     border: 1px solid var(--dark-lava);
     font-size: 1.6rem;
 }
+.list-group {
+    border-radius: 0;
+}
 
 .list-group-item::first-letter {
     text-transform: capitalize;

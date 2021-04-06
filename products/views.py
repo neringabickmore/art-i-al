@@ -29,6 +29,7 @@ def shop(request):
 
     products = Product.objects.all().order_by('tag')
     social_media = SocialMedia.objects.all()
+    
     template = 'products/shop.html'
     context = {
         'products': products,
