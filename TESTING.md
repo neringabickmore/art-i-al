@@ -134,10 +134,15 @@ View [website](https://art-ial-app.herokuapp.com/) deployed to Heroku.
 
 - **🧪 Test:**
 
+  - This page should not be visible to a superuser by default and removed on purpose as there isn't any specific functionality that would require them to have it as required by default. However, the superuser can access this page if they know a url path.
+  - You should only see items that are available for sale on this page and not see any items that have been sold.
+  - You should be able to see basic information about the painting (Collection: Title) and the `View details` button.
+  - If you hover over the painting, the image should fade and you should see *hand* pointer with title *view details* and able to click on the image.
+  - If you click on the image or `view details` you should get redirected to the product details page. This is the only way you should be able to access a product details page.
 
-- **📌 Result:**
+- **📌 Result and ✅Verdict**
 
-- **✅ Verdict:**
+    All tests passed, no bugs were found at the final round of testing.
 
 ### Gallery Page ###
 
@@ -162,6 +167,7 @@ View [website](https://art-ial-app.herokuapp.com/) deployed to Heroku.
     - If you click on `delete product` you should get a pop-up message asking to reconfirm your intentions to delete a product and should require you to click on the `yes, delete` button if this was your intention or the `no, go back` if you made a mistake.
   - If you are not logged in at all or logged as authenticated user or superuser:
     - You should be able to see basic information about the painting (Collection: Title) and the `View details` button.
+    - You should be able to see all of the items (including sold) in this part of the site.
     - If you hover over the painting, the image should fade and you should see *hand* pointer with title *view details* and able to click on the image.
     - If you click on the image or `view details` you should get redirected to the product details page. This is the only way you should be able to access a product details page.
   
