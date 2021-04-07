@@ -320,15 +320,30 @@ If you are viewing this on your mobile phone, you should see a charge breakdown 
 
 *As a user, I can change the tags on the products to specify new items to promote them.*
 
-*As a user, I can get an email with the customer orders when the purchases are made.*
-
 *As a user, I can to manipulate social media icons in the footer of the site (turn social media icons **on/off** and edit URLs).*
 
 - **🧪 Test:**
 
-- **📌 Result:**
+  - Login to your account as a superuser.
+  - On your navbar, click on `Management` and in a drop-down, select `Order history`. You should then be able to see all of the orders that all of the users have ever made. You should not be able to make any changes to the orders on this page.
+  - If you select `Social Media`, you should get redirected to the `Social Media Management` page, you should see active icons that are currently displaying on the footer. You should also be able to `Add new icon` by clicking on the button `Add new icon`.
+  - If you are on the `Add Social Media` page, you should be able to select pre-populated social media names, icons and all you need to input yourself is the URL. Ideally, this should be a URL directing the users to the specific social media account. After you add a new icon, you should be navigated back to `Social Media Management`.
+  - If you need to edit active icons, you should click on the name of it and you should be re-directed to the `Edit social media` page. You should be able to update the information by clicking `Update` and receive a notification if success/failed attempt. 
+  - If you need to delete the icon, simply click on `bin` on the `Social Media Management` on the same row as the icon you want to delete.
+  - You should get a message pop-up asking you to confirm your choice of action.
+  - If you go back to the `Management` on the navbar and click on `Product Management` you should be redirected to a `Product Management` page where you should find full instructions on how to create new products. Steps provided in the instructions are given in the exact order of actions the superuser needs to take to create a new, fully functional product which can and should be displayed in both the `Gallery` and `Shop` pages.
+  - The order for the product creation should be as follows:
+    - Upload Images
+    - Add Images into folders
+    - Create a collection if images belong to a collection that doesn't already exist
+    - Go ahead and create your product
+  - Add, edit and delete functionalities in `Images`, `Folders`, `Collections` should be match `Social Media Section`. You should also be abl to add product just the same as in `Social Media Section`.
+  - The only difference should be is how `All Products` are displayed as they are all located in the `Gallery section`. You can find the details of how to edit and delete products in [**Gallery Page**](#gallery-page) of the testing.
+  - You should be able to add a `New` tag on a brand new product you have loaded. `Tag`s field should not be mandatory.
 
-- **✅ Verdict:**
+- **📌 Result and ✅ Verdict:**
+
+    All tests passed, no bugs were found at the final round of testing.
 
 ## Validation Services ##
 
