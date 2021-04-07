@@ -1,31 +1,3 @@
-<!-- TODO: Applies to all site users:
-1. As a user, I am able to access the site on my mobile, tablet, and desktop which is adapted to provide the best experience.
-2. As a user, I am able to easily navigate through the website without too much thought and find what I am looking for quickly.
-1. As a user, I am able to identify instantly what the site is all about and what it has to offer.
-2. As a user, I am able to contact the site owner using a simple form.
-3. As a user, I am able to find key information about the artwork I am interested in (such as images, title, dimensions, etc)
-4. As a user, I am able to add the artwork to my shopping bag, except if I am a superuser.
-5. As a user, I am able to change the content of my shopping bag before continuing to completion (add more or remove the artwork), except if I am a superuser.
-6. As a user, I am able to see a full breakdown of the total cost, including the shipping charge before proceeding to payment, except if I am a superuser.
-7. As a user, I am able to purchase the artwork using my card in a secure environment, except if I am a superuser.
-8.  As a user, I am able to receive an email confirmation once I complete the payment, except if I am a superuser.
-TODO: Applies to new site users:
-1. As a user, I am able to  create an account.
-**Applies to all returning users:**
-1. As a user, I am able to login to my existing account and make a quicker purchase.
-2. As a user, I am able to view, save and update my personal information.
-3. As a user, I am able to view past orders, except if I am a superuser.
-4. As a user, I am able to make purchases quicker by having stored information such as address, except if I am a superuser.
-5. As a user, I am able to change or reset my password securely.
-TODO: Applies to a superuser (site owner):
-1. As a user, I am able to securely add, edit and delete the information for the specific artwork listed on the website.
-2. As a user, I am able to change the tags on the products to specify new items to promote them.
-3. As a user, I am able to receive inquiries from the site users after they fill in the contact form straight to my email inbox.
-4. As a user, I am able to get an email with the customer orders when the purchases are made.
-5. As a user, I am able to manipulate social media icons in the footer of the site (turn social media icons *on/off* and edit URLs).
-6. As a user, I am able to edit content in the `About` section of the `Home` page.
--->
-
 # Art-ial - Testing Details #
 
 Main [README.md](README.md) file.
@@ -36,16 +8,340 @@ View [website](https://art-ial-app.herokuapp.com/) deployed to Heroku.
 
 ## Contents ##
 
-- [Art-ial - Testing Details](#art-ial---testing-details)
-  - [Contents](#contents)
-  - [Validation Services](#validation-services)
-  - [Manual Testing](#manual-testing)
-    - [User Stories Testing](#user-stories-testing)
-  - [Compatibility and Responsiveness](#compatibility-and-responsiveness)
-    - [Other Testing](#other-testing)
-  - [Bugs](#bugs)
-    - [Known Bugs](#known-bugs)
-    - [Solved Bugs](#solved-bugs)
+- [Manual Testing](#manual-testing)
+  - [Responsiveness](#responsiveness)
+  - [Navbar](#navbar)
+  - [Footer](#footer)
+  - [Home Page](#home-page)
+  - [Shop Page](#shop-page)
+  - [Gallery Page](#gallery-page)
+  - [Product Details Page](#product-details-page)
+  - [Bag Page](#bag-page)
+  - [Checkout & Checkout Success](#checkout--checkout-success)
+  - [User Authentication Pages and Profiles](#user-authentication-pages-and-profiles)
+  - [Superuser Site Management Functionality (CRUD)](#superuser-site-management-functionality-crud)
+- [Validation Services](#validation-services)
+- [Compatibility and Responsiveness](#compatibility-and-responsiveness)
+  - [Other Testing](#other-testing)
+- [Bugs](#bugs)
+  - [Known Bugs](#known-bugs)
+  - [Solved Bugs](#solved-bugs)
+
+## Manual Testing ##
+
+### Responsiveness ###
+
+- **📖 User story:**
+  
+    *As a user, I am able to access the site on my mobile, tablet, and desktop which is adapted to provide the best experience.*
+
+- **🧪 Test:**
+  
+  - Chrome Dev tools used to view the layout of the site on all resolutions available.
+  - Please see [Compatibility and Responsiveness](#compatibility-and-responsiveness) for more detailed information.
+
+- **📌 Result:**
+  
+    This test was performed continuously throughout the development of the application. Wherever required, I made styling adjustments to ensure the user story is complete.
+
+- **✅ Verdict:**
+
+    The issues were successfully fixed and all tests passed.
+
+### Navbar ###
+
+- **📖 User story:**
+
+    *As a user, I can navigate through the website without too much thought and find what I am looking for quickly.*
+
+- **🧪 Test:**
+  - Click on all of the available links in the navbar. Assess if they are directing you to the page/section of the page you expect it.
+  - Try clicking on the navbar both on mobile and larger devices.
+  - Larger than medium screen size devices should have all navbar item displayed at all times.
+  - Small and medium screen size should have a collapsible navbar.
+  - All navbar items should change colour from white to light pink (tuscany) on hover on all screen sizes.
+  - If you haven't logged in, you should see `Login` on a navbar.
+  - If you have logged in, you should see `Profile` on a navbar instead of login, which expands to `Account` and `Logout`.
+  - If you are not a superuser, you should see `Home`, `Gallery`, `Shop`, `About`, `Contact` and `Login` or `Profile` on a navbar.
+  - If you are a superuser, you should see `Home`, `Gallery`, `Management` which expands to `Products`, `Social Media` and `Order history`, and `Profile`, which expands to `Account` and `Logout`.
+  - If you have items added to the bag, you should see a bag icon and a total amount.
+
+- **📌 Result and ✅Verdict**
+
+    All tests passed, no bugs were found at the final round of testing.
+
+### Footer ###
+
+- **📖 User story:**
+   As a user, I can navigate through the website without too much thought and find what I am looking for quickly.
+
+- **🧪 Test:**
+
+  - Click on `Quicklinks`. They should direct you to relevant parts of the site.
+  - Click on the `Instagram` icon, currently the only active social media account Art-ial has. It should direct you to the account.
+  - when you hover on `Quicklinks` and `Instagram` it should change colour to green (hunter-green)
+
+- **📌 Result and ✅Verdict**
+
+    All tests passed, no bugs were found at the final round of testing.
+
+### Home Page ###
+
+- **📖 User story:**
+
+    *As a user, I can contact the site owner using a simple form.*
+
+    *As a user, I can identify instantly what the site is all about and what it has to offer.*
+
+    *As a user (super-user), I can edit content in the `About` section of the `Home` page.*
+
+    *As a user, I can receive inquiries from the site users after they fill in the contact form straight to my email inbox.*
+
+- **🧪 Test:**
+
+  - when you navigate on `Home` page or click on the `logo`, you should be directed to the home page.
+  - Navbar items on the navbar should also give a good idea to the user what the site is all about (`Gallery`, `Shop`).
+  - You should be able to see a video of nature at the top of the page followed by the `About` section. When hovered on the `Video`, the user should notice a small tooltip on the right side bottom of the image saying `go shopping` and if clicked is taken to the `Shopping` page.
+  - The `About` section should have a summary of the author.
+  - If you are a superuser, you should see a button `Edit` which takes you to another page where you can edit the content (title and description) of what is displayed in this section of the page. If you delete the content, the section would remain empty, I, therefore, advise you to always have some content about the offer in this section.
+  - You should see the `Contact` form right before the footer. If you are not logged in, all fields of the form should be empty. If you are a registered user and have logged in, you should have **full name** (if entered) and **email** sections pre-filled.
+  - The form should give errors if you click `Send` and any parts of the form are missing, not correct information provided or the consent form is un-ticked.
+  - If the form is correct and is submitted, the site owner (superuser) receives an email with the message, with customers details in the header.
+  - The user receives **Success** on the screen after the message is sent.
+
+- **📌 Result:**
+
+  - All buttons worked as intended and redirected the user to correct parts of the site as intended.
+  - If logged in as a superuser, you can see `edit` button and change content in the redirected page. If you delete the content, the section would remain empty, I, therefore, advise you to always have some content about the offer in this section.
+  - Contact form shows elements as described above and as intended.
+  - The user receives error messages if the form is not correct.
+  - If the form is correct and the message is sent successfully, the user sees **Success** message and the site owner (superuser) receives an email.
+
+- **✅ Verdict:**
+  
+  All tests passed and functionality worked as intended.
+
+### Shop Page ###
+
+- **📖 User story:**
+
+    *As a user, I acan find key information about the artwork I am interested in (such as images, title, dimensions, etc)*
+
+    *As a user, I can add the artwork to my shopping bag, except if I am a superuser.*
+
+- **🧪 Test:**
+
+  - This page should not be visible to a superuser by default and removed on purpose as there isn't any specific functionality that would require them to have it as required by default. However, the superuser can access this page if they know a url path.
+  - You should only see items that are available for sale on this page and not see any items that have been sold.
+  - You should be able to see basic information about the painting (Collection: Title) and the `View details` button.
+  - If you hover over the painting, the image should fade and you should see *hand* pointer with title *view details* and able to click on the image.
+  - If you click on the image or `view details` you should get redirected to the product details page. This is the only way you should be able to access a product details page.
+
+- **📌 Result and ✅Verdict**
+
+    All tests passed, no bugs were found at the final round of testing except for one:
+
+  - If all items are sold, there is no content that tells the user that we are currently out of stock. Full details of this unsolved bug included in [**Known bugs**](#known-bugs) (🐞 **Sold-out defence**) section.
+
+### Gallery Page ###
+
+- **📖 User story:**
+
+    *As a user, I can find key information about the artwork I am interested in (such as images, title, dimensions, etc)*
+
+    *As a user, I can securely add, edit and delete the information for the specific artwork listed on the website.*
+
+    *As a user, I can change the tags on the products to specify new items to promote them.*
+
+- **🧪 Test:**
+
+  - If you are logged in as a superuser:
+    - You should be able to see all of the artwork that is available on the site with buttons `Edit` and `Delete` product underneath every product image (on small and large devices, but the right side of the screen on medium-sized)
+    - If you click on `Edit`, it should redirect you to `Product Management` -> `Edit Product`. The form you see should already be pre-filled. At the bottom of the page you should see `Go back` and `Update` buttons, which should take you back to the `Gallery` page.
+    - If you chose to update the info, the information you see on a re-direction should have new content and a notification that your product was updated.
+    - When editing the content of the product, you should try entering an existing name of another painting and if you do so, you should get a notification that the product name already exists and the form would not submit.
+    - If you leave any mandatory fields empty and try to submit the form, you should also get a notification to check the fields and the form would not submit.
+    - If the form was entered correctly, you should receive a success message and get redirected to `Gallery`.
+    - If you clicked on `Go back`, the content shouldn't have changed or you should see any messages.
+    - If you click on `delete product` you should get a pop-up message asking to reconfirm your intentions to delete a product and should require you to click on the `yes, delete` button if this was your intention or the `no, go back` if you made a mistake.
+  - If you are not logged in at all or logged as authenticated user or superuser:
+    - You should be able to see basic information about the painting (Collection: Title) and the `View details` button.
+    - You should be able to see all of the items (including sold) in this part of the site.
+    - If you hover over the painting, the image should fade and you should see *hand* pointer with title *view details* and able to click on the image.
+    - If you click on the image or `view details` you should get redirected to the product details page. This is the only way you should be able to access a product details page.
+  
+- **📌 Result:**
+
+    Functionalities intended for the superuser were only accessible by the user with superuser status. All other users had limited functionalities at this stage as intended.
+
+    All superuser functionalities worked as intended, including the `delete` button. This was built to prevent mishaps.
+
+    If the non-superuser tried to access edit/delete functionalities, they should not be able to do this and get a notification that this functionality is only accessible by the superusers.
+
+- **✅ Verdict:**
+
+  All tests passed and functionality worked as intended.
+
+### Product Details Page ###
+
+- **📖 User story:**
+
+    *As a user, I can find key information about the artwork I am interested in (such as images, title, dimensions, etc)*
+
+    *As a user, I can securely add, edit and delete the information for the specific artwork listed on the website.*
+
+    *As a user, I can change the tags on the products to specify new items to promote them.*
+
+- **🧪 Test:**
+  - If you are not logged in at all or logged as authenticated user or superuser:
+    - You should see information only about the particular product and no others.
+    - The information you see should have Collection name at the top of the page, if viewed on medium and large devices you should see image on the left and information about the product on the right; if viewed on small devices, the image should be at the top followed by the information about the product beneath it.
+    - The information you should see should have: **Title**, **description**, **dimensions**, **price**, **room view**, **shop** and either **add to bag**, **view bag** or **enquire** buttons.
+      - You should see **enquire** button for the items that are sold out. If you click on the button you should get redirected to `home page` -> `contact` form.
+      - You should see **add to bag** for the items that are not in your bag and are available for purchase. If you click on this button, you should right away get a notification that item was added to your bag and your nav bar should have bag icon and total amount displayed. **Add to bag** button should change to **view bag** button.
+      - You should see **view bag** if this item is already in your bag.
+    - If you click on `room view`, you should have a modal pop up displaying the same product, but how it looks like on a wall in a room.
+    - If you hover over the main image, arrow should change to magnifying glass icon and if you click on it, you should get a redirection to a new page that would have a close up of the image.
+  - If you are logged in as a superuser, you should see the exact same buttons just as you have on gallery page: `edit`, `delete`, but instead of `view details` you should see `back to gallery`. Functionalities should be exactly the same and function just the same as per gallery page.
+
+- **📌 Result:**
+
+    This page was modified continuously throughout the development process of the site. Final test has not thrown any bugs, however, there was one major bug that I had recorded in [**Bugs**](#bugs) (**Product add/view button**) section.
+
+- **✅ Verdict:**
+
+    The issues were successfully fixed and all tests passed.
+
+### Bag Page ###
+
+- **📖 User story:**
+  
+  *As a user, I can change the content of my shopping bag before continuing to completion (add more or remove the artwork), except if I am a superuser.*
+
+  *As a user, I can see a full breakdown of the total cost, including the shipping charge before proceeding to payment, except if I am a superuser.*
+
+- **🧪 Test:**
+  - Add an item to a bag.
+  - Navigate to a bag page by clicking on a navbar (bag icon + total amount) or by clicking on view-bag if you are navigating from the `product-detail` of the particular item you have just added to the bag.
+  - If you are viewing the page on medium and large devices, you should see the image of the item on the left, product name next to it on the right of the image, SKU underneath the name and price as the third item in that row. On the far right side, you should see a bin.
+  - If you click on a bin, the item should get removed from the bag and if removed successfully you should get a notification this was done.
+  - If you had no other items in the bag you should have a message saying you have no items with a button to `go shopping`.
+  - Underneath the above, you should see a summary of your order, which should include the total amount of the bag, delivery charge and the total amount you would pay. If you haven't met the `free delivery` threshold, you should see a message with the extra amount you need to spend to qualify for free delivery.
+  - You should then see `Keep shopping` and `Checkout` buttons.
+  If you are viewing this on your mobile phone, you should see a charge breakdown at the top, followed by the bag contents summary underneath it. Functionalities should be the same as for larger devices.
+
+- **📌 Result:**
+  
+  - All buttons and messages are working as intended.
+  - Content is displayed as intended.
+  - The user can review items before going to secure checkout.
+  - The user can change bag content (remove items from the bag or go shopping to add more).
+
+- **✅ Verdict:**
+
+  All tests passed and functionality worked as intended.
+
+### Checkout & Checkout Success ###
+
+- **📖 User story:**
+
+    *As a user, I can see a full breakdown of the total cost, including the shipping charge before proceeding to payment, except if I am a superuser.*
+
+    *As a user, I can purchase the artwork using my card in a secure environment, except if I am a superuser.*
+
+    *As a user, I can receive an email confirmation once I complete the payment, except if I am a superuser.*
+
+    *As a user, I can login to my existing account and make a quicker purchase.*
+
+    *As a user, I can make purchases quicker by having stored information such as address, except if I am a superuser.*
+
+- **🧪 Test:**
+
+  - After you click on the `checkout` on the `bag` page, you should be redirected to checkout.
+  - If you are viewing this page on mobile and medium-sized devices, you should see a `checkout form`, `order summary` and then `order breakdown`. Alternatively, on all devices above medium, you should see a `checkout form` on the left and an `order summary` followed by the `order breakdown` underneath it on the right side of the page.
+  - If you look at the `order form`, you should see three tabs at the top: `personal details`, `delivery info` and `payment`. Those tabs should only activate once the form has correct content. If the form fields do not have content you should not be able to use them to navigate.
+  - Underneath the form, you should see a `back` and a `next` button. Button `back` should take you back to the `bag` page if you are on the `personal details` part of the form, otherwise, it would allow you to navigate on the form elements if the whole form is filled in. The button `next` should activate only if you have filled in form fields.
+  - Try entering incorrect information in an email or phone number fields or leave a field empty. You should not be able to progress to the next step of the form.
+  - If you enter correct details in the `personal details`, the `next` button should activate and you should also be able to navigate back to the `personal details` part of the form by clicking the `back` or `personal details` tab.
+  - When on the `delivery info` part of the form, and you are not logged in, you should see an option below the form to `login` or `register account`.
+  - Please note, if you are logged in, placed an order before or have personal details from the `profile` page saved, this form should pre-populate the information and you should be able to make a purchase quicker.
+  - The `payment` tab is the last tab of the form and should have a summary of the information you have entered in the form.
+  - To proceed with the order you need to enter payment details. For testing purposes, please use **4242 4242 4242 4242** card number, any future date as expiry date and any CVC number. You can test different card numbers provided by [stripe](https://stripe.com/docs/testing) for other card validations.
+  - Try entering incorrect card number to test how stripe handles card errors.
+  - Try commenting out the code line [`form.submit()` in `stripe-elements.js`](https://github.com/neringabickmore/art-ial/blob/master/checkout/static/checkout/js/stripe-elements.js#L116) and submitting the payment. You should expect to see an order created in Stripe Dashboard (and if you are a superuser, an order in Admin panel as well as in `Order history`).
+  - If an order is successful, the user should be re-directed to the `checkout success` page where they should see a full order breakdown. They should also have a notification that their order was processed successfully as well as receive an order confirmation email.
+  - If you are a superuser, you should check your sent items for confirmed orders as well as `all orders` in management on a navbar.
+
+- **📌 Result:**
+  All tests written above have passed as anticipated. However, during the development of the project I have identified a need to check if the item is still available before the checkout is processed as well as changing the tag of the item to `is_sold` once it is sold.
+  
+  I have managed to find a solution to change the availability to `is_sold` during the successful checkout. However, not all went to plan when finding a solution to prevent a sold item from being sold twice if two users had the same item in their bag at the same time. You can see full details of this in [**Known Bugs**](#known-bugs) (**🐞 Sold items in the bag**) section. The main problem with the bug is that the notifications are being sent to the users when the form is submitted, however, an order is being created and the charge amount is taken for a full order.
+
+- **✅ Verdict:**
+  
+  All tests passed, no bugs were found at the final round of testing except for one as mentioned in **Results**.
+
+### User Authentication Pages and Profiles ###
+
+- **📖 User story:**
+
+   *As a user, I can  create an account.*
+
+   *As a user, I can change or reset my password securely.*
+
+   *As a user, I can view, save and update my personal information.*
+
+    *As a user, I can view past orders, except if I am a superuser.*
+
+- **🧪 Test:**
+
+  - On a navbar, navigate to the `Login`.
+  - If you are a new user, click on `Register` and fill in the form.
+  - Try entering incorrect details in the email field. Please note, if you provide an invalid email address, you should not be able to receive a validation notification and you should not be able to create the account.
+  - If you have entered a valid email address, you should receive an email asking you to validate the account. Follow the link and you should be able to login successfully.
+  - If you want to change your password, navigate to `Profile` on a navbar, click on `Account`. Then you should see a `Personal Details` field with a button `Change Password`. Try changing your password by clicking on the button and following the instructions.
+  - If the forms you fill in are incorrect, you should not be able to change the password.
+  - On the same page, you should also see `Shipping Info` as well as `Order History`. You shouldn't be able to change any fields of `Order history`, but you should be able to change `Shipping Info`. The form you see in `Shipping info` should only be pre-filled if you have placed an order before and you were logged in or have done this at another time by visiting this exact page.
+
+- **📌 Result:**
+    All tests written above have passed as anticipated. However, during the testing process, I have identified that the user is not given a notification that the actions they have taken were validated or not. This is because I have used `SweetAlerts` for this project and `Allauth` Django templates use `messages` by default. As I have discovered this issue during the testing at the end of this project, due to time constraints I will have to look at solving this issue at a later date. Full write up about this you can find in [**Known-bugs**](#known-bugs) (**🐞 Messages in all-auth templates are not showing**) section.
+
+- **✅ Verdict:**
+
+    All tests passed, no bugs were found at the final round of testing except for one as mentioned in **Results**.
+
+### Superuser Site Management Functionality (CRUD) ###
+
+- **📖 User story:**
+
+*As a user, I can securely add, edit and delete the information for the specific artwork listed on the website.*
+
+*As a user, I can change the tags on the products to specify new items to promote them.*
+
+*As a user, I can to manipulate social media icons in the footer of the site (turn social media icons **on/off** and edit URLs).*
+
+- **🧪 Test:**
+
+  - Login to your account as a superuser.
+  - On your navbar, click on `Management` and in a drop-down, select `Order history`. You should then be able to see all of the orders that all of the users have ever made. You should not be able to make any changes to the orders on this page.
+  - If you select `Social Media`, you should get redirected to the `Social Media Management` page, you should see active icons that are currently displaying on the footer. You should also be able to `Add new icon` by clicking on the button `Add new icon`.
+  - If you are on the `Add Social Media` page, you should be able to select pre-populated social media names, icons and all you need to input yourself is the URL. Ideally, this should be a URL directing the users to the specific social media account. After you add a new icon, you should be navigated back to `Social Media Management`.
+  - If you need to edit active icons, you should click on the name of it and you should be re-directed to the `Edit social media` page. You should be able to update the information by clicking `Update` and receive a notification if success/failed attempt. 
+  - If you need to delete the icon, simply click on `bin` on the `Social Media Management` on the same row as the icon you want to delete.
+  - You should get a message pop-up asking you to confirm your choice of action.
+  - If you go back to the `Management` on the navbar and click on `Product Management` you should be redirected to a `Product Management` page where you should find full instructions on how to create new products. Steps provided in the instructions are given in the exact order of actions the superuser needs to take to create a new, fully functional product which can and should be displayed in both the `Gallery` and `Shop` pages.
+  - The order for the product creation should be as follows:
+    - Upload Images
+    - Add Images into folders
+    - Create a collection if images belong to a collection that doesn't already exist
+    - Go ahead and create your product
+  - Add, edit and delete functionalities in `Images`, `Folders`, `Collections` should be match `Social Media Section`. You should also be abl to add product just the same as in `Social Media Section`.
+  - The only difference should be is how `All Products` are displayed as they are all located in the `Gallery section`. You can find the details of how to edit and delete products in [**Gallery Page**](#gallery-page) of the testing.
+  - You should be able to add a `New` tag on a brand new product you have loaded. `Tag`s field should not be mandatory.
+
+- **📌 Result and ✅ Verdict:**
+
+    All tests passed, no bugs were found at the final round of testing.
 
 ## Validation Services ##
 
@@ -58,10 +354,6 @@ CSS - CSS validation with the [W3C Jigsaw Validator](https://jigsaw.w3.org/css-v
 Python - All Python code was checked with the [PEP8 online validator](http://pep8online.com/) and is PEP8 compliant, aside from line length flags, which were left for code readability.
 
 JavaScript - All files were tested with [JSHint](https://jshint.com/) validators.
-
-## Manual Testing ##
-
-### User Stories Testing ###
 
 ## Compatibility and Responsiveness ##
 
@@ -175,7 +467,7 @@ Bugs below I have discovered throughout the development of the site and I was un
         {% endfor %}
     ```
 
-    **✅  Verdict:**
+    **✅ Verdict:**
 
     The bug was successfully fixed and all test passed.
 
@@ -205,7 +497,7 @@ Bugs below I have discovered throughout the development of the site and I was un
     </button>
   ```
 
-    **✅  Verdict:**
+    **✅ Verdict:**
 
     The bug was successfully fixed and all test passed.
 
@@ -273,7 +565,7 @@ Bugs below I have discovered throughout the development of the site and I was un
     <form method="POST" action="{% url 'edit_product' product.id %}" class="form mb-2 prod-mngmnt-form">   
     ```
 
-    **✅  Verdict:**
+    **✅ Verdict:**
 
     The bug was successfully fixed and all test passed.
 
@@ -314,7 +606,7 @@ Bugs below I have discovered throughout the development of the site and I was un
 
     ```
 
-    **✅  Verdict:**
+    **✅ Verdict:**
 
     The bug was successfully fixed and all test passed.
 
