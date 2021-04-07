@@ -55,7 +55,7 @@ View [website](https://art-ial-app.herokuapp.com/) deployed to Heroku.
 
 - **📖 User story:**
 
-    *As a user, I am able to easily navigate through the website without too much thought and find what I am looking for quickly.*
+    *As a user, I can navigate through the website without too much thought and find what I am looking for quickly.*
 
 - **🧪 Test:**
   - Click on all of the available links in the navbar. Assess if they are directing you to the page/section of the page you expect it.
@@ -76,7 +76,7 @@ View [website](https://art-ial-app.herokuapp.com/) deployed to Heroku.
 ### Footer ###
 
 - **📖 User story:**
-   As a user, I am able to easily navigate through the website without too much thought and find what I am looking for quickly.
+   As a user, I can navigate through the website without too much thought and find what I am looking for quickly.
 
 - **🧪 Test:**
 
@@ -92,13 +92,13 @@ View [website](https://art-ial-app.herokuapp.com/) deployed to Heroku.
 
 - **📖 User story:**
 
-    *As a user, I am able to contact the site owner using a simple form.*
+    *As a user, I can contact the site owner using a simple form.*
 
-    *As a user, I am able to identify instantly what the site is all about and what it has to offer.*
+    *As a user, I can identify instantly what the site is all about and what it has to offer.*
 
-    *As a user (super-user), I am able to edit content in the `About` section of the `Home` page.*
+    *As a user (super-user), I can edit content in the `About` section of the `Home` page.*
 
-    *As a user, I am able to receive inquiries from the site users after they fill in the contact form straight to my email inbox.*
+    *As a user, I can receive inquiries from the site users after they fill in the contact form straight to my email inbox.*
 
 - **🧪 Test:**
 
@@ -128,9 +128,9 @@ View [website](https://art-ial-app.herokuapp.com/) deployed to Heroku.
 
 - **📖 User story:**
 
-    *As a user, I am able to find key information about the artwork I am interested in (such as images, title, dimensions, etc)*
+    *As a user, I acan find key information about the artwork I am interested in (such as images, title, dimensions, etc)*
 
-    *As a user, I am able to add the artwork to my shopping bag, except if I am a superuser.*
+    *As a user, I can add the artwork to my shopping bag, except if I am a superuser.*
 
 - **🧪 Test:**
 
@@ -150,11 +150,11 @@ View [website](https://art-ial-app.herokuapp.com/) deployed to Heroku.
 
 - **📖 User story:**
 
-    *As a user, I am able to find key information about the artwork I am interested in (such as images, title, dimensions, etc)*
+    *As a user, I can find key information about the artwork I am interested in (such as images, title, dimensions, etc)*
 
-    *As a user, I am able to securely add, edit and delete the information for the specific artwork listed on the website.*
+    *As a user, I can securely add, edit and delete the information for the specific artwork listed on the website.*
 
-    *As a user, I am able to change the tags on the products to specify new items to promote them.*
+    *As a user, I can change the tags on the products to specify new items to promote them.*
 
 - **🧪 Test:**
 
@@ -189,11 +189,11 @@ View [website](https://art-ial-app.herokuapp.com/) deployed to Heroku.
 
 - **📖 User story:**
 
-    *As a user, I am able to find key information about the artwork I am interested in (such as images, title, dimensions, etc)*
+    *As a user, I can find key information about the artwork I am interested in (such as images, title, dimensions, etc)*
 
-    *As a user, I am able to securely add, edit and delete the information for the specific artwork listed on the website.*
+    *As a user, I can securely add, edit and delete the information for the specific artwork listed on the website.*
 
-    *As a user, I am able to change the tags on the products to specify new items to promote them.*
+    *As a user, I can change the tags on the products to specify new items to promote them.*
 
 - **🧪 Test:**
   - If you are not logged in at all or logged as authenticated user or superuser:
@@ -219,25 +219,40 @@ View [website](https://art-ial-app.herokuapp.com/) deployed to Heroku.
 
 - **📖 User story:**
   
-  *As a user, I am able to change the content of my shopping bag before continuing to completion (add more or remove the artwork), except if I am a superuser.*
+  *As a user, I can change the content of my shopping bag before continuing to completion (add more or remove the artwork), except if I am a superuser.*
 
-  *As a user, I am able to see a full breakdown of the total cost, including the shipping charge before proceeding to payment, except if I am a superuser.*
+  *As a user, I can see a full breakdown of the total cost, including the shipping charge before proceeding to payment, except if I am a superuser.*
 
 - **🧪 Test:**
+- Add an item to a bag.
+- Navigate to a bag page by clicking on a navbar (bag icon + total amount) or by clicking on view-bag if you are navigating from the `product-detail` of the particular item you have just added to the bag.
+- If you are viewing the page on medium and large devices, you should see the image of the item on the left, product name next to it on the right of the image, SKU underneath the name and price as the third item in that row. On the far right side, you should see a bin.
+- If you click on a bin, the item should get removed from the bag and if removed successfully you should get a notification this was done.
+- If you had no other items in the bag you should have a message saying you have no items with a button to `go shopping`.
+- Underneath the above, you should see a summary of your order, which should include the total amount of the bag, delivery charge and the total amount you would pay. If you haven't met the `free delivery` threshold, you should see a message with the extra amount you need to spend to qualify for free delivery.
+- You should then see `Keep shopping` and `Checkout` buttons.
+If you are viewing this on your mobile phone, you should see a charge breakdown at the top, followed by the bag contents summary underneath it. Functionalities should be the same as for larger devices.
 
 - **📌 Result:**
+  
+  - All buttons and messages are working as intended.
+  - Content is displayed as intended.
+  - The user can review items before going to secure checkout.
+  - The user can change bag content (remove items from the bag or go shopping to add more).
 
 - **✅ Verdict:**
+
+  All tests passed and functionality worked as intended.
 
 ### Checkout & Checkout Success ###
 
 - **📖 User story:**
 
-    *As a user, I am able to see a full breakdown of the total cost, including the shipping charge before proceeding to payment, except if I am a superuser.*
+    *As a user, I can see a full breakdown of the total cost, including the shipping charge before proceeding to payment, except if I am a superuser.*
 
-    *As a user, I am able to purchase the artwork using my card in a secure environment, except if I am a superuser.*
+    *As a user, I can purchase the artwork using my card in a secure environment, except if I am a superuser.*
 
-    *As a user, I am able to receive an email confirmation once I complete the payment, except if I am a superuser.*
+    *As a user, I can receive an email confirmation once I complete the payment, except if I am a superuser.*
 
 - **🧪 Test:**
 
@@ -249,11 +264,11 @@ View [website](https://art-ial-app.herokuapp.com/) deployed to Heroku.
 
 - **📖 User story:**
 
-   *As a user, I am able to  create an account.*
+   *As a user, I can  create an account.*
 
-   *As a user, I am able to change or reset my password securely.*
+   *As a user, I can change or reset my password securely.*
 
-   *As a user, I am able to view, save and update my personal information.*
+   *As a user, I can view, save and update my personal information.*
 
 - **🧪 Test:**
 
@@ -265,19 +280,19 @@ View [website](https://art-ial-app.herokuapp.com/) deployed to Heroku.
 
 - **📖 User story:**
 
-    *As a user, I am able to  create an account.*
+    *As a user, I can  create an account.*
 
-    *As a user, I am able to change or reset my password securely.*
+    *As a user, I can change or reset my password securely.*
 
-    *As a user, I am able to login to my existing account and make a quicker purchase.*
+    *As a user, I can login to my existing account and make a quicker purchase.*
 
-    *As a user, I am able to view, save and update my personal information.*
+    *As a user, I can view, save and update my personal information.*
 
-    *As a user, I am able to view past orders, except if I am a superuser.*
+    *As a user, I can view past orders, except if I am a superuser.*
 
-    *As a user, I am able to make purchases quicker by having stored information such as address, except if I am a superuser.*
+    *As a user, I can make purchases quicker by having stored information such as address, except if I am a superuser.*
 
-    *As a user, I am able to change or reset my password securely.*
+    *As a user, I can change or reset my password securely.*
 
 - **🧪 Test:**
 
@@ -289,13 +304,13 @@ View [website](https://art-ial-app.herokuapp.com/) deployed to Heroku.
 
 - **📖 User story:**
 
-*As a user, I am able to securely add, edit and delete the information for the specific artwork listed on the website.*
+*As a user, I can securely add, edit and delete the information for the specific artwork listed on the website.*
 
-*As a user, I am able to change the tags on the products to specify new items to promote them.*
+*As a user, I can change the tags on the products to specify new items to promote them.*
 
-*As a user, I am able to get an email with the customer orders when the purchases are made.*
+*As a user, I can get an email with the customer orders when the purchases are made.*
 
-*As a user, I am able to manipulate social media icons in the footer of the site (turn social media icons **on/off** and edit URLs).*
+*As a user, I can to manipulate social media icons in the footer of the site (turn social media icons **on/off** and edit URLs).*
 
 - **🧪 Test:**
 
