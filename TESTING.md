@@ -256,9 +256,29 @@ If you are viewing this on your mobile phone, you should see a charge breakdown 
 
 - **🧪 Test:**
 
+- After you click on the `checkout` on the `bag` page, you should be redirected to checkout.
+- If you are viewing this page on mobile and medium-sized devices, you should see a `checkout form`, `order summary` and then `order breakdown`. Alternatively, on all devices above medium, you should see a `checkout form` on the left and an `order summary` followed by the `order breakdown` underneath it on the right side of the page.
+- If you look at the `order form`, you should see three tabs at the top: `personal details`, `delivery info` and `payment`. Those tabs should only activate once the form has correct content. If the form fields do not have content you should not be able to use them to navigate.
+- Underneath the form, you should see a `back` and a `next` button. Button `back` should take you back to the `bag` page if you are on the `personal details` part of the form, otherwise, it would allow you to navigate on the form elements if the whole form is filled in. The button `next` should activate only if you have filled in form fields.
+- Try entering incorrect information in an email or phone number fields or leave a field empty. You should not be able to progress to the next step of the form.
+- If you enter correct details in the `personal details`, the `next` button should activate and you should also be able to navigate back to the `personal details` part of the form by clicking the `back` or `personal details` tab.
+- When on the `delivery info` part of the form, and you are not logged in, you should see an option below the form to `login` or `register account`.
+- Please note, if you are logged in, placed an order before or have personal details from the `profile` page saved, this form should pre-populate the information.
+- The `payment` tab is the last tab of the form and should have a summary of the information you have entered in the form.
+- To proceed with the order you need to enter payment details. For testing purposes, please use **4242 4242 4242 4242** card number, any future date as expiry date and any CVC number. You can test different card numbers provided by [stripe](https://stripe.com/docs/testing) for other card validations.
+- Try entering incorrect card number to test how stripe handles card errors.
+- Try commenting out the code line [`form.submit()` in `stripe-elements.js`](https://github.com/neringabickmore/art-ial/blob/master/checkout/static/checkout/js/stripe-elements.js#L116) and submitting the payment. You should expect to see an order created in Stripe Dashboard (and if you are a superuser, an order in Admin panel as well as in `Order history`).
+- If an order is successful, the user should be re-directed to the `checkout success` page where they should see a full order breakdown. They should also have a notification that their order was processed successfully as well as receive an order confirmation email.
+- If you are a superuser, you should check your sent items for confirmed orders as well as `all orders` in management on a navbar.
+
 - **📌 Result:**
+  All tests written above have passed as anticipated. However, during the development of the project I have identified a need to check if the item is still available before the checkout is processed as well as changing the tag of the item to `is_sold` once it is sold.
+  
+  I have managed to find a solution to change the availability to `is_sold` during the successful checkout. However, not all went to plan when finding a solution to prevent a sold item from being sold twice if two users had the same item in their bag at the same time. You can see full details of this in [**Known Bugs**](#known-bugs) (**🐞 Sold items in the bag**) section. The main problem with the bug is that the notifications are being sent to the users when the form is submitted, however, an order is being created and the charge amount is taken for a full order.
 
 - **✅ Verdict:**
+  
+  All tests passed, no bugs were found at the final round of testing except for one as mentioned in **Results**.
 
 ### User Authentication Pages ###
 
