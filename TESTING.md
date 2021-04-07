@@ -80,9 +80,13 @@ View [website](https://art-ial-app.herokuapp.com/) deployed to Heroku.
 
 - **🧪 Test:**
 
-- **📌 Result:**
+  - Click on `Quicklinks`. They should direct you to relevant parts of the site.
+  - Click on `instagram` icon, currently the only active social media account Art-ial has. It should direct you to the account.
+  - when you hover on `Quicklinks` and `instagram` it should change colour to green (hunter-green)
 
-- **✅ Verdict:**
+- **📌 Result and ✅Verdict**
+
+    All tests passed, no bugs were found at the final round of testing.
 
 ### Home Page ###
 
