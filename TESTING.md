@@ -194,10 +194,24 @@ View [website](https://art-ial-app.herokuapp.com/) deployed to Heroku.
     *As a user, I am able to change the tags on the products to specify new items to promote them.*
 
 - **🧪 Test:**
+  - If you are not logged in at all or logged as authenticated user or superuser:
+    - You should see information only about the particular product and no others.
+    - The information you see should have Collection name at the top of the page, if viewed on medium and large devices you should see image on the left and information about the product on the right; if viewed on small devices, the image should be at the top followed by the information about the product beneath it.
+    - The information you should see should have: **Title**, **description**, **dimensions**, **price**, **room view**, **shop** and either **add to bag**, **view bag** or **enquire** buttons.
+      - You should see **enquire** button for the items that are sold out. If you click on the button you should get redirected to `home page` -> `contact` form.
+      - You should see **add to bag** for the items that are not in your bag and are available for purchase. If you click on this button, you should right away get a notification that item was added to your bag and your nav bar should have bag icon and total amount displayed. **add to bag** button should change to **view bag** button.
+      - You should see **view bag** if this item is already in your bag.
+    - If you click on `room view`, you should have a modal pop up displaying the same product, but how it looks like on a wall in a room.
+    - If you hover over the main image, arrow should change to magnifying glass icon and if you click on it, you should get a redirection to a new page that would have a close up of the image.
+  - If you are logged in as a superuser, you should see the exact same buttons just as you have on gallery page: `edit`, `delete`, but instead of `view details` you should see `back to gallery`. Functionalities should be exactly the same and function just the same as per gallery page.
 
 - **📌 Result:**
 
+    This page was modified continuously throughout the development process of the site. Final test has not thrown any bugs, however, there was one major bug that I had recorded in [**Bugs**](#bugs) section (**Product add/view button**) section.
+
 - **✅ Verdict:**
+
+    The issues were successfully fixed and all tests passed.
 
 ### Bag Page ###
 
