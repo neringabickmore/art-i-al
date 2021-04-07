@@ -20,8 +20,7 @@ View [website](https://art-ial-app.herokuapp.com/) deployed to Heroku.
     - [Product Details Page](#product-details-page)
     - [Bag Page](#bag-page)
     - [Checkout & Checkout Success](#checkout--checkout-success)
-    - [User Authentication Pages](#user-authentication-pages)
-    - [Profiles Pages](#profiles-pages)
+    - [User Authentication Pages and Profiles](#user-authentication-pages-and-profiles)
     - [Superuser Site Management Functionality (CRUD)](#superuser-site-management-functionality-crud)
   - [Validation Services](#validation-services)
   - [Compatibility and Responsiveness](#compatibility-and-responsiveness)
@@ -254,6 +253,10 @@ If you are viewing this on your mobile phone, you should see a charge breakdown 
 
     *As a user, I can receive an email confirmation once I complete the payment, except if I am a superuser.*
 
+    *As a user, I can login to my existing account and make a quicker purchase.*
+
+    *As a user, I can make purchases quicker by having stored information such as address, except if I am a superuser.*
+
 - **🧪 Test:**
 
 - After you click on the `checkout` on the `bag` page, you should be redirected to checkout.
@@ -263,7 +266,7 @@ If you are viewing this on your mobile phone, you should see a charge breakdown 
 - Try entering incorrect information in an email or phone number fields or leave a field empty. You should not be able to progress to the next step of the form.
 - If you enter correct details in the `personal details`, the `next` button should activate and you should also be able to navigate back to the `personal details` part of the form by clicking the `back` or `personal details` tab.
 - When on the `delivery info` part of the form, and you are not logged in, you should see an option below the form to `login` or `register account`.
-- Please note, if you are logged in, placed an order before or have personal details from the `profile` page saved, this form should pre-populate the information.
+- Please note, if you are logged in, placed an order before or have personal details from the `profile` page saved, this form should pre-populate the information and you should be able to make a purchase quicker.
 - The `payment` tab is the last tab of the form and should have a summary of the information you have entered in the form.
 - To proceed with the order you need to enter payment details. For testing purposes, please use **4242 4242 4242 4242** card number, any future date as expiry date and any CVC number. You can test different card numbers provided by [stripe](https://stripe.com/docs/testing) for other card validations.
 - Try entering incorrect card number to test how stripe handles card errors.
@@ -280,7 +283,7 @@ If you are viewing this on your mobile phone, you should see a charge breakdown 
   
   All tests passed, no bugs were found at the final round of testing except for one as mentioned in **Results**.
 
-### User Authentication Pages ###
+### User Authentication Pages and Profiles ###
 
 - **📖 User story:**
 
@@ -290,35 +293,24 @@ If you are viewing this on your mobile phone, you should see a charge breakdown 
 
    *As a user, I can view, save and update my personal information.*
 
-- **🧪 Test:**
-
-- **📌 Result:**
-
-- **✅ Verdict:**
-
-### Profiles Pages ###
-
-- **📖 User story:**
-
-    *As a user, I can  create an account.*
-
-    *As a user, I can change or reset my password securely.*
-
-    *As a user, I can login to my existing account and make a quicker purchase.*
-
-    *As a user, I can view, save and update my personal information.*
-
     *As a user, I can view past orders, except if I am a superuser.*
 
-    *As a user, I can make purchases quicker by having stored information such as address, except if I am a superuser.*
-
-    *As a user, I can change or reset my password securely.*
-
 - **🧪 Test:**
 
+  - On a navbar, navigate to the `Login`.
+  - If you are a new user, click on `Register` and fill in the form.
+  - Try entering incorrect details in the email field. Please note, if you provide an invalid email address, you should not be able to receive a validation notification and you should not be able to create the account.
+  - If you have entered a valid email address, you should receive an email asking you to validate the account. Follow the link and you should be able to login successfully.
+  - If you want to change your password, navigate to `Profile` on a navbar, click on `Account`. Then you should see a `Personal Details` field with a button `Change Password`. Try changing your password by clicking on the button and following the instructions.
+  - If the forms you fill in are incorrect, you should not be able to change the password.
+  - On the same page, you should also see `Shipping Info` as well as `Order History`. You shouldn't be able to change any fields of `Order history`, but you should be able to change `Shipping Info`. The form you see in `Shipping info` should only be pre-filled if you have placed an order before and you were logged in or have done this at another time by visiting this exact page.
+
 - **📌 Result:**
+    All tests written above have passed as anticipated. However, during the testing process, I have identified that the user is not given a notification that the actions they have taken were validated or not. This is because I have used `SweetAlerts` for this project and `Allauth` Django templates use `messages` by default. As I have discovered this issue during the testing at the end of this project, due to time constraints I will have to look at solving this issue at a later date. Full write up about this you can find in [**Known-bugs**](#known-bugs) (**🐞 Messages in all-auth templates are not showing**) section.
 
 - **✅ Verdict:**
+
+    All tests passed, no bugs were found at the final round of testing except for one as mentioned in **Results**.
 
 ### Superuser Site Management Functionality (CRUD) ###
 
