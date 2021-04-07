@@ -40,7 +40,7 @@ View [website](https://art-ial-app.herokuapp.com/) deployed to Heroku.
 
 - **🧪 Test:**
   
-  - Chrome Dev tools used to view layout of the site on all resolutions available.
+  - Chrome Dev tools used to view the layout of the site on all resolutions available.
   - Please see [Compatibility and Responsiveness](#compatibility-and-responsiveness) for more detailed information.
 
 - **📌 Result:**
@@ -62,12 +62,12 @@ View [website](https://art-ial-app.herokuapp.com/) deployed to Heroku.
   - Try clicking on the navbar both on mobile and larger devices.
   - Larger than medium screen size devices should have all navbar item displayed at all times.
   - Small and medium screen size should have a collapsible navbar.
-  - All navbar items should change color from white to light pink (tuscany) on hover on all screen sizes.
+  - All navbar items should change colour from white to light pink (tuscany) on hover on all screen sizes.
   - If you haven't logged in, you should see `Login` on a navbar.
   - If you have logged in, you should see `Profile` on a navbar instead of login, which expands to `Account` and `Logout`.
   - If you are not a superuser, you should see `Home`, `Gallery`, `Shop`, `About`, `Contact` and `Login` or `Profile` on a navbar.
   - If you are a superuser, you should see `Home`, `Gallery`, `Management` which expands to `Products`, `Social Media` and `Order history`, and `Profile`, which expands to `Account` and `Logout`.
-  - If you have items added to the bag, you should see bag icon and grand total amount.
+  - If you have items added to the bag, you should see a bag icon and a total amount.
 
 - **📌 Result and ✅Verdict**
 
@@ -81,8 +81,8 @@ View [website](https://art-ial-app.herokuapp.com/) deployed to Heroku.
 - **🧪 Test:**
 
   - Click on `Quicklinks`. They should direct you to relevant parts of the site.
-  - Click on `instagram` icon, currently the only active social media account Art-ial has. It should direct you to the account.
-  - when you hover on `Quicklinks` and `instagram` it should change colour to green (hunter-green)
+  - Click on the `Instagram` icon, currently the only active social media account Art-ial has. It should direct you to the account.
+  - when you hover on `Quicklinks` and `Instagram` it should change colour to green (hunter-green)
 
 - **📌 Result and ✅Verdict**
 
@@ -100,9 +100,27 @@ View [website](https://art-ial-app.herokuapp.com/) deployed to Heroku.
 
 - **🧪 Test:**
 
+  - when you navigate on `Home` page or click on the `logo`, you should be directed to the home page.
+  - Navbar items on the navbar should also give a good idea to the user what the site is all about (`Gallery`, `Shop`).
+  - You should be able to see a video of nature at the top of the page followed by the `About` section. When hovered on the `Video`, the user should notice a small tooltip on the right side bottom of the image saying `go shopping` and if clicked is taken to the `Shopping` page.
+  - The `About` section should have a summary of the author.
+  - If you are a superuser, you should see a button `Edit` which takes you to another page where you can edit the content (title and description) of what is displayed in this section of the page. If you delete the content, the section would remain empty, I, therefore, advise you to always have some content about the offer in this section.
+  - You should see the `Contact` form right before the footer. If you are not logged in, all fields of the form should be empty. If you are a registered user and have logged in, you should have **full name** (if entered) and **email** sections pre-filled.
+  - The form should give errors if you click `Send` and any parts of the form are missing, not correct information provided or the consent form is un-ticked.
+  - If the form is correct and is submitted, the site owner (superuser) receives an email with the message, with customers details in the header.
+  - The user receives **Success** on the screen after the message is sent.
+
 - **📌 Result:**
 
+  - All buttons worked as intended and redirected the user to correct parts of the site as intended.
+  - If logged in as a superuser, you can see `edit` button and change content in the redirected page. If you delete the content, the section would remain empty, I, therefore, advise you to always have some content about the offer in this section.
+  - Contact form shows elements as described above and as intended.
+  - The user receives error messages if the form is not correct.
+  - If the form is correct and the message is sent successfully, the user sees **Success** message and the site owner (superuser) receives an email.
+
 - **✅ Verdict:**
+  
+  All tests passed and functionality worked as intended.
 
 ### Shop Page ###
 
