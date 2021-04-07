@@ -1,31 +1,3 @@
-<!-- TODO: Applies to all site users:
-
-1. As a user, I am able to easily navigate through the website without too much thought and find what I am looking for quickly.
-2. As a user, I am able to identify instantly what the site is all about and what it has to offer.
-3. As a user, I am able to contact the site owner using a simple form.
-4. As a user, I am able to find key information about the artwork I am interested in (such as images, title, dimensions, etc)
-5. As a user, I am able to add the artwork to my shopping bag, except if I am a superuser.
-6. As a user, I am able to change the content of my shopping bag before continuing to completion (add more or remove the artwork), except if I am a superuser.
-7. As a user, I am able to see a full breakdown of the total cost, including the shipping charge before proceeding to payment, except if I am a superuser.
-8. As a user, I am able to purchase the artwork using my card in a secure environment, except if I am a superuser.
-9.  As a user, I am able to receive an email confirmation once I complete the payment, except if I am a superuser.
-TODO: Applies to new site users:
-1. As a user, I am able to  create an account.
-**Applies to all returning users:**
-1. As a user, I am able to login to my existing account and make a quicker purchase.
-2. As a user, I am able to view, save and update my personal information.
-3. As a user, I am able to view past orders, except if I am a superuser.
-4. As a user, I am able to make purchases quicker by having stored information such as address, except if I am a superuser.
-5. As a user, I am able to change or reset my password securely.
-TODO: Applies to a superuser (site owner):
-1. As a user, I am able to securely add, edit and delete the information for the specific artwork listed on the website.
-2. As a user, I am able to change the tags on the products to specify new items to promote them.
-3. As a user, I am able to receive inquiries from the site users after they fill in the contact form straight to my email inbox.
-4. As a user, I am able to get an email with the customer orders when the purchases are made.
-5. As a user, I am able to manipulate social media icons in the footer of the site (turn social media icons *on/off* and edit URLs).
-6. As a user, I am able to edit content in the `About` section of the `Home` page.
--->
-
 # Art-ial - Testing Details #
 
 Main [README.md](README.md) file.
@@ -77,31 +49,184 @@ View [website](https://art-ial-app.herokuapp.com/) deployed to Heroku.
 
 - **✅ Verdict:**
 
-    The bug was successfully fixed and all test passed.
+    The issues were successfully fixed and all tests passed.
 
 ### Navbar ###
 
+- **📖 User story:**
+
+    *As a user, I am able to easily navigate through the website without too much thought and find what I am looking for quickly.*
+
+- **🧪 Test:**
+  - Click on all of the available links in the navbar. Assess if they are directing you to the page/section of the page you expect it.
+  - Try clicking on the navbar both on mobile and larger devices.
+  - Larger than medium screen size devices should have all navbar item displayed at all times.
+  - Small and medium screen size should have a collapsible navbar.
+  - All navbar items should change color from white to light pink (tuscany) on hover on all screen sizes.
+  - If you haven't logged in, you should see `Login` on a navbar.
+  - If you have logged in, you should see `Profile` on a navbar instead of login, which expands to `Account` and `Logout`.
+  - If you are not a superuser, you should see `Home`, `Gallery`, `Shop`, `About`, `Contact` and `Login` or `Profile` on a navbar.
+  - If you are a superuser, you should see `Home`, `Gallery`, `Management` which expands to `Products`, `Social Media` and `Order history`, and `Profile`, which expands to `Account` and `Logout`.
+  - If you have items added to the bag, you should see bag icon and grand total amount.
+
+- **📌 Result and ✅Verdict**
+
+    All tests passed, no bugs were found at the final round of testing.
+
 ### Footer ###
+
+- **📖 User story:**
+   As a user, I am able to easily navigate through the website without too much thought and find what I am looking for quickly.
+
+- **🧪 Test:**
+
+- **📌 Result:**
+
+- **✅ Verdict:**
 
 ### Home Page ###
 
+- **📖 User story:**
+
+    *As a user, I am able to contact the site owner using a simple form.*
+
+    *As a user, I am able to identify instantly what the site is all about and what it has to offer.*
+
+    *As a user (super-user), I am able to edit content in the `About` section of the `Home` page.*
+
+- **🧪 Test:**
+
+- **📌 Result:**
+
+- **✅ Verdict:**
+
 ### Shop Page ###
+
+- **📖 User story:**
+
+    *As a user, I am able to find key information about the artwork I am interested in (such as images, title, dimensions, etc)*
+
+    *As a user, I am able to add the artwork to my shopping bag, except if I am a superuser.*
+
+- **🧪 Test:**
+
+- **📌 Result:**
+
+- **✅ Verdict:**
 
 ### Gallery Page ###
 
+- **📖 User story:**
+
+    *As a user, I am able to find key information about the artwork I am interested in (such as images, title, dimensions, etc)*
+
+- **🧪 Test:**
+
+- **📌 Result:**
+
+- **✅ Verdict:**
+
 ### Product Details Page ###
+
+- **📖 User story:**
+
+    *As a user, I am able to find key information about the artwork I am interested in (such as images, title, dimensions, etc)*
+
+- **🧪 Test:**
+
+- **📌 Result:**
+
+- **✅ Verdict:**
 
 ### Bag Page ###
 
+- **📖 User story:**
+  
+  *As a user, I am able to change the content of my shopping bag before continuing to completion (add more or remove the artwork), except if I am a superuser.*
+
+  *As a user, I am able to see a full breakdown of the total cost, including the shipping charge before proceeding to payment, except if I am a superuser.*
+
+- **🧪 Test:**
+
+- **📌 Result:**
+
+- **✅ Verdict:**
+
 ### Checkout & Checkout Success ###
+
+- **📖 User story:**
+
+    *As a user, I am able to see a full breakdown of the total cost, including the shipping charge before proceeding to payment, except if I am a superuser.*
+
+    *As a user, I am able to purchase the artwork using my card in a secure environment, except if I am a superuser.*
+
+    *As a user, I am able to receive an email confirmation once I complete the payment, except if I am a superuser.*
+
+- **🧪 Test:**
+
+- **📌 Result:**
+
+- **✅ Verdict:**
 
 ### User Authentication Pages ###
 
+- **📖 User story:**
+
+   *As a user, I am able to  create an account.*
+
+   *As a user, I am able to change or reset my password securely.*
+
+   *As a user, I am able to view, save and update my personal information.*
+
+- **🧪 Test:**
+
+- **📌 Result:**
+
+- **✅ Verdict:**
+
 ### Profiles Pages ###
+
+- **📖 User story:**
+
+    *As a user, I am able to  create an account.*
+
+    *As a user, I am able to change or reset my password securely.*
+
+    *As a user, I am able to login to my existing account and make a quicker purchase.*
+
+    *As a user, I am able to view, save and update my personal information.*
+
+    *As a user, I am able to view past orders, except if I am a superuser.*
+
+    *As a user, I am able to make purchases quicker by having stored information such as address, except if I am a superuser.*
+
+    *As a user, I am able to change or reset my password securely.*
+
+- **🧪 Test:**
+
+- **📌 Result:**
+
+- **✅ Verdict:**
 
 ### Superuser Site Management Functionality (CRUD) ###
 
+- **📖 User story:**
 
+*As a user, I am able to securely add, edit and delete the information for the specific artwork listed on the website.*
+
+*As a user, I am able to change the tags on the products to specify new items to promote them.*
+
+*As a user, I am able to receive inquiries from the site users after they fill in the contact form straight to my email inbox.*
+
+*As a user, I am able to get an email with the customer orders when the purchases are made.*
+
+*As a user, I am able to manipulate social media icons in the footer of the site (turn social media icons **on/off** and edit URLs).*
+
+- **🧪 Test:**
+
+- **📌 Result:**
+
+- **✅ Verdict:**
 
 ## Validation Services ##
 
@@ -114,7 +239,6 @@ CSS - CSS validation with the [W3C Jigsaw Validator](https://jigsaw.w3.org/css-v
 Python - All Python code was checked with the [PEP8 online validator](http://pep8online.com/) and is PEP8 compliant, aside from line length flags, which were left for code readability.
 
 JavaScript - All files were tested with [JSHint](https://jshint.com/) validators.
-
 
 ## Compatibility and Responsiveness ##
 
