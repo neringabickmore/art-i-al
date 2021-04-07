@@ -98,6 +98,8 @@ View [website](https://art-ial-app.herokuapp.com/) deployed to Heroku.
 
     *As a user (super-user), I am able to edit content in the `About` section of the `Home` page.*
 
+    *As a user, I am able to receive inquiries from the site users after they fill in the contact form straight to my email inbox.*
+
 - **🧪 Test:**
 
   - when you navigate on `Home` page or click on the `logo`, you should be directed to the home page.
@@ -132,6 +134,7 @@ View [website](https://art-ial-app.herokuapp.com/) deployed to Heroku.
 
 - **🧪 Test:**
 
+
 - **📌 Result:**
 
 - **✅ Verdict:**
@@ -142,17 +145,47 @@ View [website](https://art-ial-app.herokuapp.com/) deployed to Heroku.
 
     *As a user, I am able to find key information about the artwork I am interested in (such as images, title, dimensions, etc)*
 
+    *As a user, I am able to securely add, edit and delete the information for the specific artwork listed on the website.*
+
+    *As a user, I am able to change the tags on the products to specify new items to promote them.*
+
 - **🧪 Test:**
 
+  - If you are logged in as a superuser:
+    - You should be able to see all of the artwork that is available on the site with buttons `Edit` and `Delete` product underneath every product image (on small and large devices, but the right side of the screen on medium-sized)
+    - If you click on `Edit`, it should redirect you to `Product Management` -> `Edit Product`. The form you see should already be pre-filled. At the bottom of the page you should see `Go back` and `Update` buttons, which should take you back to the `Gallery` page.
+    - If you chose to update the info, the information you see on a re-direction should have new content and a notification that your product was updated.
+    - When editing the content of the product, you should try entering an existing name of another painting and if you do so, you should get a notification that the product name already exists and the form would not submit.
+    - If you leave any mandatory fields empty and try to submit the form, you should also get a notification to check the fields and the form would not submit.
+    - If the form was entered correctly, you should receive a success message and get redirected to `Gallery`.
+    - If you clicked on `Go back`, the content shouldn't have changed or you should see any messages.
+    - If you click on `delete product` you should get a pop-up message asking to reconfirm your intentions to delete a product and should require you to click on the `yes, delete` button if this was your intention or the `no, go back` if you made a mistake.
+  - If you are not logged in at all or logged as authenticated user or superuser:
+    - You should be able to see basic information about the painting (Collection: Title) and the `View details` button.
+    - If you hover over the painting, the image should fade and you should see *hand* pointer with title *view details* and able to click on the image.
+    - If you click on the image or `view details` you should get redirected to the product details page. This is the only way you should be able to access a product details page.
+  
 - **📌 Result:**
 
+    Functionalities intended for the superuser were only accessible by the user with superuser status. All other users had limited functionalities at this stage as intended.
+
+    All superuser functionalities worked as intended, including the `delete` button. This was built to prevent mishaps.
+
+    If the non-superuser tried to access edit/delete functionalities, they should not be able to do this and get a notification that this functionality is only accessible by the superusers.
+
 - **✅ Verdict:**
+
+  All tests passed and functionality worked as intended.
 
 ### Product Details Page ###
 
 - **📖 User story:**
 
     *As a user, I am able to find key information about the artwork I am interested in (such as images, title, dimensions, etc)*
+
+    *As a user, I am able to securely add, edit and delete the information for the specific artwork listed on the website.*
+
+    *As a user, I am able to change the tags on the products to specify new items to promote them.*
 
 - **🧪 Test:**
 
@@ -237,8 +270,6 @@ View [website](https://art-ial-app.herokuapp.com/) deployed to Heroku.
 *As a user, I am able to securely add, edit and delete the information for the specific artwork listed on the website.*
 
 *As a user, I am able to change the tags on the products to specify new items to promote them.*
-
-*As a user, I am able to receive inquiries from the site users after they fill in the contact form straight to my email inbox.*
 
 *As a user, I am able to get an email with the customer orders when the purchases are made.*
 
