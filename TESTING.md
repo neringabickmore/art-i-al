@@ -142,7 +142,9 @@ View [website](https://art-ial-app.herokuapp.com/) deployed to Heroku.
 
 - **📌 Result and ✅Verdict**
 
-    All tests passed, no bugs were found at the final round of testing.
+    All tests passed, no bugs were found at the final round of testing except for one:
+
+  - If all items are sold, there is no content that tells the user that we are currently out of stock. Full details of this unsolved bug included in [**Known bugs**](#known-bugs) (🐞 **Sold-out defence**) section.
 
 ### Gallery Page ###
 
