@@ -236,7 +236,7 @@ p {
 /* sweet alert styling */
 /** container **/
 .swal2-container {
-    background-color: var(--white) !important;
+    background-color: transparent!important;
     display: initial !important;
     bottom: initial !important;
     margin-top: 22vh;
